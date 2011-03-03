@@ -11,12 +11,4 @@
 // warning about colour codes in action 8
 //@@WARNING DISABLE 144
 
--1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "This is a dummy NewGRF from the \nGeneric Makefile project\nhttp://dev.openttdcoop.org/ \nBy planetmaker" 00
-
-#define TEMP(x) -1 x 0 0 09 1 1 0 0
-
--1 * 0 0A \b01 \b03 \w4000
--1 sprites/pcx/test1.pcx 0 0 09 1 1 0 0 // a comment 
--1 sprites/pcx/Te.s-t_ing1.pcx 0 0 09 1 1 0 0 // a comment2
-TEMP(sprites/pcx/Te.s-t_ing1.pcx)
-//-1 sprites/pcx/project1/test2.pcx 0 0 0 0 0 
+-1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "CHIPS Station Set" 00
