@@ -1,0 +1,8 @@
+// This file (or any other file which is listed right after the header in the main source file, mynewgrf.pnfo)
+// may contain any number of defines which can later be used in the other source files in order
+// to increase readability and avoid getting lost in IDs and so on.
+//
+// Only thing these defines may not contain are quotation marks.
+// As an example: 
+// #define IND_COALMINE              00
+

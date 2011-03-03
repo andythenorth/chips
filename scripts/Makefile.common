@@ -1,0 +1,111 @@
+.PHONY: clean mrproper distclean test all depend bundle bundle_src bundle_zip bundle_tar bundle_bzip docs check addcheck
+.DEFAULT:
+
+# Clean the source tree
+clean:
+	$(_E) "[CLEANING]"
+	$(_V)-rm -rf *.orig *.pre *.bak *.grf *~
+	$(_V)-rm -rf *.dep $(TARGET_FILES) $(SRC_DIR)/*.nfo $(patsubst %.grf,%.nml,$(GRF_FILES)) $(REV_FILENAME) md5.check $(SRC_DIR)/*.cnfo
+	$(_V)-if [ "$(CLEAN_ADD)" ]; then for i in `ls $(CLEAN_ADD) 2> /dev/null`; do [ "$$i" != "" ] && rm $$i; done; fi
+
+# More thoroughly clean the source tree. Should restore the initial
+# state of a tarball (except for manual changes to Makefile.local, of
+# course).
+distclean: clean
+	$(_E) "[DISTCLEAN]"
+	$(_V)-rm -rf $(SRC_DIR)/$(FILENAME_STUB) $(DIR_NAME_SRC) $(DIR_NAME)
+	$(_V)-rm -rf $(DIR_BASE)*source*
+	$(_V)-rm -rf *.$(REV_EXTENSION)
+	$(_V)-rm -rf $(DIR_BASE)*nightly*.zip
+
+# Even more thoroughly clean the tree. Intended to be used on a
+# repository checkout. Also cleans files that are in a source tarball,
+# but not in the repository.
+mrproper: distclean
+	$(_E) "[MRPOPER]"
+	$(_V)-rm -rf $(MD5_FILENAME)
+	
+# Rebuild the repository
+remake:
+	$(_V) $(MAKE) clean && $(MAKE) 
+
+# Print the output for a number of variables which define this newgrf.
+test::
+	$(_E) "Make:                         $(MAKE)"
+	$(_E) "MD5sum:                       $(MD5SUM)"
+	$(_E) "unix2dos:                     $(UNIX2DOS) $(UNIX2DOS_FLAGS)"
+	$(_E) "gcc:                          $(CC) $(CC_FLAGS)"
+	$(_E) "zip:                          $(ZIP) $(ZIP_FLAGS)"
+	$(_E) "bzip:                         $(BZIP) $(BZIP_FLAGS)"
+	$(_E) "OS-Information:               $(OSTYPE)"
+	$(_E) "REPO title:                   $(REPO_TITLE)"
+	$(_E) "Installation directory:       $(INSTALL_DIR)"
+	$(_E) "Documentation directory:      $(DOCDIR)"
+	$(_E) "Repository revision:          r$(REPO_REVISION)"
+	$(_E) "Current repository branch:    $(REPO_BRANCH)"
+	$(_E) "Build targets:                $(TARGET_FILES)"
+	$(_E) "Doc files:                    $(DOC_FILES)"
+	$(_E) "Bundle filenames       tar:   $(TAR_FILENAME)"
+	$(_E) "                       zip:   $(ZIP_FILENAME)"
+	$(_E) "                       bzip:  $(BZIP_FILENAME)"
+	$(_E) "Dirs (build/src/base):        $(DIR_NAME) / $(DIR_NAME_SRC) / $(DIR_BASE)"
+	$(_E) "Dependency check type:        $(DEP_CHECK_TYPE)"
+	$(_E) "Source dirs:                  $(MAIN_DIRS)"
+	$(_E) "Source file extensions (RE):  $(FILE_SRC_RE)"
+	$(_E) "Source include ext. (RE):     $(FILE_INC_RE)"
+	$(_E) "Repository dirs (= VPATH):    $(REPO_DIRS)"
+# uncomment the following two lines in order to get a list of all files which are considered to be part of the repo
+# and the sub-list of those which are considered for the source bundle (for bundle_src)
+#	$(_E) "Bundled files:                $(BUNDLE_FILES)"
+#	$(_E) "Repository files:             $(REPO_FILES)"
+#	$(_E) "Bundle source files:          `for i in $(REPO_FILES); do for j in $(MAIN_DIRS); do echo "$$i" | grep "$$j"; done; done;`"
+
+.PRECIOUS: %.nfo %.nml %.cnfo
+.SECONDARY: %.nfo %.nml %.cnfo
+.DELETE_ON_ERROR: %.cnfo
+
+%.txt: %.ptxt $(REV_FILENAME) $(MD5_FILENAME)
+	$(_E) "[TXT] $@"
+	$(_V) cat $< \
+		| sed -e "s/$(REPO_TITLE_DUMMY)/$(REPO_TITLE)/" \
+		| sed -e "s/$(GRF_ID_DUMMY)/$(GRF_ID)/" \
+		| sed -e "s/$(REPO_REVISION_DUMMY)/$(REPO_REVISION)/" \
+		| sed -e "s/$(OUTPUT_FILENAME_DUMMY)/$(OUTPUT_FILENAME)/" \
+		| sed -e "s/$(GRF_MD5SUM_DUMMY)/$(shell cat $(MD5_FILENAME))/" \
+		> $@
+	$(_V) [ -z "$(UNIX2DOS)" ] || $(UNIX2DOS) $(UNIX2DOS_FLAGS) $@
+
+docs: $(DOC_FILES)
+
+$(MAKEFILE_DEP) depend: $(REV_FILENAME)
+	$(_E) "[DEP] $(MAKEFILE_DEP)"
+	$(_V) echo "$(MAKEFILE_DEP): $(MAKEFILE) Makefile.config" > $(MAKEFILE_DEP)
+	$(_V) echo "$(MAKEFILE_DEP): $(SCRIPT_DIR)/Makefile.common $(SCRIPT_DIR)/Makefile.def $(SCRIPT_DIR)/Makefile.bundles" >>$(MAKEFILE_DEP)
+	$(_V) echo "$(TARGET_FILES): $(LANG_FILES) $(MAKEFILE_DEP)" >> $(MAKEFILE_DEP)
+ifdef USE_NFO
+	$(_V) echo "$(MAKEFILE_DEP): $(SCRIPT_DIR)/Makefile_nfo" >> $(MAKEFILE_DEP)
+	$(_V) echo "$(MAKEFILE_DEP): $(SCRIPT_DIR)/nfoheader.nfo $(SCRIPT_DIR)/mdep.py" >> $(MAKEFILE_DEP)
+endif
+ifdef USE_OBG
+	$(_V) echo "$(MAKEFILE_DEP): $(SCRIPT_DIR)/Makefile_obg" >> $(MAKEFILE_DEP)
+endif
+ifdef USE_NML
+	$(_V) echo "$(MAKEFILE_DEP): $(SCRIPT_DIR)/Makefile_nml" >> $(MAKEFILE_DEP)
+endif
+
+ifeq ($(DEP_CHECK_TYPE),normal)
+%.gfx.dep: %.src.dep
+	$(_E) "[DEP] $@"
+	$(_V) echo "" > $@
+	$(_V) for i in `cat $<`; do for j in `echo "$$i" | grep -iE "($(FILE_SRC_RE))"`; do for k in `cat $$j | grep -v '^//'| grep -E -o "[-|a-z|A-Z|0-9|_|/|\.]*\.($(FILE_INC_RE))"`; do echo "$(patsubst %.gfx.dep,%.grf,$@): $$k"; done; done; done | sort | uniq >> $@
+	$(_V) touch $@
+endif
+
+# Create the dependencies. Allow project types to define their own
+$(REV_FILENAME):
+	$(_V) for i in `ls *.$(REV_EXTENSION) 2> /dev/null`; do [ "$$i" != "" ] && rm $$i; done
+	$(_V) touch $@
+
+addcheck:
+	$(_E) "[ADDCHECK] for missing repo files:"
+	$(_V) for i in `$(REPO_FILES_CMD) | grep -E '($(FILE_SRC_RE)|grf)$$'`; do hg st $$i `for j in $(FILE_SRC_EXTENSIONS) $(FILE_INC_EXTENSIONS); do cat $$i |  grep -v '^//' | grep -o "[a-zA-Z0-9/_.-]\+\.$$j" | sort | uniq; done`; done | sort | uniq  | grep "^?" && echo "Missing dependencies!" || echo "All is fine"
