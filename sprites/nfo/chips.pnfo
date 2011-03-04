@@ -3,3 +3,5 @@
 // other files may follow in any order:
 // sprites/\;//#nfo
 #include "sprites/nfo/ids.pnfo"
+
+#include "sprites/nfo/test.pnfo"
