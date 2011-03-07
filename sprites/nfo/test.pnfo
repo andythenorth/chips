@@ -1,19 +1,92 @@
--1 * 0 00 04 \b2 \b1 00
+-1 * 0 00 04 \b3 \b1 00
 08 "DFLT" 
-09 02 // 2 differnt tiles, 1 for each rotation
-\dx8000042D // custom ground sprite
+09 06 // 6 different tiles
+//Basic layout without a buffer
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
 80 // no building sprites
-\dx8000042E // custom ground sprite
+
+//Basic layout with a buffer at north end
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
 80 // no building sprites
+
+//Basic layout with a buffer at south end
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+10 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+0B 02 // callback flags
 
 // concrete sprite is currently commented out - uses TTD default sprite
 //Tile action 1
--1 * 0 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0 01 04 \b1 \b4 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
 -1 sprites/graphics/groundtiles.png 10 10 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png 80 10 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      10 06 09 35 64 -31 -4
+-1 sprites/graphics/buffer.png      80 10 09 31 64 -31 0
 
 -1 * 0 02 04 AB 00 01 \w0
+
+
+-1 * 0 02 04 21 81 // maybe draw buffers at north end
+45 00 02 // check rail continuation info
+\b1
+\wx8000 02 02
+\wx8002
+
+-1 * 0 02 04 22 81 // maybe draw buffers at south end
+45 00 01 // check rail continuation info
+\b1
+\wx8000 01 01
+\wx8004
+
+-1 * 0 02 04 20 81
+49 00 0F
+\b1
+\wx21 00 00 // Maybe draw buffers at north end
+\wx8000 // default: no buffers
+
+-1 * 0 02 04 20 81
+49 00 FF
+\b2
+\wx8000 00 00 // Single tile platform. Don't draw buffers
+\wx22 01 0F // Maybe draw buffers at south end
+\wx20
+
+-1 * 0 02 04 AB 85
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx20 \wx14 \wx14
+\wxAB
 
 -1 * 0 03 04 01 00 00 \wxAB
 
