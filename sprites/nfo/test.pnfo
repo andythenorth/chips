@@ -1,0 +1,20 @@
+-1 * 0 00 04 \b2 \b1 00
+08 "DFLT" 
+09 02 // 2 differnt tiles, 1 for each rotation
+\dx8000042D // custom ground sprite
+80 // no building sprites
+\dx8000042E // custom ground sprite
+80 // no building sprites
+
+// concrete sprite is currently commented out - uses TTD default sprite
+//Tile action 1
+-1 * 0 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 sprites/graphics/groundtiles.png 10 10 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png 80 10 09 31 64 -31 0
+
+-1 * 0 02 04 AB 00 01 \w0
+
+-1 * 0 03 04 01 00 00 \wxAB
+
+-1 * 0 04 04 FF 01 \wxC500 "My new station" 00
