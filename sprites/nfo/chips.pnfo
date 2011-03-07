@@ -4,4 +4,6 @@
 // sprites/\;//#nfo
 #include "sprites/nfo/ids.pnfo"
 
+#include "sprites/nfo/buffers.pnfo"
+
 #include "sprites/nfo/test.pnfo"
