@@ -1,0 +1,192 @@
+// We have several layouts:
+// bit 0: orientation.
+// bit 1..2: buffer. 3=no buffer, 1 = buffer at north end, 2 = buffer at south end, 0 = buffers at both ends
+// bit 3: 0 = platform and north side of track, 1 = platform at south end of tracks
+
+-1 * 0 00 04 \b3 \b1 01
+08 "DFLT" 
+09 10 // 16 different tiles
+
+
+///////////////PLATFORMS NORTH OF TRACK//////////
+
+//Basic layout with a buffer at both ends
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+10 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout with a buffer at north end
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout with a buffer at south end
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+10 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout without a buffer
+\dx000003F4 // custom ground sprite
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+///////////////PLATFORMS SOUTH OF TRACK//////////
+
+//Basic layout with a buffer at both ends
+\dx000003F4 // custom ground sprite
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+10 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout with a buffer at north end
+\dx000003F4 // custom ground sprite
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout with a buffer at south end
+\dx000003F4 // custom ground sprite
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+10 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+\dx0000430
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+//Basic layout without a buffer
+\dx000003F4 // custom ground sprite
+00 0B 00 // x/y/z offset
+10 05 04 // x/y/z extent
+\dx000042F
+80 // end of building sprite list
+\dx000003F3 // custom ground sprite
+80 // no building sprites
+
+0B 02 // callback flags
+
+// concrete sprite is currently commented out - uses TTD default sprite
+//Tile action 1
+-1 * 0 01 04 \b1 \b4 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 sprites/graphics/groundtiles.png 10 10 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png 80 10 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      10 06 09 35 64 -31 -4
+-1 sprites/graphics/buffer.png      80 10 09 31 64 -31 0
+
+-1 * 0 02 04 AB 00 01 \w0
+
+
+
+#define CHECK_FOR_INDUSTRY_TILE(offset, var_49_shift, min_length) \
+\2r 49 var_49_shift 0F \
+\2cmp 1A 20 min_length \
+\2/ 1A 20 02 \
+\2sto 1A 20 08 \
+\2r 1A 20 offset \
+\2+ 7D 02 20 FF \
+\2r 7B 67 38 0F \
+\2cmp 1A 20 08 \
+\2& 1A 20 01 \
+\2* 7D 08 20 FF \
+\2+ 7D 00 20 FF \
+\2sto 1A 20 00
+
+
+-1 * 0 02 04 40 81 // compute number of industry tiles on north side
+1A 20 00
+\2sto 1A 20 00 // temp[0] = 0 = number of industry tiles found so far
+CHECK_FOR_INDUSTRY_TILE(08, 20, 7)
+CHECK_FOR_INDUSTRY_TILE(09, 20, 6)
+CHECK_FOR_INDUSTRY_TILE(0A, 20, 5)
+CHECK_FOR_INDUSTRY_TILE(0B, 20, 4)
+CHECK_FOR_INDUSTRY_TILE(0C, 20, 3)
+CHECK_FOR_INDUSTRY_TILE(0D, 20, 2)
+CHECK_FOR_INDUSTRY_TILE(0E, 20, 1)
+CHECK_FOR_INDUSTRY_TILE(0F, 20, 0)
+CHECK_FOR_INDUSTRY_TILE(00, 20, FF)
+CHECK_FOR_INDUSTRY_TILE(01, 24, 0)
+CHECK_FOR_INDUSTRY_TILE(02, 24, 1)
+CHECK_FOR_INDUSTRY_TILE(03, 24, 2)
+CHECK_FOR_INDUSTRY_TILE(04, 24, 3)
+CHECK_FOR_INDUSTRY_TILE(05, 24, 4)
+CHECK_FOR_INDUSTRY_TILE(06, 24, 5)
+CHECK_FOR_INDUSTRY_TILE(07, 24, 6)
+\2r 7D 00 00 FF
+\b0
+\wx8000
+
+-1 * 0 02 04 40 81 // return 8 if more industry tiles on south, 0 otherwise
+1A 20 10
+\2sto 1A 20 02 // temp[2] = offset to check: y=1
+\2r 7E 40 20 FF // number of industry tiles on south side
+\2sto 1A 20 03 // store in temp[3]
+\2r 1A 20 F0 // offset to check: y=-1
+\2sto 1A 20 02 // store in temp[2]
+\2r 7E 40 20 FF // number of industry tiles on north side
+\2cmp 7D 03 00 FF // temp[3] = number of ind tiles on south
+\b1
+\wx8008 00 00 // more industry tiles on south: return 8
+\wx8000 // otherwise return 0
+
+-1 * 0 02 04 20 81
+45 20 03
+\2* 1A 20 02
+\2+ 7E 40 00 FF // procedure call to varaction2 with id 40
+\b0
+\wx8006
+
+-1 * 0 02 04 AB 85
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx20 \wx14 \wx14
+\wxAB
+
+-1 * 0 03 04 01 01 00 \wxAB
+
+-1 * 0 04 04 FF 01 \wxC501 "Test station 2" 00
