@@ -7,7 +7,7 @@
 #define THIS_OVERLAY_GROUND_NW \dx0000433
 #define THIS_OVERLAY_GROUND_SE \dx0000434
 
--1 * 0 00 04 \b3 \b1 TILE_CONCRETE_FIRS
+-1 * 0 00 04 \b3 \b1 THIS_TILE_ID
 08 "DFLT" 
 09 08 // 8 different tiles
 //Basic layout without a buffer
@@ -115,10 +115,10 @@ THIS_BUFFER_SE
 -1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png 80  50 09 31 64 -31 0 
--1 sprites/graphics/groundtiles.png 80  90 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png 80 130 09 31 64 -31 0 
--1 sprites/graphics/groundtiles.png 80 170 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  50 09 31 64 -31 0 
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  90 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 130 09 31 64 -31 0 
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 170 09 31 64 -31 0
 
 -1 * 0 02 04 AB 00 01 \w0
 
@@ -136,7 +136,7 @@ THIS_BUFFER_SE
 \wx20 \wx14 \wx14
 \wxAB
 
--1 * 0 03 04 01 TILE_CONCRETE_FIRS
+-1 * 0 03 04 01 THIS_TILE_ID
 00 \wxAB
 
 #undef THIS_BUFFER_NE
@@ -147,3 +147,6 @@ THIS_BUFFER_SE
 #undef THIS_OVERLAY_GROUND_SW
 #undef THIS_OVERLAY_GROUND_NW
 #undef THIS_OVERLAY_GROUND_SE
+
+#undef THIS_TILE_ID
+#undef THIS_SPRITESHEET_X

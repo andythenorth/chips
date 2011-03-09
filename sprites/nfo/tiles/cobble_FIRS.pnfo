@@ -1,0 +1,4 @@
+#define THIS_TILE_ID          TILE_COBBLE_FIRS 
+#define THIS_SPRITESHEET_X    150
+
+#include "../templates/simple_tile_1.tnfo"
