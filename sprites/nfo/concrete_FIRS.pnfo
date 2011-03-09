@@ -1,5 +1,11 @@
-#define THIS_BUFFER_NE \dx000042D
-#define THIS_BUFFER_SW \dx000042D
+#define THIS_BUFFER_NE         \dx000042D
+#define THIS_BUFFER_SW         \dx000042E
+#define THIS_BUFFER_NW         \dx000042F
+#define THIS_BUFFER_SE         \dx0000430
+#define THIS_OVERLAY_GROUND_NE \dx0000431
+#define THIS_OVERLAY_GROUND_SW \dx0000432
+#define THIS_OVERLAY_GROUND_NW \dx0000433
+#define THIS_OVERLAY_GROUND_SE \dx0000434
 
 -1 * 0 00 04 \b3 \b1 TILE_CONCRETE_FIRS
 08 "DFLT" 
@@ -8,52 +14,76 @@
 \dx000003F4 // custom ground sprite
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx000042F
+THIS_OVERLAY_GROUND_NE
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx0000430
+THIS_OVERLAY_GROUND_SW
 80 // end of building sprite list
 \dx000003F3 // custom ground sprite
-80 // no building sprites
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_NW
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_SE
+80 // end of building sprite list
 
 //Basic layout with a buffer at north end
 \dx000003F4 // custom ground sprite
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx000042F
+THIS_OVERLAY_GROUND_NE
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx0000430
+THIS_OVERLAY_GROUND_SW
 00 00 00 // x/y/z offset
 01 10 04 // x/y/z extent
 THIS_BUFFER_NE
 80 // end of building sprite list
 \dx000003F3 // custom ground sprite
-80 // no building sprites
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_NW
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_SE
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+THIS_BUFFER_NW
+80 // end of building sprite list
 
 //Basic layout with a buffer at south end
 \dx000003F4 // custom ground sprite
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx000042F
+THIS_OVERLAY_GROUND_NE
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx0000430
+THIS_OVERLAY_GROUND_SW
 10 00 00 // x/y/z offset
 01 10 04 // x/y/z extent
 THIS_BUFFER_SW
 80 // end of building sprite list
 \dx000003F3 // custom ground sprite
-80 // no building sprites
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_NW
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_SE
+00 10 00 // x/y/z offset
+01 10 04 // x/y/z extent
+THIS_BUFFER_SE
+80 // end of building sprite list
 
 //Basic layout with a buffer at both ends
 \dx000003F4 // custom ground sprite
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx000042F
+THIS_OVERLAY_GROUND_NE
 00 00 00 // x/y/z offset
 10 05 04 // x/y/z extent
-\dx0000430
+THIS_OVERLAY_GROUND_SW
 00 00 00 // x/y/z offset
 01 10 04 // x/y/z extent
 THIS_BUFFER_NE
@@ -62,17 +92,33 @@ THIS_BUFFER_NE
 THIS_BUFFER_SW
 80 // end of building sprite list
 \dx000003F3 // custom ground sprite
-80 // no building sprites
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_NW
+00 00 00 // x/y/z offset
+10 05 04 // x/y/z extent
+THIS_OVERLAY_GROUND_SE
+00 00 00 // x/y/z offset
+01 10 04 // x/y/z extent
+THIS_BUFFER_NW
+00 10 00 // x/y/z offset
+01 10 04 // x/y/z extent
+THIS_BUFFER_SE
+80 // end of building sprite list
 
 0B 02 // callback flags
 
 //Tile action 1
--1 * 0 01 04 \b1 \b4 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/buffer.png      80 10 09 31 64 -31 0
--1 sprites/graphics/buffer.png      10 06 09 35 64 -31 -4
--1 sprites/graphics/groundtiles.png 80 50 09 31 64 -31 0 
--1 sprites/graphics/groundtiles.png 80 90 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png 80  50 09 31 64 -31 0 
+-1 sprites/graphics/groundtiles.png 80  90 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png 80 130 09 31 64 -31 0 
+-1 sprites/graphics/groundtiles.png 80 170 09 31 64 -31 0
 
 -1 * 0 02 04 AB 00 01 \w0
 
@@ -95,3 +141,9 @@ THIS_BUFFER_SW
 
 #undef THIS_BUFFER_NE
 #undef THIS_BUFFER_SW
+#undef THIS_BUFFER_NW
+#undef THIS_BUFFER_SE
+#undef THIS_OVERLAY_GROUND_NE
+#undef THIS_OVERLAY_GROUND_SW
+#undef THIS_OVERLAY_GROUND_NW
+#undef THIS_OVERLAY_GROUND_SE
