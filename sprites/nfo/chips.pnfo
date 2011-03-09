@@ -6,5 +6,6 @@
 
 #include "sprites/nfo/test.pnfo"
 #include "sprites/nfo/detectind.pnfo"
+#include "sprites/nfo/concrete_FIRS.pnfo"
 
 #include "sprites/nfo/lang/strings.pnfo"
