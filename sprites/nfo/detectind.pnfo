@@ -3,7 +3,7 @@
 // bit 1..2: buffer. 3=no buffer, 1 = buffer at north end, 2 = buffer at south end, 0 = buffers at both ends
 // bit 3: 0 = platform and north side of track, 1 = platform at south end of tracks
 
--1 * 0 00 04 \b3 \b1 01
+-1 * 0 00 04 \b3 \b1 TILE_TEST_2
 08 "DFLT" 
 09 10 // 16 different tiles
 
@@ -187,6 +187,5 @@ CHECK_FOR_INDUSTRY_TILE(07, 24, 6)
 \wx20 \wx14 \wx14
 \wxAB
 
--1 * 0 03 04 01 01 00 \wxAB
-
--1 * 0 04 04 FF 01 \wxC501 "Test station 2" 00
+-1 * 0 03 04 01 TILE_TEST_2
+00 \wxAB

@@ -6,4 +6,12 @@
 // As an example: 
 // #define IND_COALMINE              00
 
+// Station tiles
+#define TILE_TEST_1                 00
+#define TILE_TEST_2                 01
 
+// Strings (needs moving to lang files later - this is just convenient for now)
+// (Note from andythenorth) strings framework needs some thought.  
+// It probably doesn't need as much complexity as FIRS.
+#define TEXT_TILE_TEST_1            "Test station 1"
+#define TEXT_TILE_TEST_2            "Test station 2"
