@@ -1,4 +1,10 @@
-#define THIS_TILE_ID          TILE_CONCRETE_FIRS 
+#define THIS_TILE_ID          TILE_TRACK_CONCRETE_FIRS 
 #define THIS_SPRITESHEET_X    80
 
 #include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_CONCRETE_FIRS 
+#define THIS_SPRITESHEET_X    80
+
+#include "../templates/simple_empty_tile_1.tnfo"

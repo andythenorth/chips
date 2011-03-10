@@ -9,10 +9,11 @@
 // Station tiles
 #define TILE_TEST_1                 00
 #define TILE_TEST_2                 01
-#define TILE_CONCRETE_FIRS          02
+#define TILE_TRACK_CONCRETE_FIRS    02
 #define TILE_MUD_FIRS               03
 #define TILE_TRACK_COBBLE_FIRS      04
 #define TILE_EMPTY_COBBLE_FIRS      05
+#define TILE_EMPTY_CONCRETE_FIRS    06
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  
