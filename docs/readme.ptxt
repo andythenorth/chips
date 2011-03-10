@@ -21,7 +21,7 @@ Repository version: {{REPO_REVISION}}
 
 
 -----------------
-5 Compiling CHIPS
+2 Compiling CHIPS
 -----------------
 
 The CHIPS source is available in a Mercurial repository and is available through
@@ -53,11 +53,11 @@ licensed under the GNU General Public License.
 http://dev.openttdcoop.org/projects/newgrf-makefile
 
 ---------------
-8 CHIPS License
+3 CHIPS License
 ---------------
 
 CHIPS Station Set - for OpenTTD
-Copyright (C) 2011  andythenorth, planetmaker, terkhen, yexo and others
+Copyright (C) 2011  andythenorth, planetmaker, yexo
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

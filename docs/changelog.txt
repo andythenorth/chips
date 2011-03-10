@@ -1,0 +1,10 @@
+===========================
+CHIPS Station Set Changelog
+===========================
+
+-----------
+0.1 Release
+-----------
+
+- Track tiles and empty tiles to match FIRS (concrete, cobble and mud)
+- Automatic buffers for track tiles
