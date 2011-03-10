@@ -60,7 +60,7 @@
   00 00 00 // x/y/z offset
   10 05 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SW
-  00 00 00 // x/y/z offset
+  10 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SW
   80 // end of building sprite list
@@ -71,7 +71,7 @@
   00 00 00 // x/y/z offset
   10 05 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
-  00 00 00 // x/y/z offset
+  00 10 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
@@ -87,7 +87,7 @@
   00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_NE
-  00 00 00 // x/y/z offset
+  10 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SW
   80 // end of building sprite list
@@ -101,7 +101,7 @@
   00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_NW
-  00 00 00 // x/y/z offset
+  00 10 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
