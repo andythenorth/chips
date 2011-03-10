@@ -21,10 +21,10 @@
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_NW
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
   80 // end of building sprite list
   
@@ -42,13 +42,13 @@
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_NW
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
   00 00 00 // x/y/z offset
-  01 10 04 // x/y/z extent
+  10 01 04 // x/y/z extent
   THIS_BUFFER_NW
   80 // end of building sprite list
   
@@ -66,13 +66,13 @@
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_NW
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
   00 10 00 // x/y/z offset
-  01 10 04 // x/y/z extent
+  10 01 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
   
@@ -93,16 +93,16 @@
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_NW
   00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  05 10 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
   00 00 00 // x/y/z offset
-  01 10 04 // x/y/z extent
+  10 01 04 // x/y/z extent
   THIS_BUFFER_NW
   00 10 00 // x/y/z offset
-  01 10 04 // x/y/z extent
+  10 01 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
 0B 02 // callback flags
