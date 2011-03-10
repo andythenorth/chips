@@ -4,6 +4,8 @@
 // sprites/\;//#nfo
 #include "sprites/nfo/ids.pnfo"
 
+#include "sprites/nfo/cargotable.pnfo"
+
 //#include "sprites/nfo/tiles/test.pnfo"
 //#include "sprites/nfo/tiles/detectind.pnfo"
 
