@@ -2,7 +2,7 @@
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
 08 "DFLT" 
-09 02 // 2 tiles
+09 04 // 4 tiles
   //Basic layout
   \dx000003EC // custom ground sprite
   00 00 80 // x/y/z offset = extra groundsprite
@@ -14,15 +14,43 @@
   00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   80 // end of building sprite list
+
+  //With building on top
+  \dx000003EC // custom ground sprite
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
+  THIS_GROUND
+  00 00 00 // x/y/z offset
+  10 10 10 // x/y/z extend
+  \dx0000042E
+  80 // end of building sprite list
+  \dx000003EC // custom ground sprite
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
+  THIS_GROUND
+  00 00 00 // x/y/z offset
+  10 10 10 // x/y/z extend
+  \dx0000042E
+  80 // end of building sprite list
 0B 02 // callback flags
 15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
--1 * 0 01 04 \b1 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0 01 04 \b1 \b5 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  10 09 31 64 -31 0 
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  10 09 31 64 -31 0
+-1 sprites/graphics/lumber_cargo.png                  10 10 09 65 64 -31 -34
+-1 sprites/graphics/lumber_cargo.png                  80 10 09 65 64 -31 -34
+-1 sprites/graphics/lumber_cargo.png                 150 10 09 65 64 -31 -34
+-1 sprites/graphics/lumber_cargo.png                 220 10 09 65 64 -31 -34
 
 -1 * 0 02 04 AB 00 01 \w0
+
+-1 * 0 02 04 AB 85
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx8002 \wx14 \wx14 // Force 'platform with building on top' for now
+\wxAB
 
 -1 * 0 03 04 01 THIS_TILE_ID
 00 \wxAB
