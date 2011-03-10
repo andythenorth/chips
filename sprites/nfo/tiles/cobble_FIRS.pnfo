@@ -1,4 +1,10 @@
-#define THIS_TILE_ID          TILE_COBBLE_FIRS 
+#define THIS_TILE_ID          TILE_TRACK_COBBLE_FIRS 
 #define THIS_SPRITESHEET_X    150
 
 #include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_COBBLE_FIRS 
+#define THIS_SPRITESHEET_X    150
+
+#include "../templates/simple_empty_tile_1.tnfo"

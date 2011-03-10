@@ -11,7 +11,8 @@
 #define TILE_TEST_2                 01
 #define TILE_CONCRETE_FIRS          02
 #define TILE_MUD_FIRS               03
-#define TILE_COBBLE_FIRS            04
+#define TILE_TRACK_COBBLE_FIRS      04
+#define TILE_EMPTY_COBBLE_FIRS      05
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  
@@ -20,4 +21,5 @@
 #define TEXT_TILE_TEST_2                   "Test station 2"
 #define TEXT_TILE_CONCRETE_FIRS            "Concrete cargo platform (FIRS-style)"
 #define TEXT_TILE_MUD_FIRS                 "Mud cargo platform (FIRS-style)"
+#define TEXT_TILE_COBBLE_FIRS              "Cobble cargo platform (FIRS-style)"
 #define TEXT_TILE_COBBLE_FIRS              "Cobble cargo platform (FIRS-style)"
