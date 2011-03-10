@@ -1,4 +1,10 @@
-#define THIS_TILE_ID          TILE_MUD_FIRS 
+#define THIS_TILE_ID          TILE_TRACK_MUD_FIRS 
 #define THIS_SPRITESHEET_X    10
 
 #include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_MUD_FIRS 
+#define THIS_SPRITESHEET_X    10
+
+#include "../templates/simple_empty_tile_1.tnfo"
