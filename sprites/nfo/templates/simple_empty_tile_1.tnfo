@@ -1,6 +1,6 @@
 #define THIS_GROUND \dx000042D
 
--1 * 0 00 04 \b3 \b1 THIS_TILE_ID
+-1 * 0 00 04 \b4 \b1 THIS_TILE_ID
 08 "DFLT" 
 09 02 // 2 tiles
   //Basic layout
@@ -15,6 +15,7 @@
   THIS_GROUND
   80 // end of building sprite list
 0B 02 // callback flags
+15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
 -1 * 0 01 04 \b1 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
