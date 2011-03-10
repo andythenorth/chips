@@ -60,7 +60,7 @@
   00 00 00 // x/y/z offset
   10 05 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SW
-  10 00 00 // x/y/z offset
+  00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SW
   80 // end of building sprite list
@@ -71,7 +71,7 @@
   00 00 00 // x/y/z offset
   10 05 04 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
-  00 10 00 // x/y/z offset
+  00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
@@ -87,7 +87,7 @@
   00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_NE
-  10 00 00 // x/y/z offset
+  00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SW
   80 // end of building sprite list
@@ -101,7 +101,7 @@
   00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_NW
-  00 10 00 // x/y/z offset
+  00 00 00 // x/y/z offset
   01 10 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
@@ -111,9 +111,9 @@
 -1 * 0 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
 -1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
--1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
--1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80  90 09 31 64 -31 0
+-1 sprites/graphics/buffer.png      80 130 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  50 09 31 64 -31 0 
 -1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  90 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 130 09 31 64 -31 0 
