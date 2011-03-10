@@ -5,13 +5,13 @@
 09 02 // 2 tiles
   //Basic layout
   \dx000003EC // custom ground sprite
-  00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   80 // end of building sprite list
   \dx000003EC // custom ground sprite
-  00 00 00 // x/y/z offset
-  10 05 04 // x/y/z extent
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   80 // end of building sprite list
 0B 02 // callback flags
