@@ -15,6 +15,10 @@
 #define TILE_EMPTY_COBBLE_FIRS      05
 #define TILE_EMPTY_CONCRETE_FIRS    06
 #define TILE_EMPTY_MUD_FIRS         07
+#define TILE_TRACK_QUARRY_FIRS      08
+#define TILE_EMPTY_QUARRY_FIRS      09
+#define TILE_TRACK_CLAY_FIRS        10
+#define TILE_EMPTY_CLAY_FIRS        1A
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  

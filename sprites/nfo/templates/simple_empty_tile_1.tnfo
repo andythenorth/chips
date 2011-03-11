@@ -49,7 +49,7 @@
 -1 * 0 02 04 AB 85
 0C 00 \wxFFFF // var, shift, mask
 \b1 // num ranges
-\wx8002 \wx14 \wx14 // Force 'platform with building on top' for now
+\wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
 \wxAB
 
 -1 * 0 03 04 01 THIS_TILE_ID
