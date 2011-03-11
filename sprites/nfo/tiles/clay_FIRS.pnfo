@@ -1,0 +1,10 @@
+#define THIS_TILE_ID          TILE_TRACK_CLAY_FIRS 
+#define THIS_SPRITESHEET_X    220
+
+#include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_CLAY_FIRS 
+#define THIS_SPRITESHEET_X    220
+
+#include "../templates/simple_empty_tile_1.tnfo"

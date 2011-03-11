@@ -1,0 +1,10 @@
+#define THIS_TILE_ID          TILE_TRACK_QUARRY_FIRS 
+#define THIS_SPRITESHEET_X    290
+
+#include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_QUARRY_FIRS 
+#define THIS_SPRITESHEET_X    290
+
+#include "../templates/simple_empty_tile_1.tnfo"
