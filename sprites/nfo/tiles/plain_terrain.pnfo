@@ -1,0 +1,10 @@
+#define THIS_TILE_ID          TILE_TRACK_PLAIN_TERRAIN 
+#define THIS_SPRITESHEET_X    360
+
+#include "../templates/simple_track_tile_1.tnfo"
+
+
+#define THIS_TILE_ID          TILE_EMPTY_PLAIN_TERRAIN 
+#define THIS_SPRITESHEET_X    360
+
+#include "../templates/simple_empty_tile_1.tnfo"
