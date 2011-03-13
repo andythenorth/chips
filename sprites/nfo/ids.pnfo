@@ -6,7 +6,9 @@
 // As an example: 
 // #define IND_COALMINE              00
 
-// Station tiles
+// Station tiles - ordered by ID.  Append new defines to end as needed.
+// Don't attempt to shuffle these around to make a sane order, e.g. alphabetise
+// Changing ID for a station tile *will* break save games (possible crash condition).
 #define TILE_TEST_1                 00
 #define TILE_TEST_2                 01
 #define TILE_TRACK_CONCRETE_FIRS    02
@@ -30,3 +32,5 @@
 #define TEXT_TILE_CONCRETE_FIRS            "Concrete platform (FIRS-style)"
 #define TEXT_TILE_MUD_FIRS                 "Mud platform (FIRS-style)"
 #define TEXT_TILE_COBBLE_FIRS              "Cobble platform (FIRS-style)"
+#define TEXT_TILE_CLAY_FIRS                "Clay Pit platform (FIRS-style)"
+#define TEXT_TILE_QUARRY_FIRS              "Quarry platform (FIRS-style)"
