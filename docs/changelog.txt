@@ -3,6 +3,18 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.2 Release
+-----------
+
+- Add basic tiles for FIRS Clay Pit and Quarry (unfinished)
+- Internal changes (no gameplay effect):
+	- fix NW-SE tile bounding boxes 
+	- add cargo translation table
+	- add basic action 14
+	- start code for cargo graphics support
+	- added some graphics files for cargo
+
+-----------
 0.1 Release
 -----------
 
