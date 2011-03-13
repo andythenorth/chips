@@ -1,0 +1,22 @@
+
+//Tile action 1
+-1 * 0 01 04 \b4 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 THIS_CARGO_SPRITESHEET                  10 10 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                  80 10 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                 150 10 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                 220 10 09 65 64 -31 -34
+
+-1 * 0 02 04 00 00 02 \w0 \w1
+-1 * 0 02 04 01 00 02 \w2 \w3
+
+-1 * 0 02 04 02 80 00 00 02 \wx00 \wx01
+
+-1 * 0 02 04 THIS_SET_ID 85 // no cargo at all
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx8002 \wx14 \wx14 // Layout 'platform with building on top'
+\wx02
+
+#undef THIS_SET_ID
+#undef THIS_CARGO_SPRITESHEET

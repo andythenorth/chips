@@ -53,40 +53,26 @@
 0B 02 // callback flags
 15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
-//Tile action 1
--1 * 0 01 04 \b4 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
-// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/lumber_cargo.png                  10 10 09 65 64 -31 -34
--1 sprites/graphics/lumber_cargo.png                  80 10 09 65 64 -31 -34
--1 sprites/graphics/lumber_cargo.png                 150 10 09 65 64 -31 -34
--1 sprites/graphics/lumber_cargo.png                 220 10 09 65 64 -31 -34
 
--1 * 0 02 04 A0 00 01 \w0 
--1 * 0 02 04 A1 00 01 \w1
--1 * 0 02 04 A2 00 01 \w2
--1 * 0 02 04 A3 00 01 \w3
+#define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
+#define THIS_SET_ID A0
+#include "simple_empty_tile_1_cargo.tnfo"
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/scrap_metal_cargo.png
+#define THIS_SET_ID A1
+#include "simple_empty_tile_1_cargo.tnfo"
 
--1 * 0 02 04 B1 85 // coal is most-used cargo
-60 17 00 \wxFFFF // amount of cargo waiting
-\b1 // num ranges
-\wxA0 \w00 \w100
-\wxA1
-
--1 * 0 02 04 B1 85 // coal is most-used cargo
-0C 00 \wxFFFF // var, shift, mask
-\b1 // num ranges
-\wx8002 \wx14 \wx14 // Force 'platform with building on top' for now
-\wxB1
 
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
 \b1 // num ranges
 \wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
-\wxA0
+\wx00
 
--1 * 0 03 04 01 THIS_TILE_ID \b1
-17 \wxB1 // cargo: coal
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0 03 04 01 THIS_TILE_ID \b2
+03 \wxA0 // cargo: WOOD
+01 \wxA1 // cargo: SCRP
 \wxB0
 
 #undef THIS_GROUND
