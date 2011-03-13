@@ -1,4 +1,22 @@
-#define THIS_GROUND \dx000042D
+#define THIS_GROUND \dxC0000000
+
+//<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
+//GRM, reserve <count> sprites and store the result in <target>
+-1 * 9 0D 11 \D= \DR FE FF 08 \w1
+
+-1 * 7 06
+  11 02 03 // replace 2 bytes at offset 3 with the value of param 11
+  FF
+
+-1 * 5 0A \b1 \b1 \w0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  10 09 31 64 -31 0
+
+-1 * 7 06
+  11 02 \b22
+  11 02 \b37
+  11 02 \b52
+  11 02 \b77
+  FF
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
 08 "DFLT" 
@@ -22,7 +40,7 @@
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
-  \dx0000042E
+  \dx0000042D
   80 // end of building sprite list
   \dx000003EC // custom ground sprite
   00 00 80 // x/y/z offset = extra groundsprite
@@ -30,30 +48,46 @@
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
-  \dx0000042E
+  \dx0000042D
   80 // end of building sprite list
 0B 02 // callback flags
 15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
--1 * 0 01 04 \b1 \b5 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0 01 04 \b4 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  10 09 31 64 -31 0
 -1 sprites/graphics/lumber_cargo.png                  10 10 09 65 64 -31 -34
 -1 sprites/graphics/lumber_cargo.png                  80 10 09 65 64 -31 -34
 -1 sprites/graphics/lumber_cargo.png                 150 10 09 65 64 -31 -34
 -1 sprites/graphics/lumber_cargo.png                 220 10 09 65 64 -31 -34
 
--1 * 0 02 04 AB 00 01 \w0
+-1 * 0 02 04 A0 00 01 \w0 
+-1 * 0 02 04 A1 00 01 \w1
+-1 * 0 02 04 A2 00 01 \w2
+-1 * 0 02 04 A3 00 01 \w3
 
--1 * 0 02 04 AB 85
+
+-1 * 0 02 04 B1 85 // coal is most-used cargo
+60 17 00 \wxFFFF // amount of cargo waiting
+\b1 // num ranges
+\wxA0 \w00 \w100
+\wxA1
+
+-1 * 0 02 04 B1 85 // coal is most-used cargo
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx8002 \wx14 \wx14 // Force 'platform with building on top' for now
+\wxB1
+
+-1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
 \b1 // num ranges
 \wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
-\wxAB
+\wxA0
 
--1 * 0 03 04 01 THIS_TILE_ID
-00 \wxAB
+-1 * 0 03 04 01 THIS_TILE_ID \b1
+17 \wxB1 // cargo: coal
+\wxB0
 
 #undef THIS_GROUND
 
