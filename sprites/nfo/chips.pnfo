@@ -9,6 +9,8 @@
 //#include "sprites/nfo/tiles/test.pnfo"
 //#include "sprites/nfo/tiles/detectind.pnfo"
 
+#include "sprites/nfo/grm_buffers.pnfo"
+
 #include "sprites/nfo/tiles/cobble_FIRS.pnfo"
 #include "sprites/nfo/tiles/concrete_FIRS.pnfo"
 #include "sprites/nfo/tiles/mud_FIRS.pnfo"
