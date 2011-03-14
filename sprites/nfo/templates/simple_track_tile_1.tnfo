@@ -333,6 +333,10 @@
 #define THIS_SET_ID A1
 #include "simple_track_tile_1_cargo.tnfo"
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/crates_cargo.png
+#define THIS_SET_ID A2
+#include "simple_track_tile_1_cargo.tnfo"
+
 
 -1 * 0 02 04 20 81
 45 00 03
@@ -349,9 +353,14 @@
 \wx00
 
 // byte is index in cargotable, word is THIS_SET_ID define above
--1 * 0 03 04 01 THIS_TILE_ID \b2
+-1 * 0 03 04 01 THIS_TILE_ID \b7
 03 \wxA0 // cargo: WOOD
 01 \wxA1 // cargo: SCRP
+0E \wxA2 // cargo: FOOD
+14 \wxA2 // cargo: GOOD
+31 \wxA2 // cargo: MNSP
+34 \wxA2 // cargo: BEER
+35 \wxA2 // cargo: BDMT
 \wxAB
 
 #undef THIS_BUFFER_NE
