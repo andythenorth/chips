@@ -2,10 +2,28 @@
 #define THIS_BUFFER_SW         \dx80000000
 #define THIS_BUFFER_NW         \dx80000000
 #define THIS_BUFFER_SE         \dx80000000
-#define THIS_OVERLAY_GROUND_NE \dx0000431
-#define THIS_OVERLAY_GROUND_SW \dx0000432
-#define THIS_OVERLAY_GROUND_NW \dx0000433
-#define THIS_OVERLAY_GROUND_SE \dx0000434
+#define THIS_OVERLAY_GROUND_NE \dxC0000000
+#define THIS_OVERLAY_GROUND_SW \dxC0000000
+#define THIS_OVERLAY_GROUND_NW \dxC0000000
+#define THIS_OVERLAY_GROUND_SE \dxC0000000
+
+//<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
+//GRM, reserve <count> sprites and store the result in <target>
+-1 * 9 0D 10 \D= \DR FE FF 08 \w4
+
+-1 * 7 06
+  10 02 03 // replace 2 bytes at offset 3 with the value of param 10
+  FF
+
+-1 * 5 0A \b1 \b4 \w0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  50 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  90 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 130 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 170 09 31 64 -31 0
+
+-1 * 0 0D 11 \D+ 10 FF \d1
+-1 * 0 0D 12 \D+ 10 FF \d2
+-1 * 0 0D 13 \D+ 10 FF \d3
 
 -1 * 7 06
   PARAM_BUFFER_NE 02 \b92
@@ -16,6 +34,22 @@
   PARAM_BUFFER_SW 02 \b242
   PARAM_BUFFER_NW 02 \b*277
   PARAM_BUFFER_SE 02 \b*287
+  10 02 \b22
+  11 02 \b32
+  12 02 \b47
+  13 02 \b57
+  10 02 \b72
+  11 02 \b82
+  12 02 \b107
+  13 02 \b117
+  10 02 \b142
+  11 02 \b152
+  12 02 \b177
+  13 02 \b187
+  10 02 \b212
+  11 02 \b222
+  12 02 \b*257
+  13 02 \b*267
   FF
 
 -1 * 0 00 04 \b3 \b1 THIS_TILE_ID
