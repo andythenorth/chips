@@ -34,6 +34,14 @@
   PARAM_BUFFER_SW 02 \b242
   PARAM_BUFFER_NW 02 \b*277
   PARAM_BUFFER_SE 02 \b*287
+  PARAM_BUFFER_NE 02 \b*412
+  PARAM_BUFFER_NW 02 \b*467
+  PARAM_BUFFER_SW 02 \b*522
+  PARAM_BUFFER_SE 02 \b*577
+  PARAM_BUFFER_NE 02 \b*632
+  PARAM_BUFFER_SW 02 \b*642
+  PARAM_BUFFER_NW 02 \b*697
+  PARAM_BUFFER_SE 02 \b*707
   10 02 \b22
   11 02 \b32
   12 02 \b47
@@ -50,11 +58,27 @@
   11 02 \b222
   12 02 \b*257
   13 02 \b*267
+  10 02 \b*302
+  11 02 \b*312
+  12 02 \b*347
+  13 02 \b*357
+  10 02 \b*392
+  11 02 \b*402
+  12 02 \b*447
+  13 02 \b*457
+  10 02 \b*502
+  11 02 \b*512
+  12 02 \b*557
+  13 02 \b*567
+  10 02 \b*612
+  11 02 \b*622
+  12 02 \b*677
+  13 02 \b*687
   FF
 
 -1 * 0 00 04 \b3 \b1 THIS_TILE_ID
 08 "DFLT" 
-09 08 // 8 different tiles
+09 10 // 16 different tiles
   //Basic layout without a buffer
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -150,21 +174,165 @@
   10 01 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
+
+
+  //Basic layout without a buffer and with cargo
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042D
+  00 0C 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042E
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx000042F
+  0C 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx0000430
+  80 // end of building sprite list
+
+
+  //Basic layout with a buffer at north end and with cargo
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  01 10 04 // x/y/z extent
+  THIS_BUFFER_NE
+  00 00 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042D
+  00 0C 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042E
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  10 01 04 // x/y/z extent
+  THIS_BUFFER_NW
+  00 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx000042F
+  0C 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx0000430
+  80 // end of building sprite list
+
+  //Basic layout with a buffer at south end and with cargo
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  10 00 00 // x/y/z offset
+  01 10 04 // x/y/z extent
+  THIS_BUFFER_SW
+  00 00 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042D
+  00 0C 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042E
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 10 00 // x/y/z offset
+  10 01 04 // x/y/z extent
+  THIS_BUFFER_SE
+  00 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx000042F
+  0C 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx0000430
+  80 // end of building sprite list
+
+
+  //Basic layout with a buffer at both ends and with cargo
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  01 10 04 // x/y/z extent
+  THIS_BUFFER_NE
+  10 00 00 // x/y/z offset
+  01 10 04 // x/y/z extent
+  THIS_BUFFER_SW
+  00 00 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042D
+  00 0C 00 // x/y/z offset
+  10 04 05 // x/y/z extent
+  \dx000042E
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  10 01 04 // x/y/z extent
+  THIS_BUFFER_NW
+  00 10 00 // x/y/z offset
+  10 01 04 // x/y/z extent
+  THIS_BUFFER_SE
+  00 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx000042F
+  0C 00 00 // x/y/z offset
+  04 10 05 // x/y/z extent
+  \dx0000430
+  80 // end of building sprite list
 0B 02 // callback flags
 
-//Tile action 1
--1 * 0 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
-// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
--1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
--1 sprites/graphics/buffer.png      80  90 09 31 64 -31 0
--1 sprites/graphics/buffer.png      80 130 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  50 09 31 64 -31 0 
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  90 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 130 09 31 64 -31 0 
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 170 09 31 64 -31 0
 
--1 * 0 02 04 AB 00 01 \w0
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
+#define THIS_SET_ID A0
+#include "simple_track_tile_1_cargo.tnfo"
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/scrap_metal_cargo.png
+#define THIS_SET_ID A1
+#include "simple_track_tile_1_cargo.tnfo"
+
 
 -1 * 0 02 04 20 81
 45 00 03
@@ -178,10 +346,13 @@
 0C 00 \wxFFFF // var, shift, mask
 \b1 // num ranges
 \wx20 \wx14 \wx14
-\wxAB
+\wx00
 
--1 * 0 03 04 01 THIS_TILE_ID
-00 \wxAB
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0 03 04 01 THIS_TILE_ID \b2
+03 \wxA0 // cargo: WOOD
+01 \wxA1 // cargo: SCRP
+\wxAB
 
 #undef THIS_BUFFER_NE
 #undef THIS_BUFFER_SW

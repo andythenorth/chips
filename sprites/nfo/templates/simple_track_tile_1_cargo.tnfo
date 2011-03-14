@@ -1,0 +1,32 @@
+
+//Tile action 1
+-1 * 0 01 04 \b2 \b4 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 THIS_CARGO_SPRITESHEET                  10  90 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                  10 170 09 65 64 -54 -46
+-1 THIS_CARGO_SPRITESHEET                 150  90 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                 150 170 09 65 64  -8 -46
+
+-1 THIS_CARGO_SPRITESHEET                  80  90 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                  80 170 09 65 64 -54 -46
+-1 THIS_CARGO_SPRITESHEET                 220  90 09 65 64 -31 -34
+-1 THIS_CARGO_SPRITESHEET                 220 170 09 65 64  -8 -46
+
+-1 * 0 02 04 00 00 02 \w0 \w1
+
+-1 * 0 02 04 80 81
+45 00 03
+\b3
+\wx800A 01 01 // buffer at north end
+\wx800C 02 02 // buffer at south end
+\wx800E 00 00 // buffer at both north and south
+\wx8008 // no buffers
+
+-1 * 0 02 04 THIS_SET_ID 85
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx80 \wx14 \wx14
+\wx00
+
+#undef THIS_SET_ID
+#undef THIS_CARGO_SPRITESHEET
