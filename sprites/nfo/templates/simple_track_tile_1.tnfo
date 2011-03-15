@@ -346,23 +346,15 @@
 \wx8006 00 00 // buffer at both north and south
 \wx8000 // no buffers
 
--1 * 0 02 04 AB 85
+-1 * 0 02 04 B0 85
 0C 00 \wxFFFF // var, shift, mask
 \b1 // num ranges
 \wx20 \wx14 \wx14
 \wx00
 
-// byte is index in cargotable, word is THIS_SET_ID define above
--1 * 0 03 04 01 THIS_TILE_ID \b8
-00 \wxA0 // cargo: WDPR
-01 \wxA1 // cargo: SCRP
-07 \wxA2 // cargo: BRCK
-0E \wxA2 // cargo: FOOD
-14 \wxA2 // cargo: GOOD
-31 \wxA2 // cargo: MNSP
-34 \wxA2 // cargo: BEER
-35 \wxA2 // cargo: BDMT
-\wxAB
+// Action 3
+#include "simple_action_3.tnfo"
+
 
 #undef THIS_BUFFER_NE
 #undef THIS_BUFFER_SW
