@@ -11,6 +11,9 @@
 // warning about colour codes in action 8
 //@@WARNING DISABLE 144
 
+// warning about byte 1 of a 4-byte escape while reading byte 1 of a 1-byte field
+//@@WARNING DISABLE 209
+
 -1 * -1   14
   "C" "INFO"
     "B" "VRSN" \w4 \d{{REPO_REVISION}}
