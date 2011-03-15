@@ -76,8 +76,8 @@
   13 02 \b*687
   FF
 
--1 * 0 00 04 \b3 \b1 THIS_TILE_ID
-08 "DFLT" 
+-1 * 0 00 04 \b4 \b1 THIS_TILE_ID
+08 "DFLT"  // Class ID - groups stations in menu
 09 10 // 16 different tiles
   //Basic layout without a buffer
   \dx000003F4 // custom ground sprite
@@ -322,7 +322,7 @@
   \dx0000430
   80 // end of building sprite list
 0B 02 // callback flags
-
+10 \w500 // little / lots threshold for cargo display
 
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png

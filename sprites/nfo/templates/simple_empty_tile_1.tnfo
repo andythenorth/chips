@@ -18,8 +18,8 @@
   11 02 \b77
   FF
 
--1 * 0 00 04 \b4 \b1 THIS_TILE_ID
-08 "DFLT" 
+-1 * 0 00 04 \b5 \b1 THIS_TILE_ID
+08 "DFLT" // Class ID - groups stations in menu
 09 04 // 4 tiles
   //Basic layout
   \dx000003EC // custom ground sprite
@@ -50,8 +50,9 @@
   10 10 10 // x/y/z extend
   \dx0000042D
   80 // end of building sprite list
-0B 02 // callback flags
-15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
+0B 02    // callback flags
+10 \w500 // little / lots threshold for cargo display
+15 FF    // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
