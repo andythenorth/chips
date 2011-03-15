@@ -67,8 +67,12 @@
 #define THIS_SET_ID A2
 #include "simple_empty_tile_1_cargo.tnfo"
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sand_cargo.png
+#define THIS_CARGO_SPRITESHEET sprites/graphics/stone_cargo.png
 #define THIS_SET_ID A3
+#include "simple_empty_tile_1_cargo.tnfo"
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/sand_cargo.png
+#define THIS_SET_ID A4
 #include "simple_empty_tile_1_cargo.tnfo"
 
 
