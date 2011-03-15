@@ -3,6 +3,20 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.3 Release
+-----------
+- Cargo graphics for:
+	- coal
+	- iron ore
+	- clay
+	- sand
+	- stone
+	- scrap metal
+	- lumber
+	- crates (used by multiple cargos)
+- Internal changes (fix bounding boxes; suppress build errors)
+
+-----------
 0.2 Release
 -----------
 
