@@ -1,0 +1,12 @@
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0 03 04 01 THIS_TILE_ID \b9
+  00 \wxA0 // cargo: WDPR
+  01 \wxA1 // cargo: SCRP
+  07 \wxA2 // cargo: BRCK
+  0E \wxA2 // cargo: FOOD
+  14 \wxA2 // cargo: GOOD
+  1C \wxA3 // cargo: SAND
+  31 \wxA2 // cargo: MNSP
+  34 \wxA2 // cargo: BEER
+  35 \wxA2 // cargo: BDMT
+\wxB0
