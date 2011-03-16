@@ -91,6 +91,10 @@
 #define THIS_SET_ID A8
 #include "simple_empty_tile_1_cargo.tnfo"
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_cargo.png
+#define THIS_SET_ID A9
+#include "simple_empty_tile_1_cargo.tnfo"
+
 
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask

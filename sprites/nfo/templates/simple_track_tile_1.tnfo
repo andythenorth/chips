@@ -361,6 +361,10 @@
 #define THIS_SET_ID A8
 #include "simple_track_tile_1_cargo.tnfo"
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_cargo.png
+#define THIS_SET_ID A9
+#include "simple_track_tile_1_cargo.tnfo"
+
 
 -1 * 0 02 04 20 81
 45 00 03
