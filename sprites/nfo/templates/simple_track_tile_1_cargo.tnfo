@@ -14,13 +14,27 @@
 
 -1 * 0 02 04 00 01 01 \w0 \w1
 
+
+-1 * 0 02 04 80 81 // check if we should show a building at the north end
+49 00 0F
+\b1
+\wx8012 00 00
+\wx8008
+
+-1 * 0 02 04 80 81 // check if we should show a building at the south end
+49 04 0F
+\b1
+\wx8010 00 00
+\wx80 // no building at south, maybe at north end?
+
+
 -1 * 0 02 04 80 81
 45 00 03
 \b3
 \wx800A 01 01 // buffer at north end
 \wx800C 02 02 // buffer at south end
 \wx800E 00 00 // buffer at both north and south
-\wx8008 // no buffers
+\wx80 // no buffers, maybe a building?
 
 -1 * 0 02 04 THIS_SET_ID 85
 0C 00 \wxFFFF // var, shift, mask

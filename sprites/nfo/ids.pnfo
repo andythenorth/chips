@@ -39,3 +39,8 @@
 #define PARAM_BUFFER_SW             21
 #define PARAM_BUFFER_NW             22
 #define PARAM_BUFFER_SE             23
+
+#define PARAM_HUT_1                 24
+#define PARAM_HUT_2                 25
+#define PARAM_HUT_3                 26
+#define PARAM_HUT_4                 27
