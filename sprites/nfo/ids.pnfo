@@ -44,3 +44,8 @@
 #define PARAM_HUT_2                 25
 #define PARAM_HUT_3                 26
 #define PARAM_HUT_4                 27
+
+#define PARAM_HUT_5                 28
+#define PARAM_HUT_6                 29
+#define PARAM_HUT_7                 2A
+#define PARAM_HUT_8                 2B

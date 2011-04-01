@@ -1,12 +1,12 @@
 //<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
 //GRM, reserve <count> sprites and store the result in <target>
--1 * 9 0D PARAM_BUFFER_NE \D= \DR FE FF 08 \w8
+-1 * 9 0D PARAM_BUFFER_NE \D= \DR FE FF 08 \w12
 
 -1 * 7 06
   PARAM_BUFFER_NE 02 03 // replace 2 bytes at offset 3 with the value of param PARAM_BUFFER_1
   FF
 
--1 * 5 0A \b1 \b8 \w0
+-1 * 5 0A \b1 \b12 \w0
 -1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  90 09 31 64 -31 0
@@ -17,6 +17,11 @@
 -1 sprites/graphics/structures.png 150  90 09 65 64 -31 -34
 -1 sprites/graphics/structures.png 220  90 09 65 64 -31 -34
 
+-1 sprites/graphics/structures.png  10 170 09 65 64 -54 -46
+-1 sprites/graphics/structures.png  80 170 09 65 64 -54 -46
+-1 sprites/graphics/structures.png 150 170 09 65 64  -8 -46
+-1 sprites/graphics/structures.png 220 170 09 65 64  -8 -46
+
 
 -1 * 0 0D PARAM_BUFFER_SW \D+ PARAM_BUFFER_NE FF \d1
 -1 * 0 0D PARAM_BUFFER_NW \D+ PARAM_BUFFER_NE FF \d2
@@ -26,3 +31,8 @@
 -1 * 0 0D PARAM_HUT_2 \D+ PARAM_BUFFER_NE FF \d5
 -1 * 0 0D PARAM_HUT_3 \D+ PARAM_BUFFER_NE FF \d6
 -1 * 0 0D PARAM_HUT_4 \D+ PARAM_BUFFER_NE FF \d7
+
+-1 * 0 0D PARAM_HUT_5 \D+ PARAM_BUFFER_NE FF \d8
+-1 * 0 0D PARAM_HUT_6 \D+ PARAM_BUFFER_NE FF \d9
+-1 * 0 0D PARAM_HUT_7 \D+ PARAM_BUFFER_NE FF \d10
+-1 * 0 0D PARAM_HUT_8 \D+ PARAM_BUFFER_NE FF \d11

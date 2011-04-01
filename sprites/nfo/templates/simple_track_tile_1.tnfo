@@ -75,6 +75,7 @@
   11 02 \b*622
   12 02 \b*677
   13 02 \b*687
+
   10 02 \b*742
   11 02 \b*752
   PARAM_HUT_1 02 \b*762
@@ -87,11 +88,24 @@
   12 02 \b*847
   13 02 \b*857
   PARAM_HUT_4 02 \b*867
+
+  10 02 \b*882
+  11 02 \b*892
+  PARAM_HUT_5 02 \b*902
+  12 02 \b*917
+  13 02 \b*927
+  PARAM_HUT_7 02 \b*937
+  10 02 \b*952
+  11 02 \b*962
+  PARAM_HUT_6 02 \b*972
+  12 02 \b*987
+  13 02 \b*997
+  PARAM_HUT_8 02 \b*1007
   FF
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
 08 "DFLT"  // Class ID - groups stations in menu
-09 14 // 20 different tiles
+09 18 // 24 different tiles
   //Basic layout without a buffer
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -383,6 +397,54 @@
   DUMMY_SPRITE
   80 // end of building sprite list
 
+  //Basic layout with building at south end of platform on the other side
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 0C 00 // x/y/z offset
+  10 04 08 // x/y/z extent
+  DUMMY_SPRITE
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  0C 00 00 // x/y/z offset
+  04 10 08 // x/y/z extent
+  DUMMY_SPRITE
+  80 // end of building sprite list
+
+  //Basic layout with building at north end of platform on the other side
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 0C 00 // x/y/z offset
+  10 04 08 // x/y/z extent
+  DUMMY_SPRITE
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  0C 00 00 // x/y/z offset
+  04 10 08 // x/y/z extent
+  DUMMY_SPRITE
+  80 // end of building sprite list
+
 0B 02 // callback flags
 10 \w500 // little / lots threshold for cargo display
 
@@ -429,15 +491,19 @@
 
 
 -1 * 0 02 04 20 81 // check if we should show a building at the north end
-49 00 0F
-\b1
+49 20 0F
+\2| 49 04 10
+\b2
 \wx8012 00 00
+\wx8016 10 10
 \wx8000
 
 -1 * 0 02 04 20 81 // check if we should show a building at the south end
-49 04 0F
-\b1
+49 23 1E
+\2| 49 08 01
+\b2
 \wx8010 00 00
+\wx8014 01 01
 \wx20 // no building at south, maybe at north end?
 
 -1 * 0 02 04 20 81

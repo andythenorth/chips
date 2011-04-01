@@ -16,15 +16,19 @@
 
 
 -1 * 0 02 04 80 81 // check if we should show a building at the north end
-49 00 0F
-\b1
+49 20 0F
+\2| 49 04 10
+\b2
 \wx8012 00 00
+\wx8016 10 10
 \wx8008
 
 -1 * 0 02 04 80 81 // check if we should show a building at the south end
-49 04 0F
-\b1
+49 23 1E
+\2| 49 08 01
+\b2
 \wx8010 00 00
+\wx8014 01 01
 \wx80 // no building at south, maybe at north end?
 
 
