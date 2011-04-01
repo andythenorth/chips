@@ -35,17 +35,6 @@
 #define TEXT_TILE_CLAY_FIRS                "Clay Pit platform (DEPRECATED)"
 #define TEXT_TILE_QUARRY_FIRS              "Quarry platform (FIRS-style)"
 
-#define PARAM_BUFFER_NE             20
-#define PARAM_BUFFER_SW             21
-#define PARAM_BUFFER_NW             22
-#define PARAM_BUFFER_SE             23
+#define PARAM_GRM 20
+#define PARAM_GRM_TMP 21
 
-#define PARAM_HUT_1                 24
-#define PARAM_HUT_2                 25
-#define PARAM_HUT_3                 26
-#define PARAM_HUT_4                 27
-
-#define PARAM_HUT_5                 28
-#define PARAM_HUT_6                 29
-#define PARAM_HUT_7                 2A
-#define PARAM_HUT_8                 2B

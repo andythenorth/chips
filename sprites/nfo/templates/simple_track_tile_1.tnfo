@@ -1,12 +1,20 @@
 #define THIS_BUFFER_NE         \dx80000000
-#define THIS_BUFFER_SW         \dx80000000
-#define THIS_BUFFER_NW         \dx80000000
-#define THIS_BUFFER_SE         \dx80000000
+#define THIS_BUFFER_SW         \dx80000001
+#define THIS_BUFFER_NW         \dx80000002
+#define THIS_BUFFER_SE         \dx80000003
+#define THIS_HUT_1             \dx80000004
+#define THIS_HUT_2             \dx80000005
+#define THIS_HUT_3             \dx80000006
+#define THIS_HUT_4             \dx80000007
+#define THIS_HUT_5             \dx80000008
+#define THIS_HUT_6             \dx80000009
+#define THIS_HUT_7             \dx8000000A
+#define THIS_HUT_8             \dx8000000B
+
 #define THIS_OVERLAY_GROUND_NE \dxC0000000
 #define THIS_OVERLAY_GROUND_SW \dxC0000000
 #define THIS_OVERLAY_GROUND_NW \dxC0000000
 #define THIS_OVERLAY_GROUND_SE \dxC0000000
-#define DUMMY_SPRITE \dx80000000
 
 //<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
 //GRM, reserve <count> sprites and store the result in <target>
@@ -27,22 +35,22 @@
 -1 * 0 0D 13 \D+ 10 FF \d3
 
 -1 * 7 06
-  PARAM_BUFFER_NE 02 \b92
-  PARAM_BUFFER_NW 02 \b127
-  PARAM_BUFFER_SW 02 \b162
-  PARAM_BUFFER_SE 02 \b197
-  PARAM_BUFFER_NE 02 \b232
-  PARAM_BUFFER_SW 02 \b242
-  PARAM_BUFFER_NW 02 \b*277
-  PARAM_BUFFER_SE 02 \b*287
-  PARAM_BUFFER_NE 02 \b*412
-  PARAM_BUFFER_NW 02 \b*467
-  PARAM_BUFFER_SW 02 \b*522
-  PARAM_BUFFER_SE 02 \b*577
-  PARAM_BUFFER_NE 02 \b*632
-  PARAM_BUFFER_SW 02 \b*642
-  PARAM_BUFFER_NW 02 \b*697
-  PARAM_BUFFER_SE 02 \b*707
+  PARAM_GRM 82 \b92
+  PARAM_GRM 82 \b127
+  PARAM_GRM 82 \b162
+  PARAM_GRM 82 \b197
+  PARAM_GRM 82 \b232
+  PARAM_GRM 82 \b242
+  PARAM_GRM 82 \b*277
+  PARAM_GRM 82 \b*287
+  PARAM_GRM 82 \b*412
+  PARAM_GRM 82 \b*467
+  PARAM_GRM 82 \b*522
+  PARAM_GRM 82 \b*577
+  PARAM_GRM 82 \b*632
+  PARAM_GRM 82 \b*642
+  PARAM_GRM 82 \b*697
+  PARAM_GRM 82 \b*707
   10 02 \b22
   11 02 \b32
   12 02 \b47
@@ -78,29 +86,29 @@
 
   10 02 \b*742
   11 02 \b*752
-  PARAM_HUT_1 02 \b*762
+  PARAM_GRM 82 \b*762
   12 02 \b*777
   13 02 \b*787
-  PARAM_HUT_3 02 \b*797
+  PARAM_GRM 82 \b*797
   10 02 \b*812
   11 02 \b*822
-  PARAM_HUT_2 02 \b*832
+  PARAM_GRM 82 \b*832
   12 02 \b*847
   13 02 \b*857
-  PARAM_HUT_4 02 \b*867
+  PARAM_GRM 82 \b*867
 
   10 02 \b*882
   11 02 \b*892
-  PARAM_HUT_5 02 \b*902
+  PARAM_GRM 82 \b*902
   12 02 \b*917
   13 02 \b*927
-  PARAM_HUT_7 02 \b*937
+  PARAM_GRM 82 \b*937
   10 02 \b*952
   11 02 \b*962
-  PARAM_HUT_6 02 \b*972
+  PARAM_GRM 82 \b*972
   12 02 \b*987
   13 02 \b*997
-  PARAM_HUT_8 02 \b*1007
+  PARAM_GRM 82 \b*1007
   FF
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
@@ -359,7 +367,7 @@
   THIS_OVERLAY_GROUND_SW
   00 00 00 // x/y/z offset
   10 04 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_1
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -370,7 +378,7 @@
   THIS_OVERLAY_GROUND_SE
   00 00 00 // x/y/z offset
   04 10 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_3
   80 // end of building sprite list
 
   //Basic layout with building at north end of platform
@@ -383,7 +391,7 @@
   THIS_OVERLAY_GROUND_SW
   00 00 00 // x/y/z offset
   10 04 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_2
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -394,7 +402,7 @@
   THIS_OVERLAY_GROUND_SE
   00 00 00 // x/y/z offset
   04 10 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_4
   80 // end of building sprite list
 
   //Basic layout with building at south end of platform on the other side
@@ -407,7 +415,7 @@
   THIS_OVERLAY_GROUND_SW
   00 0C 00 // x/y/z offset
   10 04 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_5
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -418,7 +426,7 @@
   THIS_OVERLAY_GROUND_SE
   0C 00 00 // x/y/z offset
   04 10 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_7
   80 // end of building sprite list
 
   //Basic layout with building at north end of platform on the other side
@@ -431,7 +439,7 @@
   THIS_OVERLAY_GROUND_SW
   00 0C 00 // x/y/z offset
   10 04 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_6
   80 // end of building sprite list
   \dx000003F3 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -442,7 +450,7 @@
   THIS_OVERLAY_GROUND_SE
   0C 00 00 // x/y/z offset
   04 10 08 // x/y/z extent
-  DUMMY_SPRITE
+  THIS_HUT_8
   80 // end of building sprite list
 
 0B 02 // callback flags
@@ -528,11 +536,18 @@
 #undef THIS_BUFFER_SW
 #undef THIS_BUFFER_NW
 #undef THIS_BUFFER_SE
+#undef THIS_HUT_1
+#undef THIS_HUT_2
+#undef THIS_HUT_3
+#undef THIS_HUT_4
+#undef THIS_HUT_5
+#undef THIS_HUT_6
+#undef THIS_HUT_7
+#undef THIS_HUT_8
 #undef THIS_OVERLAY_GROUND_NE
 #undef THIS_OVERLAY_GROUND_SW
 #undef THIS_OVERLAY_GROUND_NW
 #undef THIS_OVERLAY_GROUND_SE
-#undef DUMMY_SPRITE
 
 #undef THIS_TILE_ID
 #undef THIS_SPRITESHEET_X
