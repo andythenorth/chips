@@ -16,11 +16,13 @@
   11 02 \b37
   11 02 \b52
   11 02 \b77
+  11 02 \b102
+  11 02 \b127
   FF
 
 -1 * 0 00 04 \b5 \b1 THIS_TILE_ID
 08 "DFLT" // Class ID - groups stations in menu
-09 04 // 4 tiles
+09 06 // 6 tiles
   //Basic layout
   \dx000003EC // custom ground sprite
   00 00 80 // x/y/z offset = extra groundsprite
@@ -50,10 +52,59 @@
   10 10 10 // x/y/z extend
   \dx0000042D
   80 // end of building sprite list
+
+  //Crane
+  \dx000003EC // custom ground sprite
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
+  THIS_GROUND
+  00 00 00 // x/y/z offset
+  10 10 20 // x/y/z extend
+  \dx0000042D
+  80 // end of building sprite list
+  \dx000003EC // custom ground sprite
+  00 00 80 // x/y/z offset = extra groundsprite
+  00 00 00 // x/y/z extent, ignored
+  THIS_GROUND
+  00 00 00 // x/y/z offset
+  10 10 20 // x/y/z extend
+  \dx0000042D
+  80 // end of building sprite list
 0B 02    // callback flags
 10 \w500 // little / lots threshold for cargo display
 15 FF    // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/cranes.png
+#define THIS_SET_ID A0
+#include "simple_empty_tile_1_building.tnfo"
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/forklifts_small.png
+#define THIS_SET_ID A1
+#include "simple_empty_tile_1_building.tnfo"
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/trucks_small.png
+#define THIS_SET_ID A2
+#include "simple_empty_tile_1_building.tnfo"
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/structures.png
+#define THIS_SET_ID A3
+#include "simple_empty_tile_1_building.tnfo"
+
+// semi-random one from the sets above
+-1 * 0 02 04 40 81 // 'building' instead of cargo
+40 20 03
+\2^ 40 08 03
+\b3 // num ranges
+\wxA0 00 00
+\wxA1 01 01
+\wxA2 02 02
+\wxA3
+
+-1 * 0 02 04 40 85 // 'building' instead of cargo
+0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+\wx8004 \wx14 \wx14 // Force correct layout
+\wx40
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
 #define THIS_SET_ID A0
@@ -101,6 +152,8 @@
 \b1 // num ranges
 \wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
 \wx00
+
+-1 * 0 02 04 B0 80 00 12 04 \wxB0 \wxB0 \wxB0 \wx40
 
 // Action 3
 #include "simple_action_3.tnfo"
