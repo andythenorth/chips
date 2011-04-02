@@ -6,8 +6,11 @@
 
 #include "sprites/nfo/cargotable.pnfo"
 
+#include "sprites/nfo/docks.pnfo"
+
 //#include "sprites/nfo/tiles/test.pnfo"
 //#include "sprites/nfo/tiles/detectind.pnfo"
+
 
 #include "sprites/nfo/grm_buffers.pnfo"
 
