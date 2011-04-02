@@ -5,7 +5,8 @@ Contents:
 
 1 About
 2 Compiling CHIPS
-3 License
+3 Credits
+4 License
 
 
 
@@ -53,7 +54,16 @@ licensed under the GNU General Public License.
 http://dev.openttdcoop.org/projects/newgrf-makefile
 
 ---------------
-3 CHIPS License
+3 CHIPS Credits
+---------------
+
+CHIPS by andythenorth and yexo.
+Build framework by planetmaker.
+Small truck graphic by pikka.
+Contains graphics from ISR used under GPL.
+
+---------------
+4 CHIPS License
 ---------------
 
 CHIPS Station Set - for OpenTTD
