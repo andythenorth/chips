@@ -10,10 +10,10 @@
 #define THIS_HUT_6             \dx80000009
 #define THIS_HUT_7             \dx8000000A
 #define THIS_HUT_8             \dx8000000B
-#define THIS_CRANE_1           \dx8000000C
-#define THIS_CRANE_2           \dx8000000D
-#define THIS_CRANE_3           \dx8000000E
-#define THIS_CRANE_4           \dx8000000F
+#define THIS_CRANE_1           \dx8000800C
+#define THIS_CRANE_2           \dx8000800D
+#define THIS_CRANE_3           \dx8000800E
+#define THIS_CRANE_4           \dx8000800F
 
 #define THIS_OVERLAY_GROUND_NE \dxC0000000
 #define THIS_OVERLAY_GROUND_SW \dxC0000000
