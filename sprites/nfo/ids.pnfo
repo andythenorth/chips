@@ -23,6 +23,7 @@
 #define TILE_EMPTY_CLAY_FIRS        1A
 #define TILE_TRACK_PLAIN_TERRAIN    1B
 #define TILE_EMPTY_PLAIN_TERRAIN    1C
+#define TILE_PAX_PARCELS_OFFICE     1D
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  

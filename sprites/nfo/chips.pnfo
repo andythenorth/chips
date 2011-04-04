@@ -21,4 +21,6 @@
 #include "sprites/nfo/tiles/quarry_FIRS.pnfo"
 //#include "sprites/nfo/tiles/plain_terrain.pnfo"
 
+#include "sprites/nfo/tiles/parcels_office.pnfo"
+
 #include "sprites/nfo/lang/strings.pnfo"
