@@ -1,0 +1,29 @@
+-1 * 0	 00 04 \b3 \b1 TILE_PAX_PARCELS_OFFICE
+  08 "DFLT" // Class ID - groups stations in menu
+  09 02 // 2 tiles
+    //Basic layout
+    \d1420 // custom ground sprite
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000042D
+    80 // end of building sprite list
+    //Basic layout
+    \d1420 // custom ground sprite
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000042E
+    80 // end of building sprite list
+  15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
+  
+//Tile action 1
+-1 * 0	 01 04 \b2 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 sprites/graphics/parcels_office.png 10 10 09 65 64 -31 -34
+-1 sprites/graphics/parcels_office.png 80 10 09 65 64 -31 -34
+
+-1 * 7	 02 04 00 00 01 \w0
+-1 * 7	 02 04 01 00 01 \w0
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_PAX_PARCELS_OFFICE \b0
+\wx00
