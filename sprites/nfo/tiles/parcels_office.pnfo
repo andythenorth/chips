@@ -5,13 +5,13 @@
     \d1420 // custom ground sprite
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
-    \dx0000042D
+    \dx0000842D
     80 // end of building sprite list
     //Basic layout
     \d1420 // custom ground sprite
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
-    \dx0000042E
+    \dx0000842E
     80 // end of building sprite list
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
   
