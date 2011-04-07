@@ -5,11 +5,16 @@ CHIPS Station Set Changelog
 -----------
 0.4 Release
 -----------
+Cargo graphics for:
+	- wood
+	- barrels (chemicals, oil, petrol etc)
+
+
 
 -----------
 0.3 Release
 -----------
-- Cargo graphics for:
+Cargo graphics for:
 	- coal
 	- iron ore
 	- clay
@@ -18,14 +23,14 @@ CHIPS Station Set Changelog
 	- scrap metal
 	- lumber
 	- crates (used by multiple cargos)
-- Internal changes (fix bounding boxes; suppress build errors)
+Internal changes (fix bounding boxes; suppress build errors)
 
 -----------
 0.2 Release
 -----------
 
-- Add basic tiles for FIRS Clay Pit and Quarry (unfinished)
-- Internal changes (no gameplay effect):
+Add basic tiles for FIRS Clay Pit and Quarry (unfinished)
+Internal changes (no gameplay effect):
 	- fix NW-SE tile bounding boxes 
 	- add cargo translation table
 	- add basic action 14
@@ -36,5 +41,5 @@ CHIPS Station Set Changelog
 0.1 Release
 -----------
 
-- Track tiles and empty tiles to match FIRS (concrete, cobble and mud)
-- Automatic buffers for track tiles
+Track tiles and empty tiles to match FIRS (concrete, cobble and mud)
+Automatic buffers for track tiles
