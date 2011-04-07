@@ -54,8 +54,14 @@
 
 -1 * 0 02 04 THIS_SET_ID 85
 0C 00 \wxFFFF // var, shift, mask
-\b1 // num ranges
-\wx80 \wx14 \wx14
+\b2 // num ranges
+  #ifdef HIDE_THIS_TILE
+  \wx8000 \wx13 \wx13
+  #endif
+  #ifndef HIDE_THIS_TILE
+  \wx8001 \wx13 \wx13
+  #endif
+  \wx80 \wx14 \wx14
 \wx00
 
 #undef THIS_SET_ID

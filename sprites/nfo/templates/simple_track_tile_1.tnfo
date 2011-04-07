@@ -718,7 +718,7 @@
   80 // end of building sprite list
 
 
-0B 02 // callback flags
+0B 03 // callback flags
 10 \w500 // little / lots threshold for cargo display
 
 -1 * 0 02 04 40 81 // random crane/truck/building/forklift
@@ -810,8 +810,14 @@
 
 -1 * 0 02 04 B0 85
 0C 00 \wxFFFF // var, shift, mask
-\b1 // num ranges
-\wx20 \wx14 \wx14
+\b2 // num ranges
+  #ifdef HIDE_THIS_TILE
+  \wx8000 \wx13 \wx13
+  #endif
+  #ifndef HIDE_THIS_TILE
+  \wx8001 \wx13 \wx13
+  #endif
+  \wx20 \wx14 \wx14
 \wx00
 
 // Action 3

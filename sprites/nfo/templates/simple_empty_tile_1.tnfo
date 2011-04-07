@@ -70,7 +70,7 @@
   10 10 20 // x/y/z extend
   \dx0000842D
   80 // end of building sprite list
-0B 02    // callback flags
+0B 03    // callback flags
 10 \w500 // little / lots threshold for cargo display
 15 FF    // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
@@ -149,8 +149,14 @@
 
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
-\b1 // num ranges
-\wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
+\b2 // num ranges
+  #ifdef HIDE_THIS_TILE
+  \wx8000 \wx13 \wx13
+  #endif
+  #ifndef HIDE_THIS_TILE
+  \wx8001 \wx13 \wx13
+  #endif
+  \wx8000 \wx14 \wx14 // Force 'platform with building on top' for now
 \wx00
 
 -1 * 0 02 04 B0 80 00 12 04 \wxB0 \wxB0 \wxB0 \wx40
