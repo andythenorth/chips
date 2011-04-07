@@ -4,7 +4,7 @@
 
 //<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
 //GRM, reserve <count> sprites and store the result in <target>
--1 * 0 0D PARAM_GRM_TMP \D= \DR FE FF 08 \w16
+-1 * 0 0D PARAM_GRM_TMP \D= \DR FE FF 08 \w28
 
 -1 * 0 0D PARAM_GRM \D- PARAM_GRM_TMP PARAM_GRM
 
@@ -12,7 +12,7 @@
   PARAM_GRM_TMP 02 03 // replace 2 bytes at offset 3 with the value of param PARAM_GRM_TMP
   FF
 
--1 * 5 0A \b1 \b16 \w0
+-1 * 5 0A \b1 \b28 \w0
 -1 sprites/graphics/buffer.png      80  10 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  50 09 31 64 -31 0
 -1 sprites/graphics/buffer.png      80  90 09 31 64 -31 0
@@ -32,4 +32,19 @@
 -1 sprites/graphics/cranes.png      80  90 09 65 64 -31 -34
 -1 sprites/graphics/cranes.png     150  90 09 65 64 -31 -34
 -1 sprites/graphics/cranes.png     220  90 09 65 64 -31 -34
+
+-1 sprites/graphics/trucks_small.png      10  90 09 65 64 -31 -34
+-1 sprites/graphics/trucks_small.png      80  90 09 65 64 -31 -34
+-1 sprites/graphics/trucks_small.png     150  90 09 65 64 -31 -34
+-1 sprites/graphics/trucks_small.png     220  90 09 65 64 -31 -34
+
+-1 sprites/graphics/structures.png  10  90 09 65 64 -31 -34
+-1 sprites/graphics/structures.png  80  90 09 65 64 -31 -34
+-1 sprites/graphics/structures.png 150  90 09 65 64 -31 -34
+-1 sprites/graphics/structures.png 220  90 09 65 64 -31 -34
+
+-1 sprites/graphics/forklifts_small.png      10  90 09 65 64 -31 -34
+-1 sprites/graphics/forklifts_small.png      80  90 09 65 64 -31 -34
+-1 sprites/graphics/forklifts_small.png     150  90 09 65 64 -31 -34
+-1 sprites/graphics/forklifts_small.png     220  90 09 65 64 -31 -34
 

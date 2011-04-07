@@ -14,18 +14,11 @@
 
 -1 * 0 02 04 00 01 01 \w0 \w1
 
-
--1 * 0 02 04 80 81 // random crane
-5F 18 01
-\b1
-\wx8018 00 00
-\wx801A
-
 -1 * 0 02 04 80 81 // check for crane
 49 20 0F
 \2- 49 04 0F
 \b1
-\wx80 00 01 // tile is in the middle of the platform, build crane
+\wx40 00 01 // tile is in the middle of the platform, build crane
 \wx8008 // no crane
 
 -1 * 0 02 04 80 81 // check for crane

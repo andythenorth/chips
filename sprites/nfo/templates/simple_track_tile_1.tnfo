@@ -14,6 +14,18 @@
 #define THIS_CRANE_2           \dx8000800D
 #define THIS_CRANE_3           \dx8000800E
 #define THIS_CRANE_4           \dx8000800F
+#define THIS_TRUCK_1           \dx80008010
+#define THIS_TRUCK_2           \dx80008011
+#define THIS_TRUCK_3           \dx80008012
+#define THIS_TRUCK_4           \dx80008013
+#define THIS_BUILDING_1        \dx80008014
+#define THIS_BUILDING_2        \dx80008015
+#define THIS_BUILDING_3        \dx80008016
+#define THIS_BUILDING_4        \dx80008017
+#define THIS_FORKLIFT_1        \dx80008018
+#define THIS_FORKLIFT_2        \dx80008019
+#define THIS_FORKLIFT_3        \dx8000801A
+#define THIS_FORKLIFT_4        \dx8000801B
 
 #define THIS_OVERLAY_GROUND_NE \dxC0000000
 #define THIS_OVERLAY_GROUND_SW \dxC0000000
@@ -114,6 +126,7 @@
   13 02 \b*997
   PARAM_GRM 82 \b*1007
 
+  //cranes
   10 02 \b*1022
   11 02 \b*1032
   PARAM_GRM 82 \b*1042
@@ -126,11 +139,53 @@
   12 02 \b*1127
   13 02 \b*1137
   PARAM_GRM 82 \b*1147
+
+  //truck
+  10 02 \b*1162
+  11 02 \b*1172
+  PARAM_GRM 82 \b*1182
+  12 02 \b*1197
+  13 02 \b*1207
+  PARAM_GRM 82 \b*1217
+  10 02 \b*1232
+  11 02 \b*1242
+  PARAM_GRM 82 \b*1252
+  12 02 \b*1267
+  13 02 \b*1277
+  PARAM_GRM 82 \b*1287
+
+  //building
+  10 02 \b*1302
+  11 02 \b*1312
+  PARAM_GRM 82 \b*1322
+  12 02 \b*1337
+  13 02 \b*1347
+  PARAM_GRM 82 \b*1357
+  10 02 \b*1372
+  11 02 \b*1382
+  PARAM_GRM 82 \b*1392
+  12 02 \b*1407
+  13 02 \b*1417
+  PARAM_GRM 82 \b*1427
+
+  //forklift
+  10 02 \b*1442
+  11 02 \b*1452
+  PARAM_GRM 82 \b*1462
+  12 02 \b*1477
+  13 02 \b*1487
+  PARAM_GRM 82 \b*1497
+  10 02 \b*1512
+  11 02 \b*1522
+  PARAM_GRM 82 \b*1532
+  12 02 \b*1547
+  13 02 \b*1557
+  PARAM_GRM 82 \b*1567
   FF
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
 08 "DFLT"  // Class ID - groups stations in menu
-09 1C // 28 different tiles
+09 28 // 40 different tiles
   //Basic layout without a buffer
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -518,9 +573,160 @@
   THIS_CRANE_4
   80 // end of building sprite list
 
+  //Basic layout with truck
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_TRUCK_1
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_TRUCK_3
+  80 // end of building sprite list
+
+  //Basic layout with truck
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_TRUCK_2
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_TRUCK_4
+  80 // end of building sprite list
+
+  //Basic layout with building
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_BUILDING_1
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_BUILDING_3
+  80 // end of building sprite list
+
+  //Basic layout with building
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_BUILDING_2
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_BUILDING_4
+  80 // end of building sprite list
+
+  //Basic layout with forklift
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_FORKLIFT_1
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_FORKLIFT_3
+  80 // end of building sprite list
+
+  //Basic layout with forklift
+  \dx000003F4 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NE
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SW
+  00 00 00 // x/y/z offset
+  10 04 20 // x/y/z extent
+  THIS_FORKLIFT_2
+  80 // end of building sprite list
+  \dx000003F3 // custom ground sprite
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_NW
+  00 00 80 // x/y/z offset
+  00 00 00 // x/y/z extent
+  THIS_OVERLAY_GROUND_SE
+  00 00 00 // x/y/z offset
+  04 10 20 // x/y/z extent
+  THIS_FORKLIFT_4
+  80 // end of building sprite list
+
+
 0B 02 // callback flags
 10 \w500 // little / lots threshold for cargo display
 
+-1 * 0 02 04 40 81 // random crane/truck/building/forklift
+1A 20 18
+\2+ 49 26 0C
+\2+ 5F 17 02
+\b0
+\wx8018
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
 #define THIS_SET_ID A0
@@ -563,17 +769,11 @@
 #include "simple_track_tile_1_cargo.tnfo"
 
 
--1 * 0 02 04 20 81 // random crane
-5F 18 01
-\b1
-\wx8018 00 00
-\wx801A
-
 -1 * 0 02 04 20 81 // check for crane
 49 20 0F
 \2- 49 04 0F
 \b1
-\wx20 00 01 // tile is in the middle of the platform, build crane
+\wx40 00 01 // tile is in the middle of the platform, build crane
 \wx8000 // no crane
 
 -1 * 0 02 04 20 81 // check for crane
