@@ -9,6 +9,8 @@ Cargo graphics for:
 	- wood
 	- barrels (chemicals, oil, petrol etc)
 Add FIRS-style docks (based on code by PaulC)
+Improve appearance of Quarry platforms.
+Deprecate Clay Pit platforms
 
 
 -----------
