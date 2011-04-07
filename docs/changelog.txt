@@ -8,7 +8,7 @@ CHIPS Station Set Changelog
 Cargo graphics for:
 	- wood
 	- barrels (chemicals, oil, petrol etc)
-
+Add FIRS-style docks (based on code by PaulC)
 
 
 -----------
