@@ -16,13 +16,12 @@
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
   
 //Tile action 1
--1 * 0	 01 04 \b2 \b1 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
 -1 sprites/graphics/parcels_office.png 10 10 09 65 64 -31 -34
 -1 sprites/graphics/parcels_office.png 80 10 09 65 64 -31 -34
 
 -1 * 7	 02 04 00 00 01 \w0
--1 * 7	 02 04 01 00 01 \w0
 
 // byte is index in cargotable, word is THIS_SET_ID define above
 -1 * 0	 03 04 01 TILE_PAX_PARCELS_OFFICE \b0
