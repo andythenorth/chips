@@ -3,6 +3,10 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.4 Release
+-----------
+
+-----------
 0.3 Release
 -----------
 - Cargo graphics for:

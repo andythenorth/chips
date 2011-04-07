@@ -23,4 +23,5 @@
     00
   00
 
--1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "CHIPS Station Set" 00
+-1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "\8ECHIPS Station Set \n" 
+"\98Brought to by andythenorth and yexo, with help from planetmaker." 00
