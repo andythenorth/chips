@@ -722,9 +722,11 @@
 10 \w500 // little / lots threshold for cargo display
 
 -1 * 0 02 04 40 81 // random crane/truck/building/forklift
-1A 20 18
-\2+ 49 26 0C
-\2+ 5F 17 02
+49 26 0C
+\2+ 5F 37 02
+\2+ 5F 28 0F
+\2% 1A 20 10
+\2+ 1A 00 18
 \b0
 \wx8018
 
