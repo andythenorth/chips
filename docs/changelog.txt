@@ -9,9 +9,13 @@ Cargo graphics for:
 	- wood
 	- barrels (chemicals, oil, petrol etc)
 Add FIRS-style docks (based on code by PaulC)
-Improve appearance of Quarry platforms.
+Add Parcels Office tile
+Improve appearance of Quarry platforms
 Deprecate Clay Pit platforms
-
+Display huts by exits of stations
+Display cranes, buildings etc on certain tiles
+Remove flashing beacons on buffers (was annoying)
+Multiple internal changes for GRM code etc.
 
 -----------
 0.3 Release
