@@ -1,52 +1,28 @@
-#define THIS_GROUND \dxC0000000
-
-//<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
-//GRM, reserve <count> sprites and store the result in <target>
--1 * 9 0D 11 \D= \DR FE FF 08 \w1
 
 -1 * 7 06
-  11 02 03 // replace 2 bytes at offset 3 with the value of param 11
-  FF
-
--1 * 5 0A \b1 \b1 \w0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  10 09 31 64 -31 0
-
--1 * 7 06
-  11 02 \b22
-  11 02 \b37
-  11 02 \b52
-  11 02 \b77
-  11 02 \b102
-  11 02 \b127
+  PARAM_GRM 82 \b12
+  PARAM_GRM 82 \b17
+  PARAM_GRM 82 \b22
+  PARAM_GRM 82 \b37
+  PARAM_GRM 82 \b52
+  PARAM_GRM 82 \b67
   FF
 
 -1 * 0 00 04 \b5 \b1 THIS_TILE_ID
 08 "CHIP" // Class ID - groups stations in menu
 09 06 // 6 tiles
   //Basic layout
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   80 // end of building sprite list
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   80 // end of building sprite list
 
   //With building on top
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
   \dx0000042D
   80 // end of building sprite list
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
@@ -54,17 +30,11 @@
   80 // end of building sprite list
 
   //Crane
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
   \dx0000842D
   80 // end of building sprite list
-  \dx000003EC // custom ground sprite
-  00 00 80 // x/y/z offset = extra groundsprite
-  00 00 00 // x/y/z extent, ignored
   THIS_GROUND
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend

@@ -1,10 +1,14 @@
 #define THIS_TILE_ID          TILE_TRACK_COBBLE_FIRS 
-#define THIS_SPRITESHEET_X    150
+
+#define THIS_OVERLAY_GROUND_NE \dxC0000020
+#define THIS_OVERLAY_GROUND_SW \dxC0000021
+#define THIS_OVERLAY_GROUND_NW \dxC0000022
+#define THIS_OVERLAY_GROUND_SE \dxC0000023
 
 #include "../templates/simple_track_tile_1.tnfo"
 
 
-#define THIS_TILE_ID          TILE_EMPTY_COBBLE_FIRS 
-#define THIS_SPRITESHEET_X    150
+#define THIS_TILE_ID          TILE_EMPTY_COBBLE_FIRS
+#define THIS_GROUND  \dx40000031
 
 #include "../templates/simple_empty_tile_1.tnfo"

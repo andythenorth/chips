@@ -1,13 +1,17 @@
 #define HIDE_THIS_TILE        TRUE
 
-#define THIS_TILE_ID          TILE_TRACK_CLAY_FIRS 
-#define THIS_SPRITESHEET_X    220
+#define THIS_TILE_ID          TILE_TRACK_CLAY_FIRS
+
+#define THIS_OVERLAY_GROUND_NE \dxC0000028
+#define THIS_OVERLAY_GROUND_SW \dxC0000029
+#define THIS_OVERLAY_GROUND_NW \dxC000002A
+#define THIS_OVERLAY_GROUND_SE \dxC000002B
 
 #include "../templates/simple_track_tile_1.tnfo"
 
 
-#define THIS_TILE_ID          TILE_EMPTY_CLAY_FIRS 
-#define THIS_SPRITESHEET_X    220
+#define THIS_TILE_ID          TILE_EMPTY_CLAY_FIRS
+#define THIS_GROUND  \dx40000033
 
 #include "../templates/simple_empty_tile_1.tnfo"
 

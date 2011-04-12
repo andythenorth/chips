@@ -27,28 +27,11 @@
 #define THIS_FORKLIFT_3        \dx8000801A
 #define THIS_FORKLIFT_4        \dx8000801B
 
-#define THIS_OVERLAY_GROUND_NE \dxC0000000
-#define THIS_OVERLAY_GROUND_SW \dxC0000000
-#define THIS_OVERLAY_GROUND_NW \dxC0000000
-#define THIS_OVERLAY_GROUND_SE \dxC0000000
 
-//<Sprite-number> * <Length> 0D <target> 00 <GRM-op> FE FF <feature> <count>
-//GRM, reserve <count> sprites and store the result in <target>
--1 * 9 0D 10 \D= \DR FE FF 08 \w4
-
--1 * 7 06
-  10 02 03 // replace 2 bytes at offset 3 with the value of param 10
-  FF
-
--1 * 5 0A \b1 \b4 \w0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  50 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X  90 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 130 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  THIS_SPRITESHEET_X 170 09 31 64 -31 0
-
--1 * 0 0D 11 \D+ 10 FF \d1
--1 * 0 0D 12 \D+ 10 FF \d2
--1 * 0 0D 13 \D+ 10 FF \d3
+-1 * 0 0D 10 \D= PARAM_GRM FF \d0
+-1 * 0 0D 11 \D= PARAM_GRM FF \d1
+-1 * 0 0D 12 \D= PARAM_GRM FF \d2
+-1 * 0 0D 13 \D= PARAM_GRM FF \d3
 
 -1 * 7 06
   PARAM_GRM 82 \b92
@@ -67,119 +50,119 @@
   PARAM_GRM 82 \b*642
   PARAM_GRM 82 \b*697
   PARAM_GRM 82 \b*707
-  10 02 \b22
-  11 02 \b32
-  12 02 \b47
-  13 02 \b57
-  10 02 \b72
-  11 02 \b82
-  12 02 \b107
-  13 02 \b117
-  10 02 \b142
-  11 02 \b152
-  12 02 \b177
-  13 02 \b187
-  10 02 \b212
-  11 02 \b222
-  12 02 \b*257
-  13 02 \b*267
-  10 02 \b*302
-  11 02 \b*312
-  12 02 \b*347
-  13 02 \b*357
-  10 02 \b*392
-  11 02 \b*402
-  12 02 \b*447
-  13 02 \b*457
-  10 02 \b*502
-  11 02 \b*512
-  12 02 \b*557
-  13 02 \b*567
-  10 02 \b*612
-  11 02 \b*622
-  12 02 \b*677
-  13 02 \b*687
+  10 82 \b22
+  11 82 \b32
+  12 82 \b47
+  13 82 \b57
+  10 82 \b72
+  11 82 \b82
+  12 82 \b107
+  13 82 \b117
+  10 82 \b142
+  11 82 \b152
+  12 82 \b177
+  13 82 \b187
+  10 82 \b212
+  11 82 \b222
+  12 82 \b*257
+  13 82 \b*267
+  10 82 \b*302
+  11 82 \b*312
+  12 82 \b*347
+  13 82 \b*357
+  10 82 \b*392
+  11 82 \b*402
+  12 82 \b*447
+  13 82 \b*457
+  10 82 \b*502
+  11 82 \b*512
+  12 82 \b*557
+  13 82 \b*567
+  10 82 \b*612
+  11 82 \b*622
+  12 82 \b*677
+  13 82 \b*687
 
-  10 02 \b*742
-  11 02 \b*752
+  10 82 \b*742
+  11 82 \b*752
   PARAM_GRM 82 \b*762
-  12 02 \b*777
-  13 02 \b*787
+  12 82 \b*777
+  13 82 \b*787
   PARAM_GRM 82 \b*797
-  10 02 \b*812
-  11 02 \b*822
+  10 82 \b*812
+  11 82 \b*822
   PARAM_GRM 82 \b*832
-  12 02 \b*847
-  13 02 \b*857
+  12 82 \b*847
+  13 82 \b*857
   PARAM_GRM 82 \b*867
 
-  10 02 \b*882
-  11 02 \b*892
+  10 82 \b*882
+  11 82 \b*892
   PARAM_GRM 82 \b*902
-  12 02 \b*917
-  13 02 \b*927
+  12 82 \b*917
+  13 82 \b*927
   PARAM_GRM 82 \b*937
-  10 02 \b*952
-  11 02 \b*962
+  10 82 \b*952
+  11 82 \b*962
   PARAM_GRM 82 \b*972
-  12 02 \b*987
-  13 02 \b*997
+  12 82 \b*987
+  13 82 \b*997
   PARAM_GRM 82 \b*1007
 
   //cranes
-  10 02 \b*1022
-  11 02 \b*1032
+  10 82 \b*1022
+  11 82 \b*1032
   PARAM_GRM 82 \b*1042
-  12 02 \b*1057
-  13 02 \b*1067
+  12 82 \b*1057
+  13 82 \b*1067
   PARAM_GRM 82 \b*1077
-  10 02 \b*1092
-  11 02 \b*1102
+  10 82 \b*1092
+  11 82 \b*1102
   PARAM_GRM 82 \b*1112
-  12 02 \b*1127
-  13 02 \b*1137
+  12 82 \b*1127
+  13 82 \b*1137
   PARAM_GRM 82 \b*1147
 
   //truck
-  10 02 \b*1162
-  11 02 \b*1172
+  10 82 \b*1162
+  11 82 \b*1172
   PARAM_GRM 82 \b*1182
-  12 02 \b*1197
-  13 02 \b*1207
+  12 82 \b*1197
+  13 82 \b*1207
   PARAM_GRM 82 \b*1217
-  10 02 \b*1232
-  11 02 \b*1242
+  10 82 \b*1232
+  11 82 \b*1242
   PARAM_GRM 82 \b*1252
-  12 02 \b*1267
-  13 02 \b*1277
+  12 82 \b*1267
+  13 82 \b*1277
   PARAM_GRM 82 \b*1287
 
   //building
-  10 02 \b*1302
-  11 02 \b*1312
+  10 82 \b*1302
+  11 82 \b*1312
   PARAM_GRM 82 \b*1322
-  12 02 \b*1337
-  13 02 \b*1347
+  12 82 \b*1337
+  13 82 \b*1347
   PARAM_GRM 82 \b*1357
-  10 02 \b*1372
-  11 02 \b*1382
+  10 82 \b*1372
+  11 82 \b*1382
   PARAM_GRM 82 \b*1392
-  12 02 \b*1407
-  13 02 \b*1417
+  12 82 \b*1407
+  13 82 \b*1417
   PARAM_GRM 82 \b*1427
 
   //forklift
-  10 02 \b*1442
-  11 02 \b*1452
+  10 82 \b*1442
+  11 82 \b*1452
   PARAM_GRM 82 \b*1462
-  12 02 \b*1477
-  13 02 \b*1487
+  12 82 \b*1477
+  13 82 \b*1487
   PARAM_GRM 82 \b*1497
-  10 02 \b*1512
-  11 02 \b*1522
+  10 82 \b*1512
+  11 82 \b*1522
   PARAM_GRM 82 \b*1532
-  12 02 \b*1547
-  13 02 \b*1557
+  12 82 \b*1547
+  13 82 \b*1557
   PARAM_GRM 82 \b*1567
   FF
 

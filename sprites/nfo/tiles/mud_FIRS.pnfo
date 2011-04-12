@@ -1,10 +1,14 @@
-#define THIS_TILE_ID          TILE_TRACK_MUD_FIRS 
-#define THIS_SPRITESHEET_X    10
+#define THIS_TILE_ID          TILE_TRACK_MUD_FIRS
+
+#define THIS_OVERLAY_GROUND_NE \dxC0000024
+#define THIS_OVERLAY_GROUND_SW \dxC0000025
+#define THIS_OVERLAY_GROUND_NW \dxC0000026
+#define THIS_OVERLAY_GROUND_SE \dxC0000027
 
 #include "../templates/simple_track_tile_1.tnfo"
 
 
-#define THIS_TILE_ID          TILE_EMPTY_MUD_FIRS 
-#define THIS_SPRITESHEET_X    10
+#define THIS_TILE_ID          TILE_EMPTY_MUD_FIRS
+#define THIS_GROUND  \dx40000032
 
 #include "../templates/simple_empty_tile_1.tnfo"

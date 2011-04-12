@@ -41,4 +41,6 @@
 
 #define PARAM_GRM 20
 #define PARAM_GRM_TMP 21
+#define PARAM_TMP1 22
+#define PARAM_TMP2 23
 
