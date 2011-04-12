@@ -37,6 +37,8 @@
 #define TEXT_TILE_QUARRY_FIRS              "Quarry platform (FIRS-style)"
 #define TEXT_TILE_PAX_PARCELS_OFFICE       "Parcels Office"
 
+#define TEXT_STATION_CATEGORY              "CHIPS stations"
+
 #define PARAM_GRM 20
 #define PARAM_GRM_TMP 21
 

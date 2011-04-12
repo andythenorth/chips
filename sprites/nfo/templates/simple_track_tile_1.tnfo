@@ -184,7 +184,7 @@
   FF
 
 -1 * 0 00 04 \b4 \b1 THIS_TILE_ID
-08 "DFLT"  // Class ID - groups stations in menu
+08 "CHIP"  // Class ID - groups stations in menu
 09 28 // 40 different tiles
   //Basic layout without a buffer
   \dx000003F4 // custom ground sprite
