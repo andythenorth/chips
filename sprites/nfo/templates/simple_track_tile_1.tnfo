@@ -810,15 +810,22 @@
 
 -1 * 0 02 04 B0 85
 0C 00 \wxFFFF // var, shift, mask
+\b1 // num ranges
+  \wx20 \wx14 \wx14
+\wx00
+
+-1 * 0 02 04 B1 85 // Menu graphics
+0C 00 \wxFFFF // var, shift, mask
 \b2 // num ranges
   #ifdef HIDE_THIS_TILE
   \wx8000 \wx13 \wx13
-  #endif
-  #ifndef HIDE_THIS_TILE
+  #else
   \wx8001 \wx13 \wx13
   #endif
-  \wx20 \wx14 \wx14
+  \wx8000 \wx14 \wx14
 \wx00
+
+#define MENU_GRAPHICS_ID B1
 
 // Action 3
 #include "simple_action_3.tnfo"

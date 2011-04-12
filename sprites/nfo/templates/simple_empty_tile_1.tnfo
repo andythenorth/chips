@@ -161,6 +161,8 @@
 
 -1 * 0 02 04 B0 80 00 12 04 \wxB0 \wxB0 \wxB0 \wx40
 
+#define MENU_GRAPHICS_ID B0
+
 // Action 3
 #include "simple_action_3.tnfo"
 

@@ -5,6 +5,9 @@
 -1 * 4 00 00 00 00
 
 // Disable warnings:
+// warning about Default ID appears earlier in sprite
+//@@WARNING DISABLE 100
+
 // warning about high IDs
 //@@WARNING DISABLE 141
 
