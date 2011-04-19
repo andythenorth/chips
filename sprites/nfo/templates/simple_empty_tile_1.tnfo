@@ -8,7 +8,7 @@
   PARAM_GRM 82 \b67
   FF
 
--1 * 0 00 04 \b5 \b1 THIS_TILE_ID
+-1 * 0 00 04 \b7 \b1 THIS_TILE_ID
 08 "CHIP" // Class ID - groups stations in menu
 09 06 // 6 tiles
   //Basic layout
@@ -43,6 +43,8 @@
 0B 03    // callback flags
 10 \w500 // little / lots threshold for cargo display
 15 FF    // set non track bits (FF is the lazy solution to working out the correct bit mask)
+11 00
+14 FF
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/cranes.png
 #define THIS_SET_ID A0
