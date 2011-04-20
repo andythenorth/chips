@@ -14,6 +14,7 @@
 
 #include "sprites/nfo/grm_sprites.pnfo"
 
+// 'magic' tiles
 #include "sprites/nfo/tiles/cobble_FIRS.pnfo"
 #include "sprites/nfo/tiles/concrete_FIRS.pnfo"
 #include "sprites/nfo/tiles/mud_FIRS.pnfo"
@@ -21,6 +22,8 @@
 #include "sprites/nfo/tiles/quarry_FIRS.pnfo"
 //#include "sprites/nfo/tiles/plain_terrain.pnfo"
 
+// pax tiles
 #include "sprites/nfo/tiles/parcels_office.pnfo"
+#include "sprites/nfo/tiles/concourse_1.pnfo"
 
 #include "sprites/nfo/lang/strings.pnfo"

@@ -24,6 +24,7 @@
 #define TILE_TRACK_PLAIN_TERRAIN    1B
 #define TILE_EMPTY_PLAIN_TERRAIN    1C
 #define TILE_PAX_PARCELS_OFFICE     1D
+#define TILE_PAX_CONCOURSE_1        1E
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  
@@ -36,6 +37,7 @@
 #define TEXT_TILE_CLAY_FIRS                "Clay Pit platform (DEPRECATED)"
 #define TEXT_TILE_QUARRY_FIRS              "Quarry platform (FIRS-style)"
 #define TEXT_TILE_PAX_PARCELS_OFFICE       "Parcels Office"
+#define TEXT_TILE_PAX_CONCOURSE_1          "Passenger Concourse"
 
 #define TEXT_STATION_CATEGORY              "CHIPS stations"
 
