@@ -3,6 +3,16 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.5 Release
+-----------
+Move all stations to a new menu category 'CHIPS stations'
+Don't display any buffers in the build stations gui preview
+Add Concourse tile for passenger stations
+Graphics for dock show waves
+Fix Monorail / Maglev issues
+Fix incorrect display of catenary on non-track tiles
+
+-----------
 0.4 Release
 -----------
 Cargo graphics for:
