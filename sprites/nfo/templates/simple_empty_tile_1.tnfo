@@ -78,49 +78,51 @@
 \wx8004 \wx14 \wx14 // Force correct layout
 \wx40
 
+#define TILE_TEMPLATE_FILE "simple_empty_tile_1_cargo.tnfo"
+
 #define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
 #define THIS_SET_ID A0
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/scrap_metal_cargo.png
 #define THIS_SET_ID A1
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/crates_cargo.png
 #define THIS_SET_ID A2
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/stone_cargo.png
 #define THIS_SET_ID A3
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/sand_cargo.png
 #define THIS_SET_ID A4
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/clay_cargo.png
 #define THIS_SET_ID A5
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/coal_cargo.png
 #define THIS_SET_ID A6
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/iron_ore_cargo.png
 #define THIS_SET_ID A7
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/wood_cargo.png
 #define THIS_SET_ID A8
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_cargo.png
 #define THIS_SET_ID A9
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/metal_cargo.png
 #define THIS_SET_ID AA
-#include "simple_empty_tile_1_cargo.tnfo"
+#include TILE_TEMPLATE_FILE
 
 
 -1 * 0 02 04 B0 85 // no cargo at all
@@ -147,3 +149,5 @@
 
 #undef THIS_TILE_ID
 #undef THIS_SPRITESHEET_X
+
+#undef TILE_TEMPLATE_FILE
