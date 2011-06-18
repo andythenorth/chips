@@ -9,7 +9,7 @@
   FF
 
 -1 * 0 00 04 \b7 \b1 THIS_TILE_ID
-08 "CHIP" // Class ID - groups stations in menu
+08 "CHPS" // Class ID - groups stations in menu
 09 06 // 6 tiles
   //Basic layout
   THIS_GROUND

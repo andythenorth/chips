@@ -1,5 +1,5 @@
 -1 * 0	 00 04 \b3 \b1 TILE_PAX_CONCOURSE_1
-  08 "CHIP" // Class ID - groups stations in menu
+  08 "CHPT" // Class ID - groups stations in menu
   09 02 // 2 tiles
     //Basic layout
     \d1420 // custom ground sprite
