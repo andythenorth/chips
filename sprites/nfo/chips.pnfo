@@ -25,6 +25,9 @@
 #include "sprites/nfo/tiles/parcels_office.pnfo"
 #include "sprites/nfo/tiles/concourse_1.pnfo"
 #include "sprites/nfo/tiles/booking_office.pnfo"
+// misc buildings
+#include "sprites/nfo/tiles/boiler_house_offices.pnfo"
+
 
 // structure tiles (non pax)
 #include "sprites/nfo/tiles/mineral_loader.pnfo"
