@@ -26,6 +26,7 @@
 #include "sprites/nfo/tiles/concourse_1.pnfo"
 #include "sprites/nfo/tiles/booking_office.pnfo"
 // misc station buildings
+#include "sprites/nfo/tiles/wood_hut.pnfo"
 #include "sprites/nfo/tiles/boiler_house_offices.pnfo"
 #include "sprites/nfo/tiles/warehouse_small.pnfo"
 

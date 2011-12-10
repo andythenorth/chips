@@ -25,7 +25,7 @@
 //#define TILE_UNUSED                     0D
 //#define TILE_UNUSED                     0E
 //#define TILE_UNUSED                     0F
-#define TILE_TRACK_MINERAL_LOADER       10
+#define TILE_WOOD_HUT                   10
 #define TILE_PAX_BOOKING_OFFICE         1A
 #define TILE_TRACK_PLAIN_TERRAIN        1B
 #define TILE_EMPTY_PLAIN_TERRAIN        1C
@@ -33,6 +33,7 @@
 #define TILE_PAX_CONCOURSE_1            1E
 #define TILE_BOILER_HOUSE_OFFICES       1F
 #define TILE_WAREHOUSE_SMALL            20
+//#define TILE_TRACK_MINERAL_LOADER       21
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.  
@@ -45,10 +46,12 @@
 #define TEXT_TILE_QUARRY_FIRS                 "Quarry platform (FIRS-style)"
 #define TEXT_TILE_PAX_PARCELS_OFFICE          "Parcels Office"
 #define TEXT_TILE_PAX_CONCOURSE_1             "Passenger Concourse"
+#define TEXT_TILE_WOOD_HUT                    "Small Wooden Hut"
 #define TEXT_TILE_PAX_BOOKING_OFFICE          "Booking Office"
-#define TEXT_TILE_MINERAL_LOADER              "Mineral Loader"
+//#define TEXT_TILE_MINERAL_LOADER              "Mineral Loader"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler House & Offices"
 #define TEXT_TILE_WAREHOUSE_SMALL             "Small Warehouse"
+
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"
