@@ -25,12 +25,12 @@
 #include "sprites/nfo/tiles/parcels_office.pnfo"
 #include "sprites/nfo/tiles/concourse_1.pnfo"
 #include "sprites/nfo/tiles/booking_office.pnfo"
-// misc buildings
+// misc station buildings
 #include "sprites/nfo/tiles/boiler_house_offices.pnfo"
 #include "sprites/nfo/tiles/warehouse_small.pnfo"
 
 // structure tiles (non pax)
-#include "sprites/nfo/tiles/mineral_loader.pnfo"
+//#include "sprites/nfo/tiles/mineral_loader.pnfo"
 
 
 #include "sprites/nfo/lang/strings.pnfo"
