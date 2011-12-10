@@ -1,61 +1,28 @@
-CHIPS Station Set
------------------------------------
-
-Contents:
-
-1 About
-2 Compiling CHIPS
-3 Credits
-4 License
-
-
-
--------
-1 About
--------
-
 CHIPS Has Improved Players' Stations
+-------------------------------------
+Simple stations and station tiles.
+Features magic sprinkles to provide buffer stops, cargo graphics and random eye candy.
 
-Name of this Repo:  CHIPS Station Set
-Repository version: {{REPO_REVISION}}
+Includes a dock that matches the station tiles.
 
-
+Goes great with:
+- FIRS industry set
+- Stations in original TTD graphics
+- Mayonnaise + Ketchup
 
 -----------------
-2 Compiling CHIPS
+More about CHIPS
 -----------------
 
-The CHIPS source is available in a Mercurial repository and is available through
-http://mz.openttdcoop.org/hg/chips. E.g. use hg clone
-http://mz.openttdcoop.org/hg/chips to get yourself a copy.
+For latest information / releases, visit TT-Forums.
+Release thread: 
+	http://www.tt-forums.net/viewtopic.php?f=67&t=53362
+Development thread:
+	http://www.tt-forums.net/viewtopic.php?f=26&t=53348
 
-In order to compile CHIPS from source you need at least r2125 of NFORenum and
-GRFCodec or the latest stable versions of those tools (at the moment v3.4.6
-resp. v0.9.10). Using any recent version inbetween will most likely fail to
-compile CHIPS correctly.
-Place both renum and grfcodec in the CHIPS main directory or your system's PATH
-environment variable and run the makefile:
-   make                  Compile the CHIPS newgrf
-   make bundle           Compile and create a tar with directory structure and
-                         documentation
-   make install          Compile, tar and install to OpenTTD data directory
-                         (either guessed by the makefile or to be configured
-                          in Makefile.local)
-   make release          Compile and tar/zip with version information for
-                         shipping
-   make release-install  Compile, tar/zip with version information and install
-                         tar to data directory
-
-either 'make', 'make install', 'make bundle' or 'make release'. There's more
-options, but these are probably sufficient for you to know.
-
-CHIPS uses the Generic Makefile system for NewGRFs, created by planetmaker and
-licensed under the GNU General Public License.
-http://dev.openttdcoop.org/projects/newgrf-makefile
-
----------------
-3 CHIPS Credits
----------------
+---------
+Authors
+---------
 
 CHIPS by andythenorth and yexo.
 Build framework by planetmaker.
@@ -63,13 +30,20 @@ Small truck graphic by pikka.
 Dock code by PaulC.
 Contains graphics from ISR used under GPL.
 
+Special thanks to #openttdcoop.
 
----------------
-4 CHIPS License
----------------
+Special thanks to anyone I've forgotten :o
+
+Contact me via the forums at http://tt-forums.net - username andythenorth
+
+---------
+License
+---------
 
 CHIPS Station Set - for OpenTTD
 Copyright (C) 2011  andythenorth, planetmaker, yexo
+
+Released under the GNU General Public license v2 or later. See license.txt
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -84,3 +58,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+The source code can be obtained from the #openttdcoop DevZone at 
+	http://dev.openttdcoop.org/projects/chips 
+or via mercurial checkout
+	hg clone http://dev.openttdcoop.org/projects/chips
+
+For integrity check:
+Name of this Repo: {{GRF_TITLE}}
+GRF_ID:            {{GRF_ID}}
+MD5 sum:           {{GRF_MD5}}
+
+Repository version: {{REPO_REVISION}}
