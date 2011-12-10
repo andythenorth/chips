@@ -3,6 +3,23 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.6 Release
+-----------
+Add new menu category 'CHIPS tiles' and move some tiles to it
+Cargo graphics for:
+	- metal / steel
+	- milk
+	- fruit / fruit & vegetables
+Improved graphics for Parcels Office
+Added four new buildings:
+	- Small Wooden Hut
+	- Booking Office
+	- Small Warehouse
+	- Boiler House and Offices
+Removed Clay Platforms (deprecated in v0.4)
+Improved the readme.txt for in-game viewing
+
+-----------
 0.5 Release
 -----------
 Move all stations to a new menu category 'CHIPS stations'
