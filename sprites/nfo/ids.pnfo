@@ -3,7 +3,7 @@
 // to increase readability and avoid getting lost in IDs and so on.
 //
 // Only thing these defines may not contain are quotation marks.
-// As an example: 
+// As an example:
 // #define IND_COALMINE              00
 
 // Station tiles - ordered by ID.  Append new defines to end as needed.
@@ -33,10 +33,11 @@
 #define TILE_PAX_CONCOURSE_1            1E
 #define TILE_BOILER_HOUSE_OFFICES       1F
 #define TILE_WAREHOUSE_SMALL            20
-//#define TILE_TRACK_MINERAL_LOADER       21
+#define TILE_PAX_BOOKING_OFFICE_SMALL   21
+//#define TILE_TRACK_MINERAL_LOADER       22
 
 // Strings (needs moving to lang files later - this is just convenient for now)
-// (Note from andythenorth) strings framework needs some thought.  
+// (Note from andythenorth) strings framework needs some thought.
 // It probably doesn't need as much complexity as FIRS.
 #define TEXT_TILE_TEST_1                      "Test station 1"
 #define TEXT_TILE_TEST_2                      "Test station 2"
@@ -48,6 +49,7 @@
 #define TEXT_TILE_PAX_CONCOURSE_1             "Passenger Concourse"
 #define TEXT_TILE_WOOD_HUT                    "Small Wooden Hut"
 #define TEXT_TILE_PAX_BOOKING_OFFICE          "Booking Office"
+#define TEXT_TILE_PAX_BOOKING_OFFICE_SMALL    "Small Booking Office"
 //#define TEXT_TILE_MINERAL_LOADER              "Mineral Loader"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler House & Offices"
 #define TEXT_TILE_WAREHOUSE_SMALL             "Small Warehouse"
