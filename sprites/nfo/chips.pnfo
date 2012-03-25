@@ -32,7 +32,5 @@
 #include "sprites/nfo/tiles/warehouse_small.pnfo"
 
 // structure tiles (non pax)
-//#include "sprites/nfo/tiles/mineral_loader.pnfo"
-
 
 #include "sprites/nfo/lang/strings.pnfo"

@@ -34,7 +34,6 @@
 #define TILE_BOILER_HOUSE_OFFICES       1F
 #define TILE_WAREHOUSE_SMALL            20
 #define TILE_PAX_BOOKING_OFFICE_SMALL   21
-//#define TILE_TRACK_MINERAL_LOADER       22
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.
@@ -50,7 +49,6 @@
 #define TEXT_TILE_WOOD_HUT                    "Small Wooden Hut"
 #define TEXT_TILE_PAX_BOOKING_OFFICE          "Booking Office"
 #define TEXT_TILE_PAX_BOOKING_OFFICE_SMALL    "Small Booking Office"
-//#define TEXT_TILE_MINERAL_LOADER              "Mineral Loader"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler House & Offices"
 #define TEXT_TILE_WAREHOUSE_SMALL             "Small Warehouse"
 
