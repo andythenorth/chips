@@ -181,7 +181,7 @@
   00 00 00 // x/y/z extent
   THIS_OVERLAY_GROUND_SE
   80 // end of building sprite list
-  
+
   //Basic layout with a buffer at north end
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -205,7 +205,7 @@
   10 01 04 // x/y/z extent
   THIS_BUFFER_NW
   80 // end of building sprite list
-  
+
   //Basic layout with a buffer at south end
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -229,7 +229,7 @@
   10 01 04 // x/y/z extent
   THIS_BUFFER_SE
   80 // end of building sprite list
-  
+
   //Basic layout with a buffer at both ends
   \dx000003F4 // custom ground sprite
   00 00 80 // x/y/z offset
@@ -760,6 +760,10 @@
 
 #define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_bare_metal_cargo.png
 #define THIS_SET_ID AC
+#include TILE_TEMPLATE_FILE
+
+#define THIS_CARGO_SPRITESHEET sprites/graphics/alcohol_cargo.png
+#define THIS_SET_ID AD
 #include TILE_TEMPLATE_FILE
 
 -1 * 0 02 04 20 81 // check for crane

@@ -21,7 +21,7 @@
   2F \wxA2 // cargo: FMSP
   30 \wxA2 // cargo: ENSP
   31 \wxA2 // cargo: MNSP
-  34 \wxA2 // cargo: BEER
+  34 \wxAD // cargo: BEER
   35 \wxA2 // cargo: BDMT
   FF \wx MENU_GRAPHICS_ID // menu
 \wxB0
