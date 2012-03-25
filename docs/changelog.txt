@@ -3,6 +3,21 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.7 Release
+-----------
+Cargo graphics for:
+	- alcohol
+	- fish
+	- food
+Added new buildings:
+	- Small Booking Office
+	- Tipple (for mineral cargos)
+Added livestock tiles (with cargo-waiting support):
+	- Cows
+	- Pigs
+	- Sheep
+
+-----------
 0.6 Release
 -----------
 Add new menu category 'CHIPS tiles' and move some tiles to it
