@@ -34,6 +34,9 @@
 #define TILE_BOILER_HOUSE_OFFICES       1F
 #define TILE_WAREHOUSE_SMALL            20
 #define TILE_PAX_BOOKING_OFFICE_SMALL   21
+#define TILE_TIPPLE                     22
+#define TILE_FLOOD_LOADER_SILO          23
+
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.
@@ -51,7 +54,8 @@
 #define TEXT_TILE_PAX_BOOKING_OFFICE_SMALL    "Small Booking Office"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler House & Offices"
 #define TEXT_TILE_WAREHOUSE_SMALL             "Small Warehouse"
-
+#define TEXT_TILE_TIPPLE                      "Tipple"
+#define TEXT_TILE_FLOOD_LOADER_SILO           "Flood Loader Silo"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"
