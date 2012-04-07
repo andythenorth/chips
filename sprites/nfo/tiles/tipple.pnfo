@@ -9,7 +9,7 @@
     00 00 00 // x/y/z extent
     \dx40008432
     00 00 00 // x/y/z offset = extra groundsprite
-    10 10 \b36 // x/y/z extend
+    10 04 \b36 // x/y/z extend
     \dx0000842F
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
@@ -23,7 +23,7 @@
     00 00 00 // x/y/z extent
     \dx40008434
     00 00 00 // x/y/z offset = extra groundsprite
-    10 10 \b36 // x/y/z extend
+    10 04 \b36 // x/y/z extend
     \dx00008430
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
