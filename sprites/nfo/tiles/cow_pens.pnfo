@@ -1,0 +1,5 @@
+#define THIS_TILE_ID        TILE_COW_PENS
+#define THIS_GRAPHICS_FILE  cows_cargo.png
+
+#include "../templates/livestock_tile.tnfo"
+

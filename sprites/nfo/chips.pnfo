@@ -30,9 +30,12 @@
 #include "sprites/nfo/tiles/wood_hut.pnfo"
 #include "sprites/nfo/tiles/boiler_house_offices.pnfo"
 #include "sprites/nfo/tiles/warehouse_small.pnfo"
+// structure tiles (non pax)
 #include "sprites/nfo/tiles/tipple.pnfo"
 #include "sprites/nfo/tiles/flood_loader_silo.pnfo"
+#include "sprites/nfo/tiles/pig_pens.pnfo"
+#include "sprites/nfo/tiles/sheep_pens.pnfo"
+#include "sprites/nfo/tiles/cow_pens.pnfo"
 
-// structure tiles (non pax)
 
 #include "sprites/nfo/lang/strings.pnfo"
