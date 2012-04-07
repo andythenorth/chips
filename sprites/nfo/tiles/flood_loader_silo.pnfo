@@ -1,4 +1,4 @@
--1 * 0	 00 04 \b2 \b1 TILE_FLOOD_LOADER_SILO
+-1 * 0	 00 04 \b3 \b1 TILE_FLOOD_LOADER_SILO
   08 "CHPT" // Class ID - groups stations in menu
   09 02 // 2 tiles
     \dx000003F4 // custom ground sprite
@@ -29,6 +29,7 @@
     10 10 \b36 // x/y/z extend
     \dx0000842E
     80 // end of building sprite list
+  0B 01    // callback flags
 
 //Tile action 1
 -1 * 0	 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
@@ -45,6 +46,18 @@
 
 -1 * 7	 02 04 00 00 01 \w0
 
+-1 * 30	 02 04 FA // check availability
+    81 01 00  FF // check current year
+    \b01 // range
+      \wx8000 \b0 \b30
+    \wx8001
+
+-1 * 0 02 04 F0 // cbs
+    85 0C 00 \wxFFFF // var, shift, mask
+    \b1 // num ranges
+      \wxFA \wx13 \wx13
+    \wx00
+
 // byte is index in cargotable, word is THIS_SET_ID define above
 -1 * 0	 03 04 01 TILE_FLOOD_LOADER_SILO \b0
-\wx00
+\wxF0
