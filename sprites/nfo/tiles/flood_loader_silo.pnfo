@@ -4,10 +4,10 @@
     \dx000003F4 // custom ground sprite
     00 00 80 // x/y/z offset
     00 00 00 // x/y/z extent
-    \dx00008431
+    \dx40008431
     00 00 80 // x/y/z offset
     00 00 00 // x/y/z extent
-    \dx00008432
+    \dx40008432
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
     \dx0000842F
@@ -18,10 +18,10 @@
     \dx000003F3 // custom ground sprite
     00 00 80 // x/y/z offset
     00 00 00 // x/y/z extent
-    \dx00008433
+    \dx40008433
     00 00 80 // x/y/z offset
     00 00 00 // x/y/z extent
-    \dx00008434
+    \dx40008434
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
     \dx00008430
