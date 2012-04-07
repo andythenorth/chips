@@ -12,6 +12,7 @@ Cargo graphics for:
 Added new buildings:
 	- Small Booking Office
 	- Tipple (for mineral cargos)
+	- Flood Loader Silo (for mineral cargos), available 1951
 Added livestock tiles (with cargo-waiting support):
 	- Cows
 	- Pigs
