@@ -1,4 +1,4 @@
--1 * 0	 00 04 \b2 \b1 TILE_TIPPLE
+-1 * 0	 00 04 \b4 \b1 TILE_TIPPLE
   08 "CHPT" // Class ID - groups stations in menu
   09 02 // 2 tiles
     \dx000003F4 // custom ground sprite
@@ -29,6 +29,8 @@
     10 10 \b36 // x/y/z extend
     \dx0000842E
     80 // end of building sprite list
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
 
 //Tile action 1
 -1 * 0	 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>

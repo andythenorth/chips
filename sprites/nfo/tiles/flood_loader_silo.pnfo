@@ -1,4 +1,4 @@
--1 * 0	 00 04 \b3 \b1 TILE_FLOOD_LOADER_SILO
+-1 * 0	 00 04 \b5 \b1 TILE_FLOOD_LOADER_SILO
   08 "CHPT" // Class ID - groups stations in menu
   09 02 // 2 tiles
     \dx000003F4 // custom ground sprite
@@ -29,6 +29,8 @@
     10 10 \b36 // x/y/z extend
     \dx0000842E
     80 // end of building sprite list
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
   0B 01    // callback flags
 
 //Tile action 1

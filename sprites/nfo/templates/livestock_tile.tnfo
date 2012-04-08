@@ -1,4 +1,4 @@
--1 * 0	 00 04 \b4 \b1 THIS_TILE_ID
+-1 * 0	 00 04 \b6 \b1 THIS_TILE_ID
   08 "CHPT" // Class ID - groups stations in menu
   09 02 // 6 tiles
     //Basic layout
@@ -14,6 +14,8 @@
     \dx0000842E
     80 // end of building sprite list
   10 \w160 // little / lots threshold for cargo display
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
