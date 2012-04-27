@@ -8,6 +8,9 @@
 // warning about Default ID appears earlier in sprite
 //@@WARNING DISABLE 100
 
+// warning about sprites not goto-ed
+//@@WARNING DISABLE 107
+
 // warning about high IDs
 //@@WARNING DISABLE 141
 
@@ -26,6 +29,6 @@
     00
   00
 
--1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "\8ECHIPS Station Set\n" 
-"\98Brought to you by andythenorth and yexo, with help from planetmaker.\n" 
+-1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "\8ECHIPS Station Set\n"
+"\98Brought to you by andythenorth and yexo, with help from planetmaker.\n"
 "Includes elements from other sets used under GPL, including ISR. FIRS Docks originally coded by PaulC, used with permission." 00
