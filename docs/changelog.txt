@@ -3,6 +3,17 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.8 Release
+-----------
+Show crates as cargo graphics for:
+	- Fibre Crops (ECS) / Plant Fibres (FIRS)
+	- Wool
+Made the dock slightly less bland by using a different tile surface
+Improved the appearance of CHIPS with Pikka's finescale tracks by making overlap of platform sprites larger
+	- may cause graphical issues with other tracksets; please report if platforms obscure track sprites
+Fixed catenary showing incorrectly for some non-track tiles
+
+-----------
 0.7 Release
 -----------
 Cargo graphics for:
