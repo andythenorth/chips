@@ -78,18 +78,18 @@
 -1 sprites/graphics/groundtiles.png  220 130 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  220 170 09 31 64 -31 0
 
-//quarry
--1 sprites/graphics/groundtiles.png  290  50 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  290  90 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  290 130 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  290 170 09 31 64 -31 0
+//slabs
+-1 sprites/graphics/groundtiles.png  360  50 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  360  90 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  360 130 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  360 170 09 31 64 -31 0
 
 // ground sprites for non-track tiles
 -1 sprites/graphics/groundtiles.png  80   10 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  150  10 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  10   10 09 31 64 -31 0
 -1 sprites/graphics/groundtiles.png  220  10 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  290  10 09 31 64 -31 0
+-1 sprites/graphics/groundtiles.png  360  10 09 31 64 -31 0
 
 
 -1 * 0 0D PARAM_TMP1 \D+ PARAM_TMP1 FF \d82

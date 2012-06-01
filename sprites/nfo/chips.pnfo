@@ -18,7 +18,7 @@
 #include "sprites/nfo/tiles/cobble_FIRS.pnfo"
 #include "sprites/nfo/tiles/concrete_FIRS.pnfo"
 #include "sprites/nfo/tiles/mud_FIRS.pnfo"
-#include "sprites/nfo/tiles/quarry_FIRS.pnfo"
+#include "sprites/nfo/tiles/slabs.pnfo"
 //#include "sprites/nfo/tiles/plain_terrain.pnfo"
 
 // pax tiles
