@@ -3,6 +3,15 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+0.9 Release
+-----------
+Improved appearance of docks
+Improved appearance of Mud Platforms
+Added Station Hotel tile (DanMacK)
+Added tiles for Concrete Slab Platforms
+Deprecated Quarry Platforms (older savegames will show concrete slabs instead)
+
+-----------
 0.8 Release
 -----------
 Show crates as cargo graphics for:
