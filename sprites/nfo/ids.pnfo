@@ -39,6 +39,7 @@
 #define TILE_PIG_PENS                   24
 #define TILE_SHEEP_PENS                 25
 #define TILE_COW_PENS                   26
+#define TILE_PAX_HOTEL                  27
 
 
 // Strings (needs moving to lang files later - this is just convenient for now)
@@ -55,6 +56,7 @@
 #define TEXT_TILE_WOOD_HUT                    "Small Wooden Hut"
 #define TEXT_TILE_PAX_BOOKING_OFFICE          "Booking Office"
 #define TEXT_TILE_PAX_BOOKING_OFFICE_SMALL    "Small Booking Office"
+#define TEXT_TILE_PAX_HOTEL                   "Station Hotel"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler House & Offices"
 #define TEXT_TILE_WAREHOUSE_SMALL             "Small Warehouse"
 #define TEXT_TILE_TIPPLE                      "Tipple"
