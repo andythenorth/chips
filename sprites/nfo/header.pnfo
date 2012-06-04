@@ -26,6 +26,7 @@
     "B" "MINV" \w4 \d0
     "B" "PALS" \w1 "W" // palette
     "B" "NPAR" \w1 \b0 // 0 settings
+    "T" "URL_" 00 "http://www.tt-forums.net/viewtopic.php?f=67&t=53362" 00
     00
   00
 
