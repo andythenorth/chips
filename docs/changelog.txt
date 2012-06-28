@@ -3,6 +3,14 @@ CHIPS Station Set Changelog
 ===========================
 
 -----------
+1.0 Release
+-----------
+Cargo graphics for Bauxite (AORE)
+Improve appearance of mud tiles, livestock tiles
+Provide a url for newgrf info in OpenTTD
+Updated docs to credit DanMacK for hotel sprites
+
+-----------
 0.9 Release
 -----------
 Improved appearance of docks
