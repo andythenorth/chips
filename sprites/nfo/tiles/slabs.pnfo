@@ -18,13 +18,11 @@
 // Non-templated actions specific to this tile, couldn't get templating to work nicely in this case.
 -1 * 0	 00 04 \b5 \b1 THIS_TILE_ID
   08 "CHPS" // Class ID - groups stations in menu
-  09 02 // 2 tiles
-    //Basic layout
-    \d1420 // custom ground sprite
-    80 // end of building sprite list
-    //Basic layout
-    \d1420 // custom ground sprite
-    80 // end of building sprite list
+  1A 02 // 2 tiles
+    40 // Use advanced sprite layout
+    \d1420 \wx0002 00 // One TTD ground sprite without offset for other railtypes
+    40 // Use advanced sprite layout
+    \d1420 \wx0002 00 // One TTD ground sprite without offset for other railtypes
   11 00 // catenary pylon placement (00 = none)
   14 FF // catenary wire placement (FF = none)
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
