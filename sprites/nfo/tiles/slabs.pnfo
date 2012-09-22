@@ -11,26 +11,6 @@
 #define THIS_TILE_ID          TILE_EMPTY_SLABS
 #define THIS_GROUND  \d1420
 
-// I can't get the templates to work with a sprite from baseset, so commenting out.
-// #include "../templates/simple_empty_tile_1.tnfo"
-
-
-// Non-templated actions specific to this tile, couldn't get templating to work nicely in this case.
--1 * 0	 00 04 \b5 \b1 THIS_TILE_ID
-  08 "CHPS" // Class ID - groups stations in menu
-  1A 02 // 2 tiles
-    40 // Use advanced sprite layout
-    \d1420 \wx0002 00 // One TTD ground sprite without offset for other railtypes
-    40 // Use advanced sprite layout
-    \d1420 \wx0002 00 // One TTD ground sprite without offset for other railtypes
-  11 00 // catenary pylon placement (00 = none)
-  14 FF // catenary wire placement (FF = none)
-  15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
-
--1 * 7	 02 04 00 00 01 \w0
-
-// byte is index in cargotable, word is THIS_SET_ID define above
--1 * 0	 03 04 01 THIS_TILE_ID \b0
-\wx00
-
-#undef THIS_TILE_ID
+#define DISABLE_GRM
+#include "../templates/simple_empty_tile_1.tnfo"
+#undef DISABLE_GRM
