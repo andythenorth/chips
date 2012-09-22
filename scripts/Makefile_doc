@@ -6,28 +6,22 @@
 #
 
 ################################################################
-# NML-specific targets and rules
+# Documentation targets
 ################################################################
 
-nfo:
-	$(_E) "[CPP] $(NFO_FILE)"
-	$(_V) $(CC) $(CC_FLAGS) $(MAIN_SRC_FILE) \
+%.txt: %.ptxt md5
+	$(_E) "[DOC] $@"
+	$(_V) cat $< \
 		| sed -e "s/$(REPLACE_TITLE)/$(REPO_TITLE)/" \
 		| sed -e "s/$(REPLACE_GRFID)/$(GRF_ID)/" \
 		| sed -e "s/$(REPLACE_REVISION)/$(REPO_REVISION)/" \
 		| sed -e "s/$(REPLACE_FILENAME)/$(OUTPUT_FILENAME)/" \
 		| sed -e "s/$(REPLACE_MD5SUM)/$(shell cat $(MD5_FILENAME))/" \
-		> $(NFO_FILE)
-	$(_E) "[NFORENUM] $(NFO_FILE)"
-	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
+		> $@
+	$(_V) [ -z "$(UNIX2DOS)" ] || $(UNIX2DOS) $(UNIX2DOS_FLAGS) $@
 
-################################################################
-# Definitions which extend the common rules
-################################################################
+doc: $(DOC_FILES)
+
 clean::
-	$(_E) "[CLEAN NFO]"
-	$(_V)-rm -rf $(NFO_FILE)
-
-test::
-	$(_E) "grfcodec:                          $(GRFCODEC) $(GRFCODEC_FLAGS)"
-	$(_E) "nforenum:                          $(NFORENUM) $(NFORENUM_FLAGS)"
+	$(_E) "[CLEAN DOC]"
+	$(_V) -for i in $(patsubst %.txt,%,$(DOC_FILES)); do [ -f $$i.ptxt ] && [ -f $$.txt ] && rm -rf $$i.txt || true; done

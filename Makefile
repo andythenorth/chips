@@ -1,43 +1,77 @@
-# Generic NewGRF Makefile
+#
+# This file is part of the NML build framework
+# NML build framework is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+# NML build framework is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with NML build framework. If not, see <http://www.gnu.org/licenses/>.
+#
 
-# Name of the Makefile which contains all the settings which describe
-# how to make this newgrf. It defines all the paths, the grf name,
-# the files for a bundle etc.
-MAKEFILE=Makefile
-MAKEFILE_DEP=Makefile.dep
+# Definition of the grfs
+GRF_FILE            := chips.grf
+REPO_NAME           := CHIPS Station Set
+MAIN_SRC_FILE       := sprites/nfo/chips.pnfo
+# GFX_LIST_FILES      := gfx/png_source_list
 
-# Include the project's configuration file
-include Makefile.config
+# Directory structure
+SRC_DIR             := sprites
+DOC_DIR             := docs
+SCRIPT_DIR          := scripts
+# LANG_DIR            := lang
 
-# this overrides definitions from above by individual settings
-# (if applicable):
--include Makefile.dist
--include Makefile.local
+# Documentation files:
+DOC_FILES = docs/readme.txt docs/license.txt docs/changelog.txt
 
-# include the universal Makefile definitions for NewGRF Projects
-include scripts/Makefile.def
+# List of all files which will get shipped
+# DOC_FILES = readme, changelog and license
+# GRF_FILENAME = MAIN_FILENAME_SRC with the extention .grf
+# Add any additional, not usual files here, too, including
+# their relative path to the root of the repository
+BUNDLE_FILES           = $(GRF_FILE) $(DOC_FILES)
 
-# Check dependencies for building all:
-all: $(TARGET_FILES) $(DOC_FILES)
-	
-# Rules used by all projects
-include scripts/Makefile.common
+# Replacement strings in the source and in the documentation
+# You may only change the values, not add new definitions
+# (unless you know where to add them in other places, too)
+REPLACE_TITLE       := {{GRF_TITLE}}
+REPLACE_GRFID       := {{GRF_ID}}
+REPLACE_REVISION    := {{REPO_REVISION}}
+REPLACE_FILENAME    := {{FILENAME}}
+REPLACE_MD5SUM      := {{GRF_MD5}}
 
-# Include the project type specific Makefiles. They take care of
-# their conditional inclusion themselves
--include scripts/Makefile_nfo # nfo-style projects
--include scripts/Makefile_nml # nml-style projects
--include scripts/Makefile_obg # additionally for graphic base sets
--include scripts/Makefile_obs # sound base sets
 
-# Include repo-specific rules (if applicable)
--include Makefile.in
--include scripts/Makefile.in
+# general definitions (no rules!)
+-include Makefile_dist
+include $(SCRIPT_DIR)/Makefile_def
 
-# Include rules for bundle generation
-include scripts/Makefile.bundles
+# target 'all'
+include $(SCRIPT_DIR)/Makefile_all
 
-# Include dependencies (if applicable)
--include Makefile.dep
--include $(patsubst %.grf,%.src.dep,$(GRF_FILES))
--include $(patsubst %.grf,%.gfx.dep,$(GRF_FILES))
+gfx:
+lng:
+
+# target 'depend' (not implemented)
+# include $(SCRIPT_DIR)/Makefile_dep
+# -include Makefile_gfx.dep
+
+# target nml
+# include $(SCRIPT_DIR)/Makefile_nml
+# target 'gfx' which builds all needed sprites
+# Only a special gfx target for gimp exists so far
+# include $(SCRIPT_DIR)/Makefile_gimp
+# target 'lng' which builds the lang/*.lng files
+# include $(SCRIPT_DIR)/Makefile_lng
+# target 'nfo' which builds the nfo files
+include $(SCRIPT_DIR)/Makefile_nfo
+# target 'grf' which builds the grf from the nml
+include $(SCRIPT_DIR)/Makefile_nfogrf
+# target 'doc' which builds the docs
+include $(SCRIPT_DIR)/Makefile_doc
+
+# target 'bundle' and bundle_xxx which builds the distribution files
+# and the distribution bundles like bundle_tar, bundle_zip, ...
+include $(SCRIPT_DIR)/Makefile_bundle
+# target 'bundle_src which builds source bundle
+include $(SCRIPT_DIR)/Makefile_bundlesrc
+# target 'install' which installs the grf
+include $(SCRIPT_DIR)/Makefile_install
+
+# misc. convenience targets like 'langcheck'
+-include $(SCRIPT_DIR)/Makefile_misc

@@ -10,6 +10,8 @@ chips*.grf
 
 # Ignore intermediate files created by the Makefile:
 *.nfo
+*.md5
+Makefile.fordist
 docs/license.txt
 docs/changelog.txt
 docs/readme.txt
@@ -22,7 +24,9 @@ Makefile.dep
 REV
 
 # Ignore directories from bundle creation / install:
+chips.tar*
 chips-*
+chips/*
 
 #The .renum dir
 .renum

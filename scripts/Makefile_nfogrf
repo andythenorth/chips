@@ -4,30 +4,30 @@
 # NML build framework is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 # See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with NML build framework. If not, see <http://www.gnu.org/licenses/>.
 #
-
 ################################################################
 # NML-specific targets and rules
 ################################################################
 
-nfo:
-	$(_E) "[CPP] $(NFO_FILE)"
-	$(_V) $(CC) $(CC_FLAGS) $(MAIN_SRC_FILE) \
-		| sed -e "s/$(REPLACE_TITLE)/$(REPO_TITLE)/" \
-		| sed -e "s/$(REPLACE_GRFID)/$(GRF_ID)/" \
-		| sed -e "s/$(REPLACE_REVISION)/$(REPO_REVISION)/" \
-		| sed -e "s/$(REPLACE_FILENAME)/$(OUTPUT_FILENAME)/" \
-		| sed -e "s/$(REPLACE_MD5SUM)/$(shell cat $(MD5_FILENAME))/" \
-		> $(NFO_FILE)
-	$(_E) "[NFORENUM] $(NFO_FILE)"
-	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
+grf $(GRF_FILE): gfx nfo lng
+	$(_E) "[GRFCODEC] $(GRF_FILE)"
+	$(_V) $(GRFCODEC) $(GRFCODEC_FLAGS) -e $(GRF_FILE) .
+
+$(MD5_FILENAME) $(MD5_SRC_FILENAME): $(GRF_FILE)
+	$(_E) "[MD5] $@"
+	$(_V) $(MD5SUM) $< | sed "s/  / /;s/ /  /" > $@
+md5: $(MD5_FILENAME)
 
 ################################################################
 # Definitions which extend the common rules
 ################################################################
 clean::
-	$(_E) "[CLEAN NFO]"
-	$(_V)-rm -rf $(NFO_FILE)
+	$(_E) "[CLEAN GRF]"
+	$(_V)-rm -rf $(GRF_FILE)
+	$(_V)-rm -rf $(GRF_FILE).cache
+	$(_V)-rm -rf $(GRF_FILE).cacheindex
+	$(_V)-rm -rf parsetab.py
+	$(_V)-rm -rf $(MD5_FILENAME)
 
-test::
-	$(_E) "grfcodec:                          $(GRFCODEC) $(GRFCODEC_FLAGS)"
-	$(_E) "nforenum:                          $(NFORENUM) $(NFORENUM_FLAGS)"
+maintainer-clean::
+	$(_E) "[MAINTAINER-CLEAN GRF]"
+	$(_V) -rm -rf $(MD5_SRC_FILENAME)
