@@ -6,8 +6,8 @@ CHIPS Station Set Changelog
 1.0.1 Release
 -------------
 Two fixes for concrete slab tile:
-	- Add cargoes en buildings on top
-	- Don't change to random other sprites on anything else then the default rail
+	- Add cargoes and buildings on top, similar to other platform tiles
+	- Don't show random sprites for rail-types other than default
 
 -----------
 1.0 Release
