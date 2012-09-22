@@ -9,6 +9,7 @@
 GRF_FILE            := chips.grf
 REPO_NAME           := CHIPS Station Set
 MAIN_SRC_FILE       := sprites/nfo/chips.pnfo
+GRF_ID             := \"CHPS\"
 # GFX_LIST_FILES      := gfx/png_source_list
 
 # Directory structure
