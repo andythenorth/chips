@@ -22,24 +22,24 @@
   //With building on top
   41 // Use advanced sprite layout
   THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
-  \dx0000042D \wx0000
+  \dx8000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
   41 // Use advanced sprite layout
   THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
-  \dx0000042D \wx0000
+  \dx8000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
 
   //Crane
   41 // Use advanced sprite layout
   THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
-  \dx0000842D \wx0000
+  \dx8000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
   41 // Use advanced sprite layout
   THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
-  \dx0000842D \wx0000
+  \dx8000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
 0B 03    // callback flags
