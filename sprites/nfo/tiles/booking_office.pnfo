@@ -1,18 +1,18 @@
 -1 * 0	 00 04 \b5 \b1 TILE_PAX_BOOKING_OFFICE
   08 "CHPT" // Class ID - groups stations in menu
-  09 02 // 2 tiles
+  1A 02 // 2 tiles
     //Basic layout
-    \d1420 // custom ground sprite
+    41
+    \d1420 \wx0002 00 // custom ground sprite
+    \dx8000842D \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
-    \dx0000842D
-    80 // end of building sprite list
     //Basic layout
-    \d1420 // custom ground sprite
+    41
+    \d1420 \wx0002 00 // custom ground sprite
+    \dx8000842E \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
-    \dx0000842E
-    80 // end of building sprite list
   11 00 // catenary pylon placement (00 = none)
   14 FF // catenary wire placement (FF = none)
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
