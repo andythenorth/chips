@@ -8,6 +8,7 @@ CHIPS Station Set Changelog
 Two fixes for concrete slab tile:
 	- Add cargoes and buildings on top, similar to other platform tiles
 	- Don't show random sprites for rail-types other than default
+Fix sprite issues when building "chips tiles" on monorail/maglev track
 
 -----------
 1.0 Release
