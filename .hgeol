@@ -1,0 +1,10 @@
+[repository]
+native = LF
+
+[patterns]
+**.pnfo = native 
+**.tnfo = native
+**.nfo  = native
+**.txt = native
+Makefile* = LF
+**.sh  = LF
