@@ -16,7 +16,6 @@ nfo:
 		| sed -e "s/$(REPLACE_GRFID)/$(GRF_ID)/" \
 		| sed -e "s/$(REPLACE_REVISION)/$(REPO_REVISION)/" \
 		| sed -e "s/$(REPLACE_FILENAME)/$(OUTPUT_FILENAME)/" \
-		| sed -e "s/$(REPLACE_MD5SUM)/$(shell cat $(MD5_FILENAME))/" \
 		> $(NFO_FILE)
 	$(_E) "[NFORENUM] $(NFO_FILE)"
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
