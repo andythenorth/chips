@@ -1,47 +1,47 @@
 
 #ifndef DISABLE_GRM
 -1 * 7 06
-  PARAM_GRM 82 \b12
-  PARAM_GRM 82 \b17
-  PARAM_GRM 82 \b22
-  PARAM_GRM 82 \b37
-  PARAM_GRM 82 \b52
-  PARAM_GRM 82 \b67
+  PARAM_GRM 82 \b13
+  PARAM_GRM 82 \b21
+  PARAM_GRM 82 \b29
+  PARAM_GRM 82 \b49
+  PARAM_GRM 82 \b69
+  PARAM_GRM 82 \b89
   FF
 #endif
 
 -1 * 0 00 04 \b7 \b1 THIS_TILE_ID
 08 "CHPS" // Class ID - groups stations in menu
-09 06 // 6 tiles
+1A 06 // 6 tiles
   //Basic layout
-  THIS_GROUND
-  80 // end of building sprite list
-  THIS_GROUND
-  80 // end of building sprite list
+  40 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
+  40 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
 
   //With building on top
-  THIS_GROUND
+  41 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
+  \dx0000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
-  \dx0000042D
-  80 // end of building sprite list
-  THIS_GROUND
+  41 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
+  \dx0000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
-  \dx0000042D
-  80 // end of building sprite list
 
   //Crane
-  THIS_GROUND
+  41 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
+  \dx0000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
-  \dx0000842D
-  80 // end of building sprite list
-  THIS_GROUND
+  41 // Use advanced sprite layout
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
+  \dx0000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
-  \dx0000842D
-  80 // end of building sprite list
 0B 03    // callback flags
 10 \w500 // little / lots threshold for cargo display
 15 FF    // set non track bits (FF is the lazy solution to working out the correct bit mask)
