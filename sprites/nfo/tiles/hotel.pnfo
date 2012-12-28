@@ -3,13 +3,13 @@
   1A 02 // 2 tiles
     //Basic layout
     41
-    \d1420 \wx0002 00 // custom ground sprite
+    \d1420 \wx0000 // custom ground sprite
     \dx8000842D \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
     //Basic layout
     41
-    \d1420 \wx0002 00 // custom ground sprite
+    \d1420 \wx0000 // custom ground sprite
     \dx8000842E \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend    
