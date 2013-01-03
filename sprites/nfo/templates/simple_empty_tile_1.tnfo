@@ -2,11 +2,11 @@
 #ifndef DISABLE_GRM
 -1 * 7 06
   PARAM_GRM 82 \b13
-  PARAM_GRM 82 \b20
-  PARAM_GRM 82 \b27
-  PARAM_GRM 82 \b46
-  PARAM_GRM 82 \b65
-  PARAM_GRM 82 \b84
+  PARAM_GRM 82 \b21
+  PARAM_GRM 82 \b29
+  PARAM_GRM 82 \b49
+  PARAM_GRM 82 \b69
+  PARAM_GRM 82 \b89
   FF
 #endif
 
@@ -15,30 +15,30 @@
 1A 06 // 6 tiles
   //Basic layout
   40 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
   40 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
 
   //With building on top
   41 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
   \dx8000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
   41 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
   \dx8000042D \wx0000
   00 00 00 // x/y/z offset
   10 10 10 // x/y/z extend
 
   //Crane
   41 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
   \dx8000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
   41 // Use advanced sprite layout
-  THIS_GROUND \wx0000 // One TTD ground sprite without offset for other railtypes
+  THIS_GROUND \wx0002 00 // One TTD ground sprite without offset for other railtypes
   \dx8000842D \wx0000
   00 00 00 // x/y/z offset
   10 10 20 // x/y/z extend
