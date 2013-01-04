@@ -32,6 +32,12 @@
 -1 * 0 02 04 0A
     00 01 \w0
 
+// Set temp register 0 to 0
+-1 * 0 02 04 0A 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx0A 00 00 \wx0A
+
 // buy menu
 -1 * 0 02 04 FF
     00 01 \w1
