@@ -3,6 +3,11 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.0.3 Release
+-------------
+Fix for bad sprites shown with maglev / monorail (peter1138)
+
+-------------
 1.0.2 Release
 -------------
 Fix for bad sprites shown on many tiles (peter1138)
