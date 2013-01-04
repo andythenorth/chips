@@ -817,6 +817,12 @@
   \wx20 \wx14 \wx14
 \wx00
 
+// Set temp register 0 to 0
+-1 * 0 02 04 B0 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wxB0 00 00 \wxB0
+
 -1 * 0 02 04 B1 85 // Menu graphics
 0C 00 \wxFFFF // var, shift, mask
 \b2 // num ranges
@@ -827,6 +833,12 @@
   #endif
   \wx8000 \wx14 \wx14
 \wx00
+
+// Set temp register 0 to 0
+-1 * 0 02 04 B1 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wxB1 00 00 \wxB1
 
 #define MENU_GRAPHICS_ID B1
 
