@@ -1,0 +1,5 @@
+#define THIS_TILE_ID        TILE_GRAIN_SILOS
+#define THIS_GRAPHICS_FILE  grain_cargo.png
+
+#include "../templates/farm_cargos_tile.tnfo"
+

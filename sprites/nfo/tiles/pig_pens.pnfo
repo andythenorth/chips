@@ -1,5 +1,5 @@
 #define THIS_TILE_ID        TILE_PIG_PENS
 #define THIS_GRAPHICS_FILE  pigs_cargo.png
 
-#include "../templates/livestock_tile.tnfo"
+#include "../templates/farm_cargos_tile.tnfo"
 
