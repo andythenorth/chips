@@ -1,5 +1,6 @@
 #define THIS_TILE_ID        TILE_SHEEP_PENS
 #define THIS_GRAPHICS_FILE  sheep_cargo.png
+#define THIS_CARGO_NUM      04 // cargo: LVST
 
 #include "../templates/farm_cargos_tile.tnfo"
 
