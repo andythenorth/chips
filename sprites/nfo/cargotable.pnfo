@@ -1,5 +1,5 @@
 -1 * 0 00 08 \b1 37 00
-09 "WDPR" "SCRP" "CMNT" "WOOD" "LVST" //00 - 04
+09 "WDPR" "SCMT" "CMNT" "WOOD" "LVST" //00 - 04
 "STEL" "VEHI" "BRCK" "WOOL" "BUBL"    //05 - 09
 "TOYS" "FZDR" "FRUT" "FRVG" "FOOD"    //0A - 0E
 "FICR" "RUBR" "RFPR" "PETR" "OIL_"    //0F - 13
