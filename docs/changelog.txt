@@ -5,6 +5,7 @@ CHIPS Station Set Changelog
 -------------
 1.0.4 Release
 -------------
+Grain Silo tile; shows cargo waiting for grain cargo (GRAI cargo label only)
 Fix for scrap metal sprites not showing
 
 -------------
