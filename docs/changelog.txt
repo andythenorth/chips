@@ -3,6 +3,12 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.1.0 Release
+-------------
+New tiles for Small Mine Building and Large Mine Building 
+Fix for Tipple - second rear roof was too large
+
+-------------
 1.0.4 Release
 -------------
 Grain Silo tile; shows cargo waiting for grain cargo (GRAI cargo label only)
