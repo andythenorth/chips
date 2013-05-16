@@ -41,6 +41,8 @@
 #define TILE_COW_PENS                   26
 #define TILE_PAX_HOTEL                  27
 #define TILE_GRAIN_SILOS                28
+#define TILE_MINE_BUILDING_SMALL        29
+#define TILE_MINE_BUILDING_LARGE        30
 
 
 // Strings (needs moving to lang files later - this is just convenient for now)
@@ -66,6 +68,8 @@
 #define TEXT_TILE_SHEEP_PENS                  "Sheep Pens"
 #define TEXT_TILE_COW_PENS                    "Cow Pens"
 #define TEXT_TILE_GRAIN_SILOS                 "Grain Silos"
+#define TEXT_TILE_MINE_BUILDING_SMALL         "Small Mine Building"
+#define TEXT_TILE_MINE_BUILDING_LARGE         "Large Mine Building"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"

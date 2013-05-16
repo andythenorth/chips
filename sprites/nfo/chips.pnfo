@@ -38,6 +38,8 @@
 #include "sprites/nfo/tiles/sheep_pens.pnfo"
 #include "sprites/nfo/tiles/cow_pens.pnfo"
 #include "sprites/nfo/tiles/grain_silos.pnfo"
+#include "sprites/nfo/tiles/mine_building_small.pnfo"
+#include "sprites/nfo/tiles/mine_building_large.pnfo"
 
 
 #include "sprites/nfo/lang/strings.pnfo"
