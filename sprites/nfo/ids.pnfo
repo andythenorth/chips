@@ -43,7 +43,7 @@
 #define TILE_GRAIN_SILOS                28
 #define TILE_MINE_BUILDING_SMALL        29
 #define TILE_MINE_BUILDING_LARGE        30
-
+#define TILE_STORAGE_HUTS               31
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.
@@ -70,6 +70,7 @@
 #define TEXT_TILE_GRAIN_SILOS                 "Grain Silos"
 #define TEXT_TILE_MINE_BUILDING_SMALL         "Small Mine Building"
 #define TEXT_TILE_MINE_BUILDING_LARGE         "Large Mine Building"
+#define TEXT_TILE_STORAGE_HUTS                "Storage Huts"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"
