@@ -1,0 +1,36 @@
+-1 * 0	 00 04 \b5 \b1 TILE_DISPATCHERS_OFFICE
+  08 "CHPT" // Class ID - groups stations in menu
+  1A 02 // 2 tiles
+    //Basic layout
+    41
+    \d1420 \wx0002 00 // custom ground sprite
+    \dx8000842D \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    //Basic layout
+    41
+    \d1420 \wx0002 00 // custom ground sprite
+    \dx8000842E \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
+  15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
+
+//Tile action 1
+-1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 sprites/graphics/dispatchers_office.png 10 10 09 65 64 -31 -34
+-1 sprites/graphics/dispatchers_office.png 80 10 09 65 64 -31 -34
+
+-1 * 7	 02 04 00 00 01 \w0
+
+// Set temp register 0 to 0
+-1 * 0 02 04 00 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx00 00 00 \wx00
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_DISPATCHERS_OFFICE \b0
+\wx00
