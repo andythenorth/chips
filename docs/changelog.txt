@@ -3,6 +3,11 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.2.1 Release
+-------------
+Fix for inconsistent use of DOS / Windows palette (now DOS-only)
+
+-------------
 1.2.0 Release
 -------------
 New tiles for Dispatchers' Office and Storage Huts 
