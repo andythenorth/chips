@@ -1,5 +1,5 @@
 // byte is index in cargotable, word is THIS_SET_ID define above
--1 * 0 03 04 01 THIS_TILE_ID \b34
+-1 * 0 03 04 01 THIS_TILE_ID \b35
   00 \wxA0 // cargo: WDPR
   01 \wxA1 // cargo: SCRP
   03 \wxA8 // cargo: WOOD
@@ -33,6 +33,7 @@
   37 \wxA2 // cargo: VALU
   38 \wxA2 // cargo: DIAM
   39 \wxA2 // cargo: GOLD
+  3A \wxC3 // cargo: JAVA
   FF \wx MENU_GRAPHICS_ID // menu
 \wxB0
 
