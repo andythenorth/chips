@@ -5,7 +5,7 @@
 "FICR" "RUBR" "RFPR" "PETR" "OIL_"    //0F - 13
 "GOOD" "WATR" "MILK" "COAL" "IORE"    //14 - 18
 "AORE" "CLAY" "GRVL" "SAND" "GRAI"    //19 - 1D
-"RSGR" "MAIZ" "CORE" "FERT" "CTCD"    //1E - 22
+"SGBT" "MAIZ" "CORE" "FERT" "CTCD"    //1E - 22
 "SULP" "WHEA" "COLA" "CERE" "PAPR"    //23 - 27
 "TOFF" "SUGR" "PLAS" "PASS" "MAIL"    //28 - 2C
 "BATT" "SWET" "FMSP" "ENSP" "MNSP"    //2D - 31
