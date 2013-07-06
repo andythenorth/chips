@@ -63,11 +63,12 @@
     1A 00 00
     01 \wx00 00 00 \wx00
 
--1 * 0 03 04 01 THIS_TILE_ID \b2
-      THIS_CARGO_NUMS // to be in format: cargo_num_in_cargo_table cargo_ID // comment with label
+-1 * 0 03 04 01 THIS_TILE_ID THIS_NUM_CARGOS
+      THIS_CARGO_NUMS // to be in format: cargo_num_in_cargo_table cargo_ID /* comment with LABEL */
       FF \wxFF // menu
   \wx0A
 
 #undef THIS_TILE_ID
+#undef THIS_NUM_CARGOS
 #undef THIS_CARGO_NUMS
 #undef THIS_GRAPHICS_FILE
