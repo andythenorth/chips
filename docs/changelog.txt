@@ -3,6 +3,22 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.3.0 Release
+-------------
+Cargo graphics for: 
+	- coffee 
+	- copper ore
+	- diamonds, gold, valuables
+	- rubber
+	- sugar
+	- sugarcane, sugar beet
+Grain Silo indicates cargo waiting for additional cargos:
+	- maize
+	- wheat
+	- fibre crops 
+Fix for missing pylons with electrified tracks
+
+-------------
 1.2.1 Release
 -------------
 Fix for inconsistent use of DOS / Windows palette (now DOS-only)
