@@ -1,6 +1,6 @@
 #define THIS_TILE_ID        TILE_GRAIN_SILOS
 #define THIS_GRAPHICS_FILE  grain_cargo.png
-#define THIS_CARGO_NUM      1D // cargo: GRAIN (wheat etc. not supported currently)
+#define THIS_CARGO_NUMS     1D \wx00 // cargo: GRAIN (wheat etc. not supported currently)
 
 #include "../templates/farm_cargos_tile.tnfo"
 
