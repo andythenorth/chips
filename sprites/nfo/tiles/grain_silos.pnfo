@@ -1,7 +1,7 @@
 #define THIS_TILE_ID        TILE_GRAIN_SILOS
 #define THIS_GRAPHICS_FILE  grain_cargo.png
-#define THIS_NUM_CARGOS     \b2 // count of cargos +1 for buy menu
-#define THIS_CARGO_NUMS     1D \wx00 /* cargo: GRAIN (wheat etc. not supported currently) */
+#define THIS_NUM_CARGOS     \b5 // count of cargos +1 for buy menu
+#define THIS_CARGO_NUMS     1D \wx00 /* cargo: GRAI */ 1F \wx00 /* cargo: MAIZ */ 24 \wx00 /* cargo: WHEA */ 0F \wx00 /* cargo: FICR */
 
 #include "../templates/farm_cargos_tile.tnfo"
 
