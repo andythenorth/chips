@@ -45,6 +45,8 @@
 #define TILE_MINE_BUILDING_LARGE        30
 #define TILE_STORAGE_HUTS               31
 #define TILE_DISPATCHERS_OFFICE         32
+#define TILE_HARBOUR_CRANES_1           33
+#define TILE_HARBOUR_CRANES_2           34
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.
@@ -73,6 +75,8 @@
 #define TEXT_TILE_MINE_BUILDING_LARGE         "Large Mine Building"
 #define TEXT_TILE_STORAGE_HUTS                "Storage Huts"
 #define TEXT_TILE_DISPATCHERS_OFFICE          "Dispatchers' Office"
+#define TEXT_TILE_HARBOUR_CRANES_1            "Harbour Cranes"
+#define TEXT_TILE_HARBOUR_CRANES_2            "More Harbour Cranes"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"
