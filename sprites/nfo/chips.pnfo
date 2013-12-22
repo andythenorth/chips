@@ -43,6 +43,6 @@
 #include "sprites/nfo/tiles/storage_huts.pnfo"
 #include "sprites/nfo/tiles/dispatchers_office.pnfo"
 #include "sprites/nfo/tiles/harbour_cranes.pnfo"
-
+#include "sprites/nfo/tiles/more_huts.pnfo"
 
 #include "sprites/nfo/lang/strings.pnfo"

@@ -47,6 +47,8 @@
 #define TILE_DISPATCHERS_OFFICE         32
 #define TILE_HARBOUR_CRANES_1           33
 #define TILE_HARBOUR_CRANES_2           34
+#define TILE_MORE_HUTS                  35
+
 
 // Strings (needs moving to lang files later - this is just convenient for now)
 // (Note from andythenorth) strings framework needs some thought.
@@ -77,6 +79,7 @@
 #define TEXT_TILE_DISPATCHERS_OFFICE          "Dispatchers' Office"
 #define TEXT_TILE_HARBOUR_CRANES_1            "Harbour Cranes"
 #define TEXT_TILE_HARBOUR_CRANES_2            "More Harbour Cranes"
+#define TEXT_TILE_MORE_HUTS                   "More Huts"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
 #define TEXT_STATION_CATEGORY_2            "CHIPS tiles"
