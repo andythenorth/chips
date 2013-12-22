@@ -47,7 +47,8 @@
 #define TILE_DISPATCHERS_OFFICE         32
 #define TILE_HARBOUR_CRANES_1           33
 #define TILE_HARBOUR_CRANES_2           34
-#define TILE_MORE_HUTS                  35
+// #define                   35 // left free in case I decide to add crane rails
+#define TILE_MORE_HUTS                  36
 
 
 // Strings (needs moving to lang files later - this is just convenient for now)
