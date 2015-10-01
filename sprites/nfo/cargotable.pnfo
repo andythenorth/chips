@@ -1,4 +1,4 @@
--1 * 0 00 08 \b1 3D 00
+-1 * 0 00 08 \b1 3E 00
 09 "WDPR" "SCMT" "CMNT" "WOOD" "LVST" //00 - 04
 "STEL" "VEHI" "BRCK" "WOOL" "BUBL"    //05 - 09
 "TOYS" "FZDR" "FRUT" "FRVG" "FOOD"    //0A - 0E
@@ -11,4 +11,4 @@
 "BATT" "SWET" "FMSP" "ENSP" "MNSP"    //2D - 31
 "DYES" "PLST" "BEER" "BDMT" "FISH"    //32 - 36
 "VALU" "DIAM" "GOLD" "JAVA" "SGCN"    //37 - 3B
-"VPTS"  //3C - 3F
+"VPTS" "BEAN" //3C - 3F
