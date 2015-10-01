@@ -795,6 +795,10 @@
 #define THIS_SET_ID C4
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/nitrates_cargo.png
+#define THIS_SET_ID C5
+#include TILE_TEMPLATE_FILE
+
 #define THIS_CARGO_SPRITESHEET sprites/graphics/sugar_beet_cargo.png
 #define THIS_SET_ID C6
 #include TILE_TEMPLATE_FILE
