@@ -811,6 +811,9 @@
 #define THIS_SET_ID C8
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/phosphate_cargo.png
+#define THIS_SET_ID C9
+#include TILE_TEMPLATE_FILE
 
 -1 * 0 02 04 20 81 // check for crane
 49 20 0F
