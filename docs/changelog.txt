@@ -6,6 +6,17 @@ CHIPS Station Set Changelog
 1.5.0 Release
 -------------
 Cargo graphics for:
+	- manganese
+ 	- paper
+	- phosphate
+	- pyrite ore
+	- vehicles
+Improved copper ore appearance
+
+-------------
+1.5.0 Release
+-------------
+Cargo graphics for:
 	- beans
 	- nitrates
 	- vehicle parts
