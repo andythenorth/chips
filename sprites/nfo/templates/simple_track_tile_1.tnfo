@@ -819,6 +819,10 @@
 #define THIS_SET_ID CA
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/vehicles_cargo.png
+#define THIS_SET_ID CB
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 20 81 // check for crane
 49 20 0F
 \2- 49 04 0F
