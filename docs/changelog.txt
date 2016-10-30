@@ -2,6 +2,15 @@
 CHIPS Station Set Changelog
 ===========================
 
+-------------
+1.7.0 Release
+-------------
+Cargo graphics for:
+	- cassava
+ 	- copper
+	- edible oil
+	- nuts
+
 ---------------------
 1.6.0 / 1.6.1 Release
 ---------------------
