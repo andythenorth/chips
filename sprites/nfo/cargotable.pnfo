@@ -1,4 +1,4 @@
--1 * 0 00 08 \b1 43 00
+-1 * 0 00 08 \b1 44 00
 09 "WDPR" "SCMT" "CMNT" "WOOD" "LVST" //00 - 04
 "STEL" "VEHI" "BRCK" "WOOL" "BUBL"    //05 - 09
 "TOYS" "FZDR" "FRUT" "FRVG" "FOOD"    //0A - 0E
@@ -12,4 +12,4 @@
 "DYES" "PLST" "BEER" "BDMT" "FISH"    //32 - 36
 "VALU" "DIAM" "GOLD" "JAVA" "SGCN"    //37 - 3B
 "VPTS" "BEAN" "NITR" "PORE" "PHOS"    //3C - 40
-"MNO2" "VEHI" //41 - 45
+"MNO2" "VEHI" "EOIL" //41 - 45
