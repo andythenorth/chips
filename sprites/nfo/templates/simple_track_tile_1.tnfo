@@ -847,6 +847,10 @@
 #define THIS_SET_ID D1
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/soda_ash_cargo.png
+#define THIS_SET_ID D2
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 20 81 // check for crane
 49 20 0F
 \2- 49 04 0F
