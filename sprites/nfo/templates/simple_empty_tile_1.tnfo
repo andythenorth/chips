@@ -214,6 +214,10 @@
 #define THIS_SET_ID D0
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/sulphur_cargo.png
+#define THIS_SET_ID D1
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
 \b2 // num ranges

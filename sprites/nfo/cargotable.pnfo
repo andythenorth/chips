@@ -1,4 +1,5 @@
--1 * 0 00 08 \b1 4F 00
+-1 * 0 00 08 \b1 50 00
+//               ^ cargo count
 09 "WDPR" "SCMT" "CMNT" "WOOD" "LVST" //00 - 04
 "STEL" "VEHI" "BRCK" "WOOL" "BUBL"    //05 - 09
 "TOYS" "FZDR" "FRUT" "FRVG" "FOOD"    //0A - 0E
@@ -14,4 +15,4 @@
 "VPTS" "BEAN" "NITR" "PORE" "PHOS"    //3C - 40
 "MNO2" "VEHI" "EOIL" "NUTS" "CASS"    //41 - 45
 "COPR" "NICK" "COKE" "METL" "SLAG"    //46 - 4A
-"IRON" "QLME" "BOOM" "PIPE" //4B - 4E
+"IRON" "QLME" "BOOM" "PIPE" "SULP" //4B - 4E
