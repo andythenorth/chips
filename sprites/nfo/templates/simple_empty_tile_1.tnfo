@@ -222,6 +222,10 @@
 #define THIS_SET_ID D2
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET sprites/graphics/cement_cargo.png
+#define THIS_SET_ID D3
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
 \b2 // num ranges
