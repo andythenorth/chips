@@ -1,4 +1,4 @@
--1 * 0 00 08 \b1 55 00
+-1 * 0 00 08 \b1 57 00
 //               ^ cargo count (hex)
 09 "WDPR" "SCMT" "CMNT" "WOOD" "LVST" //00 - 04
 "STEL" "VEHI" "BRCK" "WOOL" "BUBL"    //05 - 09
@@ -17,3 +17,4 @@
 "COPR" "NICK" "COKE" "METL" "SLAG"    //46 - 4A
 "IRON" "QLME" "BOOM" "PIPE" "SULP"    //4B - 4E
 "SASH" "CMNT" "VBOD" "POTA" "ZINC"    //4F - 53
+"PEAT" "KAOL"   //54 - 58
