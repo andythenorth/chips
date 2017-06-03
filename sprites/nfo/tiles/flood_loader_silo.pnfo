@@ -1,5 +1,5 @@
 -1 * 0	 00 04 \b5 \b1 TILE_FLOOD_LOADER_SILO
-  08 "CHPT" // Class ID - groups stations in menu
+  08 "CHPS" // Class ID - groups stations in menu
   09 02 // 2 tiles
     \dx000003F4 // custom ground sprite
     00 00 80 // x/y/z offset
