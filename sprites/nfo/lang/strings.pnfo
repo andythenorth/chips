@@ -31,4 +31,5 @@
 -1 * 0 04 04 FF 01 TILE_HARBOUR_CRANES_2 C5             TEXT_TILE_HARBOUR_CRANES_2 00
 -1 * 0 04 04 FF 01 TILE_MORE_HUTS C5                    TEXT_TILE_MORE_HUTS 00
 
+// C4 string labels the category - by associating string with any tile in that category
 -1 * 0 04 04 FF 01 TILE_TRACK_CONCRETE_FIRS C4          TEXT_STATION_CATEGORY_1 00
