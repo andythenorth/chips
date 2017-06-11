@@ -3,6 +3,28 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.8.0 Release
+-------------
+Cargo graphics for:
+	- nickel
+	- coke
+	- metal (using new METL cargo label in FIRS 3, not STEL as before)
+	- quicklime
+	- slag
+	- pig iron
+	- explosives
+	- pipe
+	- sulphur
+	- soda ash
+	- cement
+	- vehicle bodies
+	- potash
+	- zinc
+	- kaolin
+	- peat
+Consolidate all CHIPS station tiles to one category 'CHIPS Stations', easing station construction by reducing navigation clicks
+
+-------------
 1.7.0 Release
 -------------
 Cargo graphics for:
