@@ -3,6 +3,14 @@ CHIPS Station Set Changelog
 ===========================
 
 -------------
+1.9.0 Release
+-------------
+Cargo graphics for:
+	- limestone
+	- salt
+Fix unwanted animated water pixels in Harbour Crane sprites
+
+-------------
 1.8.0 Release
 -------------
 Cargo graphics for:
