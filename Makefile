@@ -66,7 +66,7 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 	$(_V) if [ ! -d generated ];\
 		then mkdir generated;\
 	fi;
-	$(CC) $(CC_FLAGS) src/chips.pnfo \
+	$(_V) $(CC) $(CC_FLAGS) src/chips.pnfo \
 		| sed -e "s/{{REPLACE_REPO_REVISION}}/$(REPO_REVISION)/" \
 		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/" \
 	> $(NFO_FILE)
