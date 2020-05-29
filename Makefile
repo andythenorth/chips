@@ -62,18 +62,18 @@ tar: $(TAR_FILE)
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
-$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo sprites)
+$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 	$(_V) if [ ! -d generated ];\
 		then mkdir generated;\
 	fi;\
 #	$(_E) "[CPP] $(NFO_FILE)"
-	$(_V) $(CC) $(CC_FLAGS) sprites/nfo/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
+	$(_V) $(CC) $(CC_FLAGS) src/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
 #	$(_E) "[NFORENUM] $(NFO_FILE)"
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
 	rm -r $(NFO_FILE).bak
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
-$(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png sprites)
+$(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png src)
 	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 

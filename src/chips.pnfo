@@ -1,0 +1,48 @@
+#include "src/header.pnfo"
+// This line must always be the first line ^
+// other files may follow in any order:
+// sprites/\;//#nfo
+#include "src/ids.pnfo"
+
+#include "src/cargotable.pnfo"
+
+#include "src/docks.pnfo"
+
+//#include "src/tiles/test.pnfo"
+//#include "src/tiles/detectind.pnfo"
+
+
+#include "src/grm_sprites.pnfo"
+
+// 'magic' tiles
+#include "src/tiles/cobble_FIRS.pnfo"
+#include "src/tiles/concrete_FIRS.pnfo"
+#include "src/tiles/mud_FIRS.pnfo"
+#include "src/tiles/slabs.pnfo"
+//#include "src/tiles/plain_terrain.pnfo"
+
+// pax tiles
+#include "src/tiles/parcels_office.pnfo"
+#include "src/tiles/concourse_1.pnfo"
+#include "src/tiles/booking_office.pnfo"
+#include "src/tiles/booking_office_small.pnfo"
+#include "src/tiles/hotel.pnfo"
+// misc station buildings
+#include "src/tiles/wood_hut.pnfo"
+#include "src/tiles/boiler_house_offices.pnfo"
+#include "src/tiles/warehouse_small.pnfo"
+// structure tiles (non pax)
+#include "src/tiles/tipple.pnfo"
+#include "src/tiles/flood_loader_silo.pnfo"
+#include "src/tiles/pig_pens.pnfo"
+#include "src/tiles/sheep_pens.pnfo"
+#include "src/tiles/cow_pens.pnfo"
+#include "src/tiles/grain_silos.pnfo"
+#include "src/tiles/mine_building_small.pnfo"
+#include "src/tiles/mine_building_large.pnfo"
+#include "src/tiles/storage_huts.pnfo"
+#include "src/tiles/dispatchers_office.pnfo"
+#include "src/tiles/harbour_cranes.pnfo"
+#include "src/tiles/more_huts.pnfo"
+
+#include "src/lang/strings.pnfo"
