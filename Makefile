@@ -62,7 +62,7 @@ tar: $(TAR_FILE)
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
-$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo sprites)
+$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo sprites)
 	$(_V) if [ ! -d generated ];\
 		then mkdir generated;\
 	fi;\
