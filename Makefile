@@ -6,7 +6,10 @@ ZIP = zip
 
 GRFCODEC = grfcodec
 GRFID = grfid
+
 NFORENUM = nforenum
+NFORENUM_FLAGS ?= $(shell [ `$(NFORENUM) -s -v 2>/dev/null | wc -l ` -eq 1 ] && echo "-s" || echo "")
+NFO_WARN_LEVEL ?= 4
 
 CC             ?= gcc
 CC_FLAGS       ?= -C -E -nostdinc -x c-header - <
@@ -64,6 +67,7 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo sprites)
 	$(_V) $(CC) $(CC_FLAGS) sprites/nfo/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
 #	$(_E) "[NFORENUM] $(NFO_FILE)"
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
+	rm -r $(NFO_FILE).bak
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 $(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png sprites)
@@ -108,7 +112,7 @@ install: default
 
 clean:
 	$(_V) echo "[CLEANING]"
-	$(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	$(_V) for f in $(NFO_FILE) $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
