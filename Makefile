@@ -70,12 +70,13 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 	$(_V) $(CC) $(CC_FLAGS) src/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
 #	$(_E) "[NFORENUM] $(NFO_FILE)"
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
-	rm -r $(NFO_FILE).bak
+# renum leaves unwanted .bak file, remove it
+	$(_V)  rm -r $(NFO_FILE).bak
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 $(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png src)
 	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
-	mv $(PROJECT_NAME).grf $(GRF_FILE)
+	$(_V) mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE)
 # the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
