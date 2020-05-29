@@ -25,7 +25,7 @@
 
 -1 * -1   14
   "C" "INFO"
-    "B" "VRSN" \w4 \d{{REPO_REVISION}}
+    "B" "VRSN" \w4 \d0
     "B" "MINV" \w4 \d0
     "B" "PALS" \w1 "D" // palette
     "B" "NPAR" \w1 \b0 // 0 settings
@@ -33,6 +33,6 @@
     00
   00
 
--1 * 0 08 07 {{GRF_ID}} "{{GRF_TITLE}}" 00 "\8ECHIPS Station Set\n"
+-1 * 0 08 07 "CHPS" "CHIPS Station Set" 00 "\8ECHIPS Station Set\n"
 "\98Brought to you by andythenorth and yexo, with help from planetmaker and Peter1138.\n"
 "Includes elements from other sets used under GPL" 00

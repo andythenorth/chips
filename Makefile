@@ -1,78 +1,116 @@
-#
-# This file is part of the NML build framework
-# NML build framework is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
-# NML build framework is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with NML build framework. If not, see <http://www.gnu.org/licenses/>.
-#
+# Various needed programs
+GIT = git
+PYTHON3 = python3
+SED = sed
+ZIP = zip
 
-# Definition of the grfs
-GRF_FILE            := chips.grf
-REPO_NAME           := CHIPS Station Set
-MAIN_SRC_FILE       := sprites/nfo/chips.pnfo
-GRF_ID             := \"CHPS\"
-# GFX_LIST_FILES      := gfx/png_source_list
+GRFCODEC = grfcodec
+GRFID = grfid
+NFORENUM = nforenum
 
-# Directory structure
-SRC_DIR             := sprites
-DOC_DIR             := docs
-SCRIPT_DIR          := scripts
-# LANG_DIR            := lang
+CC             ?= gcc
+CC_FLAGS       ?= -C -E -nostdinc -x c-header - <
 
-# Documentation files:
-DOC_FILES = docs/readme.txt docs/license.txt docs/changelog.txt
-
-# List of all files which will get shipped
-# DOC_FILES = readme, changelog and license
-# GRF_FILENAME = MAIN_FILENAME_SRC with the extention .grf
-# Add any additional, not usual files here, too, including
-# their relative path to the root of the repository
-BUNDLE_FILES           = $(GRF_FILE) $(DOC_FILES)
-
-# Replacement strings in the source and in the documentation
-# You may only change the values, not add new definitions
-# (unless you know where to add them in other places, too)
-REPLACE_TITLE       := {{GRF_TITLE}}
-REPLACE_GRFID       := {{GRF_ID}}
-REPLACE_REVISION    := {{REPO_REVISION}}
-REPLACE_FILENAME    := {{FILENAME}}
-REPLACE_MD5SUM      := {{GRF_MD5}}
+GIT_INFO = $(PYTHON3) src/polar_fox/git_info.py
+FILL_TEMPLATE = bin/fill-template
+FIND_FILES = bin/find-files
+MK_ARCHIVE = bin/mk-archive
 
 
-# general definitions (no rules!)
--include Makefile_dist
-include $(SCRIPT_DIR)/Makefile_def
+# Project details
+PROJECT_NAME = chips
 
-# target 'all'
-include $(SCRIPT_DIR)/Makefile_all
+EXPORTED = no
+ifeq ($(strip $(EXPORTED)),no)
+  # Not exported source, therefore regular checkout
+  REPO_INFO = $(shell $(GIT_INFO))
+  REPO_REVISION = $(word 1,$(REPO_INFO))
+  REPO_VERSION = $(word 2,$(REPO_INFO))
+else
+  # Exported version, lines below should get modified in 'bundle_src' target
+  REPO_REVISION = ${exported_revision}
+  REPO_VERSION = ${exported_version}
+endif
 
-gfx:
-lng:
+REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
+REPO_TITLE = "$(PROJECT_NAME)"
+PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
+ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)'
 
-# target 'depend' (not implemented)
-# include $(SCRIPT_DIR)/Makefile_dep
-# -include Makefile_gfx.dep
+NFO_FILE = sprites/$(PROJECT_NAME).nfo
+GRF_FILE = $(PROJECT_NAME).grf
+TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
+ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
+MD5_FILE = $(PROJECT_NAME).check.md5
 
-# target nml
-# include $(SCRIPT_DIR)/Makefile_nml
-# target 'gfx' which builds all needed sprites
-# Only a special gfx target for gimp exists so far
-# include $(SCRIPT_DIR)/Makefile_gimp
-# target 'lng' which builds the lang/*.lng files
-# include $(SCRIPT_DIR)/Makefile_lng
-# target 'nfo' which builds the nfo files
-include $(SCRIPT_DIR)/Makefile_nfo
-# target 'grf' which builds the grf from the nml
-include $(SCRIPT_DIR)/Makefile_nfogrf
-# target 'doc' which builds the docs
-include $(SCRIPT_DIR)/Makefile_doc
+SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
+BUNDLE_DIR = bundle_dir
 
-# target 'bundle' and bundle_xxx which builds the distribution files
-# and the distribution bundles like bundle_tar, bundle_zip, ...
-include $(SCRIPT_DIR)/Makefile_bundle
-# target 'bundle_src which builds source bundle
-include $(SCRIPT_DIR)/Makefile_bundlesrc
-# target 'install' which installs the grf
-include $(SCRIPT_DIR)/Makefile_install
+# Build rules
+.PHONY: default grf tar bundle_tar bundle_zip bundle_src clean
+default: grf
+# bundle needs to clean first to ensure we don't use outdated/cached version info
+bundle_tar: clean tar
+bundle_zip: $(ZIP_FILE)
+nfo: $(NFO_FILE)
+grf: $(GRF_FILE)
+tar: $(TAR_FILE)
 
-# misc. convenience targets like 'langcheck'
--include $(SCRIPT_DIR)/Makefile_misc
+# remove the @ for more verbose output (@ suppresses command output)
+_V ?= @
+
+$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo sprites)
+#	$(_E) "[CPP] $(NFO_FILE)"
+	$(_V) $(CC) $(CC_FLAGS) sprites/nfo/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
+#	$(_E) "[NFORENUM] $(NFO_FILE)"
+	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
+
+# N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
+$(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png sprites)
+	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf
+	mv $(PROJECT_NAME).grf $(GRF_FILE)
+
+$(TAR_FILE): $(GRF_FILE)
+# the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
+	# create an intermediate dir, and copy in what we need for bananas
+	mkdir $(PROJECT_VERSIONED_NAME)
+	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
+	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
+	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) --base=$(PROJECT_VERSIONED_NAME) $(PROJECT_VERSIONED_NAME)
+	# delete the intermediate dir
+	rm -r $(PROJECT_VERSIONED_NAME)
+
+$(ZIP_FILE): $(TAR_FILE)
+	$(ZIP) -9rq $(ZIP_FILE) $(TAR_FILE) >/dev/null
+
+$(MD5_FILE): $(GRF_FILE)
+	$(GRFID) -m $(GRF_FILE) > $(MD5_FILE)
+
+bundle_src: $(MD5_FILE)
+	if test -d $(BUNDLE_DIR); then rm -r $(BUNDLE_DIR); fi
+	mkdir $(BUNDLE_DIR)
+	$(GIT) archive -t files $(BUNDLE_DIR)/src
+	$(FILL_TEMPLATE) --template=Makefile \
+		--output=$(BUNDLE_DIR)/src/Makefile \
+		"exported_revision=$(REPO_REVISION)" \
+		"exported_version=$(REPO_VERSION)"
+	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
+	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
+		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
+
+# this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
+# remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
+install: default
+	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
+	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
+
+clean:
+	$(_V) echo "[CLEANING]"
+	$(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	do if test -e $$f;\
+	   then rm -r $$f;\
+	   fi;\
+	done
+	$(_V) echo "[DONE]"
