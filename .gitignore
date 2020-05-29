@@ -4,6 +4,9 @@ docs/
 .chameleon_cache/
 chips.grf
 chips.nfo
+chips.nfo.bak
+chips.bak
+chips.new
 chips.md5
 
 # The local makefile should be ignored:
