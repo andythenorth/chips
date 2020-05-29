@@ -67,8 +67,8 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 		then mkdir generated;\
 	fi;
 	$(_V) $(CC) $(CC_FLAGS) src/chips.pnfo \
-		| sed -e "s/{{REPLACE_REPO_REVISION}}/$(REPO_REVISION)/" \
-		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/" \
+		| sed -e "s/{{REPLACE_REPO_REVISION}}/$(REPO_REVISION)/g" \
+		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/g" \
 	> $(NFO_FILE)
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
 # renum leaves unwanted .bak file, remove it
