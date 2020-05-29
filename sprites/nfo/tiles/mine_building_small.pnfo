@@ -20,8 +20,8 @@
 //Tile action 1
 -1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/mine_buildings.png 10 90 09 65 64 -31 -34
--1 sprites/graphics/mine_buildings.png 80 90 09 65 64 -31 -34
+-1 src/graphics/mine_buildings.png 10 90 09 65 64 -31 -34
+-1 src/graphics/mine_buildings.png 80 90 09 65 64 -31 -34
 
 -1 * 7	 02 04 00 00 01 \w0
 

@@ -20,8 +20,8 @@
 //Tile action 1
 -1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
--1 sprites/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
 
 -1 * 7	 02 04 00 00 01 \w0
 
@@ -58,8 +58,8 @@
 //Tile action 1
 -1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/harbour_cranes.png 220 10 09 145 64 -31 -114
--1 sprites/graphics/harbour_cranes.png 150 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 220 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 150 10 09 145 64 -31 -114
 
 -1 * 7	 02 04 00 00 01 \w0
 

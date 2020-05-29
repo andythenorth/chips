@@ -21,12 +21,12 @@
 //Tile action 1
 -1 * 0	 01 04 \b3 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/THIS_GRAPHICS_FILE  10 10 09 65 64 -31 -34
--1 sprites/graphics/THIS_GRAPHICS_FILE 220 10 09 65 64 -31 -34
--1 sprites/graphics/THIS_GRAPHICS_FILE  80 10 09 65 64 -31 -34
--1 sprites/graphics/THIS_GRAPHICS_FILE 290 10 09 65 64 -31 -34
--1 sprites/graphics/THIS_GRAPHICS_FILE 150 10 09 65 64 -31 -34
--1 sprites/graphics/THIS_GRAPHICS_FILE 360 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE  10 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE 220 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE  80 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE 290 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE 150 10 09 65 64 -31 -34
+-1 src/graphics/THIS_GRAPHICS_FILE 360 10 09 65 64 -31 -34
 
 // empty - used for case of no matching cargo
 -1 * 0 02 04 0A

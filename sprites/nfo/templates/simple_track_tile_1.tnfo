@@ -711,163 +711,163 @@
 
 #define TILE_TEMPLATE_FILE "simple_track_tile_1_cargo.tnfo"
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/lumber_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/lumber_cargo.png
 #define THIS_SET_ID A0
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/scrap_metal_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/scrap_metal_cargo.png
 #define THIS_SET_ID A1
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/crates_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/crates_cargo.png
 #define THIS_SET_ID A2
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/stone_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/stone_cargo.png
 #define THIS_SET_ID A3
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sand_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/sand_cargo.png
 #define THIS_SET_ID A4
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/clay_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/clay_cargo.png
 #define THIS_SET_ID A5
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/coal_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/coal_cargo.png
 #define THIS_SET_ID A6
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/iron_ore_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/iron_ore_cargo.png
 #define THIS_SET_ID A7
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/wood_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/wood_cargo.png
 #define THIS_SET_ID A8
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/barrels_cargo.png
 #define THIS_SET_ID A9
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/metal_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/metal_cargo.png
 #define THIS_SET_ID AA
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/fruit_vegetable_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/fruit_vegetable_cargo.png
 #define THIS_SET_ID AB
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/barrels_bare_metal_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/barrels_bare_metal_cargo.png
 #define THIS_SET_ID AC
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/alcohol_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/alcohol_cargo.png
 #define THIS_SET_ID AD
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/crates_white_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/crates_white_cargo.png
 #define THIS_SET_ID AE
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/bauxite_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/bauxite_cargo.png
 #define THIS_SET_ID AF
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/copper_ore_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/copper_ore_cargo.png
 #define THIS_SET_ID C0
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/rubber_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/rubber_cargo.png
 #define THIS_SET_ID C1
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sugar_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/sugar_cargo.png
 #define THIS_SET_ID C2
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/coffee_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/coffee_cargo.png
 #define THIS_SET_ID C3
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sugarcane_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/sugarcane_cargo.png
 #define THIS_SET_ID C4
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/nitrates_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/nitrates_cargo.png
 #define THIS_SET_ID C5
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sugar_beet_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/sugar_beet_cargo.png
 #define THIS_SET_ID C6
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/paper_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/paper_cargo.png
 #define THIS_SET_ID C7
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/pyrite_ore_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/pyrite_ore_cargo.png
 #define THIS_SET_ID C8
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/phosphate_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/phosphate_cargo.png
 #define THIS_SET_ID C9
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/manganese_ore_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/manganese_ore_cargo.png
 #define THIS_SET_ID CA
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/vehicles_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/vehicles_cargo.png
 #define THIS_SET_ID CB
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/nuts_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/nuts_cargo.png
 #define THIS_SET_ID CC
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/cassava_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/cassava_cargo.png
 #define THIS_SET_ID CD
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/copper_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/copper_cargo.png
 #define THIS_SET_ID CE
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/slag_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/slag_cargo.png
 #define THIS_SET_ID CF
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/pipe_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/pipe_cargo.png
 #define THIS_SET_ID D0
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/sulphur_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/sulphur_cargo.png
 #define THIS_SET_ID D1
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/soda_ash_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/soda_ash_cargo.png
 #define THIS_SET_ID D2
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/cement_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/cement_cargo.png
 #define THIS_SET_ID D3
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/vehicle_bodies_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/vehicle_bodies_cargo.png
 #define THIS_SET_ID D4
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/peat_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/peat_cargo.png
 #define THIS_SET_ID D5
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/kaolin_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/kaolin_cargo.png
 #define THIS_SET_ID D6
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET sprites/graphics/limestone_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/limestone_cargo.png
 #define THIS_SET_ID D7
 #include TILE_TEMPLATE_FILE
 

@@ -36,15 +36,15 @@
 //Tile action 1
 -1 * 0	 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/flood_loader_silo.png 80 10 09 145 64 -31 -114
--1 sprites/graphics/flood_loader_silo.png 150 10 09 145 64 -31 -114
--1 sprites/graphics/flood_loader_silo.png 80 170 09 65 64 -31 -34
--1 sprites/graphics/flood_loader_silo.png 150 170 09 65 64 -31 -34
+-1 src/graphics/flood_loader_silo.png 80 10 09 145 64 -31 -114
+-1 src/graphics/flood_loader_silo.png 150 10 09 145 64 -31 -114
+-1 src/graphics/flood_loader_silo.png 80 170 09 65 64 -31 -34
+-1 src/graphics/flood_loader_silo.png 150 170 09 65 64 -31 -34
 //mud
--1 sprites/graphics/groundtiles.png  10  50 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  10  90 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  10 130 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png  10 170 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  10  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  10  90 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  10 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  10 170 09 31 64 -31 0
 
 -1 * 7	 02 04 00 00 01 \w0
 

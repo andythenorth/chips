@@ -67,10 +67,10 @@
 //Tile action 1
 -1 * 0 01 04 \b1 \b4 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
--1 sprites/graphics/groundtiles.png 10 10 09 31 64 -31 0
--1 sprites/graphics/groundtiles.png 80 10 09 31 64 -31 0
--1 sprites/graphics/buffer.png      10 06 09 35 64 -31 -4
--1 sprites/graphics/buffer.png      80 10 09 31 64 -31 0
+-1 src/graphics/groundtiles.png 10 10 09 31 64 -31 0
+-1 src/graphics/groundtiles.png 80 10 09 31 64 -31 0
+-1 src/graphics/buffer.png      10 06 09 35 64 -31 -4
+-1 src/graphics/buffer.png      80 10 09 31 64 -31 0
 
 -1 * 0 02 04 AB 00 01 \w0
 
