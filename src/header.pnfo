@@ -25,7 +25,7 @@
 
 -1 * -1   14
   "C" "INFO"
-    "B" "VRSN" \w4 \d0
+    "B" "VRSN" \w4 \d{{REPLACE_REPO_REVISION}}
     "B" "MINV" \w4 \d0
     "B" "PALS" \w1 "D" // palette
     "B" "NPAR" \w1 \b0 // 0 settings
