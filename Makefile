@@ -40,8 +40,8 @@ REPO_TITLE = "$(PROJECT_NAME)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)'
 
-NFO_FILE = sprites/$(PROJECT_NAME).nfo
-GRF_FILE = $(PROJECT_NAME).grf
+NFO_FILE = generated/$(PROJECT_NAME).nfo
+GRF_FILE = generated/$(PROJECT_NAME).grf
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
@@ -63,6 +63,9 @@ tar: $(TAR_FILE)
 _V ?= @
 
 $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo sprites)
+	$(_V) if [ ! -d generated ];\
+		then mkdir generated;\
+	fi;\
 #	$(_E) "[CPP] $(NFO_FILE)"
 	$(_V) $(CC) $(CC_FLAGS) sprites/nfo/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
 #	$(_E) "[NFORENUM] $(NFO_FILE)"
@@ -71,7 +74,7 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo sprites)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 $(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png sprites)
-	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf
+	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE)
@@ -112,7 +115,7 @@ install: default
 
 clean:
 	$(_V) echo "[CLEANING]"
-	$(_V) for f in $(NFO_FILE) $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	$(_V) for f in $(NFO_FILE) $(GRF_FILE) generated $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
