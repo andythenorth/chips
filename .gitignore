@@ -1,7 +1,5 @@
 generated/
 docs/
-.nmlcache/
-.chameleon_cache/
 chips.grf
 chips.nfo
 chips.nfo.bak
