@@ -36,7 +36,6 @@ else
 endif
 
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
-REPO_TITLE = "$(PROJECT_NAME)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)'
 
@@ -67,7 +66,9 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 	$(_V) if [ ! -d generated ];\
 		then mkdir generated;\
 	fi;
-	$(CC) $(CC_FLAGS) src/chips.pnfo > $(NFO_FILE) > $(NFO_FILE)
+	$(CC) $(CC_FLAGS) src/chips.pnfo \
+		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/" \
+	> $(NFO_FILE)
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
 # renum leaves unwanted .bak file, remove it
 	$(_V)  rm -r $(NFO_FILE).bak
