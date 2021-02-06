@@ -1,8 +1,8 @@
 // dock code provided by PaulC under GPL
 -1 * 0	 0A 01 06 A7 0A
--1 src/graphics/docks.png 519 402 09 33 64 -39 -12
--1 src/graphics/docks.png 518 221 09 40 64 -23 -12
--1 src/graphics/docks.png 518 280 09 40 64 -39 -12
--1 src/graphics/docks.png 519 341 09 33 64 -23 -12
--1 src/graphics/docks.png 388 433 09 60 64 -39 -32
--1 src/graphics/docks.png 291 450 09 55 64 -23 -27
+-1 src/graphics/docks.png 10 10 09 33 64 -39 -12
+-1 src/graphics/docks.png 80 10 09 40 64 -23 -12
+-1 src/graphics/docks.png 150 10 09 40 64 -39 -12
+-1 src/graphics/docks.png 220 10 09 33 64 -23 -12
+-1 src/graphics/docks.png 290 10 09 60 64 -39 -32
+-1 src/graphics/docks.png 360 10 09 60 64 -23 -27
