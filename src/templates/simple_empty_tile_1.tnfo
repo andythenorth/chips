@@ -246,6 +246,10 @@
 #define THIS_SET_ID D8
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET src/graphics/metal_coil_cargo.png
+#define THIS_SET_ID D9
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 B0 85 // no cargo at all
 0C 00 \wxFFFF // var, shift, mask
 \b2 // num ranges

@@ -875,6 +875,10 @@
 #define THIS_SET_ID D8
 #include TILE_TEMPLATE_FILE
 
+#define THIS_CARGO_SPRITESHEET src/graphics/metal_coil_cargo.png
+#define THIS_SET_ID D9
+#include TILE_TEMPLATE_FILE
+
 -1 * 0 02 04 20 81 // check for crane
 49 20 0F
 \2- 49 04 0F
