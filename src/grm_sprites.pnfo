@@ -88,7 +88,7 @@
 
 // ground sprites for non-track tiles
 -1 src/graphics/groundtiles.png  80   10 09 31 64 -31 0
--1 src/graphics/groundtiles.png  150  10 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  10   10 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  360  10 09 31 64 -31 0
