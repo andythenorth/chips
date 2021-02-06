@@ -2,6 +2,16 @@
 CHIPS Station Set Changelog
 ===========================
 
+
+-------------
+1.10.0 Release
+-------------
+Cargo graphics for:
+	- carbon steel
+	- steel sheet
+        - tyres
+Convert to git, update makefile accordingly
+
 -------------
 1.9.0 Release
 -------------
