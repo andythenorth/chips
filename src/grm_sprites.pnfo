@@ -90,7 +90,7 @@
 -1 src/graphics/groundtiles.png  80   10 09 31 64 -31 0 // asphalt
 -1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0 // cobble
 -1 src/graphics/groundtiles.png  10   10 09 31 64 -31 0 // mud
--1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0 // dirty asphalt
+-1 src/graphics/groundtiles.png  150  10 09 31 64 -31 0 // dirty asphalt
 -1 src/graphics/groundtiles.png  360  10 09 31 64 -31 0 // slab - unused
 
 
