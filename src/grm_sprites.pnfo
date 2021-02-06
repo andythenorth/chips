@@ -56,7 +56,7 @@
 -1 src/graphics/forklifts_small.png     150  90 09 65 64 -31 -34
 -1 src/graphics/forklifts_small.png     220  90 09 65 64 -31 -34
 
-//concrete
+//asphalt
 -1 src/graphics/groundtiles.png  80  50 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  80  90 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  80 130 09 31 64 -31 0
@@ -74,24 +74,24 @@
 -1 src/graphics/groundtiles.png  10 130 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  10 170 09 31 64 -31 0
 
-//clay
--1 src/graphics/groundtiles.png  220  50 09 31 64 -31 0
--1 src/graphics/groundtiles.png  220  90 09 31 64 -31 0
--1 src/graphics/groundtiles.png  220 130 09 31 64 -31 0
--1 src/graphics/groundtiles.png  220 170 09 31 64 -31 0
+//dirty asphalt
+-1 src/graphics/groundtiles.png  150  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  150  90 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  150 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  150 170 09 31 64 -31 0
 
-//slabs
+//slab - unused
 -1 src/graphics/groundtiles.png  360  50 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  360  90 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  360 130 09 31 64 -31 0
 -1 src/graphics/groundtiles.png  360 170 09 31 64 -31 0
 
 // ground sprites for non-track tiles
--1 src/graphics/groundtiles.png  80   10 09 31 64 -31 0
--1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0
--1 src/graphics/groundtiles.png  10   10 09 31 64 -31 0
--1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0
--1 src/graphics/groundtiles.png  360  10 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80   10 09 31 64 -31 0 // asphalt
+-1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0 // cobble
+-1 src/graphics/groundtiles.png  10   10 09 31 64 -31 0 // mud
+-1 src/graphics/groundtiles.png  220  10 09 31 64 -31 0 // dirty asphalt
+-1 src/graphics/groundtiles.png  360  10 09 31 64 -31 0 // slab - unused
 
 
 -1 * 0 0D PARAM_TMP1 \D+ PARAM_TMP1 FF \d82

@@ -1,4 +1,4 @@
-#define THIS_TILE_ID          TILE_TRACK_CONCRETE_FIRS 
+#define THIS_TILE_ID          TILE_TRACK_ASPHALT_FIRS
 
 #define THIS_OVERLAY_GROUND_NE \dxC000001C
 #define THIS_OVERLAY_GROUND_SW \dxC000001D
@@ -8,7 +8,7 @@
 #include "../templates/simple_track_tile_1.tnfo"
 
 
-#define THIS_TILE_ID          TILE_EMPTY_CONCRETE_FIRS
+#define THIS_TILE_ID          TILE_EMPTY_ASPHALT_FIRS
 #define THIS_GROUND  \dx40000030
 
 #include "../templates/simple_empty_tile_1.tnfo"
