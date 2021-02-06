@@ -17,6 +17,7 @@
 // 'magic' tiles
 #include "src/tiles/cobble_FIRS.pnfo"
 #include "src/tiles/concrete_FIRS.pnfo"
+#include "src/tiles/dirty_concrete_FIRS.pnfo"
 #include "src/tiles/mud_FIRS.pnfo"
 #include "src/tiles/slabs.pnfo"
 //#include "src/tiles/plain_terrain.pnfo"

@@ -19,8 +19,8 @@
 #define TILE_EMPTY_MUD_FIRS             07
 #define TILE_TRACK_SLABS                08
 #define TILE_EMPTY_SLABS                09
-//#define TILE_UNUSED                     0A
-//#define TILE_UNUSED                     0B
+#define TILE_TRACK_DIRTY_CONCRETE_FIRS  0A
+#define TILE_EMPTY_DIRTY_CONCRETE_FIRS  0B
 //#define TILE_UNUSED                     0C
 //#define TILE_UNUSED                     0D
 //#define TILE_UNUSED                     0E
@@ -57,6 +57,7 @@
 #define TEXT_TILE_TEST_1                      "Test station 1"
 #define TEXT_TILE_TEST_2                      "Test station 2"
 #define TEXT_TILE_CONCRETE_FIRS               "Asphalt platform (FIRS-style)"
+#define TEXT_TILE_DIRTY_CONCRETE_FIRS         "Dirty Asphalt platform (FIRS-style)"
 #define TEXT_TILE_MUD_FIRS                    "Mud platform (FIRS-style)"
 #define TEXT_TILE_COBBLE_FIRS                 "Cobble platform (FIRS-style)"
 #define TEXT_TILE_QUARRY_FIRS                 "Concrete slabs platform"
