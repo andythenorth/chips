@@ -4,6 +4,11 @@ CHIPS Station Set Changelog
 
 
 -------------
+1.10.1 Release
+-------------
+Fix wrong sprite for cobble non-track tile
+
+-------------
 1.10.0 Release
 -------------
 Cargo graphics for:
