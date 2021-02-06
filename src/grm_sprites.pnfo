@@ -63,10 +63,10 @@
 -1 src/graphics/groundtiles.png  80 170 09 31 64 -31 0
 
 //cobble
--1 src/graphics/groundtiles.png  150  50 09 31 64 -31 0
--1 src/graphics/groundtiles.png  150  90 09 31 64 -31 0
--1 src/graphics/groundtiles.png  150 130 09 31 64 -31 0
--1 src/graphics/groundtiles.png  150 170 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  220  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  220  90 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  220 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  220 170 09 31 64 -31 0
 
 //mud
 -1 src/graphics/groundtiles.png  10  50 09 31 64 -31 0
