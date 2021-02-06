@@ -122,7 +122,7 @@
 #define THIS_SET_ID A9
 #include TILE_TEMPLATE_FILE
 
-#define THIS_CARGO_SPRITESHEET src/graphics/metal_cargo.png
+#define THIS_CARGO_SPRITESHEET src/graphics/metal_mixed_cargo.png
 #define THIS_SET_ID AA
 #include TILE_TEMPLATE_FILE
 
