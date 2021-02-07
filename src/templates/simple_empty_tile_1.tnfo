@@ -11,7 +11,7 @@
 #endif
 
 -1 * 0 00 04 \b7 \b1 THIS_TILE_ID
-08 "CHPS" // Class ID - groups stations in menu
+08 "CHPT" // Class ID - groups stations in menu
 1A 06 // 6 tiles
   //Basic layout
   40 // Use advanced sprite layout

@@ -33,4 +33,7 @@
     00
   00
 
--1 * 0 08 07 "CHPS" "CHIPS Station Set {{REPLACE_REPO_VERSION}}" 00 "CHIPS Station Set {{REPLACE_REPO_VERSION}}" 00
+-1 * 0 08 07 "CHPT" "CHIPS Station Set {{REPLACE_REPO_VERSION}}" 00 "CHIPS Station Set {{REPLACE_REPO_VERSION}}" 00
+
+// ^ note that GRFID is CHPT. It was CHPS, but needed a version bump by one in Feb 2021.
+// if changing grfid, search codebase for it as it is used in tile categories, which must also be changed.

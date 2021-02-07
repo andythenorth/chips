@@ -1,5 +1,5 @@
 -1 * 0	 00 04 \b4 \b1 TILE_TIPPLE
-  08 "CHPS" // Class ID - groups stations in menu
+  08 "CHPT" // Class ID - groups stations in menu
   09 02 // 2 tiles
     \dx000003F4 // custom ground sprite
     00 00 80 // x/y/z offset
