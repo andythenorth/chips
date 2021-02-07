@@ -70,6 +70,7 @@ $(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
 		| sed -e "s/{{REPLACE_REPO_REVISION}}/$(REPO_REVISION)/g" \
 		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/g" \
 	> $(NFO_FILE)
+	$(_V) echo "[RENUM]"
 	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
 # renum leaves unwanted .bak file, remove it
 	$(_V)  rm -r $(NFO_FILE).bak
