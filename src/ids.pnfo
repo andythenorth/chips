@@ -47,8 +47,11 @@
 #define TILE_DISPATCHERS_OFFICE         32
 #define TILE_HARBOUR_CRANES_1           33
 #define TILE_HARBOUR_CRANES_2           34
-// #define TILE_UNUSED                   35
+#define TILE_HARBOUR_CRANES_3           35
 #define TILE_MORE_HUTS                  36
+#define TILE_HARBOUR_CRANES_4           37
+#define TILE_HARBOUR_CRANE_RAILS_1      38
+#define TILE_HARBOUR_CRANE_RAILS_2      39
 
 
 // Strings (needs moving to lang files later - this is just convenient for now)
@@ -81,6 +84,7 @@
 #define TEXT_TILE_DISPATCHERS_OFFICE          "Dispatchers' office"
 #define TEXT_TILE_HARBOUR_CRANES_1            "Harbour cranes"
 #define TEXT_TILE_HARBOUR_CRANES_2            "More harbour cranes"
+#define TEXT_TILE_HARBOUR_CRANE_RAILS_1       "Harbour crane rails"
 #define TEXT_TILE_MORE_HUTS                   "More huts"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"

@@ -1,16 +1,24 @@
+// --------------------- crane --------------------- //
+
 -1 * 0	 00 04 \b5 \b1 TILE_HARBOUR_CRANES_1
   08 "CHPT" // Class ID - groups stations in menu
   1A 02 // 2 tiles
     //Basic layout
-    41
-    \d1420 \wx0002 00 // custom ground sprite
+    42
+    \dx80008431 \wx0002 00 // custom ground sprite
     \dx8000842D \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
+    \dx8000842F \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
     //Basic layout
-    41
-    \d1420 \wx0002 00 // custom ground sprite
+    42
+    \dx80008431 \wx0002 00 // custom ground sprite
     \dx8000842E \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx80008430 \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
   11 00 // catenary pylon placement (00 = none)
@@ -18,10 +26,14 @@
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
--1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0	 01 04 \b1 \b5 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
 -1 src/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
 -1 src/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 10 170 09 65 64 -31 -34
+-1 src/graphics/harbour_cranes.png 80 170 09 65 64 -31 -34
+//ground tile
+-1 src/graphics/groundtiles.png  80  10 09 31 64 -31 0
 
 -1 * 7	 02 04 00 00 01 \w0
 
@@ -35,20 +47,27 @@
 -1 * 0	 03 04 01 TILE_HARBOUR_CRANES_1 \b0
 \wx00
 
+// --------------------- crane --------------------- //
 
 -1 * 0	 00 04 \b5 \b1 TILE_HARBOUR_CRANES_2
   08 "CHPT" // Class ID - groups stations in menu
   1A 02 // 2 tiles
     //Basic layout
-    41
-    \d1420 \wx0002 00 // custom ground sprite
+    42
+    \dx80008431 \wx0002 00 // custom ground sprite
     \dx8000842D \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
+    \dx8000842F \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
     //Basic layout
-    41
-    \d1420 \wx0002 00 // custom ground sprite
+    42
+    \dx80008431 \wx0002 00 // custom ground sprite
     \dx8000842E \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx80008430 \wx0000
     00 00 00 // x/y/z offset = extra groundsprite
     10 10 \b36 // x/y/z extend
   11 00 // catenary pylon placement (00 = none)
@@ -56,10 +75,14 @@
   15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
 
 //Tile action 1
--1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+-1 * 0	 01 04 \b1 \b5 //-1 * 0 01 09 <num-sets> <num-ent>
 // Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
 -1 src/graphics/harbour_cranes.png 220 10 09 145 64 -31 -114
 -1 src/graphics/harbour_cranes.png 150 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 220 170 09 65 64 -31 -34
+-1 src/graphics/harbour_cranes.png 150 170 09 65 64 -31 -34
+//ground tile
+-1 src/graphics/groundtiles.png  80  10 09 31 64 -31 0
 
 -1 * 7	 02 04 00 00 01 \w0
 
@@ -72,3 +95,228 @@
 // byte is index in cargotable, word is THIS_SET_ID define above
 -1 * 0	 03 04 01 TILE_HARBOUR_CRANES_2 \b0
 \wx00
+
+// --------------------- crane --------------------- //
+
+-1 * 0	 00 04 \b4 \b1 TILE_HARBOUR_CRANES_3
+  08 "CHPT" // Class ID - groups stations in menu
+  09 02 // 2 tiles
+    \dx000003F4 // custom ground sprite
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008431
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008432
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 04 \b36 // x/y/z extend
+    \dx0000842F
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000842D
+    80 // end of building sprite list
+    \dx000003F3 // custom ground sprite
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008433
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008434
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 04 \b36 // x/y/z extend
+    \dx00008430
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000842E
+    80 // end of building sprite list
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
+
+//Tile action 1
+//-1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+//-1 src/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
+//-1 src/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
+
+//Tile action 1
+-1 * 0	 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 src/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 10 170 09 65 64 -31 -34
+-1 src/graphics/harbour_cranes.png 80 170 09 65 64 -31 -34
+//ground tile
+-1 src/graphics/groundtiles.png  80  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80  90 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80 170 09 31 64 -31 0
+
+-1 * 7	 02 04 00 00 01 \w0
+
+// Set temp register 0 to 0
+-1 * 0 02 04 00 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx00 00 00 \wx00
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_HARBOUR_CRANES_3 \b0
+\wx00
+
+// --------------------- crane --------------------- //
+
+-1 * 0	 00 04 \b4 \b1 TILE_HARBOUR_CRANES_4
+  08 "CHPT" // Class ID - groups stations in menu
+  09 02 // 2 tiles
+    \dx000003F4 // custom ground sprite
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008431
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008432
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 04 \b36 // x/y/z extend
+    \dx0000842F
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000842D
+    80 // end of building sprite list
+    \dx000003F3 // custom ground sprite
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008433
+    00 00 80 // x/y/z offset
+    00 00 00 // x/y/z extent
+    \dx40008434
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 04 \b36 // x/y/z extend
+    \dx00008430
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    \dx0000842E
+    80 // end of building sprite list
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
+
+//Tile action 1
+//-1 * 0	 01 04 \b1 \b2 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+//-1 src/graphics/harbour_cranes.png 10 10 09 145 64 -31 -114
+//-1 src/graphics/harbour_cranes.png 80 10 09 145 64 -31 -114
+
+//Tile action 1
+-1 * 0	 01 04 \b1 \b8 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 src/graphics/harbour_cranes.png 220 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 150 10 09 145 64 -31 -114
+-1 src/graphics/harbour_cranes.png 220 170 09 65 64 -31 -34
+-1 src/graphics/harbour_cranes.png 150 170 09 65 64 -31 -34
+//ground tile
+-1 src/graphics/groundtiles.png  80  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80  90 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80 170 09 31 64 -31 0
+
+-1 * 7	 02 04 00 00 01 \w0
+
+// Set temp register 0 to 0
+-1 * 0 02 04 00 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx00 00 00 \wx00
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_HARBOUR_CRANES_4 \b0
+\wx00
+
+// --------------------- crane rails --------------------- //
+
+-1 * 0	 00 04 \b5 \b1 TILE_HARBOUR_CRANE_RAILS_1
+  08 "CHPT" // Class ID - groups stations in menu
+  1A 02 // 2 tiles
+    //Basic layout
+    41
+    \dx8000842F \wx0002 00 // custom ground sprite
+    \dx8000842D \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+    //Basic layout
+    41
+    \dx8000842F \wx0002 00 // custom ground sprite
+    \dx8000842E \wx0000
+    00 00 00 // x/y/z offset = extra groundsprite
+    10 10 \b36 // x/y/z extend
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
+  15 FF // set non track bits (FF is the lazy solution to working out the correct bit mask)
+
+//Tile action 1
+-1 * 0	 01 04 \b1 \b3 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 src/graphics/harbour_cranes.png 10 250 09 39 64 -31 -8
+-1 src/graphics/harbour_cranes.png 80 250 09 39 64 -31 -8
+//ground tile
+-1 src/graphics/groundtiles.png  80  10 09 31 64 -31 0
+
+-1 * 7	 02 04 00 00 01 \w0
+
+// Set temp register 0 to 0
+-1 * 0 02 04 00 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx00 00 00 \wx00
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_HARBOUR_CRANE_RAILS_1 \b0
+\wx00
+
+// --------------------- crane rails --------------------- //
+
+-1 * 0	 00 04 \b4 \b1 TILE_HARBOUR_CRANE_RAILS_2
+  08 "CHPT" // Class ID - groups stations in menu
+  1A 02 // 2 tiles
+    //Basic layout
+    43
+    \dx000003F4 \wx0002 00 // custom ground sprite
+    \dx80008431 \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    \dx80008432 \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    \dx8000842D \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    43
+    \dx000003F3 \wx0002 00 // custom ground sprite
+    \dx8000842F \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    \dx80008430 \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    \dx8000842E \wx0000
+    00 00 80 // combine with bounding box of ground sprite
+    //Basic layout
+  11 00 // catenary pylon placement (00 = none)
+  14 FF // catenary wire placement (FF = none)
+
+//Tile action 1
+-1 * 0	 01 04 \b1 \b6 //-1 * 0 01 09 <num-sets> <num-ent>
+// Format: spritenum pcxfile xpos ypos compression ysize xsize xrel yrel
+-1 src/graphics/harbour_cranes.png 80 250 09 39 64 -31 -8
+-1 src/graphics/harbour_cranes.png 10 250 09 39 64 -31 -8
+//ground tile
+-1 src/graphics/groundtiles.png  80 130 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80 170 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80  50 09 31 64 -31 0
+-1 src/graphics/groundtiles.png  80  90 09 31 64 -31 0
+
+-1 * 7	 02 04 00 00 01 \w0
+
+// Set temp register 0 to 0
+-1 * 0 02 04 00 81
+    1A 20 00 \2sto
+    1A 00 00
+    01 \wx00 00 00 \wx00
+
+// byte is index in cargotable, word is THIS_SET_ID define above
+-1 * 0	 03 04 01 TILE_HARBOUR_CRANE_RAILS_2 \b0
+\wx00
+
