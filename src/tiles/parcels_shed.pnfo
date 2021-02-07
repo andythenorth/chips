@@ -1,4 +1,4 @@
--1 * 0	 00 04 \b5 \b1 TILE_WAREHOUSE_SMALL
+-1 * 0	 00 04 \b5 \b1 TILE_PARCELS_SHED
   08 "CHPS" // Class ID - groups stations in menu
   1A 02 // 2 tiles
     //Basic layout
@@ -32,5 +32,5 @@
     01 \wx00 00 00 \wx00
 
 // byte is index in cargotable, word is THIS_SET_ID define above
--1 * 0	 03 04 01 TILE_WAREHOUSE_SMALL \b0
+-1 * 0	 03 04 01 TILE_PARCELS_SHED \b0
 \wx00

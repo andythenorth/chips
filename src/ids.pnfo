@@ -32,7 +32,7 @@
 #define TILE_PAX_PARCELS_OFFICE         1D
 #define TILE_PAX_CONCOURSE_1            1E
 #define TILE_BOILER_HOUSE_OFFICES       1F
-#define TILE_WAREHOUSE_SMALL            20
+#define TILE_PARCELS_SHED               20
 #define TILE_PAX_BOOKING_OFFICE_SMALL   21
 #define TILE_TIPPLE                     22
 #define TILE_FLOOD_LOADER_SILO          23
@@ -47,7 +47,7 @@
 #define TILE_DISPATCHERS_OFFICE         32
 #define TILE_HARBOUR_CRANES_1           33
 #define TILE_HARBOUR_CRANES_2           34
-// #define                   35 // left free in case I decide to add crane rails
+// #define TILE_UNUSED                   35
 #define TILE_MORE_HUTS                  36
 
 
@@ -68,7 +68,7 @@
 #define TEXT_TILE_PAX_BOOKING_OFFICE_SMALL    "Small booking office"
 #define TEXT_TILE_PAX_HOTEL                   "Station hotel"
 #define TEXT_TILE_BOILER_HOUSE_OFFICES        "Boiler house & offices"
-#define TEXT_TILE_WAREHOUSE_SMALL             "Small warehouse"
+#define TEXT_TILE_PARCELS_SHED                "Parcels shed"
 #define TEXT_TILE_TIPPLE                      "Tipple"
 #define TEXT_TILE_FLOOD_LOADER_SILO           "Flood loader silo"
 #define TEXT_TILE_PIG_PENS                    "Pig pens"
