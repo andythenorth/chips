@@ -85,6 +85,7 @@
 #define TEXT_TILE_HARBOUR_CRANES_1            "Harbour cranes"
 #define TEXT_TILE_HARBOUR_CRANES_2            "More harbour cranes"
 #define TEXT_TILE_HARBOUR_CRANE_RAILS_1       "Harbour crane rails"
+#define TEXT_TILE_HARBOUR_CRANE_RAILS_2       "More harbour crane rails"
 #define TEXT_TILE_MORE_HUTS                   "More huts"
 
 #define TEXT_STATION_CATEGORY_1            "CHIPS stations"
