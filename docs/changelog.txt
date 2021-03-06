@@ -4,6 +4,31 @@ CHIPS Station Set Changelog
 
 
 -------------
+2.0.0 Release
+-------------
+Revised ground tiles:
+	- added a variant for Asphalt tiles with dirt / weathering
+	- repainted Asphalt, Mud and Cobble tiles
+	- track tiles better fit standard gauge tracks that use the size/spacing of default RAIL railtype sprites
+	- revised ground tiles match to FIRS 4 industry ground tiles 
+	- simplified ground tile names, removing 'FIRS' etc
+Reworked docks:
+	- uses revised Asphalt surface texture
+	- added a small building and some generic cargo sprites
+Added Harbour Crane Rails tiles, and added rail sprites to existing Harbour Crane tiles
+Improved mine building tiles (Tipple, Flood Loader, Small Mine Building, Large Mine Building):
+	- all sprites redrawn to look better
+	- now mostly grey not company colour, as the company colour often clashed with FIRS mine colours
+	- mine building tiles now (in most cases) appear to be connected structures when placed next to each other
+Reorganised tiles in construction menu to provide better order and grouping
+Added cargo graphics for:
+	- Alloy Steel
+	- Stainless Steel
+Bumped grfid as this is CHIPS version 2
+	- not savegame compatible with stations using CHIPS 1 tiles
+	- however CHIPS 2 can be used alongside CHIPS 1 in the same game if desired
+
+-------------
 1.10.1 Release
 -------------
 Fix wrong sprite for cobble non-track tile
