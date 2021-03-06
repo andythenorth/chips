@@ -81,22 +81,17 @@ $(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png src)
 	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
 	$(_V) mv $(PROJECT_NAME).grf $(GRF_FILE)
 
-$(TAR_FILE): $(GRF_FILE)
-# the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
-# create an intermediate dir, and copy in what we need for bananas
-	$(_V) echo "[CREATE BUNDLE TAR]"
-	$(_V) mkdir $(PROJECT_VERSIONED_NAME)
-	$(_V) echo "[...COPYING DOCS...]"
-	$(_V) cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
-	$(_V) cp docs/license.txt $(PROJECT_VERSIONED_NAME)
-	$(_V) cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
-	$(_V) echo "[...COPYING GRF...]"
-	$(_V) cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
-	$(_V) echo "[...COMPRESSING...]"
-	$(_V) $(MK_ARCHIVE) --tar --output=$(TAR_FILE) --base=$(PROJECT_VERSIONED_NAME) $(PROJECT_VERSIONED_NAME)
-# delete the intermediate dir
-	$(_V) rm -r $(PROJECT_VERSIONED_NAME)
-	$(_V) echo "[DONE]"
+$(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
+# the goal here is a sparse tar for distribution
+	# create an intermediate dir, and copy in what we need
+	mkdir $(PROJECT_VERSIONED_NAME)
+	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
+	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
+	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
+	# delete the intermediate dir
+	rm -r $(PROJECT_VERSIONED_NAME)
 
 $(ZIP_FILE): $(TAR_FILE)
 	$(ZIP) -9rq $(ZIP_FILE) $(TAR_FILE) >/dev/null
