@@ -48,10 +48,11 @@
 
 -1 * 7	 02 04 00 00 01 \w0
 
+// this is pointlessly checking availability (I removed the date restriction) but I can't see how to safely remove it from the config/templating
 -1 * 30	 02 04 FA // check availability
     81 01 00  FF // check current year
     \b01 // range
-      \wx8000 \b0 \b30
+      \wx8000 \b0 \b0
     \wx8001
 
 -1 * 0 02 04 F0 // cbs
