@@ -4,23 +4,24 @@ PYTHON3 = python3
 SED = sed
 ZIP = zip
 
-NMLC = nmlc
+GRFCODEC = grfcodec
 GRFID = grfid
+
+NFORENUM = nforenum
+NFORENUM_FLAGS ?= $(shell [ `$(NFORENUM) -s -v 2>/dev/null | wc -l ` -eq 1 ] && echo "-s" || echo "")
+NFO_WARN_LEVEL ?= 4
+
+CC             ?= gcc
+CC_FLAGS       ?= -C -E -nostdinc -x c-header - <
 
 GIT_INFO = $(PYTHON3) src/polar_fox/git_info.py
 FILL_TEMPLATE = bin/fill-template
 FIND_FILES = bin/find-files
 MK_ARCHIVE = bin/mk-archive
 
+
 # Project details
 PROJECT_NAME = chips
-
-# lang is not copied to generated currently in CHIPS, unlike RH, IH etc - could be changed
-LANG_DIR = generated/lang
-NML_FILE = generated/chips.nml
-NML_FLAGS =-c -l $(LANG_DIR) --verbosity=4 --no-optimisation-warning
-
--include Makefile.local
 
 EXPORTED = no
 ifeq ($(strip $(EXPORTED)),no)
@@ -34,46 +35,51 @@ else
   REPO_VERSION = ${exported_version}
 endif
 
+REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
-ARGS = '${NO_MP}'
+ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)'
 
+NFO_FILE = generated/$(PROJECT_NAME).nfo
 GRF_FILE = generated/$(PROJECT_NAME).grf
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
 
-HTML_DOCS = docs
-
 SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
-default: html_docs grf
+.PHONY: default grf tar bundle_tar bundle_zip bundle_src clean
+default: grf
 # bundle needs to clean first to ensure we don't use outdated/cached version info
 bundle_tar: clean tar
 bundle_zip: $(ZIP_FILE)
-release: bundle_tar copy_docs_to_grf_farm
-lang: $(LANG_DIR)
-nml: $(NML_FILE)
+nfo: $(NFO_FILE)
 grf: $(GRF_FILE)
 tar: $(TAR_FILE)
-html_docs: $(HTML_DOCS)
 
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
-$(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
-	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
+$(NFO_FILE): $(shell $(FIND_FILES) --ext=.pnfo --ext=.tnfo src)
+	$(_V) echo "[RENDER NFO]"
+	$(_V) if [ ! -d generated ];\
+		then mkdir generated;\
+	fi;
+	$(_V) $(CC) $(CC_FLAGS) src/chips.pnfo \
+		| sed -e "s/{{REPLACE_REPO_REVISION}}/$(REPO_REVISION)/g" \
+		| sed -e "s/{{REPLACE_REPO_VERSION}}/$(REPO_VERSION)/g" \
+	> $(NFO_FILE)
+	$(_V) echo "[RENUM]"
+	$(_V) $(NFORENUM) $(NFORENUM_FLAGS) $(NFO_FILE)
+# renum leaves unwanted .bak file, remove it
+	$(_V)  rm -r $(NFO_FILE).bak
 
-$(HTML_DOCS): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng src)
-	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
-
-$(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
-	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
-
-$(GRF_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.png src) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
-	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
+# N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
+$(GRF_FILE): $(NFO_FILE) $(shell $(FIND_FILES) --ext=.png src)
+	$(_V) echo "[ENCODE GRF]"
+	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
+	$(_V) mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
 # the goal here is a sparse tar for distribution
@@ -105,21 +111,15 @@ bundle_src: $(MD5_FILE)
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
-
-# this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
-copy_docs_to_grf_farm:
-	$(_V) $(PYTHON3) src/polar_fox/grf_farm.py $(PROJECT_NAME)
-
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
-install: $(GRF_FILE)
-    # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
+# remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
+install: default
 	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
 	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
 
 clean:
 	$(_V) echo "[CLEANING]"
-	$(_V) for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated \
-	$(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	$(_V) for f in $(NFO_FILE) $(GRF_FILE) generated $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
