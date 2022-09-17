@@ -73,6 +73,7 @@ def main():
     """
     header_items = [
         "header",
+        "test",
     ]
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item))

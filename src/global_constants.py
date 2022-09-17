@@ -22,7 +22,8 @@ class DwordGrfID(object):
         )  # note the leading '\' that nml requires (escaped as double \\ for python)
 
 
-grfid = DwordGrfID("43485054").grfid
+#grfid = DwordGrfID("43485054").grfid
+grfid = "CHPT"
 
 metadata = {
     "dev_thread_url": "https://www.tt-forums.net/viewtopic.php?t=53348",
