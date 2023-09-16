@@ -73,6 +73,7 @@ def main():
     """
     header_items = [
         "header",
+        "dock",
         "test",
     ]
     for header_item in header_items:
