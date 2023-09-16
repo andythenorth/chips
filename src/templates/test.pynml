@@ -77,3 +77,19 @@ item(FEAT_STATIONS, cow_pen) {
 		cow_pen_empty;
 	}
 }
+
+// ========================
+
+item(FEAT_ROADSTOPS, cow_pen) {
+	property {
+		/* The class allows to sort stations into categories. */
+		class:                  "NML_";
+		/* If no other NewGRF provides this class before us, we have to name it */
+		classname:              string(STR_NAME_STATCLASS);
+		/* Name of this particular station */
+		name:                   string(STR_NAME_STATION);
+	}
+	graphics {
+	    default: cow_pen_X(10);
+	}
+}
