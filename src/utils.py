@@ -1,9 +1,11 @@
-from PIL import Image
 import os.path
 import codecs  # used for writing files - more unicode friendly than standard open() module
+import tomllib
+
+currentdir = os.curdir
+
 import global_constants
 from polar_fox import git_info
-
 
 def get_makefile_args(sys):
     # get args passed by makefile
@@ -51,35 +53,25 @@ def split_nml_string_lines(text):
     )
 
 
-def parse_base_lang():
-    # pick out strings for docs, both from lang file, and extra strings that can't be in the lang file
-    base_lang_file = codecs.open(
-        os.path.join("src", "lang", "english.lng"), "r", "utf8"
-    )
-    strings = split_nml_string_lines(base_lang_file.readlines())
+def get_lang_data(lang):
+    global_pragma = {}
+    lang_strings = {}
+    with open(os.path.join(currentdir, "src", "lang", lang + ".toml"), "rb") as fp:
+        lang_source = tomllib.load(fp)
 
-    extra_strings_file = codecs.open(
-        os.path.join("src", "docs_templates", "extra_strings.lng"), "r", "utf8"
-    )
-    extra_strings = split_nml_string_lines(extra_strings_file.readlines())
-    for i in extra_strings:
-        strings[i] = extra_strings[i]
+    for node_name, node_value in lang_source.items():
+        if node_name == "GLOBAL_PRAGMA":
+            # explicit handling of global pragma items
+            global_pragma["grflangid"] = node_value["grflangid"]
+            global_pragma["plural"] = node_value["plural"]
+            if node_value.get("gender", False):
+                global_pragma["gender"] = node_value["gender"]
+            if node_value.get("case", False):
+                global_pragma["case"] = node_value["case"]
+        else:
+            lang_strings[node_name] = node_value["base"]
 
-    return strings
-
-
-def unwrap_nml_string_declaration(nml_string=None):
-    # some properties are declared in python as 'string(STR_HAM_EGGS)'
-    # this is done because it saves hassle with nml (distinguishes from default OTTD strings)
-    # doesn't work for direct lookups of string identifier in lang file though, so remove the string() packaging
-
-    if nml_string is not None and "string(" in nml_string:
-        unwrapped_string = nml_string.split("string(")[1][
-            :-1
-        ]  # split and then slice off the closing bracket
-        return unwrapped_string
-    else:
-        return nml_string
+    return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
 
 def echo_message(message, message_type=None):
