@@ -4,26 +4,7 @@ tile_numeric_ids = dict(
     # plaza_tile_1=85,
 )
 
-class DwordGrfID(object):
-    """
-    grfids in game and bananas are presented as dwords, so it would be more convenient all round to use the dword
-    however nml wants grfids as literals, so this class stores a dword, and converts it to an *nml* literal on demand
-    """
-
-    def __init__(self, grfid):
-        self.grfid_as_dword = grfid  # keep the grfid around in case it's wanted for docs etc (as yet unknown)
-        # split to bytes
-        split = [
-            self.grfid_as_dword[i : i + 2]
-            for i in range(0, len(self.grfid_as_dword), 2)
-        ]
-        self.grfid = "\\" + "\\".join(
-            split
-        )  # note the leading '\' that nml requires (escaped as double \\ for python)
-
-
-#grfid = DwordGrfID("43485054").grfid
-grfid = "CHPT"
+grfid = "CHPR"
 
 metadata = {
     "dev_thread_url": "https://www.tt-forums.net/viewtopic.php?t=53348",
