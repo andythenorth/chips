@@ -1,0 +1,14 @@
+spriteset (cow_pen_empty, "src/graphics/cows_cargo.png") {
+	[  10, 10, 64, 65, -31, -34 ]
+	[ 220, 10, 64, 65, -31, -34 ]
+}
+
+spriteset (cow_pen_half, "src/graphics/cows_cargo.png") {
+	[  80, 10, 64, 65, -31, -34 ]
+	[ 290, 10, 64, 65, -31, -34 ]
+}
+
+spriteset (cow_pen_full, "src/graphics/cows_cargo.png") {
+	[ 150, 10, 64, 65, -31, -34 ]
+	[ 360, 10, 64, 65, -31, -34 ]
+}

@@ -1,0 +1,15 @@
+<tal:include metal:use-macro="load: spritelayouts_road_stop.pynml" />
+
+item(FEAT_ROADSTOPS, cow_pen) {
+	property {
+		/* The class allows to sort stations into categories. */
+		class:                  "NML_";
+		/* If no other NewGRF provides this class before us, we have to name it */
+		classname:              string(STR_NAME_STATCLASS);
+		/* Name of this particular station */
+		name:                   string(STR_NAME_STATION);
+	}
+	graphics {
+	    default: cow_pen_X_road_stop(10);
+	}
+}

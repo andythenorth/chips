@@ -1,0 +1,23 @@
+spritelayout cow_pen_X_rail_station(a) {
+	ground {
+		sprite: 2022 + a; // prevent railtype offset
+	}
+	building {
+		sprite: cow_pen_empty(0); // first sprite in active spriteset
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+}
+
+spritelayout cow_pen_Y_rail_station(a) {
+	ground {
+		sprite: 2022 + a; // prevent railtype offset
+	}
+	building {
+		sprite: cow_pen_empty(1); // second sprite in active spriteset
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+}
