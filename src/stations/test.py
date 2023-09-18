@@ -1,8 +1,8 @@
-from station import RootStation
+from station import Station
 
 def main():
 
-    station = RootStation(
+    station = Station(
         id="test",
         numeric_id=1,
     )
