@@ -1,23 +1,215 @@
-spritelayout cow_pen_X_rail_station(a) {
+
+spritelayout ${facility_type.id}_X_rail_station(a) {
 	ground {
-		sprite: 2022 + a; // prevent railtype offset
+		// sprite: 2022 + a; // prevent railtype offset
+		sprite: GROUNDSPRITE_RAIL_X;
 	}
 	building {
-		sprite: cow_pen_empty(0); // first sprite in active spriteset
+		sprite: mud_ground(0); // first sprite in active spriteset
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
+	building {
+		sprite: mud_ground(1); // first sprite in active spriteset
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	<!--!
+	building {
+		sprite: flood_loader_silo(1);
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	building {
+		sprite: flood_loader_silo(0);
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	-->
 }
 
-spritelayout cow_pen_Y_rail_station(a) {
+spritelayout ${facility_type.id}_Y_rail_station(a) {
 	ground {
-		sprite: 2022 + a; // prevent railtype offset
+		// sprite: 2022 + a; // prevent railtype offset
+		sprite: GROUNDSPRITE_RAIL_Y;
 	}
 	building {
-		sprite: cow_pen_empty(1); // second sprite in active spriteset
+		sprite: mud_ground(2);
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
+	building {
+		sprite: mud_ground(3);
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	<!--!
+	building {
+		sprite: flood_loader_silo(3);
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	building {
+		sprite: flood_loader_silo(2);
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
+	-->
 }
+
+<tal:spritelayouts repeat="spritelayout station.spritelayouts">
+    spritelayout ${spritelayout.id} {
+        <tal:ground_sprite switch="spritelayout.terrain_aware_ground">
+            <tal:case_terrain case="True">
+                <!--! ground sprite from terrain -->
+                ground {
+                    sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_sprite}));
+                }
+            </tal:case_terrain>
+            <tal:case_not_terrain case="False">
+                <!--! specific ground sprite, if not empty -->
+                <tal:not_empty condition="getattr(spritelayout.ground_sprite, 'type', None) != 'empty'">
+                    childsprite {
+                        sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_sprite)};
+                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
+                        always_draw: 1;
+                    }
+                    <!--! ...specific ground sprite with snow -->
+                    childsprite {
+                        sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_sprite, snow_overlay=True)};
+                        hide_sprite: (!LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
+                        always_draw: 1;
+                    }
+                </tal:not_empty>
+            </tal:case_not_terrain>
+        </tal:ground_sprite>
+
+        <!--! specific ground overlay, if not empty -->
+        <tal:not_empty condition="getattr(spritelayout.ground_overlay, 'type', None) != 'empty'">
+            childsprite {
+                sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_overlay)};
+                recolour_mode: RECOLOUR_REMAP;
+                palette: PALETTE_USE_DEFAULT;
+                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
+                always_draw: 1;
+            }
+            <!--! ...specific ground overlay with snow -->
+            childsprite {
+                sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_overlay, snow_overlay=True)};
+                recolour_mode: RECOLOUR_REMAP;
+                palette: PALETTE_USE_DEFAULT;
+                hide_sprite: (!LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
+                always_draw: 1;
+            }
+        </tal:not_empty>
+
+        <tal:optional_fence condition="'ne' in spritelayout.fences">
+            <!--! fences NE -->
+            building {
+                sprite: 1302 + LOAD_TEMP(${graphics_temp_storage.var_fencesprite_ne});
+                <tal:hide_sprite condition="'ne' not in spritelayout.perma_fences">
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_use_fence_ne}) == 0);
+                </tal:hide_sprite>
+                xoffset:  0;
+                yoffset:  0;
+                zoffset:  LOAD_TEMP(${graphics_temp_storage.var_fence_offset_ne}) * 8;
+                xextent: 1;
+                yextent: 16;
+                zextent: 6;
+                recolour_mode: RECOLOUR_REMAP;
+                palette:       PALETTE_USE_DEFAULT;
+            }
+        </tal:optional_fence>
+        <tal:optional_fence condition="'nw' in spritelayout.fences">
+            <!--! fences NW -->
+            building {
+                sprite: 1301 + LOAD_TEMP(${graphics_temp_storage.var_fencesprite_nw});
+                <tal:hide_sprite condition="'nw' not in spritelayout.perma_fences">
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_use_fence_nw}) == 0);
+                </tal:hide_sprite>
+                xoffset:  0;
+                yoffset:  0;
+                zoffset:  LOAD_TEMP(${graphics_temp_storage.var_fence_offset_nw}) * 8;
+                xextent: 16;
+                yextent: 1;
+                zextent: 6;
+                recolour_mode: RECOLOUR_REMAP;
+                palette:       PALETTE_USE_DEFAULT;
+            }
+        </tal:optional_fence>
+
+        <tal:building_sprites repeat="building_sprite spritelayout.building_sprites">
+            <!--! buildings (snow aware) -->
+            building {
+                sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, construction_state_num=3)};
+                recolour_mode: RECOLOUR_REMAP;
+                palette: PALETTE_USE_DEFAULT;
+                xoffset: ${building_sprite.xoffset};
+                yoffset: ${building_sprite.yoffset};
+                zoffset: ${building_sprite.zoffset};
+                xextent: ${building_sprite.xextent};
+                yextent: ${building_sprite.yextent};
+                zextent: ${building_sprite.zextent};
+                always_draw: ${building_sprite.always_draw};
+                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building}));
+            }
+            building {
+                sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, construction_state_num=3, snow_overlay=True)};
+                recolour_mode: RECOLOUR_REMAP;
+                palette: PALETTE_USE_DEFAULT;
+                xoffset: ${building_sprite.xoffset};
+                yoffset: ${building_sprite.yoffset};
+                zoffset: ${building_sprite.zoffset};
+                xextent: ${building_sprite.xextent};
+                yextent: ${building_sprite.yextent};
+                zextent: ${building_sprite.zextent};
+                always_draw: ${building_sprite.always_draw};
+                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+            }
+        </tal:building_sprites>
+
+        <tal:optional_fence condition="'se' in spritelayout.fences">
+            <!--! fences SE -->
+            building {
+                sprite: 1301 + LOAD_TEMP(${graphics_temp_storage.var_fencesprite_se});
+                <tal:hide_sprite condition="'se' not in spritelayout.perma_fences">
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_use_fence_se}) == 0);
+                </tal:hide_sprite>
+                xoffset: 0;
+                yoffset:  16;
+                zoffset:  LOAD_TEMP(${graphics_temp_storage.var_fence_offset_se}) * 8;
+                xextent: 16;
+                yextent: 1;
+                zextent: 6;
+                recolour_mode: RECOLOUR_REMAP;
+                palette:       PALETTE_USE_DEFAULT;
+            }
+        </tal:optional_fence>
+        <tal:optional_fence condition="'sw' in spritelayout.fences">
+            <!--! fences SW -->
+            building {
+                sprite: 1302 + LOAD_TEMP(${graphics_temp_storage.var_fencesprite_sw});
+                <tal:hide_sprite condition="'sw' not in spritelayout.perma_fences">
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_use_fence_sw}) == 0);
+                </tal:hide_sprite>
+                xoffset: 16;
+                yoffset:  0;
+                zoffset:  LOAD_TEMP(${graphics_temp_storage.var_fence_offset_sw}) * 8;
+                xextent: 1;
+                yextent: 16;
+                zextent: 6;
+                recolour_mode: RECOLOUR_REMAP;
+                palette:       PALETTE_USE_DEFAULT;
+            }
+        </tal:optional_fence>
+
+    }
+</tal:spritelayouts>

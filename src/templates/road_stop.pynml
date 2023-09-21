@@ -8,6 +8,7 @@ item(FEAT_ROADSTOPS, cow_pen) {
 		classname:              string(STR_NAME_STATCLASS);
 		/* Name of this particular station */
 		name:                   string(STR_NAME_STATION);
+		draw_mode:              bitmask(RST_DRAW_FLAG_BAY_ROAD, RST_DRAW_FLAG_DRIVE_THROUGH_ROAD_OVERLAY);
 	}
 	graphics {
 	    default: cow_pen_X_road_stop(10);

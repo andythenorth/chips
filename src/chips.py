@@ -21,23 +21,25 @@ registered_tiles = tiles.registered_tiles
 """
 
 
-class StationManager(list):
+class FacilityTypeManager(list):
     """
-    It's convenient to have a structure for working with stations.
+    It's convenient to have a structure for working with facility types.
     This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def add_station(self, station_module):
-        station = station_module.main()
-        self.append(station)
+    def add_facility_type(self, facility_type_module):
+        facility_type = facility_type_module.main()
+        self.append(facility_type)
 
 
-from stations import test
+from facility_types import test
+from facility_types import flood_loader_silo
 
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
-station_manager = StationManager()
+facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    station_manager.add_station(test)
+    facility_type_manager.add_facility_type(test)
+    facility_type_manager.add_facility_type(flood_loader_silo)

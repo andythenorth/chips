@@ -1,8 +1,8 @@
-from station import Station
+from facility import FacilityType
+
 
 def main():
-
-    station = Station(
+    facility_type = FacilityType(
         id="test",
         numeric_id=1,
     )
@@ -17,3 +17,5 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
     """
+
+    return facility_type

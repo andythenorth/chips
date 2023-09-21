@@ -1,3 +1,17 @@
+spriteset (mud_ground, "src/graphics/groundtiles.png") {
+	[  10,  50, 64, 31, -31, 0 ]
+	[  10,  90, 64, 31, -31, 0 ]
+	[  10, 130, 64, 31, -31, 0 ]
+	[  10, 170, 64, 31, -31, 0 ]
+}
+
+spriteset (flood_loader_silo, "src/graphics/flood_loader_silo.png") {
+	[  80,  10, 64, 145, -31, -114 ]
+	[  80, 170, 64, 65, -31, -34 ]
+	[  150,  10, 64, 145, -31, -114 ]
+	[  150, 170, 64, 65, -31, -34 ]
+}
+
 spriteset (cow_pen_empty, "src/graphics/cows_cargo.png") {
 	[  10, 10, 64, 65, -31, -34 ]
 	[ 220, 10, 64, 65, -31, -34 ]

@@ -31,7 +31,7 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 generated_files_path = chips.generated_files_path
 
 
-def render_header_item_nml(header_item):
+def render_header_facility_type_nml(header_item):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
@@ -44,14 +44,16 @@ def render_header_item_nml(header_item):
     )
 
 
-def render_item_nml(item):
-    result = utils.unescape_chameleon_output(item.render(templates))
+def render_facility_type_nml(facility_type):
+    result = utils.unescape_chameleon_output(facility_type.render_nml(templates))
     # write the nml per item to disk, it aids debugging
-    item_nml = codecs.open(
-        os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
+    facility_type_nml = codecs.open(
+        os.path.join(generated_files_path, "nml", facility_type.id + ".nml"),
+        "w",
+        "utf8",
     )
-    item_nml.write(result)
-    item_nml.close()
+    facility_type_nml.write(result)
+    facility_type_nml.close()
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 
@@ -64,31 +66,21 @@ def main():
     if not os.path.exists(generated_nml_path):
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module
         os.mkdir(generated_nml_path)
-    grf_nml = codecs.open(
-        os.path.join(generated_files_path, "chips.nml"), "w", "utf8"
-    )
-    """
-    spritelayer_cargos = iron_horse.registered_spritelayer_cargos
-    consists = iron_horse.get_consists_in_buy_menu_order()
-    """
+    grf_nml = codecs.open(os.path.join(generated_files_path, "chips.nml"), "w", "utf8")
+
     header_items = [
         "header",
         "cargotable",
         "spritesets",
         "dock",
-        "rail_station",
         "road_stop",
     ]
     for header_item in header_items:
-        grf_nml.write(render_header_item_nml(header_item))
+        grf_nml.write(render_header_facility_type_nml(header_item))
 
-    """
-    # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
-    for spritelayercargo in spritelayer_cargos:
-        grf_nml.write(render_item_nml(spritelayercargo))
-    for consist in consists:
-        grf_nml.write(render_item_nml(consist))
-    """
+    for facility_type in chips.facility_type_manager:
+        grf_nml.write(render_facility_type_nml(facility_type))
+
     grf_nml.close()
 
     print(format((time() - start), ".2f") + "s")
