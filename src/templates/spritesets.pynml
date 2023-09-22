@@ -5,10 +5,16 @@ spriteset (mud_ground, "src/graphics/groundtiles.png") {
 	[  10, 170, 64, 31, -31, 0 ]
 }
 
-spriteset (flood_loader_silo, "src/graphics/flood_loader_silo.png") {
+spriteset (flood_loader_silo_spriteset_0, "src/graphics/flood_loader_silo.png") {
 	[  80,  10, 64, 145, -31, -114 ]
+}
+spriteset (flood_loader_silo_spriteset_1, "src/graphics/flood_loader_silo.png") {
 	[  80, 170, 64, 65, -31, -34 ]
+}
+spriteset (flood_loader_silo_spriteset_2, "src/graphics/flood_loader_silo.png") {
 	[  150,  10, 64, 145, -31, -114 ]
+}
+spriteset (flood_loader_silo_spriteset_3, "src/graphics/flood_loader_silo.png") {
 	[  150, 170, 64, 65, -31, -34 ]
 }
 

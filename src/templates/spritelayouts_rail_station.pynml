@@ -5,31 +5,29 @@ spritelayout ${facility_type.id}_X_rail_station(a) {
 		sprite: GROUNDSPRITE_RAIL_X;
 	}
 	building {
-		sprite: mud_ground(0); // first sprite in active spriteset
+		sprite: mud_ground(0);
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
 	building {
-		sprite: mud_ground(1); // first sprite in active spriteset
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	<!--!
-	building {
-		sprite: flood_loader_silo(1);
+		sprite: mud_ground(1);
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
 	building {
-		sprite: flood_loader_silo(0);
+		sprite: flood_loader_silo_spriteset_1;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
-	-->
+	building {
+		sprite: flood_loader_silo_spriteset_0;
+		zextent: 36;
+		recolour_mode: RECOLOUR_REMAP;
+		palette:       PALETTE_USE_DEFAULT;
+	}
 }
 
 spritelayout ${facility_type.id}_Y_rail_station(a) {
@@ -49,20 +47,18 @@ spritelayout ${facility_type.id}_Y_rail_station(a) {
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
-	<!--!
 	building {
-		sprite: flood_loader_silo(3);
+		sprite: flood_loader_silo_spriteset_3;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
 	building {
-		sprite: flood_loader_silo(2);
+		sprite: flood_loader_silo_spriteset_2;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
-	-->
 }
 
 <tal:spritelayouts repeat="spritelayout station.spritelayouts">
