@@ -7,6 +7,7 @@ currentdir = os.curdir
 import global_constants
 from polar_fox import git_info
 
+
 def get_makefile_args(sys):
     # get args passed by makefile
     if len(sys.argv) > 1:
