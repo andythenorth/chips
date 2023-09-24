@@ -3,13 +3,13 @@ spritelayout cow_pen_X_road_stop(a) {
 	    sprite: 1333;
 	}
 	building {
-		sprite: mud_ground(0);
+		sprite: mud_ground;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
 	building {
-		sprite: mud_ground(1);
+		sprite: mud_ground;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
@@ -35,13 +35,13 @@ spritelayout cow_pen_Y_road_stop(a) {
 	    sprite: 1333;
 	}
 	building {
-		sprite: mud_ground(2);
+		sprite: mud_ground;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;
 	}
 	building {
-		sprite: mud_ground(3);
+		sprite: mud_ground;
 		zextent: 36;
 		recolour_mode: RECOLOUR_REMAP;
 		palette:       PALETTE_USE_DEFAULT;

@@ -68,7 +68,7 @@
 
                     <tal:building_sprites repeat="building_sprite spritelayout.building_sprites">
                         building {
-                            sprite: ${industry.unpack_sprite_or_spriteset(building_sprite, construction_state_num=3)};
+                            sprite: ${industry.unpack_sprite_or_spriteset(building_sprite)};
                             recolour_mode: RECOLOUR_REMAP;
                             palette: PALETTE_USE_DEFAULT;
                             xoffset: ${building_sprite.xoffset};
@@ -81,7 +81,7 @@
                             always_draw: ${building_sprite.always_draw};
                         }
                         building {
-                            sprite: ${industry.unpack_sprite_or_spriteset(building_sprite, construction_state_num=3, snow_overlay=True)};
+                            sprite: ${industry.unpack_sprite_or_spriteset(building_sprite, snow_overlay=True)};
                             recolour_mode: RECOLOUR_REMAP;
                             palette: PALETTE_USE_DEFAULT;
                             xoffset: ${building_sprite.xoffset};

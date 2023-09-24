@@ -8,8 +8,11 @@ base = "CABBAGE"
 ["# {ORANGE}FIRS Industry Replacement Set{}{BLACK}Brought to you by andythenorth, FooBar, planetmaker, Terkhen and Yexo, with help from many others. {SILVER}See readme for more information, including how to use CHIPS. {BLACK}License"]
 base = "GPL v2."
 
-[STR_NAME_STATCLASS]
-base = "CABBAGE"
+[STR_NAME_STATION_CLASS_CHIN]
+base = "CABBAGE INDUSTRY"
+
+[STR_NAME_STATION_CLASS_CHTO]
+base = "CABBAGE TOWN"
 
 [STR_NAME_STATION]
 base = "CABBAGE"

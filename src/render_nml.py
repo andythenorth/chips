@@ -71,9 +71,9 @@ def main():
     header_items = [
         "header",
         "cargotable",
-        "spritesets",
+        "ground_tiles",
         "dock",
-        "road_stop",
+        #"road_stop",
     ]
     for header_item in header_items:
         grf_nml.write(render_header_facility_type_nml(header_item))

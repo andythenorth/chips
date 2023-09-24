@@ -1,5 +1,8 @@
+<tal:include metal:use-macro="load: spritesets.pynml" />
+
 <tal:include metal:use-macro="load: spritelayouts_rail_station.pynml" />
 
+<!--!
 spritegroup ${facility_type.id}_1 {
 	little: [cow_pen_empty, cow_pen_half];
 	lots:   cow_pen_full;
@@ -14,14 +17,15 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
 	1: ${facility_type.id}_1;
 	1: ${facility_type.id}_2;
 }
+-->
 
 /* Define the station itself */
 item(FEAT_STATIONS, ${facility_type.id}, ${facility_type.numeric_id}) {
 	property {
 		/* The class allows to sort stations into categories. */
-		class:                  "NML_";
+		class:                  "${facility_type.station_class}";
 		/* If no other NewGRF provides this class before us, we have to name it */
-		classname:              string(STR_NAME_STATCLASS);
+		classname:              string(STR_NAME_STATION_CLASS_${facility_type.station_class});
 		/* Name of this particular station */
 		name:                   string(STR_NAME_STATION);
 		cargo_threshold: 160;
@@ -30,7 +34,7 @@ item(FEAT_STATIONS, ${facility_type.id}, ${facility_type.numeric_id}) {
 		non_traversable_tiles: 0xFF;
 	}
 	graphics {
-		sprite_layouts: [${facility_type.id}_X_rail_station(0), ${facility_type.id}_Y_rail_station(0)];
+		sprite_layouts: [${','.join([spritelayout.id for spritelayout in facility_type.spritelayouts])}];
 		<!--! purchase: cow_pen_half; -->
 		<!--! cargo specific callback
 		LVST: random_${facility_type.id}_1;

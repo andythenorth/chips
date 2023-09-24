@@ -1,8 +1,8 @@
-from facility import FacilityType
+from facility import FacilityTypeTown
 
 
 def main():
-    facility_type = FacilityType(
+    facility_type = FacilityTypeTown(
         id="test",
         numeric_id=1,
     )
