@@ -8,13 +8,14 @@ base = "CABBAGE"
 ["# {ORANGE}FIRS Industry Replacement Set{}{BLACK}Brought to you by andythenorth, FooBar, planetmaker, Terkhen and Yexo, with help from many others. {SILVER}See readme for more information, including how to use CHIPS. {BLACK}License"]
 base = "GPL v2."
 
-[STR_NAME_STATION_CLASS_TOWN]
+[STR_NAME_STATION_CLASS_DFLT]
+# default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
 base = "Town stations (pavement)"
 
 [STR_NAME_STATION_CLASS_INAS]
 base = "Industry stations (asphalt)"
 
-[STR_NAME_STATION_CLASS_INDA]
+[STR_NAME_STATION_CLASS_INGR]
 base = "Industry stations (gravel)"
 
 [STR_NAME_STATION_CLASS_INCO]

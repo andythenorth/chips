@@ -41,9 +41,10 @@ graphics_temp_storage = dict(
 )  # max register number must be 235; registers 236-255 are reserved for building sprite hide/show values
 
 station_classes_by_metaclass = {
+    # default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
     "town": [
         {
-            "class_id": "TOWN",
+            "class_id": "DFLT",
             "default_ground_type": "slab",
         },
     ],
@@ -53,7 +54,7 @@ station_classes_by_metaclass = {
             "default_ground_type": "asphalt",
         },
         {
-            "class_id": "INDA",
+            "class_id": "INGR",
             "default_ground_type": "dirty_asphalt",
         },
         {
