@@ -8,9 +8,8 @@ import utils
 
 class FacilityType(object):
     """
-    Core class, used as a container that optionally provides rail stations, road stops, objects, etc.
-    Note that 'Station' in CHIPS has a different meaning to 'station' in the grf specs.
-    In the grf specs, a station is always a rail station (even when it doesn't provide track).
+    Root of all stations.
+    A 'facility' optionally provides rail stations, road stops, objects, etc.
     """
 
     def __init__(self, **kwargs):
@@ -48,6 +47,10 @@ class FacilityType(object):
         else:
             return result
 
+    @property
+    def station_classes(self):
+        return global_constants.station_classes_by_metaclass[self.metaclass]
+
     def add_spriteset(self, *args, **kwargs):
         id = self.id + "_spriteset_" + str(len(self.spritesets))
         new_spriteset = Spriteset(id=id, *args, **kwargs)
@@ -62,22 +65,41 @@ class FacilityType(object):
         return new_spritelayout
 
     def add_rail_station(self, type, **kwargs):
-        layout = StationLayout(self, kwargs["layout"])
-        for station_class in global_constants.station_classes_by_metaclass[
-            self.metaclass
-        ]:
-            match type:
-                case "track_tile":
-                    new_station_type = RailStationTrackTile
-                case "non_track_tile":
-                    new_station_type = RailStationNonTrackTile
-            self.rail_stations.append(new_station_type(station_class=station_class, facility_type=self))
+        match type:
+            case "track_tile":
+                new_station_type = RailStationTrackTile
+            case "non_track_tile":
+                new_station_type = RailStationNonTrackTile
+        layout = StationLayout(kwargs["layout"])
+        for station_class in self.station_classes:
+            self.rail_stations.append(
+                new_station_type(
+                    station_class=station_class, layout=layout, facility_type=self
+                )
+            )
 
     def add_road_stop(self, type, **kwargs):
-        self.road_stops.append(RoadStopDriveThrough(facility_type=self))
+        match type:
+            case "bay_tile":
+                new_station_type = RoadStopBay
+            case "drive_through_tile":
+                new_station_type = RoadStopDriveThrough
+        layout = StationLayout(kwargs["layout"])
+        for station_class in self.station_classes:
+            self.road_stops.append(
+                new_station_type(
+                    station_class=station_class, layout=layout, facility_type=self
+                )
+            )
 
     def add_grf_object(self, type, **kwargs):
-        self.objects.append(GRFObject(facility_type=self))
+        layout = StationLayout(kwargs["layout"])
+        for station_class in self.station_classes:
+            self.objects.append(
+                GRFObject(
+                    station_class=station_class, layout=layout, facility_type=self
+                )
+            )
 
     def unpack_sprite_or_spriteset(
         self,
@@ -180,9 +202,16 @@ class FacilityTypeTown(FacilityType):
 
 
 class Station(object):
+    """
+    Base class for all stations, instances of which are composed as needed by FacilityType.
+    Note that in CHIPS, rail station, road stop, and objects are all 'stations'...
+    ...unlike the grf specs, where a station is always a rail station (even if it doesn't provide track).
+    """
+
     def __init__(self, **kwargs):
         self.station_class = kwargs["station_class"]
         self.facility_type = kwargs["facility_type"]
+        self.layout = kwargs["layout"]
 
     @property
     def id(self):
@@ -209,9 +238,21 @@ class Station(object):
     def classname_string_id(self):
         return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
 
+    @property
+    def spritelayouts_as_nml_array(self):
+        result = ",".join(self.layout.spritelayout_ids)
+        # !! temp hax to make it compile whilst some tiles have no layout defined
+        if len(result) == 0:
+            return []
+        # !! repetition of result is hax, to get even length array temporarily
+        # !! need to actually repeat the spritelayout / spritesets to handle NW-SE and NE-SW orientations
+        return "[" + result + "," + result + "]"
+
+
 class RailStationBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
@@ -226,6 +267,7 @@ class RailStationNonTrackTile(RailStationBase):
 class RoadStopBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
 
 class RoadStopBay(RoadStopBase):
     def __init__(self, **kwargs):
@@ -307,22 +349,23 @@ class SpriteLayout(object):
         self.terrain_aware_ground = terrain_aware_ground  # we don't draw terrain (and climate) aware ground unless explicitly required by the spritelayout, it makes nml compiles slower
 
 
-class StationLayout(object):
-    """Base class to hold station layouts"""
+class StationLayout(list):
+    """
+        Base class to hold station layouts
+        Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
+    """
 
     def __init__(
         self,
-        facility_type,
         layout,
-        validate_legacy_layout_defs=False,
     ):
-        self.facility_type = facility_type
-        self.layout = layout
+        for layout_entry in layout:
+            self.append(layout_entry)
         self.validate_xy()
 
     def validate_xy(self):
         # in-game station layouts must not have negative xy offsets
-        for x, y, spritelayout_id in self.layout:
+        for x, y, spritelayout_id in self:
             for offset_dir in [x, y]:
                 if offset_dir < 0:
                     raise BaseException(
@@ -335,9 +378,17 @@ class StationLayout(object):
                         + ")"
                     )
         # xy offset pairs must be unique per layout
-        xy_offsets = [(i[0], i[1]) for i in self.layout]
+        xy_offsets = [(i[0], i[1]) for i in self]
         for x, y in xy_offsets:
             if xy_offsets.count((x, y)) > 1:
                 raise BaseException(
                     "Repeated xy offset pair: " + self.id + " " + str((x, y))
                 )
+
+    @property
+    def spritelayout_ids(self):
+        # convenience function for when we only want spritelayouts
+        result = []
+        for x, y, spritelayout_id in self:
+            result.append(spritelayout_id)
+        return result

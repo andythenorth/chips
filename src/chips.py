@@ -28,8 +28,8 @@ class FacilityTypeManager(list):
         self.append(facility_type)
 
 
-from facility_types import test
-from facility_types import flood_loader_silo
+from stations import test
+from stations import flood_loader_silo
 
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
 facility_type_manager = FacilityTypeManager()

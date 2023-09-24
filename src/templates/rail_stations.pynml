@@ -34,7 +34,7 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
             non_traversable_tiles: 0xFF;
         }
         graphics {
-            sprite_layouts: [${','.join([spritelayout.id for spritelayout in facility_type.spritelayouts])}];
+            sprite_layouts: ${station.spritelayouts_as_nml_array};
             <!--! purchase: cow_pen_half; -->
             <!--! cargo specific callback
             LVST: random_${facility_type.id}_1;

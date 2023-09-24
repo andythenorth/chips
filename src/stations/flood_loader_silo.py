@@ -1,4 +1,4 @@
-from facility import FacilityTypeIndustry
+from station import FacilityTypeIndustry
 
 
 def main():
