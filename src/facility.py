@@ -61,21 +61,17 @@ class FacilityType(object):
         # returning the new spritelayout isn't essential, but permits the caller giving it a reference for use elsewhere
         return new_spritelayout
 
-    def add_station_layout(self, *args, **kwargs):
-        new_station_layout = StationLayout(self, *args, **kwargs)
-        self.station_layouts.append(new_station_layout)
-        # returning the new layout isn't essential, but permits the caller giving it a reference for use elsewhere
-        return new_station_layout
-
     def add_rail_station(self, type, **kwargs):
-        type_map = {
-            "track_tile": RailStationTrackTile,
-            "non_track_tile": RailStationNonTrackTile,
-        }
+        layout = StationLayout(self, kwargs["layout"])
         for station_class in global_constants.station_classes_by_metaclass[
             self.metaclass
         ]:
-            self.rail_stations.append(type_map[type](station_class=station_class, facility_type=self))
+            match type:
+                case "track_tile":
+                    new_station_type = RailStationTrackTile
+                case "non_track_tile":
+                    new_station_type = RailStationNonTrackTile
+            self.rail_stations.append(new_station_type(station_class=station_class, facility_type=self))
 
     def add_road_stop(self, type, **kwargs):
         self.road_stops.append(RoadStopDriveThrough(facility_type=self))
@@ -317,13 +313,11 @@ class StationLayout(object):
     def __init__(
         self,
         facility_type,
-        id,
         layout,
         validate_legacy_layout_defs=False,
     ):
-        self.id = id
         self.facility_type = facility_type
-        self._layout = layout
+        self.layout = layout
         self.validate_xy()
 
     def validate_xy(self):
@@ -347,46 +341,3 @@ class StationLayout(object):
                 raise BaseException(
                     "Repeated xy offset pair: " + self.id + " " + str((x, y))
                 )
-
-    """
-    def layout(self):
-        result = []
-        for layout_def in self._layout:
-            if len(layout_def) == 3:
-                tile = None
-                if layout_def[2] == "spritelayout_null_water":
-                    tile = "255"
-                if layout_def[2] == "spritelayout_null_station":
-                    tile = "24"
-                #  resolve the spritelayout by ID
-                for spritelayout in self.industry.spritelayouts:
-                    if spritelayout.id == layout_def[2]:
-                        if spritelayout.tile == None:
-                            raise BaseException("No tile defined for", spritelayout.id)
-                        else:
-                            tile = spritelayout.tile
-                        break
-                # not found, look in other book-keeping lists of tile ids
-                if tile == None:
-                    tile = self.industry.magic_spritelayout_tile_ids[layout_def[2]]
-                if tile == None:
-                    raise BaseException(
-                        self.id
-                        + " - no spritelayout found matching id given by "
-                        + str(layout_def)
-                    )
-                else:
-                    # redefine the layout def
-                    layout_def = (
-                        layout_def[0],
-                        layout_def[1],
-                        tile,
-                        layout_def[2],
-                    )
-            # write the original or modified layout def to result,
-            result.append(layout_def)
-        if len(result) == 0:
-            # something went wrong, probably fancy conditions somewhere eh?
-            raise BaseException("layout resolver failed for " + self.id)
-        return result
-    """

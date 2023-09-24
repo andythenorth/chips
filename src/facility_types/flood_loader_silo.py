@@ -31,7 +31,16 @@ def main():
         fences=["nw", "ne", "se", "sw"],
     )
 
-    facility_type.add_rail_station(type="track_tile")
-    #facility_type.add_rail_station(type="non_track_tile")
+    facility_type.add_rail_station(
+        type="track_tile",
+        layout=[
+            (
+                0,
+                0,
+                "flood_loader_silo_spritelayout_1",
+            ),
+        ],
+    )
+    # facility_type.add_rail_station(type="non_track_tile")
 
     return facility_type
