@@ -104,6 +104,7 @@ class FacilityType(object):
     def unpack_sprite_or_spriteset(
         self,
         sprite_or_spriteset,
+        orientation,
         snow_overlay=False,
     ):
         # note the annoying edge case where 'empty' should not have a snow overlay
@@ -116,6 +117,7 @@ class FacilityType(object):
             suffix = ""
         if isinstance(sprite_or_spriteset, Spriteset):
             # tiny optimisation, don't use an animation sprite selector if there is no animation
+            # !!!! CABBAGE - animation won't work correctly currently, and would need extended to handle the orientations correctly (ne-sw = even, nw-se = odd)
             if sprite_or_spriteset.animation_rate > 0:
                 if sprite_or_spriteset.custom_sprite_selector:
                     sprite_selector = (
@@ -128,7 +130,11 @@ class FacilityType(object):
                         str(sprite_or_spriteset.animation_rate) + "* (animation_frame)"
                     )
             else:
-                sprite_selector = "0"
+                match orientation:
+                    case "ne_sw":
+                        sprite_selector = str(0)
+                    case "nw_se":
+                        sprite_selector = str(1)
             if sprite_or_spriteset.type != "":
                 # ground tile assumes sprite_or_spriteset.type will always map to a ground_tile type
                 # have to accomodate number of frames needed (num_sprites_to_autofill) for animated spritelayouts
@@ -240,13 +246,12 @@ class Station(object):
 
     @property
     def spritelayouts_as_nml_array(self):
-        result = ",".join(self.layout.spritelayout_ids)
-        # !! temp hax to make it compile whilst some tiles have no layout defined
-        if len(result) == 0:
-            return []
-        # !! repetition of result is hax, to get even length array temporarily
-        # !! need to actually repeat the spritelayout / spritesets to handle NW-SE and NE-SW orientations
-        return "[" + result + "," + result + "]"
+        result = []
+        # extend per orientation, with ne-sw as even numbered, and nw-se as odd numbered, which OpenTTD will then pick up appropriate to each orientation
+        for orientation_suffix in ["_ne_sw", "_nw_se"]:
+            for spritelayout_id in self.layout.spritelayout_ids:
+                result.append(spritelayout_id + orientation_suffix)
+        return "[" + ",".join(result) + "]"
 
 
 class RailStationBase(Station):
@@ -294,7 +299,7 @@ class Spriteset(object):
     def __init__(
         self,
         id,
-        sprites=[],
+        sprites_ne_sw=[],
         type="",
         xoffset=0,
         yoffset=0,
@@ -308,9 +313,7 @@ class Spriteset(object):
         num_sprites_to_autofill=1,
     ):
         self.id = id
-        self.sprites = (
-            sprites  # a list of sprites 6-tuples in format (x, y, w, h, xoffs, yoffs)
-        )
+        self.sprites_ne_sw = sprites_ne_sw  # a list of sprites 6-tuples in format (x, y, w, h, xoffs, yoffs)
         self.type = type  # set to ground or other special types, or omit for default (building, greeble, foundations etc - graphics from png named same as industry)
         self.animation_rate = animation_rate  # (must be int)
         self.custom_sprite_selector = custom_sprite_selector
@@ -324,6 +327,28 @@ class Spriteset(object):
         self.yextent = yextent
         self.zextent = 32  # it's of limited use setting zextent, just make it 32 and be done with it
         self.always_draw = always_draw
+
+    @property
+    def sprites_both_orientations(self):
+        # we want to interleave sprites so ne_sw are even numbered, and nw_se are odd numbered
+        # this is cascaded up to spritelayouts, then picked up by OpenTTD automatically when picking which spritelayout to use for the orientation
+        result = []
+        for sprite_ne_sw in self.sprites_ne_sw:
+            sprite_nw_se = [
+                sprite_ne_sw[0] + sprite_ne_sw[2] + 6, # !! CABBAGE this assumes 6px spacing on 64 wide sprites, is this always the case??
+                sprite_ne_sw[1],
+                sprite_ne_sw[2],
+                sprite_ne_sw[3],
+                sprite_ne_sw[4],
+                sprite_ne_sw[5],
+            ]
+            result.append(
+                {
+                    "ne_sw": sprite_ne_sw,
+                    "nw_se": sprite_nw_se,
+                }
+            )
+        return result
 
 
 class SpriteLayout(object):
@@ -351,8 +376,8 @@ class SpriteLayout(object):
 
 class StationLayout(list):
     """
-        Base class to hold station layouts
-        Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
+    Base class to hold station layouts
+    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
     def __init__(

@@ -12,22 +12,19 @@ def main():
     )
     spriteset_ground_overlay = facility_type.add_spriteset(type="empty")
     spriteset_1 = facility_type.add_spriteset(
-        sprites=[(10, 10, 64, 80, -31, -49)],
+        sprites_ne_sw=[(10, 10, 64, 145, -31, -114)],
+        # sprites_nw_se are automatically interpolated in the general case
+    )
+    spriteset_2 = facility_type.add_spriteset(
+        sprites_ne_sw=[(10, 170, 64, 65, -31, -34)],
+        # sprites_nw_se are automatically interpolated in the general case
     )
 
     facility_type.add_spritelayout(
         id="flood_loader_silo_spritelayout_1",
         ground_sprite=spriteset_ground,
         ground_overlay=spriteset_ground_overlay,
-        building_sprites=[spriteset_1],
-        fences=["nw", "ne", "se", "sw"],
-    )
-
-    facility_type.add_spritelayout(
-        id="flood_loader_silo_spritelayout_2",
-        ground_sprite=spriteset_ground,
-        ground_overlay=spriteset_ground_overlay,
-        building_sprites=[spriteset_1],
+        building_sprites=[spriteset_2, spriteset_1],
         fences=["nw", "ne", "se", "sw"],
     )
 
