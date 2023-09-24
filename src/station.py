@@ -301,6 +301,7 @@ class Spriteset(object):
         zoffset=0,
         xextent=16,
         yextent=16,
+        # CABBAGE !! do we need animated tiles?
         animation_rate=0,
         custom_sprite_selector=None,
         always_draw=0,
@@ -335,17 +336,16 @@ class SpriteLayout(object):
         ground_overlay,
         building_sprites,
         fences=[],
-        perma_fences=[],
         terrain_aware_ground=False,
     ):
         self.id = id
+        # !! CABBAGE ground sprite shoudl be derived from FacilityType and/or Station instance
         self.ground_sprite = ground_sprite
+        # !! CABBAGE ground overlay is probably needed per spritelayout to allow flexibility?
         self.ground_overlay = ground_overlay
         self.building_sprites = building_sprites
         # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
         self.fences = fences
-        # !!!! optionally prevent fences hiding when a station is adjacent.  Same string values as fences.
-        self.perma_fences = perma_fences
         self.terrain_aware_ground = terrain_aware_ground  # we don't draw terrain (and climate) aware ground unless explicitly required by the spritelayout, it makes nml compiles slower
 
 
