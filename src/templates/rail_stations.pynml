@@ -1,0 +1,45 @@
+<tal:include metal:use-macro="load: spritesets.pynml" />
+
+<tal:include metal:use-macro="load: spritelayouts_rail_station.pynml" />
+
+<!--!
+spritegroup ${facility_type.id}_1 {
+	little: [cow_pen_empty, cow_pen_half];
+	lots:   cow_pen_full;
+}
+
+spritegroup ${facility_type.id}_2 {
+	little: [cow_pen_empty, cow_pen_half, cow_pen_full];
+	lots:   cow_pen_full;
+}
+
+random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
+	1: ${facility_type.id}_1;
+	1: ${facility_type.id}_2;
+}
+-->
+
+<tal:stations repeat="station stations">
+    item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
+        property {
+            /* The class allows to sort stations into categories. */
+            class:                  "${station.station_class.class_id}";
+            /* If no other NewGRF provides this class before us, we have to name it */
+    		classname:              string(${station.classname_string_id});
+            /* Name of this particular station */
+            name:                   string(STR_NAME_STATION);
+            cargo_threshold: 160;
+            draw_pylon_tiles: 0;
+            hide_wire_tiles: 0xFF;
+            non_traversable_tiles: 0xFF;
+        }
+        graphics {
+            sprite_layouts: [${','.join([spritelayout.id for spritelayout in facility_type.spritelayouts])}];
+            <!--! purchase: cow_pen_half; -->
+            <!--! cargo specific callback
+            LVST: random_${facility_type.id}_1;
+            -->
+            <!--!cow_pen_empty;-->
+        }
+    }
+</tal:stations>

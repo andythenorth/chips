@@ -5,9 +5,9 @@
 item(FEAT_ROADSTOPS, cow_pen) {
 	property {
 		/* The class allows to sort stations into categories. */
-		class:                  "${facility_type.station_class}";
+		class:                  "${station.station_class.class_id}";
 		/* If no other NewGRF provides this class before us, we have to name it */
-		classname:              string(STR_NAME_STATION_CLASS_${facility_type.station_class});
+		classname:              string(${station.classname_string_id});
 		/* Name of this particular station */
 		name:                   string(STR_NAME_STATION);
 		draw_mode:              bitmask(RST_DRAW_FLAG_BAY_ROAD, RST_DRAW_FLAG_DRIVE_THROUGH_ROAD_OVERLAY);

@@ -39,3 +39,30 @@ graphics_temp_storage = dict(
     var_hide_building=18,  # hide a building in spritelayout, must be set to 1 (true) or 0 (false)
     var_hide_building_snow=19,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
 )  # max register number must be 235; registers 236-255 are reserved for building sprite hide/show values
+
+station_classes_by_metaclass = {
+    "town": [
+        {
+            "class_id": "TOWN",
+            "default_ground_type": "slab",
+        },
+    ],
+    "industry": [
+        {
+            "class_id": "INAS",
+            "default_ground_type": "asphalt",
+        },
+        {
+            "class_id": "INDA",
+            "default_ground_type": "dirty_asphalt",
+        },
+        {
+            "class_id": "INCO",
+            "default_ground_type": "cobble",
+        },
+        {
+            "class_id": "INDI",
+            "default_ground_type": "dirt",
+        },
+    ],
+}

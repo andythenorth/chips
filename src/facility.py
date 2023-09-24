@@ -18,13 +18,35 @@ class FacilityType(object):
         self.numeric_id = kwargs["numeric_id"]
         self.spritesets = []
         self.spritelayouts = []
+        self.rail_stations = []
+        self.road_stops = []
+        self.objects = []
         self.provides_snow = kwargs.get("provides_snow", False)
-        # over-ride station_class in subclasses
-        self.station_class = None
 
-    def render_nml(self, templates):
-        result = RailStation(facility_type=self).render_nml(templates)
-        return result
+    def get_station_numeric_id_offset(self, station):
+        result = None
+        found_count = 0
+        for station_feature_list in [self.rail_stations, self.road_stops, self.objects]:
+            if station in station_feature_list:
+                result = station_feature_list.index(station)
+                found_count += 1
+                # we don't break here just in case there are duplicates later - we want to catch them as that would be a bug
+
+        if found_count == 0:
+            # Station is not in any feature list? Should *never* be triggered - this code path should only be running if the station is in one of the feature lists
+            raise BaseException(
+                "station " + str(station) + " not found for facility_type " + self.id
+            )
+        elif found_count > 1:
+            # Should *never* be triggered - we don't have any mechanism for adding a station instance more than once
+            raise BaseException(
+                "station "
+                + str(station)
+                + " found more than once for facility_type "
+                + self.id
+            )
+        else:
+            return result
 
     def add_spriteset(self, *args, **kwargs):
         id = self.id + "_spriteset_" + str(len(self.spritesets))
@@ -38,6 +60,28 @@ class FacilityType(object):
         self.spritelayouts.append(new_spritelayout)
         # returning the new spritelayout isn't essential, but permits the caller giving it a reference for use elsewhere
         return new_spritelayout
+
+    def add_station_layout(self, *args, **kwargs):
+        new_station_layout = StationLayout(self, *args, **kwargs)
+        self.station_layouts.append(new_station_layout)
+        # returning the new layout isn't essential, but permits the caller giving it a reference for use elsewhere
+        return new_station_layout
+
+    def add_rail_station(self, type, **kwargs):
+        type_map = {
+            "track_tile": RailStationTrackTile,
+            "non_track_tile": RailStationNonTrackTile,
+        }
+        for station_class in global_constants.station_classes_by_metaclass[
+            self.metaclass
+        ]:
+            self.rail_stations.append(type_map[type](station_class=station_class, facility_type=self))
+
+    def add_road_stop(self, type, **kwargs):
+        self.road_stops.append(RoadStopDriveThrough(facility_type=self))
+
+    def add_grf_object(self, type, **kwargs):
+        self.objects.append(GRFObject(facility_type=self))
 
     def unpack_sprite_or_spriteset(
         self,
@@ -95,7 +139,6 @@ class FacilityType(object):
         if isinstance(sprite_or_spriteset, Sprite):
             return getattr(sprite_or_spriteset, "sprite_number" + suffix)
 
-
     def get_graphics_file_path(self, terrain=None, construction_state_num=None):
         if terrain == "snow" and self.provides_snow:
             terrain_suffix = "_snow"
@@ -104,61 +147,105 @@ class FacilityType(object):
         # don't use os.path.join here, this returns a string for use by nml
         return '"src/graphics/' + self.id + terrain_suffix + '.png"'
 
+    def render_nml(self, templates):
+        station_feature_template_mapping = [
+            (self.rail_stations, "rail_stations.pynml"),
+            #            (self.road_stops, "road_stops.pynml"),
+            #            (self.rail_stations, "objects.pynml"),
+        ]
+        result = ""
+        for stations, template_name in station_feature_template_mapping:
+            template = templates[template_name]
+            templated_nml = utils.unescape_chameleon_output(
+                template(
+                    facility_type=self,
+                    stations=stations,
+                    # get_perm_num=self.get_perm_num, # !!
+                    global_constants=global_constants,
+                    graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure # !!
+                    # registered_industries=registered_industries, # !!
+                    utils=utils,
+                )
+            )
+            result += templated_nml
+        return result
+
 
 class FacilityTypeIndustry(FacilityType):
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.station_class = "CHIN"
+        self.metaclass = "industry"
 
 
 class FacilityTypeTown(FacilityType):
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.station_class = "CHTO"
+        self.metaclass = "town"
 
 
-class RailStation(object):
+class Station(object):
     def __init__(self, **kwargs):
+        self.station_class = kwargs["station_class"]
         self.facility_type = kwargs["facility_type"]
 
-    def render_nml(self, templates):
-        template = templates["rail_station.pynml"]
-        templated_nml = utils.unescape_chameleon_output(
-            template(
-                station=self,
-                # get_perm_num=self.get_perm_num, # !!
-                global_constants=global_constants,
-                facility_type=self.facility_type,
-                graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure # !!
-                # registered_industries=registered_industries, # !!
-                utils=utils,
-            )
+    @property
+    def id(self):
+        # id suffix maker
+        # !! seems safe enough here to derive id suffixes at compile time (unlike industries or vehicles which need to refer to each other)
+        # !! however if we want to cross-refer station tiles, then we'll need to derive these IDs earlier
+        return (
+            self.facility_type.id
+            + "_"
+            + str(self.facility_type.get_station_numeric_id_offset(self))
         )
-        return templated_nml
 
+    @property
+    def numeric_id(self):
+        # numeric id maker
+        # !! seems safe enough here to derive numeric ids at compile time (unlike industries or vehicles which need to refer to each other)
+        # !! however if we want to cross-refer station tiles, then we'll need to derive these IDs earlier
+        return (
+            self.facility_type.numeric_id
+            + self.facility_type.get_station_numeric_id_offset(self)
+        )
 
-class RoadStop(object):
+    @property
+    def classname_string_id(self):
+        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
+
+class RailStationBase(Station):
     def __init__(self, **kwargs):
-        pass
-        # not implemented
+        super().__init__(**kwargs)
 
-    def render_nml(self):
-        pass
-        # not implemented
+class RailStationTrackTile(RailStationBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
-class GRFObject(object):
+class RailStationNonTrackTile(RailStationBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class RoadStopBase(Station):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+class RoadStopBay(RoadStopBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class RoadStopDriveThrough(RoadStopBase):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class GRFObject(Station):
     """Stubby class to hold objects - GRFObject to avoid conflating with built-in python classname"""
 
     def __init__(self, **kwargs):
-        pass
-        # not implemented
-
-    def render_nml(self):
-        pass
-        # not implemented
+        super().__init__(**kwargs)
 
 
 class Spriteset(object):
@@ -222,3 +309,84 @@ class SpriteLayout(object):
         # !!!! optionally prevent fences hiding when a station is adjacent.  Same string values as fences.
         self.perma_fences = perma_fences
         self.terrain_aware_ground = terrain_aware_ground  # we don't draw terrain (and climate) aware ground unless explicitly required by the spritelayout, it makes nml compiles slower
+
+
+class StationLayout(object):
+    """Base class to hold station layouts"""
+
+    def __init__(
+        self,
+        facility_type,
+        id,
+        layout,
+        validate_legacy_layout_defs=False,
+    ):
+        self.id = id
+        self.facility_type = facility_type
+        self._layout = layout
+        self.validate_xy()
+
+    def validate_xy(self):
+        # in-game station layouts must not have negative xy offsets
+        for x, y, spritelayout_id in self.layout:
+            for offset_dir in [x, y]:
+                if offset_dir < 0:
+                    raise BaseException(
+                        "Negative values are invalid for x or y offsets: "
+                        + self.id
+                        + " ("
+                        + str(x)
+                        + ", "
+                        + str(y)
+                        + ")"
+                    )
+        # xy offset pairs must be unique per layout
+        xy_offsets = [(i[0], i[1]) for i in self.layout]
+        for x, y in xy_offsets:
+            if xy_offsets.count((x, y)) > 1:
+                raise BaseException(
+                    "Repeated xy offset pair: " + self.id + " " + str((x, y))
+                )
+
+    """
+    def layout(self):
+        result = []
+        for layout_def in self._layout:
+            if len(layout_def) == 3:
+                tile = None
+                if layout_def[2] == "spritelayout_null_water":
+                    tile = "255"
+                if layout_def[2] == "spritelayout_null_station":
+                    tile = "24"
+                #  resolve the spritelayout by ID
+                for spritelayout in self.industry.spritelayouts:
+                    if spritelayout.id == layout_def[2]:
+                        if spritelayout.tile == None:
+                            raise BaseException("No tile defined for", spritelayout.id)
+                        else:
+                            tile = spritelayout.tile
+                        break
+                # not found, look in other book-keeping lists of tile ids
+                if tile == None:
+                    tile = self.industry.magic_spritelayout_tile_ids[layout_def[2]]
+                if tile == None:
+                    raise BaseException(
+                        self.id
+                        + " - no spritelayout found matching id given by "
+                        + str(layout_def)
+                    )
+                else:
+                    # redefine the layout def
+                    layout_def = (
+                        layout_def[0],
+                        layout_def[1],
+                        tile,
+                        layout_def[2],
+                    )
+            # write the original or modified layout def to result,
+            result.append(layout_def)
+        if len(result) == 0:
+            # something went wrong, probably fancy conditions somewhere eh?
+            raise BaseException("layout resolver failed for " + self.id)
+        return result
+    """

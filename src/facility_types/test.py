@@ -4,18 +4,11 @@ from facility import FacilityTypeTown
 def main():
     facility_type = FacilityTypeTown(
         id="test",
-        numeric_id=1,
-    )
-    """
-    consist = DumpCarAggregateConsist(
-        roster_id="pony",
-        base_numeric_id=14730,
-        gen=1,
-        subtype="A",
-        sprites_complete=True,
+        numeric_id=100,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
-    """
+    facility_type.add_rail_station(type="track_tile")
+    #facility_type.add_road_stop(type="foo")
+    #facility_type.add_grf_object(type="foo")
 
     return facility_type

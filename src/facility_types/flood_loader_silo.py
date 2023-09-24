@@ -4,7 +4,7 @@ from facility import FacilityTypeIndustry
 def main():
     facility_type = FacilityTypeIndustry(
         id="flood_loader_silo",
-        numeric_id=2,
+        numeric_id=200,
     )
 
     spriteset_ground = facility_type.add_spriteset(
@@ -30,5 +30,8 @@ def main():
         building_sprites=[spriteset_1],
         fences=["nw", "ne", "se", "sw"],
     )
+
+    facility_type.add_rail_station(type="track_tile")
+    #facility_type.add_rail_station(type="non_track_tile")
 
     return facility_type
