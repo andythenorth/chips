@@ -24,7 +24,8 @@ def main():
         id="flood_loader_silo_spritelayout_1",
         ground_sprite=spriteset_ground,
         ground_overlay=spriteset_ground_overlay,
-        building_sprites=[spriteset_2, spriteset_1],
+        rear_building_sprites=[spriteset_2],
+        front_building_sprites=[spriteset_1],
         fences=["nw", "ne", "se", "sw"],
     )
 

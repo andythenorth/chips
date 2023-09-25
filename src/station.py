@@ -399,7 +399,8 @@ class SpriteLayout(object):
         id,
         ground_sprite,
         ground_overlay,
-        building_sprites,
+        rear_building_sprites,
+        front_building_sprites,
         fences=[],
         terrain_aware_ground=False,
     ):
@@ -408,7 +409,8 @@ class SpriteLayout(object):
         self.ground_sprite = ground_sprite
         # !! CABBAGE ground overlay is probably needed per spritelayout to allow flexibility?
         self.ground_overlay = ground_overlay
-        self.building_sprites = building_sprites
+        self.rear_building_sprites = rear_building_sprites
+        self.front_building_sprites = front_building_sprites
         # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
         self.fences = fences
 
