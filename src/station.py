@@ -262,17 +262,18 @@ class RailStationBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # set catenary wire and pylon drawing appropriately in subclass, or allow over-riding per tile
-        self._draw_pylon_tiles = None
+        self._hide_pylon_tiles = None
         self._hide_wire_tiles = None
         # set non_traversable_tiles appropriately in subclass, no over-riding per tile
         self.non_traversable_tiles = None
 
     @property
     def draw_pylon_tiles(self):
-        match self._draw_pylon_tiles:
-            case True:
-                return "STAT_ALL_TILES"
+        # note that this inverts hide_pylon_tiles, as it makes the interface less likely to cause the wearing of clown shoes in public
+        match self._hide_pylon_tiles:
             case False:
+                return "STAT_ALL_TILES"
+            case True:
                 return 0
 
     @property
@@ -289,7 +290,7 @@ class RailStationTrackTile(RailStationBase):
         super().__init__(**kwargs)
         self.non_traversable_tiles = 0
         # default to always drawing wire catenary and pylons - over-ride per station as needed
-        self._draw_pylon_tiles = kwargs.get("draw_pylon_tiles", True)
+        self._hide_pylon_tiles = kwargs.get("hide_pylon_tiles", False)
         self._hide_wire_tiles = kwargs.get("hide_wire_tiles", False)
 
 
@@ -298,7 +299,7 @@ class RailStationNonTrackTile(RailStationBase):
         super().__init__(**kwargs)
         self.non_traversable_tiles = "STAT_ALL_TILES"
         # never draw wire catenary and pylons for non-track tiles - makes no sense(?)
-        self._draw_pylon_tiles = False
+        self._hide_pylon_tiles = True
         self._hide_wire_tiles = True
 
 

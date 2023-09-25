@@ -30,7 +30,7 @@ def main():
 
     facility_type.add_rail_station(
         type="track_tile",
-        draw_pylon_tiles=False,
+        hide_pylon_tiles=True,
         hide_wire_tiles=True,
         layout=[
             (
