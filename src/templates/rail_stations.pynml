@@ -19,7 +19,13 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
 }
 -->
 
+
 <tal:stations repeat="station stations">
+
+    switch(FEAT_STATIONS, SELF, ${station.id}_custom_ground, 0) {
+        0: return spriteset_ground_tile_${station.ground_type}_1;
+    }
+
     item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
         property {
             /* The class allows to sort stations into categories. */
@@ -35,6 +41,7 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
         }
         graphics {
             sprite_layouts: ${station.spritelayouts_as_nml_array};
+            custom_spritesets: [${station.id}_custom_ground];
             <!--! purchase: cow_pen_half; -->
             <!--! cargo specific callback
             LVST: random_${facility_type.id}_1;

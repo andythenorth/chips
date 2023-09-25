@@ -36,5 +36,5 @@ facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    facility_type_manager.add_facility_type(test)
+    #facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(flood_loader_silo)

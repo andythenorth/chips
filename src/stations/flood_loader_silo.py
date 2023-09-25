@@ -8,7 +8,7 @@ def main():
     )
 
     spriteset_ground = facility_type.add_spriteset(
-        type="dirty_concrete",
+        type="dirt",
     )
     spriteset_ground_overlay = facility_type.add_spriteset(type="empty")
     spriteset_1 = facility_type.add_spriteset(

@@ -257,6 +257,10 @@ class Station(object):
                 result.append(spritelayout_id + orientation_suffix)
         return "[" + ",".join(result) + "]"
 
+    @property
+    def ground_type(self):
+        return self.station_class["default_ground_type"]
+
 
 class RailStationBase(Station):
     def __init__(self, **kwargs):
@@ -407,7 +411,6 @@ class SpriteLayout(object):
         self.building_sprites = building_sprites
         # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
         self.fences = fences
-        self.terrain_aware_ground = terrain_aware_ground  # we don't draw terrain (and climate) aware ground unless explicitly required by the spritelayout, it makes nml compiles slower
 
 
 class StationLayout(list):

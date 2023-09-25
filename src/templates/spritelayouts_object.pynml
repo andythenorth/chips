@@ -10,7 +10,7 @@
                         <tal:case_terrain case="True">
                             <!--! ground sprite from terrain -->
                             ground {
-                                sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_sprite}));
+                                sprite: (LOAD_TEMP(${graphics_temp_storage.var_ground_sprite}));
                             }
                         </tal:case_terrain>
                         <tal:case_industry case="False">

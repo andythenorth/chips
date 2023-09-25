@@ -1,96 +1,11 @@
-<!--!
-spritelayout ${facility_type.id}_X_rail_station(a) {
-	ground {
-		// sprite: 2022 + a; // prevent railtype offset
-		sprite: GROUNDSPRITE_RAIL_X;
-	}
-	building {
-		sprite: mud_ground(0);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: mud_ground(1);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: flood_loader_silo_spriteset(1);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: flood_loader_silo_spriteset(0);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-}
-
-spritelayout ${facility_type.id}_Y_rail_station(a) {
-	ground {
-		// sprite: 2022 + a; // prevent railtype offset
-		sprite: GROUNDSPRITE_RAIL_Y;
-	}
-	building {
-		sprite: mud_ground(2);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: mud_ground(3);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: flood_loader_silo_spriteset(3);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-	building {
-		sprite: flood_loader_silo_spriteset(2);
-		zextent: 36;
-		recolour_mode: RECOLOUR_REMAP;
-		palette:       PALETTE_USE_DEFAULT;
-	}
-}
--->
 <tal:spritelayouts repeat="spritelayout facility_type.spritelayouts">
     <tal:orientation repeat="orientation ['ne_sw', 'nw_se']">
         spritelayout ${spritelayout.id}_${orientation} {
-            <tal:ground_sprite switch="spritelayout.terrain_aware_ground">
-                <tal:case_terrain case="True">
-                    <!--! ground sprite from terrain -->
-                    ground {
-                        sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_sprite}));
-                    }
-                </tal:case_terrain>
-                <tal:case_not_terrain case="False">
-                    <!--! specific ground sprite, if not empty -->
-                    <tal:not_empty condition="getattr(spritelayout.ground_sprite, 'type', None) != 'empty'">
-                        childsprite {
-                            sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_sprite, orientation)};
-                            hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
-                            always_draw: 1;
-                        }
-                        <!--! ...specific ground sprite with snow -->
-                        childsprite {
-                            sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_sprite, orientation, snow_overlay=True)};
-                            hide_sprite: (!LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
-                            always_draw: 1;
-                        }
-                    </tal:not_empty>
-                </tal:case_not_terrain>
-            </tal:ground_sprite>
-
+            ground {
+                sprite: CUSTOM(0, 0);
+            }
             <!--! specific ground overlay, if not empty -->
-            <tal:not_empty condition="getattr(spritelayout.ground_overlay, 'type', None) != 'empty'">
+            <tal:optional_ground_overlay_and_snow condition="getattr(spritelayout.ground_overlay, 'type', None) != 'empty'">
                 childsprite {
                     sprite: ${facility_type.unpack_sprite_or_spriteset(spritelayout.ground_overlay, orientation)};
                     recolour_mode: RECOLOUR_REMAP;
@@ -106,7 +21,7 @@ spritelayout ${facility_type.id}_Y_rail_station(a) {
                     hide_sprite: (!LOAD_TEMP(${graphics_temp_storage.var_terrain_is_snow}));
                     always_draw: 1;
                 }
-            </tal:not_empty>
+            </tal:optional_ground_overlay_and_snow>
 
             <tal:optional_fence condition="'ne' in spritelayout.fences">
                 <!--! fences NE -->
@@ -199,7 +114,6 @@ spritelayout ${facility_type.id}_Y_rail_station(a) {
                     palette:       PALETTE_USE_DEFAULT;
                 }
             </tal:optional_fence>
-
         }
     </tal:orientation>
 </tal:spritelayouts>

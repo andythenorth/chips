@@ -1,9 +1,11 @@
 <!--! Plain ground sprite without any frills -->
 template tmpl_ground_tile(x, y) {
 	[x, y, 64, 31, -31, 0, ANIM]
+	[x, y, 64, 31, -31, 0, ANIM]
 }
 
-<tal:spritesets repeat="ground_tile [('mud', 0), ('dirty_concrete', 80), ('hard_standing_dirt', 150), ('cobble', 220), ('snow', 290), ('slab', 360)]">
+<!--! !!!! this needs to handle plain ground and both orientations of track -->
+<tal:spritesets repeat="ground_tile [('dirt', 10), ('asphalt', 80), ('gravel', 150), ('cobble', 220), ('pavement', 290)]">
     <!--! the frame variants are to support animated, they're hard-coded to match current animation amounts and must be extended if industry animations evolve -->
     <!--!
     !! CABBAGE - nerfed off the animation support which is copied from FIRS, but probably not needed

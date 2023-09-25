@@ -18,7 +18,7 @@ graphics_path = "generated/graphics/"
 max_game_date = 5000000
 
 graphics_temp_storage = dict(
-    var_terrain_sprite=0,  # ID of terrain sprite (from baseset)
+    var_ground_sprite=0,  # ID of ground sprite
     var_fencesprite_ne=1,  # fence sprite to use on the NE border
     var_fencesprite_nw=2,  # fence sprite to use on the NW border
     var_fencesprite_se=3,  # fence sprite to use on the SE border
@@ -45,7 +45,7 @@ station_classes_by_metaclass = {
     "town": [
         {
             "class_id": "DFLT",
-            "default_ground_type": "slab",
+            "default_ground_type": "pavement",
         },
     ],
     "industry": [
@@ -55,7 +55,7 @@ station_classes_by_metaclass = {
         },
         {
             "class_id": "INGR",
-            "default_ground_type": "dirty_asphalt",
+            "default_ground_type": "gravel",
         },
         {
             "class_id": "INCO",
