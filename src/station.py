@@ -70,11 +70,12 @@ class FacilityType(object):
                 new_station_type = RailStationTrackTile
             case "non_track_tile":
                 new_station_type = RailStationNonTrackTile
-        layout = StationLayout(kwargs["layout"])
         for station_class in self.station_classes:
             self.rail_stations.append(
                 new_station_type(
-                    station_class=station_class, layout=layout, facility_type=self
+                    station_class=station_class,
+                    facility_type=self,
+                    **kwargs,
                 )
             )
 
@@ -84,11 +85,12 @@ class FacilityType(object):
                 new_station_type = RoadStopBay
             case "drive_through_tile":
                 new_station_type = RoadStopDriveThrough
-        layout = StationLayout(kwargs["layout"])
         for station_class in self.station_classes:
             self.road_stops.append(
                 new_station_type(
-                    station_class=station_class, layout=layout, facility_type=self
+                    station_class=station_class,
+                    facility_type=self,
+                    **kwargs,
                 )
             )
 
@@ -97,7 +99,9 @@ class FacilityType(object):
         for station_class in self.station_classes:
             self.objects.append(
                 GRFObject(
-                    station_class=station_class, layout=layout, facility_type=self
+                    station_class=station_class,
+                    facility_type=self,
+                    **kwargs,
                 )
             )
 
@@ -217,7 +221,7 @@ class Station(object):
     def __init__(self, **kwargs):
         self.station_class = kwargs["station_class"]
         self.facility_type = kwargs["facility_type"]
-        self.layout = kwargs["layout"]
+        self.layout = StationLayout(kwargs["layout"])
 
     @property
     def id(self):
@@ -257,19 +261,46 @@ class Station(object):
 class RailStationBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # set non_traversable_tiles appropriately in subclass
+        # set catenary wire and pylon drawing appropriately in subclass, or allow over-riding per tile
+        self._draw_pylon_tiles = None
+        self._hide_wire_tiles = None
+        # set non_traversable_tiles appropriately in subclass, no over-riding per tile
         self.non_traversable_tiles = None
+
+    @property
+    def draw_pylon_tiles(self):
+        match self._draw_pylon_tiles:
+            case True:
+                return "STAT_ALL_TILES"
+            case False:
+                return 0
+
+    @property
+    def hide_wire_tiles(self):
+        match self._hide_wire_tiles:
+            case True:
+                return "STAT_ALL_TILES"
+            case False:
+                return 0
+
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.non_traversable_tiles = 0
+        # default to always drawing wire catenary and pylons - over-ride per station as needed
+        self._draw_pylon_tiles = kwargs.get("draw_pylon_tiles", True)
+        self._hide_wire_tiles = kwargs.get("hide_wire_tiles", False)
 
 
 class RailStationNonTrackTile(RailStationBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.non_traversable_tiles = "STAT_ALL_TILES"
+        # never draw wire catenary and pylons for non-track tiles - makes no sense(?)
+        self._draw_pylon_tiles = False
+        self._hide_wire_tiles = True
+
 
 class RoadStopBase(Station):
     def __init__(self, **kwargs):
@@ -337,7 +368,9 @@ class Spriteset(object):
         result = []
         for sprite_ne_sw in self.sprites_ne_sw:
             sprite_nw_se = [
-                sprite_ne_sw[0] + sprite_ne_sw[2] + 6, # !! CABBAGE this assumes 6px spacing on 64 wide sprites, is this always the case??
+                sprite_ne_sw[0]
+                + sprite_ne_sw[2]
+                + 6,  # !! CABBAGE this assumes 6px spacing on 64 wide sprites, is this always the case??
                 sprite_ne_sw[1],
                 sprite_ne_sw[2],
                 sprite_ne_sw[3],

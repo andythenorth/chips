@@ -29,8 +29,8 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
             /* Name of this particular station */
             name:                   string(STR_NAME_STATION);
             cargo_threshold: 160;
-            draw_pylon_tiles: 0;
-            hide_wire_tiles: 0xFF;
+            draw_pylon_tiles: ${station.draw_pylon_tiles};
+            hide_wire_tiles: ${station.hide_wire_tiles};
             non_traversable_tiles: ${station.non_traversable_tiles};
         }
         graphics {
