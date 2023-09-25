@@ -257,17 +257,19 @@ class Station(object):
 class RailStationBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
+        # set non_traversable_tiles appropriately in subclass
+        self.non_traversable_tiles = None
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.non_traversable_tiles = 0
 
 
 class RailStationNonTrackTile(RailStationBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
+        self.non_traversable_tiles = "STAT_ALL_TILES"
 
 class RoadStopBase(Station):
     def __init__(self, **kwargs):

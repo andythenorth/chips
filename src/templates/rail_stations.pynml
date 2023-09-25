@@ -31,7 +31,7 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
             cargo_threshold: 160;
             draw_pylon_tiles: 0;
             hide_wire_tiles: 0xFF;
-            non_traversable_tiles: 0xFF;
+            non_traversable_tiles: ${station.non_traversable_tiles};
         }
         graphics {
             sprite_layouts: ${station.spritelayouts_as_nml_array};
