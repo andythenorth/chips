@@ -28,9 +28,14 @@ class FacilityTypeManager(list):
         self.append(facility_type)
 
 
+from stations import booking_office
+from stations import booking_office_small
+from stations import dispatchers_office
 from stations import flood_loader_silo
+from stations import hotel
 from stations import mine_building_large
 from stations import mine_building_small
+from stations import parcels_office
 from stations import test
 from stations import tipple
 
@@ -39,9 +44,14 @@ facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    #facility_type_manager.add_facility_type(test)
+    facility_type_manager.add_facility_type(booking_office)
+    facility_type_manager.add_facility_type(booking_office_small)
+    facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
+    facility_type_manager.add_facility_type(hotel)
     facility_type_manager.add_facility_type(mine_building_large)
     facility_type_manager.add_facility_type(mine_building_small)
+    facility_type_manager.add_facility_type(parcels_office)
+    facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(tipple)
 
