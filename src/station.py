@@ -249,6 +249,10 @@ class Station(object):
         return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
 
     @property
+    def name_string_id(self):
+        return "STR_NAME_STATION_" + self.facility_type.id.upper()
+
+    @property
     def spritelayouts_as_nml_array(self):
         result = []
         # extend per orientation, with ne-sw as even numbered, and nw-se as odd numbered, which OpenTTD will then pick up appropriate to each orientation

@@ -8,6 +8,8 @@ base = "CABBAGE"
 ["# {ORANGE}FIRS Industry Replacement Set{}{BLACK}Brought to you by andythenorth, FooBar, planetmaker, Terkhen and Yexo, with help from many others. {SILVER}See readme for more information, including how to use CHIPS. {BLACK}License"]
 base = "GPL v2."
 
+# station classes
+
 [STR_NAME_STATION_CLASS_DFLT]
 # default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
 base = "Town stations (pavement)"
@@ -15,14 +17,46 @@ base = "Town stations (pavement)"
 [STR_NAME_STATION_CLASS_INAS]
 base = "Industry stations (asphalt)"
 
-[STR_NAME_STATION_CLASS_INGR]
-base = "Industry stations (gravel)"
-
 [STR_NAME_STATION_CLASS_INCO]
 base = "Industry stations (cobble)"
 
 [STR_NAME_STATION_CLASS_INDI]
 base = "Industry stations (dirt)"
 
-[STR_NAME_STATION]
+[STR_NAME_STATION_CLASS_INGR]
+base = "Industry stations (gravel)"
+
+
+# station names, keep alphabetised by ID
+
+[STR_NAME_STATION_BOOKING_OFFICE]
+base = "Booking office"
+
+[STR_NAME_STATION_BOOKING_OFFICE_SMALL]
+base = "Small booking office"
+
+[STR_NAME_STATION_DISPATCHERS_OFFICE]
+base = "Dispatcher's office"
+
+[STR_NAME_STATION_FLOOD_LOADER_SILO]
+base = "Flood loader silo"
+
+[STR_NAME_STATION_HOTEL]
+base = "Hotel"
+
+[STR_NAME_STATION_MINE_BUILDING_LARGE]
+base = "Large mine building"
+
+[STR_NAME_STATION_MINE_BUILDING_SMALL]
+base = "Small mine building"
+
+[STR_NAME_STATION_PARCELS_OFFICE]
+base = "Parcels office"
+
+[STR_NAME_STATION_TEST]
 base = "CABBAGE"
+
+[STR_NAME_STATION_TIPPLE]
+base = "Tipple"
+
+
