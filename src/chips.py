@@ -29,6 +29,8 @@ class FacilityTypeManager(list):
 
 
 from stations import flood_loader_silo
+from stations import mine_building_large
+from stations import mine_building_small
 from stations import test
 from stations import tipple
 
@@ -39,4 +41,7 @@ facility_type_manager = FacilityTypeManager()
 def main():
     #facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(flood_loader_silo)
+    facility_type_manager.add_facility_type(mine_building_large)
+    facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(tipple)
+
