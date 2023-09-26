@@ -23,7 +23,7 @@ def main():
         sprites_ne_sw=[(150, 170, 64, 65, -31, -34)],
         # sprites_nw_se are automatically interpolated in the general case
     )
-    spriteset_5 = facility_type.add_spriteset(
+    spriteset_rails = facility_type.add_spriteset(
         sprites_ne_sw=[(10, 250, 64, 39, -31, -8)],
         # sprites_nw_se are automatically interpolated in the general case
     )
@@ -43,7 +43,7 @@ def main():
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_crane_rails",
-        rear_building_sprites=[spriteset_5],
+        rear_building_sprites=[spriteset_rails],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
     )
