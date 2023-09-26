@@ -414,18 +414,12 @@ class SpriteLayout(object):
     def __init__(
         self,
         id,
-        ground_sprite,
-        ground_overlay,
         rear_building_sprites,
         front_building_sprites,
         fences=[],
         terrain_aware_ground=False,
     ):
         self.id = id
-        # !! CABBAGE ground sprite shoudl be derived from FacilityType and/or Station instance
-        self.ground_sprite = ground_sprite
-        # !! CABBAGE ground overlay is probably needed per spritelayout to allow flexibility?
-        self.ground_overlay = ground_overlay
         self.rear_building_sprites = rear_building_sprites
         self.front_building_sprites = front_building_sprites
         # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
