@@ -32,7 +32,10 @@ from stations import booking_office
 from stations import booking_office_small
 from stations import dispatchers_office
 from stations import flood_loader_silo
+from stations import harbour_crane
 from stations import hotel
+from stations import hut_1
+from stations import hut_2
 from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
@@ -48,7 +51,10 @@ def main():
     facility_type_manager.add_facility_type(booking_office_small)
     facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
+    facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hotel)
+    facility_type_manager.add_facility_type(hut_1)
+    facility_type_manager.add_facility_type(hut_2)
     facility_type_manager.add_facility_type(mine_building_large)
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
