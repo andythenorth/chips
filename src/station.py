@@ -2,9 +2,10 @@ import os
 
 currentdir = os.curdir
 
+import chips
 import global_constants
 import utils
-from spriteset import Spriteset
+from spriteset import SpritesetLegacy
 
 
 class FacilityType(object):
@@ -54,7 +55,7 @@ class FacilityType(object):
 
     def add_spriteset(self, *args, **kwargs):
         id = self.id + "_spriteset_" + str(len(self.spritesets))
-        new_spriteset = Spriteset(id=id, *args, **kwargs)
+        new_spriteset = SpritesetLegacy(id=id, *args, **kwargs)
         self.spritesets.append(new_spriteset)
         # returning the new spriteset isn't essential, but permits the caller giving it a reference for use elsewhere
         return new_spriteset
@@ -120,7 +121,7 @@ class FacilityType(object):
             suffix = "_snow"
         else:
             suffix = ""
-        if isinstance(sprite_or_spriteset, Spriteset):
+        if isinstance(sprite_or_spriteset, SpritesetLegacy):
             # tiny optimisation, don't use an animation sprite selector if there is no animation
             # !!!! CABBAGE - animation won't work correctly currently, and would need extended to handle the orientations correctly (ne-sw = even, nw-se = odd)
             if sprite_or_spriteset.animation_rate > 0:
@@ -194,6 +195,7 @@ class FacilityType(object):
                     graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure # !!
                     # registered_industries=registered_industries, # !!
                     utils=utils,
+                    sprite_manager=chips.sprite_manager,
                 )
             )
             result += templated_nml
@@ -297,6 +299,21 @@ class RailStationBase(Station):
             case False:
                 return 0
 
+    def get_custom_sprite_indexes_and_labels(self, ground_subtypes):
+        # index into the global ground_tiles spriteset, with a label included for convenience of debugging
+        result = []
+        for ground_subtype in ground_subtypes:
+            sprite_id = self.ground_type + "_" + ground_subtype
+            result.append(
+                (
+                    chips.sprite_manager["ground_tiles"].get_index_for_sprite_by_id(
+                        sprite_id
+                    ),
+                    sprite_id,
+                )
+            )
+        return result
+
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
@@ -308,16 +325,9 @@ class RailStationTrackTile(RailStationBase):
         self._hide_wire_tiles = kwargs.get("hide_wire_tiles", False)
 
     @property
-    def custom_spriteset_mapping(self):
-        # spritelayouts assume a specific order for these when using CUSTOM for sprites, and they will need updated if the order changes
-        return {
-            self.id
-            + "_custom_ground_split_platforms_ne_sw_": "spriteset_ground_split_platforms_ne_sw_"
-            + self.ground_type,
-            self.id
-            + "_custom_ground_split_platforms_nw_se_": "spriteset_ground_split_platforms_nw_se_"
-            + self.ground_type,
-        }
+    def custom_sprite_indexes_and_labels(self):
+        ground_subtypes = ["rear_platform_ne_sw", "rear_platform_nw_se", "front_platform_ne_sw", "front_platform_nw_se"]
+        return self.get_custom_sprite_indexes_and_labels(ground_subtypes)
 
 
 class RailStationNonTrackTile(RailStationBase):
@@ -330,13 +340,9 @@ class RailStationNonTrackTile(RailStationBase):
         self._hide_wire_tiles = True
 
     @property
-    def custom_spriteset_mapping(self):
-        # spritelayouts assume a specific order for these when using CUSTOM for sprites, and they will need updated if the order changes
-        return {
-            self.id
-            + "_custom_ground_whole_tile": "spriteset_ground_whole_tile_"
-            + self.ground_type,
-        }
+    def custom_sprite_indexes_and_labels(self):
+        ground_subtypes = ["whole_tile"]
+        return self.get_custom_sprite_indexes_and_labels(ground_subtypes)
 
 
 class RoadStopBase(Station):

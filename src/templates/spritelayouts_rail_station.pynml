@@ -15,11 +15,11 @@
                             ...unless it's moved to global_constants or similar
                         -->
                         childsprite {
-                            sprite: CUSTOM(${'0' if orientation == 'ne_sw' else '1'}, 0);
+                            sprite: spriteset_ground_tiles(LOAD_TEMP(${'0' if orientation == 'ne_sw' else '1'}));
                             always_draw: 1;
                         }
                         childsprite {
-                            sprite: CUSTOM(${'0' if orientation == 'ne_sw' else '1'}, 1);
+                            sprite: spriteset_ground_tiles(LOAD_TEMP(${'2' if orientation == 'ne_sw' else '3'}));
                             always_draw: 1;
                     }
                     </tal:track>
@@ -34,7 +34,7 @@
                             ...unless it's moved to global_constants or similar
                         -->
                         childsprite {
-                            sprite: CUSTOM(0, 0);
+                            sprite: spriteset_ground_tiles(LOAD_TEMP(0));
                             always_draw: 1;
                         }
                     </tal:non_track>

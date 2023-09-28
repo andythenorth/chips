@@ -1,0 +1,23 @@
+<tal:build_spritesets repeat="spriteset facility_type.spritesets">
+    <!--! autofill sprites is magic to allow matching to the number of sprites in a different spriteset -->
+
+    <!--! the default type of spriteset -->
+    <tal:default_feature_or_building condition="spriteset.type == ''">
+        spriteset(${spriteset.id}) {
+            <tal:autofill_sprites repeat="autosprite_num range(spriteset.num_sprites_to_autofill)">
+                <tal:sprites repeat="sprite spriteset.sprites_both_orientations">
+                    [${sprite["ne_sw"][0]}, ${sprite["ne_sw"][1]}, ${sprite["ne_sw"][2]}, ${sprite["ne_sw"][3]}, ${sprite["ne_sw"][4]}, ${sprite["ne_sw"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path()}]
+                    [${sprite["nw_se"][0]}, ${sprite["nw_se"][1]}, ${sprite["nw_se"][2]}, ${sprite["nw_se"][3]}, ${sprite["nw_se"][4]}, ${sprite["nw_se"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path()}]
+                </tal:sprites>
+            </tal:autofill_sprites>
+        }
+        spriteset(${spriteset.id}_snow) {
+            <tal:autofill_sprites repeat="autosprite_num range(spriteset.num_sprites_to_autofill)">
+                <tal:sprites repeat="sprite spriteset.sprites_both_orientations">
+                    [${sprite["ne_sw"][0]}, ${sprite["ne_sw"][1]}, ${sprite["ne_sw"][2]}, ${sprite["ne_sw"][3]}, ${sprite["ne_sw"][4]}, ${sprite["ne_sw"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path(terrain='snow')}]
+                    [${sprite["nw_se"][0]}, ${sprite["nw_se"][1]}, ${sprite["nw_se"][2]}, ${sprite["nw_se"][3]}, ${sprite["nw_se"][4]}, ${sprite["nw_se"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path(terrain='snow')}]
+                </tal:sprites>
+            </tal:autofill_sprites>
+        }
+    </tal:default_feature_or_building>
+</tal:build_spritesets>

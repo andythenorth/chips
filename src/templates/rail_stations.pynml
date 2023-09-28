@@ -1,4 +1,4 @@
-<tal:include metal:use-macro="load: spritesets.pynml" />
+<tal:include metal:use-macro="load: spritesets_legacy.pynml" />
 
 <tal:include metal:use-macro="load: spritelayouts_rail_station.pynml" />
 
@@ -22,11 +22,14 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
 
 <tal:stations repeat="station stations">
 
-    <tal:custom_spriteset_switches repeat="custom_spriteset_mapping station.custom_spriteset_mapping.items()">
-        switch(FEAT_STATIONS, SELF, ${custom_spriteset_mapping[0]}, 0) {
-            0: return ${custom_spriteset_mapping[1]};
-        }
-    </tal:custom_spriteset_switches>
+    switch(FEAT_STATIONS, SELF, switch_${station.id}_prepare_layout, [
+        <tal:custom_sprite_indexes repeat="custom_sprite_index_and_label station.custom_sprite_indexes_and_labels">
+            // ${custom_sprite_index_and_label[1]}
+            STORE_TEMP(${custom_sprite_index_and_label[0]}, ${repeat.custom_sprite_index_and_label.index}),
+        </tal:custom_sprite_indexes>
+        ]) {
+        return;
+    }
 
     item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
         property {
@@ -43,7 +46,8 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
         }
         graphics {
             sprite_layouts: ${station.spritelayouts_as_nml_array};
-            custom_spritesets: [${','.join(station.custom_spriteset_mapping.keys())}];
+            <!--!custom_spritesets: [${','.join(station.custom_spriteset_mapping.keys())}];-->
+            prepare_layout: switch_${station.id}_prepare_layout();
             <!--! purchase: cow_pen_half; -->
             <!--! cargo specific callback
             LVST: random_${facility_type.id}_1;

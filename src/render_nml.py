@@ -31,7 +31,7 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 generated_files_path = chips.generated_files_path
 
 
-def render_header_facility_type_nml(header_item):
+def render_header_nml(header_item):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
@@ -40,6 +40,7 @@ def render_header_facility_type_nml(header_item):
             graphics_path=global_constants.graphics_path,
             makefile_args=makefile_args,
             git_info=git_info,
+            sprite_manager=chips.sprite_manager
         )
     )
 
@@ -71,12 +72,12 @@ def main():
     header_items = [
         "header",
         "cargotable",
-        "ground_tiles",
+        "spritesets",
         "dock",
         # "road_stop",
     ]
     for header_item in header_items:
-        grf_nml.write(render_header_facility_type_nml(header_item))
+        grf_nml.write(render_header_nml(header_item))
 
     for facility_type in chips.facility_type_manager:
         grf_nml.write(render_facility_type_nml(facility_type))

@@ -1,4 +1,26 @@
-class Spriteset(object):
+class Spriteset(list):
+    """
+    Simple class to hold spritesets.
+    Derives from dict for convenience, as we want to store a list of sprites in it.
+    """
+
+    def __init__(
+        self,
+        id,
+    ):
+        self.id = id
+
+    def get_sprite_by_id(self, sprite_id):
+        for sprite in self:
+            if sprite.id == sprite_id:
+                return sprite
+        return None
+
+    def get_index_for_sprite_by_id(self, sprite_id):
+        return self.index(self.get_sprite_by_id(sprite_id))
+
+
+class SpritesetLegacy(object):
     # !! pasted from FIRS - needs ported
     """Simple class to hold spritesets"""
 
@@ -60,64 +82,15 @@ class Spriteset(object):
         return result
 
 
-class SpriteLayout(object):
-    """Simple class to hold spritelayouts"""
+class Sprite(object):
+    """Simple class to hold sprite metadata"""
 
     def __init__(
         self,
         id,
-        rear_building_sprites,
-        front_building_sprites,
-        fences=[],
-        terrain_aware_ground=False,
+        x_loc,
+        y_loc,
     ):
         self.id = id
-        self.rear_building_sprites = rear_building_sprites
-        self.front_building_sprites = front_building_sprites
-        # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
-        self.fences = fences
-
-
-class StationLayout(list):
-    """
-    Base class to hold station layouts
-    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
-    """
-
-    def __init__(
-        self,
-        layout,
-    ):
-        for layout_entry in layout:
-            self.append(layout_entry)
-        self.validate_xy()
-
-    def validate_xy(self):
-        # in-game station layouts must not have negative xy offsets
-        for x, y, spritelayout_id in self:
-            for offset_dir in [x, y]:
-                if offset_dir < 0:
-                    raise BaseException(
-                        "Negative values are invalid for x or y offsets: "
-                        + self.id
-                        + " ("
-                        + str(x)
-                        + ", "
-                        + str(y)
-                        + ")"
-                    )
-        # xy offset pairs must be unique per layout
-        xy_offsets = [(i[0], i[1]) for i in self]
-        for x, y in xy_offsets:
-            if xy_offsets.count((x, y)) > 1:
-                raise BaseException(
-                    "Repeated xy offset pair: " + self.id + " " + str((x, y))
-                )
-
-    @property
-    def spritelayout_ids(self):
-        # convenience function for when we only want spritelayouts
-        result = []
-        for x, y, spritelayout_id in self:
-            result.append(spritelayout_id)
-        return result
+        self.x_loc = x_loc
+        self.y_loc = y_loc
