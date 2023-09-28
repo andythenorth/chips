@@ -4,7 +4,7 @@ currentdir = os.curdir
 
 import global_constants
 import utils
-from spriteset import Spriteset, Sprite
+from spriteset import Spriteset, GroundTileSprite
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
@@ -28,15 +28,15 @@ class SpriteManager(dict):
     def add_spriteset(self, spriteset_id):
         self[spriteset_id] = Spriteset(id=spriteset_id)
 
-    def add_sprite(self, sprite, spriteset_id):
-        if self[spriteset_id].get_sprite_by_id(sprite.id) is not None:
+    def add_sprite(self, sprite):
+        if self[sprite.spriteset_id].get_sprite_by_id(sprite.id) is not None:
             raise BaseException(
                 "sprite with id "
                 + sprite.id
                 + " already exists in spriteset "
                 + spriteset_id
             )
-        self[spriteset_id].append(sprite)
+        self[sprite.spriteset_id].append(sprite)
 
 
 class FacilityTypeManager(list):
@@ -71,14 +71,19 @@ facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    sprite_manager.add_spriteset("ground_tiles")
+    sprite_manager.add_spriteset("spriteset_ground_tiles")
     for id, x_y in global_constants.ground_tiles.items():
-        sprite_manager.add_sprite(sprite=Sprite(id=id, x_loc=x_y[0], y_loc=x_y[1]), spriteset_id="ground_tiles")
+        sprite_manager.add_sprite(
+            sprite=GroundTileSprite(
+                id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground_tiles"
+            )
+        )
 
     facility_type_manager.add_facility_type(booking_office)
     facility_type_manager.add_facility_type(booking_office_small)
     facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
+    """
     facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hotel)
     facility_type_manager.add_facility_type(hut_1)
@@ -88,3 +93,4 @@ def main():
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(tipple)
+    """

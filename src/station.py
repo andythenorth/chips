@@ -1,11 +1,12 @@
 import os
+from copy import copy
 
 currentdir = os.curdir
 
 import chips
 import global_constants
 import utils
-from spriteset import SpritesetLegacy
+from spriteset import SpritesetLegacy, Spriteset, SpriteBuilding
 
 
 class FacilityType(object):
@@ -23,6 +24,9 @@ class FacilityType(object):
         self.road_stops = []
         self.objects = []
         self.provides_snow = kwargs.get("provides_snow", False)
+        self.spriteset_id = "spriteset_" + self.id
+        for orientation_suffix in ["_ne_sw", "_nw_se"]:
+            chips.sprite_manager.add_spriteset(spriteset_id=self.spriteset_id + orientation_suffix)
 
     def get_station_numeric_id_offset(self, station):
         result = None
@@ -53,15 +57,25 @@ class FacilityType(object):
     def station_classes(self):
         return global_constants.station_classes_by_metaclass[self.metaclass]
 
-    def add_spriteset(self, *args, **kwargs):
-        id = self.id + "_spriteset_" + str(len(self.spritesets))
-        new_spriteset = SpritesetLegacy(id=id, *args, **kwargs)
-        self.spritesets.append(new_spriteset)
-        # returning the new spriteset isn't essential, but permits the caller giving it a reference for use elsewhere
-        return new_spriteset
+    def add_sprite(self, **kwargs):
+        # auto extend for both needed orientations
+        for orientation_suffix, x_loc_modifier in {"_ne_sw": 0, "_nw_se": 70}.items():
+            sprite_id = kwargs["id"]
+            sprite = SpriteBuilding(
+                id=sprite_id,
+                x_loc=kwargs["x_y_loc"][0] + x_loc_modifier,
+                y_loc=kwargs["x_y_loc"][1],
+                width=kwargs["dimensions"][0],
+                height=kwargs["dimensions"][1],
+                x_offset=kwargs["offsets"][0],
+                y_offset=kwargs["offsets"][1],
+                graphics_file_path=self.get_graphics_file_path(),
+                spriteset_id=self.spriteset_id + orientation_suffix,
+            )
+            chips.sprite_manager.add_sprite(sprite)
 
     def add_spritelayout(self, *args, **kwargs):
-        new_spritelayout = SpriteLayout(*args, **kwargs)
+        new_spritelayout = SpriteLayout(self, *args, **kwargs)
         self.spritelayouts.append(new_spritelayout)
         # returning the new spritelayout isn't essential, but permits the caller giving it a reference for use elsewhere
         return new_spritelayout
@@ -169,13 +183,13 @@ class FacilityType(object):
         if isinstance(sprite_or_spriteset, Sprite):
             return getattr(sprite_or_spriteset, "sprite_number" + suffix)
 
-    def get_graphics_file_path(self, terrain=None, construction_state_num=None):
+    def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
             terrain_suffix = "_snow"
         else:
             terrain_suffix = ""
         # don't use os.path.join here, this returns a string for use by nml
-        return '"src/graphics/' + self.id + terrain_suffix + '.png"'
+        return "src/graphics/" + self.id + terrain_suffix + ".png"
 
     def render_nml(self, templates):
         station_feature_template_mapping = [
@@ -306,9 +320,9 @@ class RailStationBase(Station):
             sprite_id = self.ground_type + "_" + ground_subtype
             result.append(
                 (
-                    chips.sprite_manager["ground_tiles"].get_index_for_sprite_by_id(
-                        sprite_id
-                    ),
+                    chips.sprite_manager[
+                        "spriteset_ground_tiles"
+                    ].get_index_for_sprite_by_id(sprite_id),
                     sprite_id,
                 )
             )
@@ -326,7 +340,12 @@ class RailStationTrackTile(RailStationBase):
 
     @property
     def custom_sprite_indexes_and_labels(self):
-        ground_subtypes = ["rear_platform_ne_sw", "rear_platform_nw_se", "front_platform_ne_sw", "front_platform_nw_se"]
+        ground_subtypes = [
+            "rear_platform_ne_sw",
+            "rear_platform_nw_se",
+            "front_platform_ne_sw",
+            "front_platform_nw_se",
+        ]
         return self.get_custom_sprite_indexes_and_labels(ground_subtypes)
 
 
@@ -417,6 +436,7 @@ class SpriteLayout(object):
 
     def __init__(
         self,
+        facility_type,
         id,
         rear_building_sprites,
         front_building_sprites,
@@ -424,7 +444,26 @@ class SpriteLayout(object):
         terrain_aware_ground=False,
     ):
         self.id = id
-        self.rear_building_sprites = rear_building_sprites
-        self.front_building_sprites = front_building_sprites
+        self.facility_type = facility_type
+        self._rear_building_sprites = rear_building_sprites
+        self._front_building_sprites = front_building_sprites
         # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
         self.fences = fences
+
+    def get_sprites_by_orientation(self, sprite_id_list):
+        result = {}
+        for orientation in ["ne_sw", "nw_se"]:
+            sprites = [
+                chips.sprite_manager[self.facility_type.spriteset_id + "_" + orientation].get_sprite_by_id(sprite_id)
+                for sprite_id in sprite_id_list
+            ]
+            result[orientation] = sprites
+        return result
+
+    @property
+    def rear_building_sprites(self):
+        return self.get_sprites_by_orientation(self._rear_building_sprites)
+
+    @property
+    def front_building_sprites(self):
+        return self.get_sprites_by_orientation(self._front_building_sprites)

@@ -1,17 +1,7 @@
-<!--! !! CABBAGE - templates need passed as an arg maybe? -->
-
-template tmpl_ground_tile_cabbage(x, y) {
-	[x, y, 64, 31, -31, 0, ANIM, "src/graphics/ground_tiles.png"]
-}
-
 <tal:spritesets repeat="spriteset sprite_manager.values()">
-    spriteset(spriteset_${spriteset.id}) {
+    spriteset(${spriteset.id}) {
         <tal:sprites repeat="sprite spriteset">
-            ${sprite.id}: tmpl_ground_tile_cabbage(${sprite.x_loc}, ${sprite.y_loc})
-        <!--!
-            [${sprite["ne_sw"][0]}, ${sprite["ne_sw"][1]}, ${sprite["ne_sw"][2]}, ${sprite["ne_sw"][3]}, ${sprite["ne_sw"][4]}, ${sprite["ne_sw"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path(terrain='snow')}]
-            [${sprite["nw_se"][0]}, ${sprite["nw_se"][1]}, ${sprite["nw_se"][2]}, ${sprite["nw_se"][3]}, ${sprite["nw_se"][4]}, ${sprite["nw_se"][5]}, ANIM | NOCROP, ${facility_type.get_graphics_file_path(terrain='snow')}]
-        -->
+            ${sprite.id}: [${sprite.x_loc}, ${sprite.y_loc}, ${sprite.width}, ${sprite.height}, ${sprite.x_offset}, ${sprite.y_offset}, ANIM | NOCROP, "${sprite.graphics_file_path}"]
         </tal:sprites>
     }
 </tal:spritesets>

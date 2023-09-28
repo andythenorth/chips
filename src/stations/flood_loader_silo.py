@@ -7,19 +7,24 @@ def main():
         numeric_id=200,
     )
 
-    spriteset_1 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 10, 64, 145, -31, -114)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_silo",
+        x_y_loc=(10, 10),
+        dimensions=(64, 145),
+        offsets=(-31, -114),
     )
-    spriteset_2 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 170, 64, 65, -31, -34)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_rear_legs",
+        x_y_loc=(10, 170),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
+        auto_extend_orientation=True,
     )
 
     facility_type.add_spritelayout(
         id="flood_loader_silo_spritelayout_1",
-        rear_building_sprites=[spriteset_2],
-        front_building_sprites=[spriteset_1],
+        rear_building_sprites=["sprite_rear_legs"],
+        front_building_sprites=["sprite_silo"],
         fences=["nw", "ne", "se", "sw"],
     )
 

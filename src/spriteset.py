@@ -1,3 +1,5 @@
+import chips
+
 class Spriteset(list):
     """
     Simple class to hold spritesets.
@@ -87,10 +89,33 @@ class Sprite(object):
 
     def __init__(
         self,
-        id,
-        x_loc,
-        y_loc,
+        **kwargs,
     ):
-        self.id = id
-        self.x_loc = x_loc
-        self.y_loc = y_loc
+        self.id = kwargs["id"]
+        self.spriteset_id = kwargs["spriteset_id"]
+        self.x_loc = kwargs.get("x_loc", None)
+        self.y_loc = kwargs.get("y_loc", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
+        self.x_offset = kwargs.get("x_offset", None)
+        self.y_offset = kwargs.get("y_offset", None)
+        self.graphics_file_path = kwargs.get("graphics_file_path", None)
+
+    def get_nml_declaration_for_spritelayout(self, orientation):
+        return self.spriteset_id + "(" + self.id + ")"
+
+
+class SpriteBuilding(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # nothing else as of Sept 2023?
+
+
+class GroundTileSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.width = 64
+        self.height = 31
+        self.x_offset = -31
+        self.y_offset = 0
+        self.graphics_file_path = "src/graphics/ground_tiles.png"

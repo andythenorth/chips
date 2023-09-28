@@ -34,31 +34,33 @@
                             ...unless it's moved to global_constants or similar
                         -->
                         childsprite {
-                            sprite: spriteset_ground_tiles(LOAD_TEMP(0));
+                            sprite: spriteset_ground_tiles(LOAD_TEMP(${'0' if orientation == 'ne_sw' else '1'}));
                             always_draw: 1;
                         }
                     </tal:non_track>
                 </tal:ground>
 
-                <tal:rear_building_sprites repeat="building_sprite spritelayout.rear_building_sprites">
+                <tal:rear_building_sprites repeat="sprite spritelayout.rear_building_sprites[orientation]">
                     <!--! buildings (snow aware) -->
-                    childsprite {
-                        sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, orientation)};
+                    building {
+                        sprite: ${sprite.get_nml_declaration_for_spritelayout(orientation)};
                         recolour_mode: RECOLOUR_REMAP;
                         palette: PALETTE_USE_DEFAULT;
+                        <!--! CABBAGE - nerfed off to make compile work
                         xoffset: ${building_sprite.xoffset};
                         yoffset: ${building_sprite.yoffset};
-                        always_draw: ${building_sprite.always_draw};
-                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building}));
+                        always_draw: ${building_sprite.always_draw};-->
+                        <!--!hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building}));-->
                     }
-                    childsprite {
-                        sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, orientation, snow_overlay=True)};
+                    building {
+                        sprite: ${sprite.get_nml_declaration_for_spritelayout(orientation)};
                         recolour_mode: RECOLOUR_REMAP;
                         palette: PALETTE_USE_DEFAULT;
+                        <!--! CABBAGE - nerfed off to make compile work
                         xoffset: ${building_sprite.xoffset};
                         yoffset: ${building_sprite.yoffset};
-                        always_draw: ${building_sprite.always_draw};
-                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                        always_draw: ${building_sprite.always_draw};-->
+                        <!--!hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));-->
                     }
                 </tal:rear_building_sprites>
 
@@ -93,33 +95,27 @@
                     }
                 </tal:optional_fence>
 
-                <tal:front_building_sprites repeat="building_sprite spritelayout.front_building_sprites">
+                <tal:front_building_sprites repeat="sprite spritelayout.front_building_sprites[orientation]">
                     <!--! buildings (snow aware) -->
                     building {
-                        sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, orientation)};
+                        sprite: ${sprite.get_nml_declaration_for_spritelayout(orientation)};
                         recolour_mode: RECOLOUR_REMAP;
                         palette: PALETTE_USE_DEFAULT;
+                        <!--! CABBAGE - nerfed off to make compile work
                         xoffset: ${building_sprite.xoffset};
                         yoffset: ${building_sprite.yoffset};
-                        zoffset: ${building_sprite.zoffset};
-                        xextent: ${building_sprite.xextent};
-                        yextent: ${building_sprite.yextent};
-                        zextent: ${building_sprite.zextent};
-                        always_draw: ${building_sprite.always_draw};
-                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building}));
+                        always_draw: ${building_sprite.always_draw};-->
+                        <!--!hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building}));-->
                     }
                     building {
-                        sprite: ${facility_type.unpack_sprite_or_spriteset(building_sprite, orientation, snow_overlay=True)};
+                        sprite: ${sprite.get_nml_declaration_for_spritelayout(orientation)};
                         recolour_mode: RECOLOUR_REMAP;
                         palette: PALETTE_USE_DEFAULT;
+                        <!--! CABBAGE - nerfed off to make compile work
                         xoffset: ${building_sprite.xoffset};
                         yoffset: ${building_sprite.yoffset};
-                        zoffset: ${building_sprite.zoffset};
-                        xextent: ${building_sprite.xextent};
-                        yextent: ${building_sprite.yextent};
-                        zextent: ${building_sprite.zextent};
-                        always_draw: ${building_sprite.always_draw};
-                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                        always_draw: ${building_sprite.always_draw};-->
+                        <!--!hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));-->
                     }
                 </tal:front_building_sprites>
 
