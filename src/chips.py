@@ -60,4 +60,3 @@ def main():
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(tipple)
-

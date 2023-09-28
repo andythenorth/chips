@@ -6,6 +6,7 @@ import global_constants
 import utils
 from spriteset import Spriteset
 
+
 class FacilityType(object):
     """
     Root of all stations.
@@ -258,7 +259,9 @@ class Station(object):
         # extend per orientation, with ne-sw as even numbered, and nw-se as odd numbered, which OpenTTD will then pick up appropriate to each orientation
         for orientation_suffix in ["_ne_sw", "_nw_se"]:
             for spritelayout_id in self.layout.spritelayout_ids:
-                result.append(spritelayout_id + "_" + self.track_non_track + orientation_suffix)
+                result.append(
+                    spritelayout_id + "_" + self.track_non_track + orientation_suffix
+                )
         return "[" + ",".join(result) + "]"
 
     @property
@@ -308,9 +311,14 @@ class RailStationTrackTile(RailStationBase):
     def custom_spriteset_mapping(self):
         # spritelayouts assume a specific order for these when using CUSTOM for sprites, and they will need updated if the order changes
         return {
-            self.id + "_custom_ground_split_platforms_ne_sw_": "spriteset_ground_split_platforms_ne_sw_" + self.ground_type,
-            self.id + "_custom_ground_split_platforms_nw_se_": "spriteset_ground_split_platforms_nw_se_" + self.ground_type,
+            self.id
+            + "_custom_ground_split_platforms_ne_sw_": "spriteset_ground_split_platforms_ne_sw_"
+            + self.ground_type,
+            self.id
+            + "_custom_ground_split_platforms_nw_se_": "spriteset_ground_split_platforms_nw_se_"
+            + self.ground_type,
         }
+
 
 class RailStationNonTrackTile(RailStationBase):
     def __init__(self, **kwargs):
@@ -325,8 +333,11 @@ class RailStationNonTrackTile(RailStationBase):
     def custom_spriteset_mapping(self):
         # spritelayouts assume a specific order for these when using CUSTOM for sprites, and they will need updated if the order changes
         return {
-            self.id + "_custom_ground_whole_tile": "spriteset_ground_whole_tile_" + self.ground_type,
+            self.id
+            + "_custom_ground_whole_tile": "spriteset_ground_whole_tile_"
+            + self.ground_type,
         }
+
 
 class RoadStopBase(Station):
     def __init__(self, **kwargs):
@@ -348,24 +359,6 @@ class GRFObject(Station):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-
-class SpriteLayout(object):
-    """Simple class to hold spritelayouts"""
-
-    def __init__(
-        self,
-        id,
-        rear_building_sprites,
-        front_building_sprites,
-        fences=[],
-        terrain_aware_ground=False,
-    ):
-        self.id = id
-        self.rear_building_sprites = rear_building_sprites
-        self.front_building_sprites = front_building_sprites
-        # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
-        self.fences = fences
 
 
 class StationLayout(list):
@@ -411,3 +404,21 @@ class StationLayout(list):
         for x, y, spritelayout_id in self:
             result.append(spritelayout_id)
         return result
+
+
+class SpriteLayout(object):
+    """Simple class to hold spritelayouts"""
+
+    def __init__(
+        self,
+        id,
+        rear_building_sprites,
+        front_building_sprites,
+        fences=[],
+        terrain_aware_ground=False,
+    ):
+        self.id = id
+        self.rear_building_sprites = rear_building_sprites
+        self.front_building_sprites = front_building_sprites
+        # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
+        self.fences = fences
