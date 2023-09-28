@@ -23,8 +23,12 @@ def main():
         sprites_ne_sw=[(150, 170, 64, 65, -31, -34)],
         # sprites_nw_se are automatically interpolated in the general case
     )
-    spriteset_rails = facility_type.add_spriteset(
+    spriteset_rails_for_track_tile = facility_type.add_spriteset(
         sprites_ne_sw=[(10, 250, 64, 39, -31, -8)],
+        # sprites_nw_se are automatically interpolated in the general case
+    )
+    spriteset_rails_for_non_track_tile = facility_type.add_spriteset(
+        sprites_ne_sw=[(150, 250, 64, 39, -31, -8)],
         # sprites_nw_se are automatically interpolated in the general case
     )
 
@@ -42,8 +46,14 @@ def main():
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
-        id="harbour_crane_spritelayout_crane_rails",
-        rear_building_sprites=[spriteset_rails],
+        id="harbour_crane_spritelayout_crane_rails_for_track_tile",
+        rear_building_sprites=[spriteset_rails_for_track_tile],
+        front_building_sprites=[],
+        fences=["nw", "ne", "se", "sw"],
+    )
+    facility_type.add_spritelayout(
+        id="harbour_crane_spritelayout_crane_rails_for_non_track_tile",
+        rear_building_sprites=[spriteset_rails_for_non_track_tile],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
     )
@@ -74,7 +84,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_crane_rails",
+                "harbour_crane_spritelayout_crane_rails_for_non_track_tile",
             ),
         ],
     )
@@ -110,7 +120,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_crane_rails",
+                "harbour_crane_spritelayout_crane_rails_for_track_tile",
             ),
         ],
     )
