@@ -8,11 +8,9 @@
                             sprite: GROUNDSPRITE_RAIL_${'X' if orientation == 'ne_sw' else 'Y'};
                         }
                         <!--!
-                            we use custom_spriteset to the ground type appropriate to the station
+                            we index to the ground type appropriate to the station
                             platform sprites are split in 2 for historical reasons, not sure it's necessary, but eh, 2 sprites for those
                             both platforms are in the same spriteset, index into rear or front part as needed
-                            !! this assumes a specific custom_spriteset order, and there's no trivial way to keep that in sync...
-                            ...unless it's moved to global_constants or similar
                         -->
                         childsprite {
                             sprite: spriteset_ground_tiles(LOAD_TEMP(${'0' if orientation == 'ne_sw' else '1'}));
@@ -29,12 +27,10 @@
                             sprite: GROUNDSPRITE_NORMAL;
                         }
                         <!--!
-                            we use custom_spriteset to the ground type appropriate to the station
-                            !! this assumes a specific custom_spriteset order, and there's no trivial way to keep that in sync...
-                            ...unless it's moved to global_constants or similar
+                            we index to the ground type appropriate to the station
                         -->
                         childsprite {
-                            sprite: spriteset_ground_tiles(LOAD_TEMP(${'0' if orientation == 'ne_sw' else '1'}));
+                            sprite: spriteset_ground_tiles(LOAD_TEMP(0));
                             always_draw: 1;
                         }
                     </tal:non_track>

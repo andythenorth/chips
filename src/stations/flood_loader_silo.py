@@ -18,7 +18,6 @@ def main():
         x_y_loc=(10, 170),
         dimensions=(64, 65),
         offsets=(-31, -34),
-        auto_extend_orientation=True,
     )
 
     facility_type.add_spritelayout(
