@@ -1,3 +1,7 @@
+<!--!
+    extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+    https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+-->
 <tal:orientation repeat="orientation ['ne_sw', 'nw_se']">
     <tal:track_spritelayouts repeat="spritelayout facility_type.rail_spritelayouts['track']">
         spritelayout ${spritelayout.id}_track_${orientation} {
@@ -10,11 +14,11 @@
                 both platforms are in the same spriteset, index into rear or front part as needed
             -->
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(${'0' if orientation == 'ne_sw' else '1'}));
+                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_platform_' + orientation]}));
                 always_draw: 1;
             }
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(${'2' if orientation == 'ne_sw' else '3'}));
+                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_platform_' + orientation]}));
                 always_draw: 1;
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
@@ -102,7 +106,7 @@
                 we index to the ground type appropriate to the station
             -->
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(0));
+                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage.var_sprite_whole_tile}));
                 always_draw: 1;
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">

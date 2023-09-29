@@ -23,9 +23,9 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
 <tal:stations repeat="station stations">
 
     switch(FEAT_STATIONS, SELF, switch_${station.id}_prepare_layout, [
-        <tal:custom_sprite_indexes repeat="custom_sprite_index_and_label station.custom_sprite_indexes_and_labels">
-            // ${custom_sprite_index_and_label[1]}
-            STORE_TEMP(${custom_sprite_index_and_label[0]}, ${repeat.custom_sprite_index_and_label.index}),
+        <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
+            // ${custom_sprite_index_struct[2]}
+            STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
         </tal:custom_sprite_indexes>
         ]) {
         return;

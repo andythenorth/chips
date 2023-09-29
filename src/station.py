@@ -341,16 +341,18 @@ class RailStationBase(Station):
             case False:
                 return 0
 
-    def get_custom_sprite_indexes_and_labels(self, ground_subtypes):
+    def get_custom_sprite_index_structs(self, ground_subtypes):
         # index into the global ground_tiles spriteset, with a label included for convenience of debugging
         result = []
         for ground_subtype in ground_subtypes:
             sprite_id = self.ground_type + "_" + ground_subtype
+            # returns a 3 tuple of index in spriteset, storage to use in graphics chain, and label for convenience of debugging
             result.append(
                 (
                     chips.sprite_manager[
                         "spriteset_ground_tiles"
                     ].get_index_for_sprite_by_id(sprite_id),
+                    global_constants.graphics_temp_storage["var_sprite_" + ground_subtype],
                     sprite_id,
                 )
             )
@@ -367,14 +369,14 @@ class RailStationTrackTile(RailStationBase):
         self._hide_wire_tiles = kwargs.get("hide_wire_tiles", False)
 
     @property
-    def custom_sprite_indexes_and_labels(self):
+    def custom_sprite_index_structs(self):
         ground_subtypes = [
             "rear_platform_ne_sw",
             "rear_platform_nw_se",
             "front_platform_ne_sw",
             "front_platform_nw_se",
         ]
-        return self.get_custom_sprite_indexes_and_labels(ground_subtypes)
+        return self.get_custom_sprite_index_structs(ground_subtypes)
 
 
 class RailStationNonTrackTile(RailStationBase):
@@ -387,9 +389,9 @@ class RailStationNonTrackTile(RailStationBase):
         self._hide_wire_tiles = True
 
     @property
-    def custom_sprite_indexes_and_labels(self):
+    def custom_sprite_index_structs(self):
         ground_subtypes = ["whole_tile"]
-        return self.get_custom_sprite_indexes_and_labels(ground_subtypes)
+        return self.get_custom_sprite_index_structs(ground_subtypes)
 
 
 class RoadStopBase(Station):
