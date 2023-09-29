@@ -17,8 +17,8 @@ def main():
     facility_type.add_spritelayout(
         id="hotel_spritelayout_1",
         ground_overlay_sprites=[],
-        rear_building_sprites=[],
-        front_building_sprites=["sprite_1"],
+        rear_structure_sprites=[],
+        main_structure_sprites=["sprite_1"],
     )
 
     facility_type.add_rail_station(

@@ -469,15 +469,15 @@ class SpriteLayout(object):
         facility_type,
         id,
         ground_overlay_sprites,
-        rear_building_sprites,
-        front_building_sprites,
+        rear_structure_sprites,
+        main_structure_sprites,
         terrain_aware_ground=False,
     ):
         self.id = id
         self.facility_type = facility_type
         self._ground_overlay_sprites = ground_overlay_sprites
-        self._rear_building_sprites = rear_building_sprites
-        self._front_building_sprites = front_building_sprites
+        self._rear_structure_sprites = rear_structure_sprites
+        self._main_structure_sprites = main_structure_sprites
 
     def get_sprites_by_orientation(self, sprite_id_list):
         # we have sprite_ids in local context, so use those to get the actual sprite objects
@@ -497,9 +497,9 @@ class SpriteLayout(object):
         return self.get_sprites_by_orientation(self._ground_overlay_sprites)
 
     @property
-    def rear_building_sprites(self):
-        return self.get_sprites_by_orientation(self._rear_building_sprites)
+    def rear_structure_sprites(self):
+        return self.get_sprites_by_orientation(self._rear_structure_sprites)
 
     @property
-    def front_building_sprites(self):
-        return self.get_sprites_by_orientation(self._front_building_sprites)
+    def main_structure_sprites(self):
+        return self.get_sprites_by_orientation(self._main_structure_sprites)

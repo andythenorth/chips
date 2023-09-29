@@ -45,7 +45,7 @@
                 }-->
             </tal:ground_overlay_sprites>
 
-            <tal:rear_building_sprites repeat="sprite spritelayout.rear_building_sprites[orientation]">
+            <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
                 <!--! buildings (snow aware) -->
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
@@ -67,9 +67,9 @@
                     always_draw: ${building_sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                 }-->
-            </tal:rear_building_sprites>
+            </tal:rear_structure_sprites>
 
-            <tal:front_building_sprites repeat="sprite spritelayout.front_building_sprites[orientation]">
+            <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
                 <!--! buildings (snow aware) -->
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
@@ -92,7 +92,7 @@
                     always_draw: ${building_sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                 }-->
-            </tal:front_building_sprites>
+            </tal:main_structure_sprites>
         }
     </tal:track_spritelayouts>
 
@@ -133,7 +133,7 @@
                 }-->
             </tal:ground_overlay_sprites>
 
-            <tal:rear_building_sprites repeat="sprite spritelayout.rear_building_sprites[orientation]">
+            <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
                 <!--! buildings (snow aware) -->
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
@@ -155,9 +155,9 @@
                     always_draw: ${building_sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                 }-->
-            </tal:rear_building_sprites>
+            </tal:rear_structure_sprites>
 
-            <tal:front_building_sprites repeat="sprite spritelayout.front_building_sprites[orientation]">
+            <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
                 <!--! buildings (snow aware) -->
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
@@ -180,7 +180,7 @@
                     always_draw: ${building_sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                 }-->
-            </tal:front_building_sprites>
+            </tal:main_structure_sprites>
         }
     </tal:non_track_spritelayouts>
 </tal:orientation>

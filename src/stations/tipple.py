@@ -23,8 +23,8 @@ def main():
     facility_type.add_spritelayout(
         id="tipple_spritelayout_1",
         ground_overlay_sprites=[],
-        rear_building_sprites=["sprite_2"],
-        front_building_sprites=["sprite_1"],
+        rear_structure_sprites=["sprite_2"],
+        main_structure_sprites=["sprite_1"],
     )
 
     facility_type.add_rail_station(
