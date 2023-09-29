@@ -7,53 +7,64 @@ def main():
         numeric_id=1400,
     )
 
-    spriteset_1 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 10, 64, 145, -31, -114)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_1",
+        x_y_loc=(10, 10),
+        dimensions=(64, 145),
+        offsets=(-31, -114),
     )
-    spriteset_2 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 170, 64, 65, -31, -34)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_2",
+        x_y_loc=(10, 170),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
     )
-    spriteset_3 = facility_type.add_spriteset(
-        sprites_ne_sw=[(150, 10, 64, 145, -31, -114)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_3",
+        x_y_loc=(150, 10),
+        dimensions=(64, 145),
+        offsets=(-31, -114),
     )
-    spriteset_4 = facility_type.add_spriteset(
-        sprites_ne_sw=[(150, 170, 64, 65, -31, -34)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_4",
+        x_y_loc=(150, 170),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
     )
-    spriteset_rails_for_track_tile = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 250, 64, 39, -31, -8)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_rails_for_track_tile",
+        x_y_loc=(10, 250),
+        dimensions=(64, 39),
+        offsets=(-31, -8),
     )
-    spriteset_rails_for_non_track_tile = facility_type.add_spriteset(
-        sprites_ne_sw=[(150, 250, 64, 39, -31, -8)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_rails_for_non_track_tile",
+        x_y_loc=(10, 250),
+        dimensions=(64, 39),
+        offsets=(-31, -8),
     )
 
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_1",
-        rear_building_sprites=[spriteset_2],
-        front_building_sprites=[spriteset_1],
+        rear_building_sprites=["sprite_2"],
+        front_building_sprites=["sprite_1"],
         fences=["nw", "ne", "se", "sw"],
     )
-
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_2",
-        rear_building_sprites=[spriteset_4],
-        front_building_sprites=[spriteset_3],
+        rear_building_sprites=["sprite_4"],
+        front_building_sprites=["sprite_3"],
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_crane_rails_for_track_tile",
-        rear_building_sprites=[spriteset_rails_for_track_tile],
+        rear_building_sprites=["sprite_rails_for_track_tile"],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_crane_rails_for_non_track_tile",
-        rear_building_sprites=[spriteset_rails_for_non_track_tile],
+        rear_building_sprites=["sprite_rails_for_non_track_tile"],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
     )

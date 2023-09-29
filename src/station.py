@@ -451,12 +451,15 @@ class SpriteLayout(object):
         self.fences = fences
 
     def get_sprites_by_orientation(self, sprite_id_list):
+        # we have sprite_ids in local context, so use those to get the actual sprite objects
+        # sprites are organised into spriteset per orientation (ne_sw, nw_se), so fetch from the correct spriteset
         result = {}
         for orientation in ["ne_sw", "nw_se"]:
-            sprites = [
-                chips.sprite_manager[self.facility_type.spriteset_id + "_" + orientation].get_sprite_by_id(sprite_id)
-                for sprite_id in sprite_id_list
-            ]
+            sprites = []
+            spriteset_id = self.facility_type.spriteset_id + "_" + orientation
+            for sprite_id in sprite_id_list:
+                sprite = chips.sprite_manager[spriteset_id].get_sprite_by_id(sprite_id)
+                sprites.append(sprite)
             result[orientation] = sprites
         return result
 

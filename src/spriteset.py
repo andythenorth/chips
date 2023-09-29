@@ -12,14 +12,19 @@ class Spriteset(list):
     ):
         self.id = id
 
-    def get_sprite_by_id(self, sprite_id):
+    def get_sprite_by_id(self, sprite_id, allow_not_found=False):
         for sprite in self:
             if sprite.id == sprite_id:
                 return sprite
-        return None
+        # if not found we can either fail or return None
+        if allow_not_found:
+            return None
+        else:
+            raise BaseException("get_sprite_by_id: sprite " + sprite_id + " not found in spriteset " + self.id)
 
     def get_index_for_sprite_by_id(self, sprite_id):
-        return self.index(self.get_sprite_by_id(sprite_id))
+        sprite = self.get_sprite_by_id(sprite_id)
+        return self.index(sprite)
 
 
 class SpritesetLegacy(object):

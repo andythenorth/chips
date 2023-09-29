@@ -29,7 +29,7 @@ class SpriteManager(dict):
         self[spriteset_id] = Spriteset(id=spriteset_id)
 
     def add_sprite(self, sprite):
-        if self[sprite.spriteset_id].get_sprite_by_id(sprite.id) is not None:
+        if self[sprite.spriteset_id].get_sprite_by_id(sprite.id, allow_not_found=True) is not None:
             raise BaseException(
                 "sprite with id "
                 + sprite.id
@@ -83,7 +83,7 @@ def main():
     facility_type_manager.add_facility_type(booking_office_small)
     facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
-    #facility_type_manager.add_facility_type(harbour_crane)
+    facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hotel)
     #facility_type_manager.add_facility_type(hut_1)
     #facility_type_manager.add_facility_type(hut_2)
