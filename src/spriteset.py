@@ -106,7 +106,7 @@ class Sprite(object):
         self.y_offset = kwargs.get("y_offset", None)
         self.graphics_file_path = kwargs.get("graphics_file_path", None)
 
-    def get_nml_declaration_for_spritelayout(self, orientation):
+    def get_nml_declaration_for_sprite_in_spritelayout(self, orientation):
         return self.spriteset_id + "(" + self.id + ")"
 
 

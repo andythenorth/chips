@@ -62,7 +62,7 @@ from stations import hut_2
 from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
-from stations import test
+#from stations import test
 from stations import tipple
 
 # declared outside of main, got bored trying to figure out how to otherwise put these in the module scope
@@ -85,10 +85,10 @@ def main():
     facility_type_manager.add_facility_type(flood_loader_silo)
     facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hotel)
-    #facility_type_manager.add_facility_type(hut_1)
-    #facility_type_manager.add_facility_type(hut_2)
-    #facility_type_manager.add_facility_type(mine_building_large)
-    #facility_type_manager.add_facility_type(mine_building_small)
+    facility_type_manager.add_facility_type(hut_1)
+    facility_type_manager.add_facility_type(hut_2)
+    facility_type_manager.add_facility_type(mine_building_large)
+    facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
     #facility_type_manager.add_facility_type(test)
-    #facility_type_manager.add_facility_type(tipple)
+    facility_type_manager.add_facility_type(tipple)

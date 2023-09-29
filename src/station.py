@@ -26,7 +26,9 @@ class FacilityType(object):
         self.provides_snow = kwargs.get("provides_snow", False)
         self.spriteset_id = "spriteset_" + self.id
         for orientation_suffix in ["_ne_sw", "_nw_se"]:
-            chips.sprite_manager.add_spriteset(spriteset_id=self.spriteset_id + orientation_suffix)
+            chips.sprite_manager.add_spriteset(
+                spriteset_id=self.spriteset_id + orientation_suffix
+            )
 
     def get_station_numeric_id_offset(self, station):
         result = None
@@ -182,6 +184,32 @@ class FacilityType(object):
                 return sprite_or_spriteset.id + suffix + "(" + sprite_selector + ")"
         if isinstance(sprite_or_spriteset, Sprite):
             return getattr(sprite_or_spriteset, "sprite_number" + suffix)
+
+    def get_spritelayout_by_id(self, spritelayout_id):
+        for spritelayout in self.spritelayouts:
+            if spritelayout.id == spritelayout_id:
+                return spritelayout
+        # should not be reached
+        return None
+
+    @property
+    def rail_spritelayouts(self):
+        # only return spritelayouts actually used for this feature type, there may be other spritelayouts for other feature types not needed here
+        result = {
+            "track": [],
+            "non_track": [],
+        }
+        for rail_station in self.rail_stations:
+            for spritelayout_id in rail_station.layout.spritelayout_ids:
+                # check we don't repeat spritelayout ids, won't be valid
+                if spritelayout_id not in result[rail_station.track_non_track]:
+                    result[rail_station.track_non_track].append(spritelayout_id)
+        for track_non_track, spritelayout_ids in result.items():
+            result[track_non_track] = [
+                self.get_spritelayout_by_id(spritelayout_id)
+                for spritelayout_id in spritelayout_ids
+            ]
+        return result
 
     def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
@@ -438,17 +466,16 @@ class SpriteLayout(object):
         self,
         facility_type,
         id,
+        ground_overlay_sprites,
         rear_building_sprites,
         front_building_sprites,
-        fences=[],
         terrain_aware_ground=False,
     ):
         self.id = id
         self.facility_type = facility_type
+        self._ground_overlay_sprites = ground_overlay_sprites
         self._rear_building_sprites = rear_building_sprites
         self._front_building_sprites = front_building_sprites
-        # Valid fence values: 'ne', 'se', 'sw', 'nw'.  Order is arbitrary.
-        self.fences = fences
 
     def get_sprites_by_orientation(self, sprite_id_list):
         # we have sprite_ids in local context, so use those to get the actual sprite objects
@@ -462,6 +489,10 @@ class SpriteLayout(object):
                 sprites.append(sprite)
             result[orientation] = sprites
         return result
+
+    @property
+    def ground_overlay_sprites(self):
+        return self.get_sprites_by_orientation(self._ground_overlay_sprites)
 
     @property
     def rear_building_sprites(self):

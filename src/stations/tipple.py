@@ -7,20 +7,24 @@ def main():
         numeric_id=300,
     )
 
-    spriteset_1 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 10, 64, 65, -31, -34)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_1",
+        x_y_loc=(10, 10),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
     )
-    spriteset_2 = facility_type.add_spriteset(
-        sprites_ne_sw=[(10, 90, 64, 65, -31, -34)],
-        # sprites_nw_se are automatically interpolated in the general case
+    facility_type.add_sprite(
+        id="sprite_2",
+        x_y_loc=(10, 90),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
     )
 
     facility_type.add_spritelayout(
         id="tipple_spritelayout_1",
-        rear_building_sprites=[spriteset_2],
-        front_building_sprites=[spriteset_1],
-        fences=["nw", "ne", "se", "sw"],
+        ground_overlay_sprites=[],
+        rear_building_sprites=["sprite_2"],
+        front_building_sprites=["sprite_1"],
     )
 
     facility_type.add_rail_station(

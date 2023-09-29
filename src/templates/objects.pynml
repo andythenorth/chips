@@ -68,7 +68,6 @@
         </tal:view>
 
         switch(FEAT_OBJECTS, SELF, ${grf_object.id}_switch_graphics, [
-                                            switch_tile_fences_object(),
                                             switch_terrain_object(),
                                             view
                                         ]) {

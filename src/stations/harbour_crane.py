@@ -46,39 +46,39 @@ def main():
 
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_1_track",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rails_for_track_tile", "sprite_2"],
         front_building_sprites=["sprite_1"],
-        fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_2_track",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rails_for_track_tile", "sprite_4"],
         front_building_sprites=["sprite_3"],
-        fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_1_non_track",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rails_for_non_track_tile", "sprite_2"],
         front_building_sprites=["sprite_1"],
-        fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_2_non_track",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rails_for_non_track_tile", "sprite_4"],
         front_building_sprites=["sprite_3"],
-        fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_crane_rails_track",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rails_for_track_tile"],
         front_building_sprites=[],
-        fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
         id="harbour_crane_spritelayout_crane_rails_non_track",
         rear_building_sprites=["sprite_rails_for_non_track_tile"],
+        ground_overlay_sprites=[],
         front_building_sprites=[],
-        fences=["nw", "ne", "se", "sw"],
     )
 
     facility_type.add_rail_station(

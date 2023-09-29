@@ -22,9 +22,9 @@ def main():
 
     facility_type.add_spritelayout(
         id="flood_loader_silo_spritelayout_1",
+        ground_overlay_sprites=[],
         rear_building_sprites=["sprite_rear_legs"],
         front_building_sprites=["sprite_silo"],
-        fences=["nw", "ne", "se", "sw"],
     )
 
     facility_type.add_rail_station(
