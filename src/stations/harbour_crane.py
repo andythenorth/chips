@@ -45,25 +45,37 @@ def main():
     )
 
     facility_type.add_spritelayout(
-        id="harbour_crane_spritelayout_1",
-        rear_building_sprites=["sprite_2"],
+        id="harbour_crane_spritelayout_1_track",
+        rear_building_sprites=["sprite_rails_for_track_tile", "sprite_2"],
         front_building_sprites=["sprite_1"],
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
-        id="harbour_crane_spritelayout_2",
-        rear_building_sprites=["sprite_4"],
+        id="harbour_crane_spritelayout_2_track",
+        rear_building_sprites=["sprite_rails_for_track_tile", "sprite_4"],
         front_building_sprites=["sprite_3"],
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
-        id="harbour_crane_spritelayout_crane_rails_for_track_tile",
+        id="harbour_crane_spritelayout_1_non_track",
+        rear_building_sprites=["sprite_rails_for_non_track_tile", "sprite_2"],
+        front_building_sprites=["sprite_1"],
+        fences=["nw", "ne", "se", "sw"],
+    )
+    facility_type.add_spritelayout(
+        id="harbour_crane_spritelayout_2_non_track",
+        rear_building_sprites=["sprite_rails_for_non_track_tile", "sprite_4"],
+        front_building_sprites=["sprite_3"],
+        fences=["nw", "ne", "se", "sw"],
+    )
+    facility_type.add_spritelayout(
+        id="harbour_crane_spritelayout_crane_rails_track",
         rear_building_sprites=["sprite_rails_for_track_tile"],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
     )
     facility_type.add_spritelayout(
-        id="harbour_crane_spritelayout_crane_rails_for_non_track_tile",
+        id="harbour_crane_spritelayout_crane_rails_non_track",
         rear_building_sprites=["sprite_rails_for_non_track_tile"],
         front_building_sprites=[],
         fences=["nw", "ne", "se", "sw"],
@@ -75,7 +87,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_1",
+                "harbour_crane_spritelayout_1_non_track",
             ),
         ],
     )
@@ -85,7 +97,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_2",
+                "harbour_crane_spritelayout_2_non_track",
             ),
         ],
     )
@@ -95,7 +107,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_crane_rails_for_non_track_tile",
+                "harbour_crane_spritelayout_crane_rails_non_track",
             ),
         ],
     )
@@ -107,7 +119,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_1",
+                "harbour_crane_spritelayout_1_track",
             ),
         ],
     )
@@ -119,7 +131,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_2",
+                "harbour_crane_spritelayout_2_track",
             ),
         ],
     )
@@ -131,7 +143,7 @@ def main():
             (
                 0,
                 0,
-                "harbour_crane_spritelayout_crane_rails_for_track_tile",
+                "harbour_crane_spritelayout_crane_rails_track",
             ),
         ],
     )
