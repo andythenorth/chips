@@ -41,6 +41,14 @@ class FacilityTypeManager(list):
         facility_type = facility_type_module.main()
         self.append(facility_type)
 
+def id_report():
+    # this is rudimentary for now, copy the one from Road Hog (id_report.py) if something better is wanted
+    result = []
+    for facility_type in facility_type_manager:
+        result.append(facility_type.numeric_id)
+    print("ID Report")
+    print("Used:", ", ".join([str(numeric_id) for numeric_id in sorted(result)]))
+
 # declared outside of main, got bored trying to figure out how to otherwise put these in the module scope
 cargo_manager = CargoManager()
 facility_type_manager = FacilityTypeManager()
@@ -69,3 +77,5 @@ def main():
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(tipple)
+
+    id_report()
