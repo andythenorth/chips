@@ -5,7 +5,7 @@ currentdir = os.curdir
 import global_constants
 import utils
 
-from spriteset import Spriteset, GroundSprite
+from spriteset import SpriteManager
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
@@ -27,41 +27,6 @@ from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
 from stations import tipple
-
-
-class SpriteManager(dict):
-    """
-    CHIPS zips sprites into a limited number of global spritesets.
-    This is because station spritelayouts have a limit of 6 spritesets due to size of var 0x10.
-    This is a class to manage sprites and spritesets, intended for use as a singleton, which can be passed to templates etc.
-    Extends default python dict, as it's a convenient behaviour (the instantiated class instance behaves like a dict object).
-    """
-
-    def add_spriteset(self, spriteset_id):
-        self[spriteset_id] = Spriteset(id=spriteset_id)
-
-    def add_spritesets_from_id_list(self, spriteset_ids):
-        # convience function, can add a list of spritesets by id, wraps add_spriteset
-        for spriteset_id in spriteset_ids:
-            self.add_spriteset(spriteset_id)
-
-    def add_sprite(self, sprite):
-        if (
-            self[sprite.spriteset_id].get_sprite_by_id(sprite.id, allow_not_found=True)
-            is not None
-        ):
-            raise BaseException(
-                "sprite with id "
-                + sprite.id
-                + " already exists in spriteset "
-                + spriteset_id
-            )
-        self[sprite.spriteset_id].append(sprite)
-
-    def add_sprites_from_list(self, sprites):
-        # convience function, can add a list of sprites, wraps add_sprite
-        for sprite in sprites:
-            self.add_sprite(sprite)
 
 
 class FacilityTypeManager(list):

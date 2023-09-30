@@ -11,6 +11,8 @@ cargo_label_mapping = {
 }
 
 
+#class CargoManager():
+
 def get_spriteset_ids():
     result = []
     for cargo_label in cargo_label_mapping.keys():
