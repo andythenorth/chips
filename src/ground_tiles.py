@@ -1,3 +1,5 @@
+from spriteset import GroundTileSprite
+
 # labels and x offsets
 ground_tiles = {
     "dirt_whole_tile": (10, 10),
@@ -26,3 +28,19 @@ ground_tiles = {
     "pavement_rear_platform_nw_se": (290, 130),
     "pavement_front_platform_nw_se": (290, 170),
 }
+
+
+def get_sprites():
+    # returns a simple list sprites
+    result = []
+    for id, x_y in ground_tiles.items():
+        sprite = GroundTileSprite(
+            id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground_tiles"
+        )
+        result.append(sprite)
+    return result
+
+
+def main():
+    # nothing, just here for consistency of module interfaces
+    pass

@@ -31,7 +31,10 @@ class SpriteManager(dict):
         self[spriteset_id] = Spriteset(id=spriteset_id)
 
     def add_sprite(self, sprite):
-        if self[sprite.spriteset_id].get_sprite_by_id(sprite.id, allow_not_found=True) is not None:
+        if (
+            self[sprite.spriteset_id].get_sprite_by_id(sprite.id, allow_not_found=True)
+            is not None
+        ):
             raise BaseException(
                 "sprite with id "
                 + sprite.id
@@ -39,6 +42,11 @@ class SpriteManager(dict):
                 + spriteset_id
             )
         self[sprite.spriteset_id].append(sprite)
+
+    def add_sprites_from_list(self, sprites):
+        # convience function, can add a list of sprites, wraps add_sprite
+        for sprite in sprites:
+            self.add_sprite(sprite)
 
 
 class FacilityTypeManager(list):
@@ -64,7 +72,8 @@ from stations import hut_2
 from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
-#from stations import test
+
+# from stations import test
 from stations import tipple
 
 # declared outside of main, got bored trying to figure out how to otherwise put these in the module scope
@@ -74,12 +83,7 @@ facility_type_manager = FacilityTypeManager()
 
 def main():
     sprite_manager.add_spriteset("spriteset_ground_tiles")
-    for id, x_y in ground_tiles.ground_tiles.items():
-        sprite_manager.add_sprite(
-            sprite=GroundTileSprite(
-                id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground_tiles"
-            )
-        )
+    sprite_manager.add_sprites_from_list(ground_tiles.get_sprites())
 
     facility_type_manager.add_facility_type(booking_office)
     facility_type_manager.add_facility_type(booking_office_small)
@@ -92,5 +96,5 @@ def main():
     facility_type_manager.add_facility_type(mine_building_large)
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
-    #facility_type_manager.add_facility_type(test)
+    # facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(tipple)
