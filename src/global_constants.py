@@ -6,11 +6,6 @@ metadata = {
     "docs_url": "https://grf.farm/chips",
 }
 
-chameleon_cache_dir = ".chameleon_cache"
-
-# specify location for intermediate files generated during build (nml, graphics, lang etc)
-generated_files_dir = "generated"
-
 # this is for nml or grfcodec, don't need to use python path module here
 graphics_path = "generated/graphics/"
 
@@ -104,3 +99,12 @@ ground_tiles = {
     "pavement_rear_platform_nw_se": (290, 130),
     "pavement_front_platform_nw_se": (290, 170),
 }
+
+# shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
+# done this way so we don't have to pass Polar Fox to templates, we can just pass global_constants
+# assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
+import polar_fox.constants
+
+cargo_labels = polar_fox.constants.cargo_labels
+chameleon_cache_dir = polar_fox.constants.chameleon_cache_dir
+generated_files_dir = polar_fox.constants.generated_files_dir

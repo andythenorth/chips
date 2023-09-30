@@ -1,3 +1,5 @@
 cargotable {
-	LVST
+    <tal:build_cargo_table repeat="cargo global_constants.cargo_labels">
+    ${cargo},
+    </tal:build_cargo_table>
 }
