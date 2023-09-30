@@ -10,11 +10,11 @@
                 both platforms are in the same spriteset, index into rear or front part as needed
             -->
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_platform_' + orientation]}));
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_platform_' + orientation]}));
                 always_draw: 1;
             }
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_platform_' + orientation]}));
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_platform_' + orientation]}));
                 always_draw: 1;
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
@@ -103,7 +103,7 @@
                 we index to the ground type appropriate to the station
             -->
             childsprite {
-                sprite: spriteset_ground_tiles(LOAD_TEMP(${graphics_temp_storage.var_sprite_whole_tile}));
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage.var_sprite_whole_tile}));
                 always_draw: 1;
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
@@ -149,20 +149,20 @@
 
 
             <tal:visible_cargo condition="facility_type.visible_cargo">
-                <tal:visible_cargo_sprites replace="nothing"> <!--! repeat="sprite spritelayout.visible_cargo_sprites[orientation]">-->
+                <!--!<tal:visible_cargo_sprites replace="nothing">--> <!--! repeat="sprite spritelayout.visible_cargo_sprites[orientation]">-->
                     <!--! non_track tile cargo -->
                     building {
                         sprite: DEFAULT(0);
                         recolour_mode: RECOLOUR_REMAP;
                         palette: PALETTE_USE_DEFAULT;
-                        always_draw: ${sprite.always_draw};
+                        <!--!always_draw: ${sprite.always_draw};-->
                         <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
                         xextent: 16;
                         yextent: 16;
                         zextent: 16;
                     }
                     <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
-                </tal:visible_cargo_sprites>
+                <!--!</tal:visible_cargo_sprites>-->
             </tal:visible_cargo>
 
             <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">

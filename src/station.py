@@ -27,10 +27,12 @@ class FacilityType(object):
         self.spriteset_id = "spriteset_" + self.id
         # over-ride visible_cargo in subclasses as needed
         self.visible_cargo = False
-        for orientation_suffix in ["_ne_sw", "_nw_se"]:
-            chips.sprite_manager.add_spriteset(
-                spriteset_id=self.spriteset_id + orientation_suffix
-            )
+        # option to suppress spritesets when there are no facility-specific sprites - saves requiring null sprites to be added
+        if kwargs.get("no_facility_spritesets", False) != True:
+            for orientation_suffix in ["_ne_sw", "_nw_se"]:
+                chips.sprite_manager.add_spriteset(
+                    spriteset_id=self.spriteset_id + orientation_suffix
+                )
 
     def get_station_numeric_id_offset(self, station):
         result = None
@@ -246,6 +248,10 @@ class FacilityType(object):
         return result
 
 
+    def get_cargos(self):
+        # !! CABBAGE - THIS SHOULD PROBABLY BE MOVED TO EITHER STATION (becaue feature specific) or provide cargos module directly to templating and have it there
+        return {"COAL": "spriteset_cargo_COAL", "CLAY": "spriteset_cargo_CLAY"}.items()
+
 class FacilityTypeIndustry(FacilityType):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -260,6 +266,9 @@ class FacilityTypeTown(FacilityType):
 
 class FacilityTypeVisibleCargo(FacilityType):
     def __init__(self, **kwargs):
+        # these facilities use ground and cargo sprites only, no buildings, so suppress spritesets - must be set before super call
+        # !! this might need removed if we restore the randomised buildings on cargo tiles??
+        kwargs["no_facility_spritesets"] = True
         super().__init__(**kwargs)
         # FacilityTypeVisibleCargo can take arbitrary metaclass
         self.metaclass = kwargs["metaclass"]
@@ -352,7 +361,7 @@ class RailStationBase(Station):
                 return 0
 
     def get_custom_sprite_index_structs(self, ground_subtypes):
-        # index into the global ground_tiles spriteset, with a label included for convenience of debugging
+        # index into the global ground_sprites spriteset, with a label included for convenience of debugging
         result = []
         for ground_subtype in ground_subtypes:
             sprite_id = self.ground_type + "_" + ground_subtype
@@ -360,7 +369,7 @@ class RailStationBase(Station):
             result.append(
                 (
                     chips.sprite_manager[
-                        "spriteset_ground_tiles"
+                        "spriteset_ground"
                     ].get_index_for_sprite_by_id(sprite_id),
                     global_constants.graphics_temp_storage["var_sprite_" + ground_subtype],
                     sprite_id,

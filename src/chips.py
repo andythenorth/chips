@@ -5,17 +5,18 @@ currentdir = os.curdir
 import global_constants
 import utils
 
-from spriteset import Spriteset, GroundTileSprite
+from spriteset import Spriteset, GroundSprite
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
-import cargo_tiles
-import ground_tiles
+import cargo
+import ground
 
 from stations import booking_office
 from stations import booking_office_small
+from stations import cargo_visible_industry
 from stations import dispatchers_office
 from stations import flood_loader_silo
 from stations import harbour_crane
@@ -26,7 +27,7 @@ from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
 from stations import tipple
-from stations import visible_cargo
+
 
 class SpriteManager(dict):
     """
@@ -38,6 +39,11 @@ class SpriteManager(dict):
 
     def add_spriteset(self, spriteset_id):
         self[spriteset_id] = Spriteset(id=spriteset_id)
+
+    def add_spritesets_from_id_list(self, spriteset_ids):
+        # convience function, can add a list of spritesets by id, wraps add_spriteset
+        for spriteset_id in spriteset_ids:
+            self.add_spriteset(spriteset_id)
 
     def add_sprite(self, sprite):
         if (
@@ -75,14 +81,15 @@ facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    sprite_manager.add_spriteset("spriteset_cargo_tiles")
-    sprite_manager.add_sprites_from_list(cargo_tiles.get_sprites())
+    sprite_manager.add_spritesets_from_id_list(cargo.get_spriteset_ids())
+    sprite_manager.add_sprites_from_list(cargo.get_sprites())
 
-    sprite_manager.add_spriteset("spriteset_ground_tiles")
-    sprite_manager.add_sprites_from_list(ground_tiles.get_sprites())
+    sprite_manager.add_spriteset("spriteset_ground")
+    sprite_manager.add_sprites_from_list(ground.get_sprites())
 
     facility_type_manager.add_facility_type(booking_office)
     facility_type_manager.add_facility_type(booking_office_small)
+    facility_type_manager.add_facility_type(cargo_visible_industry)
     facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
     facility_type_manager.add_facility_type(harbour_crane)
@@ -93,4 +100,3 @@ def main():
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(tipple)
-    facility_type_manager.add_facility_type(visible_cargo)

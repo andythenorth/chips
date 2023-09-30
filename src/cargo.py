@@ -1,6 +1,6 @@
 # 'tiles' is a bit of a throwaway term, these aren't station tiles, they're configurations of spritesets
 
-from spriteset import CargoTileSprite
+from spriteset import CargoSprite
 
 # cargo label -> filename mapping
 # keep alphabetised by cargo label
@@ -11,15 +11,22 @@ cargo_label_mapping = {
 }
 
 
+def get_spriteset_ids():
+    result = []
+    for cargo_label in cargo_label_mapping.keys():
+        result.append("spriteset_cargo_" + cargo_label)
+    return result
+
+
 def get_sprites():
     # returns a simple list sprites
     result = []
     for cargo_label, filename in cargo_label_mapping.items():
         graphics_file_path = "src/graphics/" + filename + ".png"
-        sprite = CargoTileSprite(
+        sprite = CargoSprite(
             id=cargo_label,
             graphics_file_path=graphics_file_path,
-            spriteset_id="spriteset_cargo_tiles",
+            spriteset_id="spriteset_cargo_" + cargo_label,
         )
         result.append(sprite)
 

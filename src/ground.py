@@ -1,9 +1,7 @@
-# 'tiles' is a bit of a throwaway term, these aren't station tiles, they're configurations of spritesets
-
-from spriteset import GroundTileSprite
+from spriteset import GroundSprite
 
 # labels and x offsets
-ground_tiles = {
+ground_sprites = {
     "dirt_whole_tile": (10, 10),
     "dirt_rear_platform_ne_sw": (10, 50),
     "dirt_front_platform_ne_sw": (10, 90),
@@ -35,9 +33,9 @@ ground_tiles = {
 def get_sprites():
     # returns a simple list sprites
     result = []
-    for id, x_y in ground_tiles.items():
-        sprite = GroundTileSprite(
-            id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground_tiles"
+    for id, x_y in ground_sprites.items():
+        sprite = GroundSprite(
+            id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground"
         )
         result.append(sprite)
     return result

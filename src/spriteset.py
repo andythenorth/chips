@@ -129,11 +129,11 @@ class BuildingSprite(Sprite):
         # nothing else as of Sept 2023?
 
 
-class CargoTileSprite(Sprite):
+class CargoSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.x_loc = 10
-        self.y_loc = 80
+        self.y_loc = 10
         self.width = 64
         self.height = 65
         self.x_offset = -31
@@ -146,11 +146,11 @@ class CargoTileSprite(Sprite):
         """
 
 
-class GroundTileSprite(Sprite):
+class GroundSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.width = 64
         self.height = 31
         self.x_offset = -31
         self.y_offset = 0
-        self.graphics_file_path = "src/graphics/ground_tiles.png"
+        self.graphics_file_path = "src/graphics/ground.png"

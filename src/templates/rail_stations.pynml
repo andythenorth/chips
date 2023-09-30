@@ -15,6 +15,14 @@
         return;
     }
 
+    <tal:visible_cargo condition="facility_type.visible_cargo">
+        spritegroup ${station.id}_cabbage_cargo {
+            little: spriteset_cargo_COAL;
+            lots: spriteset_cargo_COAL;
+        }
+    </tal:visible_cargo>
+
+
     item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
         property {
             /* The class allows to sort stations into categories. */
@@ -37,6 +45,12 @@
             LVST: random_${facility_type.id}_1;
             -->
             <!--!cow_pen_empty;-->
+            <tal:visible_cargo condition="facility_type.visible_cargo">
+                default: ${station.id}_cabbage_cargo;
+                <tal:cargos repeat="cargo_pair facility_type.get_cargos()">
+                    ${cargo_pair[0]}: ${cargo_pair[1]};
+                </tal:cargos>
+            </tal:visible_cargo>
         }
     }
 </tal:stations>
