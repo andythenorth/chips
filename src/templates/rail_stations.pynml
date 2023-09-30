@@ -11,6 +11,8 @@
         </tal:custom_sprite_indexes>
         <!--! snow sprite is partially provided, but incomplete, so nerf it by forcing the register to 1 (hide snow) -->
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
         ]) {
         return;
     }

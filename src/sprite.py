@@ -29,6 +29,16 @@ class Sprite(object):
         return self.spriteset_id + "(" + self.id + ")"
 
 
+class BufferStopSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.width = 64
+        self.height = 31
+        self.x_offset = -31
+        self.y_offset = 0
+        self.graphics_file_path = "src/graphics/buffer_stop.png"
+
+
 class BuildingSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -41,7 +51,7 @@ class CargoSprite(Sprite):
         self.x_loc = kwargs["x_loc"]
         self.y_loc = kwargs["y_loc"]
         self.width = 64
-        self.height = 65
+        self.height = 31
         self.x_offset = -31 - kwargs["x_offset_adjustment"]
         self.y_offset = -34 - kwargs["y_offset_adjustment"]
         """

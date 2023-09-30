@@ -83,6 +83,17 @@
                 <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
             </tal:rear_visible_cargo_sprites>
 
+            <tal:buffer_stop_sprites_ne_and_nw>
+                 <!--! buffer stop on ne or nw edge (no snow for buffer stops) -->
+                building {
+                    sprite: spriteset_buffer_stop(${orientation[0:2]});
+                    xextent: ${1 if orientation == 'ne_sw' else 16};
+                    yextent: ${16 if orientation == 'ne_sw' else 1};
+                    zextent: 5;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}));
+                }
+            </tal:buffer_stop_sprites_ne_and_nw>
+
             <tal:front_visible_cargo_sprites condition="facility_type.visible_cargo">
                 <!--! cargo for the front platform on track tile -->
                 building {
@@ -131,6 +142,19 @@
                     <!--! no offsets or extents for these childsprites -->
                 }
             </tal:main_structure_sprites>
+
+            <tal:buffer_stop_sprites_se_and_sw>
+                 <!--! buffer stop on se or sw edge (no snow for buffer stops) -->
+                building {
+                    sprite: spriteset_buffer_stop(${orientation[-2:]});
+                    xoffset: ${16 if orientation == 'ne_sw' else 0};
+                    yoffset: ${0 if orientation == 'ne_sw' else 16};
+                    xextent: ${1 if orientation == 'ne_sw' else 16};
+                    yextent: ${16 if orientation == 'ne_sw' else 1};
+                    zextent: 5;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}));
+                }
+            </tal:buffer_stop_sprites_se_and_sw>
         }
     </tal:track_spritelayouts>
 

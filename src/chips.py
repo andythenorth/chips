@@ -12,6 +12,7 @@ if not os.path.exists(generated_files_path):
 from cargo import CargoManager
 from sprite import SpriteManager
 
+import buffer_stop
 import ground
 
 from stations import booking_office
@@ -48,6 +49,9 @@ sprite_manager = SpriteManager()
 def main():
     sprite_manager.add_spritesets_from_id_list(cargo_manager.spriteset_ids)
     sprite_manager.add_sprites_from_list(cargo_manager.sprites)
+
+    sprite_manager.add_spriteset("spriteset_buffer_stop")
+    sprite_manager.add_sprites_from_list(buffer_stop.get_sprites())
 
     sprite_manager.add_spriteset("spriteset_ground")
     sprite_manager.add_sprites_from_list(ground.get_sprites())
