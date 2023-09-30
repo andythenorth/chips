@@ -519,3 +519,11 @@ class SpriteLayout(object):
     @property
     def main_structure_sprites(self):
         return self.get_sprites_by_orientation(self._main_structure_sprites)
+
+    def get_nml_declaration_for_ground_sprite_whole_tile(self):
+        # as of September 2023 this is quite JFDI, there might be other cases for using base set sprites, but it was TMWFTLB to make generic
+        if self.facility_type.metaclass in ["town"]:
+            # hard-coded to pavement sprite from base set
+            return 1420
+        else:
+            return "spriteset_ground(LOAD_TEMP(" + str(global_constants.graphics_temp_storage["var_sprite_whole_tile"]) + "))"
