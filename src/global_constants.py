@@ -63,43 +63,6 @@ station_classes_by_metaclass = {
     ],
 }
 
-# labels and x offsets
-ground_tiles_cabbage = {
-    "dirt": 10,
-    "asphalt": 80,
-    "gravel": 150,
-    "cobble": 220,
-    "pavement": 290,
-}
-
-ground_tiles = {
-    "dirt_whole_tile": (10, 10),
-    "dirt_rear_platform_ne_sw": (10, 50),
-    "dirt_front_platform_ne_sw": (10, 90),
-    "dirt_rear_platform_nw_se": (10, 130),
-    "dirt_front_platform_nw_se": (10, 170),
-    "asphalt_whole_tile": (80, 10),
-    "asphalt_rear_platform_ne_sw": (80, 50),
-    "asphalt_front_platform_ne_sw": (80, 90),
-    "asphalt_rear_platform_nw_se": (80, 130),
-    "asphalt_front_platform_nw_se": (80, 170),
-    "gravel_whole_tile": (150, 10),
-    "gravel_rear_platform_ne_sw": (150, 50),
-    "gravel_front_platform_ne_sw": (150, 90),
-    "gravel_rear_platform_nw_se": (150, 130),
-    "gravel_front_platform_nw_se": (150, 170),
-    "cobble_whole_tile": (220, 10),
-    "cobble_rear_platform_ne_sw": (220, 50),
-    "cobble_front_platform_ne_sw": (220, 90),
-    "cobble_rear_platform_nw_se": (220, 130),
-    "cobble_front_platform_nw_se": (220, 170),
-    "pavement_whole_tile": (290, 10),
-    "pavement_rear_platform_ne_sw": (290, 50),
-    "pavement_front_platform_ne_sw": (290, 90),
-    "pavement_rear_platform_nw_se": (290, 130),
-    "pavement_front_platform_nw_se": (290, 170),
-}
-
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
 # done this way so we don't have to pass Polar Fox to templates, we can just pass global_constants
 # assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports

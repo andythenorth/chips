@@ -3,7 +3,9 @@ import os
 currentdir = os.curdir
 
 import global_constants
+import ground_tiles
 import utils
+
 from spriteset import Spriteset, GroundTileSprite
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
@@ -72,7 +74,7 @@ facility_type_manager = FacilityTypeManager()
 
 def main():
     sprite_manager.add_spriteset("spriteset_ground_tiles")
-    for id, x_y in global_constants.ground_tiles.items():
+    for id, x_y in ground_tiles.ground_tiles.items():
         sprite_manager.add_sprite(
             sprite=GroundTileSprite(
                 id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_ground_tiles"
