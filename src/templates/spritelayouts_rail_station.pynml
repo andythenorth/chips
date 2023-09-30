@@ -220,6 +220,7 @@
                     palette: PALETTE_USE_DEFAULT;
                     <!--!always_draw: ${sprite.always_draw};-->
                     <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
+                    // CABBAGE_99
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 16;

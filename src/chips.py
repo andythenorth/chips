@@ -15,10 +15,12 @@ from sprite import SpriteManager
 import buffer_stop
 import ground
 
+# keep alphabetised
 from stations import boiler_house_offices
 from stations import booking_office
 from stations import booking_office_small
 from stations import cargo_visible_industry
+from stations import cargo_visible_town
 from stations import concourse_1
 from stations import dispatchers_office
 from stations import flood_loader_silo
@@ -76,6 +78,7 @@ def main():
     # IDs are automatically constructed
     # inserting facility_types to the list will break savegames due to ID changing - this is inevitable as of September 2023
     facility_type_manager.add_facility_type(cargo_visible_industry)
+    facility_type_manager.add_facility_type(cargo_visible_town)
     facility_type_manager.add_facility_type(concourse_1)
     facility_type_manager.add_facility_type(booking_office_small)
     facility_type_manager.add_facility_type(booking_office)

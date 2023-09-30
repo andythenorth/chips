@@ -41,6 +41,9 @@ base = "Small booking office"
 [STR_NAME_STATION_CARGO_VISIBLE_INDUSTRY]
 base = "VISIBLE CARGO"
 
+[STR_NAME_STATION_CARGO_VISIBLE_TOWN]
+base = "VISIBLE CARGO"
+
 [STR_NAME_STATION_CONCOURSE_1]
 base = "Passenger concourse"
 
