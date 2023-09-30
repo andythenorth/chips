@@ -1,3 +1,5 @@
+# 'tiles' is a bit of a throwaway term, these aren't station tiles, they're configurations of spritesets
+
 from spriteset import CargoTileSprite
 
 # labels and x offsets
