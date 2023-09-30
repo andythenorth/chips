@@ -15,9 +15,11 @@ from sprite import SpriteManager
 import buffer_stop
 import ground
 
+from stations import boiler_house_offices
 from stations import booking_office
 from stations import booking_office_small
 from stations import cargo_visible_industry
+from stations import concourse_1
 from stations import dispatchers_office
 from stations import flood_loader_silo
 from stations import harbour_crane
@@ -28,6 +30,7 @@ from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
 from stations import tipple
+from stations import warehouses_1
 
 
 class FacilityTypeManager(list):
@@ -64,9 +67,11 @@ def main():
     sprite_manager.add_spriteset("spriteset_ground")
     sprite_manager.add_sprites_from_list(ground.get_sprites())
 
+    facility_type_manager.add_facility_type(boiler_house_offices)
     facility_type_manager.add_facility_type(booking_office)
     facility_type_manager.add_facility_type(booking_office_small)
     facility_type_manager.add_facility_type(cargo_visible_industry)
+    facility_type_manager.add_facility_type(concourse_1)
     facility_type_manager.add_facility_type(dispatchers_office)
     facility_type_manager.add_facility_type(flood_loader_silo)
     facility_type_manager.add_facility_type(harbour_crane)
@@ -77,5 +82,6 @@ def main():
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(tipple)
+    facility_type_manager.add_facility_type(warehouses_1)
 
     id_report()

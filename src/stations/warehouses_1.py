@@ -3,8 +3,8 @@ from station import FacilityTypeTown
 
 def main():
     facility_type = FacilityTypeTown(
-        id="boiler_house_offices",
-        numeric_id=1600,
+        id="warehouses_1",
+        numeric_id=1800,
     )
 
     facility_type.add_sprite(
@@ -15,7 +15,7 @@ def main():
     )
 
     facility_type.add_spritelayout(
-        id="boiler_house_offices_spritelayout_1",
+        id="warehouses_1_spritelayout_1",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
         main_structure_sprites=["sprite_1"],
@@ -27,7 +27,7 @@ def main():
             (
                 0,
                 0,
-                "boiler_house_offices_spritelayout_1",
+                "warehouses_1_spritelayout_1",
             ),
         ],
     )

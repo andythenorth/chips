@@ -29,11 +29,20 @@ base = "Industry stations (gravel)"
 
 # station names, keep alphabetised by ID
 
+[STR_NAME_STATION_BOILER_HOUSE_OFFICES]
+base = "Boiler house & offices"
+
 [STR_NAME_STATION_BOOKING_OFFICE]
 base = "Booking office"
 
 [STR_NAME_STATION_BOOKING_OFFICE_SMALL]
 base = "Small booking office"
+
+[STR_NAME_STATION_CARGO_VISIBLE_INDUSTRY]
+base = "VISIBLE CARGO"
+
+[STR_NAME_STATION_CONCOURSE_1]
+base = "Passenger concourse"
 
 [STR_NAME_STATION_DISPATCHERS_OFFICE]
 base = "Dispatcher's office"
@@ -68,7 +77,7 @@ base = "CABBAGE"
 [STR_NAME_STATION_TIPPLE]
 base = "Tipple"
 
-[STR_NAME_STATION_CARGO_VISIBLE_INDUSTRY]
-base = "VISIBLE CARGO"
+[STR_NAME_STATION_WAREHOUSES_1]
+base = "Warehouse"
 
 
