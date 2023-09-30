@@ -147,6 +147,24 @@
                 }
             </tal:rear_structure_sprites>
 
+
+            <tal:visible_cargo condition="facility_type.visible_cargo">
+                <tal:visible_cargo_sprites replace="nothing"> <!--! repeat="sprite spritelayout.visible_cargo_sprites[orientation]">-->
+                    <!--! non_track tile cargo -->
+                    building {
+                        sprite: DEFAULT(0);
+                        recolour_mode: RECOLOUR_REMAP;
+                        palette: PALETTE_USE_DEFAULT;
+                        always_draw: ${sprite.always_draw};
+                        <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
+                        xextent: 16;
+                        yextent: 16;
+                        zextent: 16;
+                    }
+                    <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+                </tal:visible_cargo_sprites>
+            </tal:visible_cargo>
+
             <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
                 <!--! primary structure (snow aware) for non_track tile -->
                 building {

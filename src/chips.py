@@ -25,9 +25,8 @@ from stations import hut_2
 from stations import mine_building_large
 from stations import mine_building_small
 from stations import parcels_office
-
-# from stations import test
 from stations import tipple
+from stations import visible_cargo
 
 class SpriteManager(dict):
     """
@@ -76,8 +75,8 @@ facility_type_manager = FacilityTypeManager()
 
 
 def main():
-    #sprite_manager.add_spriteset("spriteset_cargo_tiles")
-    #sprite_manager.add_sprites_from_list(cargo_tiles.get_sprites())
+    sprite_manager.add_spriteset("spriteset_cargo_tiles")
+    sprite_manager.add_sprites_from_list(cargo_tiles.get_sprites())
 
     sprite_manager.add_spriteset("spriteset_ground_tiles")
     sprite_manager.add_sprites_from_list(ground_tiles.get_sprites())
@@ -93,5 +92,5 @@ def main():
     facility_type_manager.add_facility_type(mine_building_large)
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(parcels_office)
-    # facility_type_manager.add_facility_type(test)
     facility_type_manager.add_facility_type(tipple)
+    facility_type_manager.add_facility_type(visible_cargo)

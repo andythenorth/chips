@@ -25,6 +25,8 @@ class FacilityType(object):
         self.objects = []
         self.provides_snow = kwargs.get("provides_snow", False)
         self.spriteset_id = "spriteset_" + self.id
+        # over-ride visible_cargo in subclasses as needed
+        self.visible_cargo = False
         for orientation_suffix in ["_ne_sw", "_nw_se"]:
             chips.sprite_manager.add_spriteset(
                 spriteset_id=self.spriteset_id + orientation_suffix
@@ -254,6 +256,14 @@ class FacilityTypeTown(FacilityType):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.metaclass = "town"
+
+
+class FacilityTypeVisibleCargo(FacilityType):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # FacilityTypeVisibleCargo can take arbitrary metaclass
+        self.metaclass = kwargs["metaclass"]
+        self.visible_cargo = True
 
 
 class Station(object):

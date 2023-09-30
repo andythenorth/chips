@@ -10,17 +10,19 @@ cargo_label_mapping = {
     "COAL": "coal_cargo",
 }
 
+
 def get_sprites():
     # returns a simple list sprites
     result = []
     for cargo_label, filename in cargo_label_mapping.items():
-        print(cargo_label, filename)
-        """
+        graphics_file_path = "src/graphics/" + filename + ".png"
         sprite = CargoTileSprite(
-            id=id, x_loc=x_y[0], y_loc=x_y[1], spriteset_id="spriteset_cargo_tiles"
+            id=cargo_label,
+            graphics_file_path=graphics_file_path,
+            spriteset_id="spriteset_cargo_tiles",
         )
         result.append(sprite)
-        """
+
     return result
 
 

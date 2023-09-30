@@ -132,7 +132,18 @@ class BuildingSprite(Sprite):
 class CargoTileSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # nothing else as of Sept 2023?
+        self.x_loc = 10
+        self.y_loc = 80
+        self.width = 64
+        self.height = 65
+        self.x_offset = -31
+        self.y_offset = -34
+        """
+        -1 THIS_CARGO_SPRITESHEET                  10 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                  80 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                 150 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                 220 10 09 65 64 -31 -34
+        """
 
 
 class GroundTileSprite(Sprite):
