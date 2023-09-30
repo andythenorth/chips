@@ -6,7 +6,7 @@ currentdir = os.curdir
 import chips
 import global_constants
 import utils
-from spriteset import SpritesetLegacy, Spriteset, BuildingSprite
+from sprite import SpritesetLegacy, Spriteset, BuildingSprite
 
 
 class FacilityType(object):

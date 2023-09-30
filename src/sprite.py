@@ -1,4 +1,65 @@
-import chips
+# handles sprites and related items such as spritesets
+
+
+class Sprite(object):
+    """Simple class to hold sprite metadata"""
+
+    def __init__(
+        self,
+        **kwargs,
+    ):
+        self.id = kwargs["id"]
+        self.spriteset_id = kwargs["spriteset_id"]
+        self.x_loc = kwargs.get("x_loc", None)
+        self.y_loc = kwargs.get("y_loc", None)
+        self.width = kwargs.get("width", None)
+        self.height = kwargs.get("height", None)
+        self.x_offset = kwargs.get("x_offset", None)
+        self.y_offset = kwargs.get("y_offset", None)
+        self._always_draw = kwargs.get("always_draw", False)
+        self.graphics_file_path = kwargs.get("graphics_file_path", None)
+
+    @property
+    def always_draw(self):
+        # nml wants 0 or 1 for always_draw, not python False or True
+        return [0, 1][self._always_draw]
+
+    def get_nml_declaration_for_sprite_in_spritelayout(self, orientation, snow=False):
+        # !! CABBAGE nothing happens with snow currently, it's unfinished support - but it would probably index into an alternative spriteset with _snow appended to graphics file path
+        return self.spriteset_id + "(" + self.id + ")"
+
+
+class BuildingSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # nothing else as of Sept 2023?
+
+
+class CargoSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.x_loc = 10
+        self.y_loc = 10
+        self.width = 64
+        self.height = 65
+        self.x_offset = -31
+        self.y_offset = -34
+        """
+        -1 THIS_CARGO_SPRITESHEET                  10 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                  80 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                 150 10 09 65 64 -31 -34
+        -1 THIS_CARGO_SPRITESHEET                 220 10 09 65 64 -31 -34
+        """
+
+
+class GroundSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.width = 64
+        self.height = 31
+        self.x_offset = -31
+        self.y_offset = 0
+        self.graphics_file_path = "src/graphics/ground.png"
 
 
 class Spriteset(list):
@@ -95,67 +156,6 @@ class SpritesetLegacy(object):
         return result
 
 
-class Sprite(object):
-    """Simple class to hold sprite metadata"""
-
-    def __init__(
-        self,
-        **kwargs,
-    ):
-        self.id = kwargs["id"]
-        self.spriteset_id = kwargs["spriteset_id"]
-        self.x_loc = kwargs.get("x_loc", None)
-        self.y_loc = kwargs.get("y_loc", None)
-        self.width = kwargs.get("width", None)
-        self.height = kwargs.get("height", None)
-        self.x_offset = kwargs.get("x_offset", None)
-        self.y_offset = kwargs.get("y_offset", None)
-        self._always_draw = kwargs.get("always_draw", False)
-        self.graphics_file_path = kwargs.get("graphics_file_path", None)
-
-    @property
-    def always_draw(self):
-        # nml wants 0 or 1 for always_draw, not python False or True
-        return [0, 1][self._always_draw]
-
-    def get_nml_declaration_for_sprite_in_spritelayout(self, orientation, snow=False):
-        # !! CABBAGE nothing happens with snow currently, it's unfinished support - but it would probably index into an alternative spriteset with _snow appended to graphics file path
-        return self.spriteset_id + "(" + self.id + ")"
-
-
-class BuildingSprite(Sprite):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # nothing else as of Sept 2023?
-
-
-class CargoSprite(Sprite):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.x_loc = 10
-        self.y_loc = 10
-        self.width = 64
-        self.height = 65
-        self.x_offset = -31
-        self.y_offset = -34
-        """
-        -1 THIS_CARGO_SPRITESHEET                  10 10 09 65 64 -31 -34
-        -1 THIS_CARGO_SPRITESHEET                  80 10 09 65 64 -31 -34
-        -1 THIS_CARGO_SPRITESHEET                 150 10 09 65 64 -31 -34
-        -1 THIS_CARGO_SPRITESHEET                 220 10 09 65 64 -31 -34
-        """
-
-
-class GroundSprite(Sprite):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.width = 64
-        self.height = 31
-        self.x_offset = -31
-        self.y_offset = 0
-        self.graphics_file_path = "src/graphics/ground.png"
-
-
 class SpriteManager(dict):
     """
     CHIPS zips sprites into a limited number of global spritesets.
@@ -189,5 +189,3 @@ class SpriteManager(dict):
         # convience function, can add a list of sprites, wraps add_sprite
         for sprite in sprites:
             self.add_sprite(sprite)
-
-

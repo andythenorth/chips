@@ -1,6 +1,6 @@
 # 'tiles' is a bit of a throwaway term, these aren't station tiles, they're configurations of spritesets
 
-from spriteset import CargoSprite
+from sprite import CargoSprite
 
 # cargo label -> filename mapping
 # keep alphabetised by cargo label

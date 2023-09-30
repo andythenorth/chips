@@ -5,7 +5,7 @@ currentdir = os.curdir
 import global_constants
 import utils
 
-from spriteset import SpriteManager
+from sprite import SpriteManager
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):

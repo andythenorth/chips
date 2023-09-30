@@ -1,4 +1,4 @@
-from spriteset import GroundSprite
+from sprite import GroundSprite
 
 # labels and x offsets
 ground_sprites = {
