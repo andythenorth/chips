@@ -47,8 +47,8 @@
             <!--!cow_pen_empty;-->
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 default: ${station.id}_cabbage_cargo;
-                <tal:cargos repeat="cargo_pair facility_type.get_cargos()">
-                    ${cargo_pair[0]}: ${cargo_pair[1]};
+                <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
+                    ${cargo_label}: ${cargo_manager.get_spriteset_id(cargo_label)};
                 </tal:cargos>
             </tal:visible_cargo>
         }

@@ -242,15 +242,12 @@ class FacilityType(object):
                     # registered_industries=registered_industries, # !!
                     utils=utils,
                     sprite_manager=chips.sprite_manager,
+                    cargo_manager=chips.cargo_manager,
                 )
             )
             result += templated_nml
         return result
 
-
-    def get_cargos(self):
-        # !! CABBAGE - THIS SHOULD PROBABLY BE MOVED TO EITHER STATION (becaue feature specific) or provide cargos module directly to templating and have it there
-        return {"COAL": "spriteset_cargo_COAL", "CLAY": "spriteset_cargo_CLAY"}.items()
 
 class FacilityTypeIndustry(FacilityType):
     def __init__(self, **kwargs):

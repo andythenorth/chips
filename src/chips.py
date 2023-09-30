@@ -5,13 +5,13 @@ currentdir = os.curdir
 import global_constants
 import utils
 
-from sprite import SpriteManager
-
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
-import cargo
+from cargo import CargoManager
+from sprite import SpriteManager
+
 import ground
 
 from stations import booking_office
@@ -41,13 +41,13 @@ class FacilityTypeManager(list):
         self.append(facility_type)
 
 # declared outside of main, got bored trying to figure out how to otherwise put these in the module scope
-sprite_manager = SpriteManager()
+cargo_manager = CargoManager()
 facility_type_manager = FacilityTypeManager()
-
+sprite_manager = SpriteManager()
 
 def main():
-    sprite_manager.add_spritesets_from_id_list(cargo.get_spriteset_ids())
-    sprite_manager.add_sprites_from_list(cargo.get_sprites())
+    sprite_manager.add_spritesets_from_id_list(cargo_manager.spriteset_ids)
+    sprite_manager.add_sprites_from_list(cargo_manager.sprites)
 
     sprite_manager.add_spriteset("spriteset_ground")
     sprite_manager.add_sprites_from_list(ground.get_sprites())
