@@ -3,21 +3,31 @@ import os
 currentdir = os.curdir
 
 import global_constants
-import ground_tiles
 import utils
 
 from spriteset import Spriteset, GroundTileSprite
-
-# setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
-if not os.path.exists(chameleon_cache_path):
-    os.mkdir(chameleon_cache_path)
-os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
+import cargo_tiles
+import ground_tiles
+
+from stations import booking_office
+from stations import booking_office_small
+from stations import dispatchers_office
+from stations import flood_loader_silo
+from stations import harbour_crane
+from stations import hotel
+from stations import hut_1
+from stations import hut_2
+from stations import mine_building_large
+from stations import mine_building_small
+from stations import parcels_office
+
+# from stations import test
+from stations import tipple
 
 class SpriteManager(dict):
     """
@@ -60,28 +70,15 @@ class FacilityTypeManager(list):
         facility_type = facility_type_module.main()
         self.append(facility_type)
 
-
-from stations import booking_office
-from stations import booking_office_small
-from stations import dispatchers_office
-from stations import flood_loader_silo
-from stations import harbour_crane
-from stations import hotel
-from stations import hut_1
-from stations import hut_2
-from stations import mine_building_large
-from stations import mine_building_small
-from stations import parcels_office
-
-# from stations import test
-from stations import tipple
-
 # declared outside of main, got bored trying to figure out how to otherwise put these in the module scope
 sprite_manager = SpriteManager()
 facility_type_manager = FacilityTypeManager()
 
 
 def main():
+    #sprite_manager.add_spriteset("spriteset_cargo_tiles")
+    #sprite_manager.add_sprites_from_list(cargo_tiles.get_sprites())
+
     sprite_manager.add_spriteset("spriteset_ground_tiles")
     sprite_manager.add_sprites_from_list(ground_tiles.get_sprites())
 

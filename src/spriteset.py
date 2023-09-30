@@ -1,5 +1,6 @@
 import chips
 
+
 class Spriteset(list):
     """
     Simple class to hold spritesets.
@@ -20,7 +21,12 @@ class Spriteset(list):
         if allow_not_found:
             return None
         else:
-            raise BaseException("get_sprite_by_id: sprite " + sprite_id + " not found in spriteset " + self.id)
+            raise BaseException(
+                "get_sprite_by_id: sprite "
+                + sprite_id
+                + " not found in spriteset "
+                + self.id
+            )
 
     def get_index_for_sprite_by_id(self, sprite_id):
         sprite = self.get_sprite_by_id(sprite_id)
@@ -117,7 +123,13 @@ class Sprite(object):
         return self.spriteset_id + "(" + self.id + ")"
 
 
-class SpriteBuilding(Sprite):
+class BuildingSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # nothing else as of Sept 2023?
+
+
+class CargoTileSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # nothing else as of Sept 2023?
@@ -131,8 +143,3 @@ class GroundTileSprite(Sprite):
         self.x_offset = -31
         self.y_offset = 0
         self.graphics_file_path = "src/graphics/ground_tiles.png"
-
-class CargoTileSprite(Sprite):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # nothing else as of Sept 2023?

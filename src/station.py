@@ -6,7 +6,7 @@ currentdir = os.curdir
 import chips
 import global_constants
 import utils
-from spriteset import SpritesetLegacy, Spriteset, SpriteBuilding
+from spriteset import SpritesetLegacy, Spriteset, BuildingSprite
 
 
 class FacilityType(object):
@@ -63,7 +63,7 @@ class FacilityType(object):
         # auto extend for both needed orientations
         for orientation_suffix, x_loc_modifier in {"_ne_sw": 0, "_nw_se": 70}.items():
             sprite_id = kwargs["id"]
-            sprite = SpriteBuilding(
+            sprite = BuildingSprite(
                 id=sprite_id,
                 x_loc=kwargs["x_y_loc"][0] + x_loc_modifier,
                 y_loc=kwargs["x_y_loc"][1],
