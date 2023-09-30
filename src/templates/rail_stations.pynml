@@ -27,11 +27,8 @@
 
     item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
         property {
-            /* The class allows to sort stations into categories. */
             class:                  "${station.station_class.class_id}";
-            /* If no other NewGRF provides this class before us, we have to name it */
     		classname:              string(${station.classname_string_id});
-            /* Name of this particular station */
             name:                   string(${station.name_string_id});
             cargo_threshold: 160;
             draw_pylon_tiles: ${station.draw_pylon_tiles};
@@ -43,10 +40,6 @@
             <!--!custom_spritesets: [${','.join(station.custom_spriteset_mapping.keys())}];-->
             prepare_layout: switch_${station.id}_prepare_layout();
             <!--! purchase: cow_pen_half; -->
-            <!--! cargo specific callback
-            LVST: random_${facility_type.id}_1;
-            -->
-            <!--!cow_pen_empty;-->
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 default: ${station.id}_cabbage_cargo;
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
