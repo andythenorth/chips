@@ -13,11 +13,11 @@ graphics_path = "generated/graphics/"
 max_game_date = 5000000
 
 graphics_temp_storage = dict(
-    var_sprite_rear_platform_ne_sw=0, # ground-type-specific sprite for track tiles
-    var_sprite_rear_platform_nw_se=1, # ground-type-specific sprite for track tiles
-    var_sprite_front_platform_ne_sw=2, # ground-type-specific sprite for track tiles
-    var_sprite_front_platform_nw_se=3, # ground-type-specific sprite for track tiles
-    var_sprite_whole_tile=4, # ground-type-specific sprite for non_track tiles
+    var_sprite_rear_platform_ne_sw=0,  # ground-type-specific sprite for track tiles
+    var_sprite_rear_platform_nw_se=1,  # ground-type-specific sprite for track tiles
+    var_sprite_front_platform_ne_sw=2,  # ground-type-specific sprite for track tiles
+    var_sprite_front_platform_nw_se=3,  # ground-type-specific sprite for track tiles
+    var_sprite_whole_tile=4,  # ground-type-specific sprite for non_track tiles
     # unused=5,  #
     # unused=6,  #
     # unused=7,  #
@@ -62,6 +62,39 @@ station_classes_by_metaclass = {
         },
     ],
 }
+
+# extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+# https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+# zextents set suitable to each use case, not needed here
+rail_station_bounding_boxes = {
+    "whole_tile_ne_sw": {"x_offset": 0, "y_offset": 0, "x_extent": 16, "y_extent": 16},
+    "rear_platform_ne_sw": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "x_extent": 16,
+        "y_extent": 5,
+    },
+    "front_platform_ne_sw": {
+        "x_offset": 0,
+        "y_offset": 11,
+        "x_extent": 16,
+        "y_extent": 5,
+    },
+    "whole_tile_nw_se": {"x_offset": 0, "y_offset": 0, "x_extent": 16, "y_extent": 16},
+    "rear_platform_nw_se": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "x_extent": 5,
+        "y_extent": 16,
+    },
+    "front_platform_nw_se": {
+        "x_offset": 11,
+        "y_offset": 0,
+        "x_extent": 5,
+        "y_extent": 16,
+    },
+}
+
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
 # done this way so we don't have to pass Polar Fox to templates, we can just pass global_constants

@@ -49,8 +49,8 @@
                         - these use SPR_RAIL_PLATFORM_BUILDING_X values
                         - no bbox offsets needed
                     -->
-                    xextent: ${16 if orientation == 'ne_sw' else 5};
-                    yextent: ${5 if orientation == 'ne_sw' else 16};
+                    xextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
                     zextent: 15;
                 }
                 childsprite {
@@ -62,6 +62,47 @@
                     <!--! no offsets or extents for these childsprites -->
                 }
             </tal:rear_structure_sprites>
+
+            <tal:rear_visible_cargo_sprites condition="facility_type.visible_cargo">
+                <!--! cargo for the rear platform on track tile -->
+                building {
+                    sprite: DEFAULT(${1 if orientation == 'ne_sw' else 4});
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    <!--!always_draw: ${sprite.always_draw};-->
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use SPR_RAIL_PLATFORM_BUILDING_X values
+                        - no bbox offsets needed
+                    -->
+                    xextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
+                    zextent: 15;
+                }
+                <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+            </tal:rear_visible_cargo_sprites>
+
+            <tal:front_visible_cargo_sprites condition="facility_type.visible_cargo">
+                <!--! cargo for the front platform on track tile -->
+                building {
+                    sprite: DEFAULT(${2 if orientation == 'ne_sw' else 5});
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    <!--!always_draw: ${sprite.always_draw};-->
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use SPR_RAIL_PLATFORM_BUILDING_X values
+                    -->
+                    xoffset: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["x_offset"]};
+                    yoffset: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["y_offset"]};
+                    xextent: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["y_extent"]};
+                    zextent: 15;
+                }
+                <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+            </tal:front_visible_cargo_sprites>
 
             <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
                 <!--! primary structure (snow aware) for track tile - drawn in front of / above rail and train sprites on tile -->
@@ -133,8 +174,8 @@
                     palette: PALETTE_USE_DEFAULT;
                     always_draw: ${sprite.always_draw};
                     <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                    xextent: 16;
-                    yextent: 16;
+                    xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
                 }
                 childsprite {
@@ -147,23 +188,20 @@
                 }
             </tal:rear_structure_sprites>
 
-
-            <tal:visible_cargo condition="facility_type.visible_cargo">
-                <!--!<tal:visible_cargo_sprites replace="nothing">--> <!--! repeat="sprite spritelayout.visible_cargo_sprites[orientation]">-->
-                    <!--! non_track tile cargo -->
-                    building {
-                        sprite: DEFAULT(0);
-                        recolour_mode: RECOLOUR_REMAP;
-                        palette: PALETTE_USE_DEFAULT;
-                        <!--!always_draw: ${sprite.always_draw};-->
-                        <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                        xextent: 16;
-                        yextent: 16;
-                        zextent: 16;
-                    }
-                    <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
-                <!--!</tal:visible_cargo_sprites>-->
-            </tal:visible_cargo>
+            <tal:visible_cargo_sprites condition="facility_type.visible_cargo">
+                <!--! non_track tile cargo - one sprite, whole tile -->
+                building {
+                    sprite: DEFAULT(${0 if orientation == 'ne_sw' else 3});
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    <!--!always_draw: ${sprite.always_draw};-->
+                    <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
+                    xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
+                    zextent: 16;
+                }
+                <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+            </tal:visible_cargo_sprites>
 
             <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
                 <!--! primary structure (snow aware) for non_track tile -->
@@ -173,8 +211,8 @@
                     palette: PALETTE_USE_DEFAULT;
                     always_draw: ${sprite.always_draw};
                     <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                    xextent: 16;
-                    yextent: 16;
+                    xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
                 }
                 childsprite {

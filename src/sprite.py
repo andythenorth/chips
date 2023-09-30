@@ -38,12 +38,12 @@ class BuildingSprite(Sprite):
 class CargoSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.x_loc = 10
-        self.y_loc = 10
+        self.x_loc = kwargs["x_loc"]
+        self.y_loc = kwargs["y_loc"]
         self.width = 64
         self.height = 65
-        self.x_offset = -31
-        self.y_offset = -34
+        self.x_offset = -31 - kwargs["x_offset_adjustment"]
+        self.y_offset = -34 - kwargs["y_offset_adjustment"]
         """
         -1 THIS_CARGO_SPRITESHEET                  10 10 09 65 64 -31 -34
         -1 THIS_CARGO_SPRITESHEET                  80 10 09 65 64 -31 -34
