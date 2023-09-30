@@ -10,7 +10,7 @@ buffer_stop_sprites = {
 
 
 def get_sprites():
-    # returns a simple list sprites
+    # returns a simple list of sprites
     result = []
     for id, x_y in buffer_stop_sprites.items():
         sprite = BufferStopSprite(
