@@ -104,9 +104,16 @@ class Sprite(object):
         self.height = kwargs.get("height", None)
         self.x_offset = kwargs.get("x_offset", None)
         self.y_offset = kwargs.get("y_offset", None)
+        self._always_draw = kwargs.get("always_draw", False)
         self.graphics_file_path = kwargs.get("graphics_file_path", None)
 
-    def get_nml_declaration_for_sprite_in_spritelayout(self, orientation):
+    @property
+    def always_draw(self):
+        # nml wants 0 or 1 for always_draw, not python False or True
+        return [0, 1][self._always_draw]
+
+    def get_nml_declaration_for_sprite_in_spritelayout(self, orientation, snow=False):
+        # !! CABBAGE nothing happens with snow currently, it's unfinished support - but it would probably index into an alternative spriteset with _snow appended to graphics file path
         return self.spriteset_id + "(" + self.id + ")"
 
 

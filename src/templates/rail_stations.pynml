@@ -2,24 +2,6 @@
 
 <tal:include metal:use-macro="load: spritelayouts_rail_station.pynml" />
 
-<!--!
-spritegroup ${facility_type.id}_1 {
-	little: [cow_pen_empty, cow_pen_half];
-	lots:   cow_pen_full;
-}
-
-spritegroup ${facility_type.id}_2 {
-	little: [cow_pen_empty, cow_pen_half, cow_pen_full];
-	lots:   cow_pen_full;
-}
-
-random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
-	1: ${facility_type.id}_1;
-	1: ${facility_type.id}_2;
-}
--->
-
-
 <tal:stations repeat="station stations">
 
     switch(FEAT_STATIONS, SELF, switch_${station.id}_prepare_layout, [
@@ -27,6 +9,8 @@ random_switch(FEAT_STATIONS, TILE, random_${facility_type.id}) {
             // ${custom_sprite_index_struct[2]}
             STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
         </tal:custom_sprite_indexes>
+        <!--! snow sprite is partially provided, but incomplete, so nerf it by forcing the register to 1 (hide snow) -->
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
         ]) {
         return;
     }

@@ -33,12 +33,12 @@ graphics_temp_storage = dict(
     # unused=12,  #
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
-    # unused=15,  # was hide tree sprite for default (temperate, arctic below snowline)
-    # unused=16,  # was hide tree sprite for snow
-    # unused=17,  # was hide tree sprite for snow
-    var_hide_building=18,  # hide a building in spritelayout, must be set to 1 (true) or 0 (false)
+    # unused=15,  #
+    # unused=16,  #
+    # unused=17,  #
+    # unused=18,  #
     var_hide_building_snow=19,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
-)  # max register number must be 235; registers 236-255 are reserved for building sprite hide/show values
+)
 
 station_classes_by_metaclass = {
     # default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
