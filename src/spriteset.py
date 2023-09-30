@@ -131,3 +131,8 @@ class GroundTileSprite(Sprite):
         self.x_offset = -31
         self.y_offset = 0
         self.graphics_file_path = "src/graphics/ground_tiles.png"
+
+class CargoTileSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # nothing else as of Sept 2023?
