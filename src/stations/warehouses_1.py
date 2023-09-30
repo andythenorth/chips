@@ -1,10 +1,10 @@
 from station import FacilityTypeTown
 
 
-def main():
+def main(numeric_id):
     facility_type = FacilityTypeTown(
         id="warehouses_1",
-        numeric_id=1800,
+        numeric_id=numeric_id,
     )
 
     facility_type.add_sprite(

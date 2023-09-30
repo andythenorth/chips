@@ -40,9 +40,14 @@ class FacilityTypeManager(list):
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
+    def __init__(self):
+        # this will auto-increment as we add facility_types
+        self.numeric_id_base = 0
+
     def add_facility_type(self, facility_type_module):
-        facility_type = facility_type_module.main()
+        facility_type = facility_type_module.main(self.numeric_id_base)
         self.append(facility_type)
+        self.numeric_id_base += 100 # we go up in increments of 100 to leave plenty of room for station subtypes (not short of IDs)
 
 def id_report():
     # this is rudimentary for now, copy the one from Road Hog (id_report.py) if something better is wanted
@@ -67,21 +72,24 @@ def main():
     sprite_manager.add_spriteset("spriteset_ground")
     sprite_manager.add_sprites_from_list(ground.get_sprites())
 
-    facility_type_manager.add_facility_type(boiler_house_offices)
-    facility_type_manager.add_facility_type(booking_office)
-    facility_type_manager.add_facility_type(booking_office_small)
+    # order added is also the order rail station tiles will appear in construction menu
+    # IDs are automatically constructed
+    # inserting facility_types to the list will break savegames due to ID changing - this is inevitable as of September 2023
     facility_type_manager.add_facility_type(cargo_visible_industry)
     facility_type_manager.add_facility_type(concourse_1)
-    facility_type_manager.add_facility_type(dispatchers_office)
-    facility_type_manager.add_facility_type(flood_loader_silo)
-    facility_type_manager.add_facility_type(harbour_crane)
+    facility_type_manager.add_facility_type(booking_office_small)
+    facility_type_manager.add_facility_type(booking_office)
+    facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(hotel)
+    facility_type_manager.add_facility_type(dispatchers_office)
+    facility_type_manager.add_facility_type(warehouses_1)
+    facility_type_manager.add_facility_type(boiler_house_offices)
+    facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hut_1)
     facility_type_manager.add_facility_type(hut_2)
-    facility_type_manager.add_facility_type(mine_building_large)
-    facility_type_manager.add_facility_type(mine_building_small)
-    facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(tipple)
-    facility_type_manager.add_facility_type(warehouses_1)
+    facility_type_manager.add_facility_type(flood_loader_silo)
+    facility_type_manager.add_facility_type(mine_building_small)
+    facility_type_manager.add_facility_type(mine_building_large)
 
     id_report()

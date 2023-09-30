@@ -1,10 +1,10 @@
 from station import FacilityTypeIndustry
 
 
-def main():
+def main(numeric_id):
     facility_type = FacilityTypeIndustry(
         id="flood_loader_silo",
-        numeric_id=200,
+        numeric_id=numeric_id,
     )
 
     facility_type.add_sprite(

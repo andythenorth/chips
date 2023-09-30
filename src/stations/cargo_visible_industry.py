@@ -1,10 +1,10 @@
 from station import FacilityTypeVisibleCargo
 
 
-def main():
+def main(numeric_id):
     facility_type = FacilityTypeVisibleCargo(
         id="cargo_visible_industry",
-        numeric_id=1500,
+        numeric_id=numeric_id,
         # FacilityTypeVisibleCargo can take arbitrary metaclass
         metaclass="industry",
     )
