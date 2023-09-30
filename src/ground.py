@@ -1,6 +1,6 @@
 from sprite import GroundSprite
 
-# labels and x offsets
+# labels and x y offsets
 ground_sprites = {
     "dirt_whole_tile": (10, 10),
     "dirt_rear_platform_ne_sw": (10, 50),
