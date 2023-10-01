@@ -1,3 +1,5 @@
+import argparse
+
 import os.path
 import codecs  # used for writing files - more unicode friendly than standard open() module
 import tomllib
@@ -8,16 +10,10 @@ import global_constants
 from polar_fox import git_info
 
 
-def get_makefile_args(sys):
-    # get args passed by makefile
-    if len(sys.argv) > 1:
-        makefile_args = {
-            "no_mp": sys.argv[1],
-        }
-    else:
-        # provide any necessary defaults here
-        makefile_args = {}
-    return makefile_args
+def get_command_line_args():
+    argparser = argparse.ArgumentParser()
+    # nothing - see Iron Horse for how this is used
+    return argparser.parse_args()
 
 
 def get_docs_url():
