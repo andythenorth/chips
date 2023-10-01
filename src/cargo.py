@@ -103,7 +103,6 @@ class CargoManager:
         result = []
         for cargo_filename in set(cargo_label_mapping.values()):
             result.append(self.get_spriteset_id(cargo_filename))
-        print(result)
         return result
 
     @property
