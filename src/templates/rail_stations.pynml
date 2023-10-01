@@ -11,19 +11,26 @@
         </tal:custom_sprite_indexes>
         <!--! snow sprite is partially provided, but incomplete, so nerf it by forcing the register to 1 (hide snow) -->
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
+        STORE_TEMP(0, ${graphics_temp_storage.var_hide_cargo}),
         STORE_TEMP(hasbit(rail_continuation, 1), ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
         STORE_TEMP(hasbit(rail_continuation, 0), ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
         ]) {
         return;
     }
-
-    <tal:visible_cargo condition="facility_type.visible_cargo">
-        spritegroup ${station.id}_cabbage_cargo {
-            little: spriteset_cargo_COAL;
-            lots: spriteset_cargo_COAL;
-        }
-    </tal:visible_cargo>
-
+    <!--! !! CABBAGE there could be prepare_layout_common or so, which both of these chain to ?? -->
+    switch(FEAT_STATIONS, SELF, switch_${station.id}_purchase_prepare_layout, [
+        <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
+            // ${custom_sprite_index_struct[2]}
+            STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
+        </tal:custom_sprite_indexes>
+        <!--! snow sprite is partially provided, but incomplete, so nerf it by forcing the register to 1 (hide snow) -->
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_cargo}),
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
+        ]) {
+        return;
+    }
 
     item(FEAT_STATIONS, ${station.id}, ${station.numeric_id}) {
         property {
@@ -39,13 +46,15 @@
             sprite_layouts: ${station.spritelayouts_as_nml_array};
             <!--!custom_spritesets: [${','.join(station.custom_spriteset_mapping.keys())}];-->
             prepare_layout: switch_${station.id}_prepare_layout();
+            purchase_prepare_layout: switch_${station.id}_purchase_prepare_layout();
             <!--! purchase: cow_pen_half; -->
             <tal:visible_cargo condition="facility_type.visible_cargo">
-                default: ${station.id}_cabbage_cargo;
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
                     ${cargo_label}: ${cargo_manager.get_spriteset_id(cargo_label)};
                 </tal:cargos>
             </tal:visible_cargo>
+            <!--! default result for DEFAULT() - we want empty cargo sprites in that case -->
+            spriteset_cargo_NULL;
         }
     }
 </tal:stations>

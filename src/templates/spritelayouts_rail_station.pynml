@@ -79,6 +79,7 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
                     zextent: 15;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
                 }
                 <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
             </tal:rear_visible_cargo_sprites>
@@ -111,6 +112,7 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["front_platform_" + orientation]["y_extent"]};
                     zextent: 15;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
                 }
                 <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
             </tal:front_visible_cargo_sprites>
@@ -224,6 +226,7 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 16;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
                 }
                 <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
             </tal:visible_cargo_sprites>

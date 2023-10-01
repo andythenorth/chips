@@ -7,6 +7,7 @@ from sprite import CargoSprite
 # !! CABBAGE we might want to map multiple labels to a single cargo spritesheet; that might need extra work to prevent duplicate spritesets
 # !! also should this be handled via Polar Fox?  I haven't seen any case for that so far.
 cargo_label_mapping = {
+    "NULL": "empty_cargo", # for empty cargo sprites; assumes no-one defines a real cargo with label NULL, but eh, probably fine?
     "CLAY": "clay_cargo",
     "COAL": "coal_cargo",
     "TYRE": "tyres_cargo",
