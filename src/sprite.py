@@ -191,7 +191,7 @@ class SpriteManager(dict):
                 "sprite with id "
                 + sprite.id
                 + " already exists in spriteset "
-                + spriteset_id
+                + sprite.spriteset_id
             )
         self[sprite.spriteset_id].append(sprite)
 

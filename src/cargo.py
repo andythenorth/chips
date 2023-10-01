@@ -1,7 +1,7 @@
 import global_constants
 from sprite import CargoSprite
 
-# cargo label -> filename mapping
+# cargo label -> cargo_filename mapping
 # keep alphabetised by cargo label
 # this might need further structure in future if we want cargo sprite randomisation or animation
 # !! CABBAGE we might want to map multiple labels to a single cargo spritesheet; that might need extra work to prevent duplicate spritesets
@@ -10,8 +10,16 @@ cargo_label_mapping = {
     "NULL": "empty_cargo", # for empty cargo sprites; assumes no-one defines a real cargo with label NULL, but eh, probably fine?
     "CLAY": "clay_cargo",
     "COAL": "coal_cargo",
+    "IRON": "metal_mixed_cargo",
+    "METL": "metal_mixed_cargo",
+    "NICK": "metal_mixed_cargo",
+    "SCMT": "scrap_metal_cargo",
+    "STEL": "metal_mixed_cargo",
     "TYRE": "tyres_cargo",
     "VEHI": "vehicles_cargo",
+    "WDPR": "lumber_cargo",
+    "WOOD": "wood_cargo",
+    "ZINC": "metal_mixed_cargo",
 }
 
 # spriteset_label, (x_loc, y_loc)
@@ -25,22 +33,26 @@ cargo_spriteset_format = {
 }
 
 class CargoManager:
-    def get_spriteset_id(self, cargo_label):
-        return "spriteset_cargo_" + cargo_label
+    def get_spriteset_id(self, cargo_filename):
+        return "spriteset_cargo_" + cargo_filename
+
+    def get_spriteset_id_by_cargo_label(self, cargo_label):
+        return self.get_spriteset_id(cargo_label_mapping[cargo_label])
 
     @property
     def spriteset_ids(self):
         result = []
-        for cargo_label in cargo_label_mapping.keys():
-            result.append(self.get_spriteset_id(cargo_label))
+        for cargo_filename in set(cargo_label_mapping.values()):
+            result.append(self.get_spriteset_id(cargo_filename))
+        print(result)
         return result
 
     @property
     def sprites(self):
         # returns a simple list of sprites
         result = []
-        for cargo_label, filename in cargo_label_mapping.items():
-            graphics_file_path = "src/graphics/" + filename + ".png"
+        for cargo_filename in set(cargo_label_mapping.values()):
+            graphics_file_path = "src/graphics/" + cargo_filename + ".png"
             for spriteset_label, x_y_loc in cargo_spriteset_format.items():
                 offset_adjustment = self.get_offset_adjustment(spriteset_label)
                 sprite = CargoSprite(
@@ -50,7 +62,7 @@ class CargoManager:
                     x_offset_adjustment=offset_adjustment[0],
                     y_offset_adjustment=offset_adjustment[1],
                     graphics_file_path=graphics_file_path,
-                    spriteset_id=self.get_spriteset_id(cargo_label),
+                    spriteset_id=self.get_spriteset_id(cargo_filename),
                 )
                 result.append(sprite)
 

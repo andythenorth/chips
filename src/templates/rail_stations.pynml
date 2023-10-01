@@ -47,11 +47,11 @@
             purchase_prepare_layout: switch_${station.id}_purchase_prepare_layout();
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
-                    ${cargo_label}: ${cargo_manager.get_spriteset_id(cargo_label)};
+                    ${cargo_label}: ${cargo_manager.get_spriteset_id_by_cargo_label(cargo_label)};
                 </tal:cargos>
             </tal:visible_cargo>
             <!--! default result for DEFAULT() - we want empty cargo sprites in that case -->
-            spriteset_cargo_NULL;
+            ${cargo_manager.get_spriteset_id_by_cargo_label("NULL")};
         }
     }
 </tal:stations>
