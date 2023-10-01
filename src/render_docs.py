@@ -46,6 +46,7 @@ def render_docs(
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + ".pt"]
         doc = template(
+            chips=chips,
             global_constants=global_constants,
             command_line_args=command_line_args,
             git_info=git_info,
@@ -61,6 +62,7 @@ def render_docs(
             ]
             doc = markdown_wrapper(
                 content=markdown.markdown(doc),
+                chips=chips,
                 global_constants=global_constants,
                 command_line_args=command_line_args,
                 git_info=git_info,
@@ -114,6 +116,7 @@ def main():
     html_docs = [
         "code_reference",
         "get_started",
+        "stations",
     ]
     txt_docs = ["readme"]
     license_docs = ["license"]
@@ -136,6 +139,7 @@ def main():
         markdown_docs,
         "html",
         html_docs_output_path,
+        chips,
         doc_helper,
         use_markdown=True,
     )
