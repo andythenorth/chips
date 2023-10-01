@@ -37,17 +37,14 @@
             class:                  "${station.station_class.class_id}";
     		classname:              string(${station.classname_string_id});
             name:                   string(${station.name_string_id});
-            cargo_threshold: 160;
             draw_pylon_tiles: ${station.draw_pylon_tiles};
             hide_wire_tiles: ${station.hide_wire_tiles};
             non_traversable_tiles: ${station.non_traversable_tiles};
         }
         graphics {
             sprite_layouts: ${station.spritelayouts_as_nml_array};
-            <!--!custom_spritesets: [${','.join(station.custom_spriteset_mapping.keys())}];-->
             prepare_layout: switch_${station.id}_prepare_layout();
             purchase_prepare_layout: switch_${station.id}_purchase_prepare_layout();
-            <!--! purchase: cow_pen_half; -->
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
                     ${cargo_label}: ${cargo_manager.get_spriteset_id(cargo_label)};
