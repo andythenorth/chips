@@ -13,9 +13,6 @@ import utils
 import global_constants
 from polar_fox import git_info
 
-# get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
-
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
 
@@ -38,7 +35,6 @@ def render_header_nml(header_item):
             global_constants=global_constants,
             utils=utils,
             graphics_path=global_constants.graphics_path,
-            makefile_args=makefile_args,
             git_info=git_info,
             sprite_manager=chips.sprite_manager
         )

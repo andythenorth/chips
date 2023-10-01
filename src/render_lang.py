@@ -19,9 +19,6 @@ from chameleon import PageTemplateLoader  # chameleon used in most template case
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 
-# get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
-
 
 def render_lang(lang_name, lang_dst):
     lang_data = utils.get_lang_data(lang_name)
