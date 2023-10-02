@@ -44,6 +44,9 @@ base = "VISIBLE CARGO"
 [STR_NAME_STATION_CARGO_VISIBLE_TOWN]
 base = "VISIBLE CARGO"
 
+[STR_NAME_STATION_CEMENT_SILO]
+base = "Cement silo"
+
 [STR_NAME_STATION_CONCOURSE_1]
 base = "Passenger concourse"
 

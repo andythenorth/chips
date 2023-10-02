@@ -21,6 +21,7 @@ from stations import booking_office
 from stations import booking_office_small
 from stations import cargo_visible_industry
 from stations import cargo_visible_town
+from stations import cement_silo
 from stations import concourse_1
 from stations import dispatchers_office
 from stations import flood_loader_silo
@@ -92,5 +93,6 @@ def main():
     facility_type_manager.add_facility_type(flood_loader_silo)
     facility_type_manager.add_facility_type(mine_building_1)
     facility_type_manager.add_facility_type(foundry_building_1)
+    facility_type_manager.add_facility_type(cement_silo)
 
     id_report()
