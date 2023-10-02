@@ -53,6 +53,9 @@ base = "Dispatcher's office"
 [STR_NAME_STATION_FLOOD_LOADER_SILO]
 base = "Flood loader silo"
 
+[STR_NAME_STATION_FOUNDRY_BUILDING_1]
+base= "Foundry building"
+
 [STR_NAME_STATION_HARBOUR_CRANE]
 base = "Harbour crane"
 

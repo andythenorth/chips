@@ -24,6 +24,7 @@ from stations import cargo_visible_town
 from stations import concourse_1
 from stations import dispatchers_office
 from stations import flood_loader_silo
+from stations import foundry_building_1
 from stations import harbour_crane
 from stations import hotel
 from stations import hut_1
@@ -94,5 +95,6 @@ def main():
     facility_type_manager.add_facility_type(flood_loader_silo)
     facility_type_manager.add_facility_type(mine_building_small)
     facility_type_manager.add_facility_type(mine_building_large)
+    facility_type_manager.add_facility_type(foundry_building_1)
 
     id_report()
