@@ -29,7 +29,7 @@ base = "Industry stations (gravel)"
 
 # station names, keep alphabetised by ID
 
-[STR_NAME_STATION_BOILER_HOUSE_OFFICES]
+[STR_NAME_STATION_BOILER_HOUSE_OFFICE]
 base = "Boiler house & offices"
 
 [STR_NAME_STATION_BOOKING_OFFICE]
@@ -68,11 +68,8 @@ base = "Wooden hut"
 [STR_NAME_STATION_HUT_2]
 base = "Small huts"
 
-[STR_NAME_STATION_MINE_BUILDING_LARGE]
-base = "Large mine building"
-
-[STR_NAME_STATION_MINE_BUILDING_SMALL]
-base = "Small mine building"
+[STR_NAME_STATION_MINE_BUILDING_1]
+base = "Mine building"
 
 [STR_NAME_STATION_PARCELS_OFFICE]
 base = "Parcels office"
@@ -83,7 +80,7 @@ base = "CABBAGE"
 [STR_NAME_STATION_TIPPLE]
 base = "Tipple"
 
-[STR_NAME_STATION_WAREHOUSES_1]
+[STR_NAME_STATION_WAREHOUSE_1]
 base = "Warehouse"
 
 

@@ -1,9 +1,9 @@
-from station import FacilityTypeIndustry
+from station import FacilityTypeTown
 
 
 def main(numeric_id):
-    facility_type = FacilityTypeIndustry(
-        id="hut_2",
+    facility_type = FacilityTypeTown(
+        id="boiler_house_office",
         numeric_id=numeric_id,
     )
 
@@ -15,7 +15,7 @@ def main(numeric_id):
     )
 
     facility_type.add_spritelayout(
-        id="hut_2_spritelayout_1",
+        id="boiler_house_office_spritelayout_1",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
         main_structure_sprites=["sprite_1"],
@@ -27,7 +27,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "hut_2_spritelayout_1",
+                "boiler_house_office_spritelayout_1",
             ),
         ],
     )

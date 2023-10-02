@@ -16,7 +16,7 @@ import buffer_stop
 import ground
 
 # keep alphabetised
-from stations import boiler_house_offices
+from stations import boiler_house_office
 from stations import booking_office
 from stations import booking_office_small
 from stations import cargo_visible_industry
@@ -28,12 +28,10 @@ from stations import foundry_building_1
 from stations import harbour_crane
 from stations import hotel
 from stations import hut_1
-from stations import hut_2
-from stations import mine_building_large
-from stations import mine_building_small
+from stations import mine_building_1
 from stations import parcels_office
 from stations import tipple
-from stations import warehouses_1
+from stations import warehouse_1
 
 
 class FacilityTypeManager(list):
@@ -86,15 +84,13 @@ def main():
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(hotel)
     facility_type_manager.add_facility_type(dispatchers_office)
-    facility_type_manager.add_facility_type(warehouses_1)
-    facility_type_manager.add_facility_type(boiler_house_offices)
+    facility_type_manager.add_facility_type(warehouse_1)
+    facility_type_manager.add_facility_type(boiler_house_office)
     facility_type_manager.add_facility_type(harbour_crane)
     facility_type_manager.add_facility_type(hut_1)
-    facility_type_manager.add_facility_type(hut_2)
     facility_type_manager.add_facility_type(tipple)
     facility_type_manager.add_facility_type(flood_loader_silo)
-    facility_type_manager.add_facility_type(mine_building_small)
-    facility_type_manager.add_facility_type(mine_building_large)
+    facility_type_manager.add_facility_type(mine_building_1)
     facility_type_manager.add_facility_type(foundry_building_1)
 
     id_report()
