@@ -199,3 +199,8 @@ class SpriteManager(dict):
         # convience function, can add a list of sprites, wraps add_sprite
         for sprite in sprites:
             self.add_sprite(sprite)
+
+    def cabbage_spriteset_extender(self, target_spriteset):
+        # spritesets must all be same length for nml spritelayout, so extend all spritesets in the grf same length to overcome this limitation
+        num_null_sprites_to_fill = max([len(spriteset) for spriteset in self.values()]) - len(target_spriteset)
+        return [i for i in range(num_null_sprites_to_fill)]
