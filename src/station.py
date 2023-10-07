@@ -241,6 +241,8 @@ class FacilityType(object):
         for station_object in self.objects:
             for spritelayout_id in station_object.layout.spritelayout_ids:
                 spritelayout = self.get_spritelayout_by_id(spritelayout_id)
+                if spritelayout == None:
+                    raise BaseException("unrecognised spritelayout id " + spritelayout_id + " for facility type " + self.id)
                 if spritelayout not in result:
                     result.append(spritelayout)
         return result
