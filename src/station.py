@@ -448,7 +448,7 @@ class RoadStopBase(Station):
 
     @property
     def classname_string_id(self):
-        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
+        return "STR_NAME_ROAD_STOP_CLASS_" + self.station_class["class_id"]
 
 
 class RoadStopBay(RoadStopBase):

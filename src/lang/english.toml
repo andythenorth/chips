@@ -27,6 +27,23 @@ base = "Industry stations (dirt)"
 [STR_NAME_STATION_CLASS_INGR]
 base = "Industry stations (gravel)"
 
+# road stops
+[STR_NAME_ROAD_STOP_CLASS_DFLT]
+# !! CABBAGE - does DFLT work here? It's used by rail stations, but maybe that should be a remap?
+base = "Road stops (pavement)"
+
+[STR_NAME_ROAD_STOP_CLASS_INAS]
+base = "Road stops (asphalt)"
+
+[STR_NAME_ROAD_STOP_CLASS_INCO]
+base = "Road stops (cobble)"
+
+[STR_NAME_ROAD_STOP_CLASS_INDI]
+base = "Road stops (dirt)"
+
+[STR_NAME_ROAD_STOP_CLASS_INGR]
+base = "Road stops (gravel)"
+
 # objects
 [STR_NAME_OBJECT_CLASS_DFLT]
 # !! CABBAGE - does DFLT work here? It's used by rail stations, but maybe that should be a remap?
