@@ -10,10 +10,17 @@
 <!--! note that station objects are passed as 'stations' by the facility type -->
 <tal:objects repeat="station stations">
 
-    switch(FEAT_OBJECTS, SELF, ${station.id}_switch_graphics_layout, relative_pos) {
-        <tal:spritelayouts repeat="x_y_spritelayout station.layout">
-            relative_coord(${x_y_spritelayout[0]}, ${x_y_spritelayout[1]}): ${x_y_spritelayout[2]};
-        </tal:spritelayouts>
+    <tal:view repeat="view ['ne_sw', 'nw_se']">
+        switch(FEAT_OBJECTS, SELF, ${station.id}_switch_graphics_layout_${view}, relative_pos) {
+            <tal:spritelayouts repeat="x_y_spritelayout station.layout">
+                relative_coord(${x_y_spritelayout[0]}, ${x_y_spritelayout[1]}): ${x_y_spritelayout[2]}_${view};
+            </tal:spritelayouts>
+        }
+    </tal:view>
+
+    switch(FEAT_OBJECTS, SELF, ${station.id}_switch_graphics_view, view) {
+        0: ${station.id}_switch_graphics_layout_ne_sw;
+        1: ${station.id}_switch_graphics_layout_nw_se;
     }
 
     switch(FEAT_OBJECTS, SELF, ${station.id}_switch_graphics, [
@@ -23,7 +30,7 @@
         </tal:custom_sprite_indexes>
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
     ]) {
-        return ${station.id}_switch_graphics_layout; <!--! !!! CABBAGE -->
+        return ${station.id}_switch_graphics_view;
     }
 
     item(FEAT_OBJECTS, ${station.id}, ${station.numeric_id}) {
@@ -32,7 +39,7 @@
     		classname:              string(${station.classname_string_id});
             name:                   string(${station.name_string_id});
             climates_available:     ALL_CLIMATES;
-            size:                   [1, 1]; <!--!${station.size};-->
+            size:                   [1, 1]; <!--! always 1x1 as of Oct 2023 -->
             build_cost_multiplier:  0;
             remove_cost_multiplier: 0;
             introduction_date:      date(1, 1, 1);
@@ -40,7 +47,7 @@
             /* Anything can overbuild the object, removing returns the money, we don't want foundations and we want to allow bridges */
             object_flags:           bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ANIMATED);
             height:                 6;
-            num_views:              ${len(station.views)};
+            num_views:              2; <!--! ne_sw and nw_se orientations -->
             <!--!
             <tal:animation_info condition="station.tile.animation_length > 1">
                 animation_info:     [${'ANIMATION_LOOPING' if station.tile.animation_looping else 'ANIMATION_NON_LOOPING'}, ${station.tile.animation_length}];

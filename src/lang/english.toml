@@ -10,6 +10,7 @@ base = "GPL v2."
 
 # station classes
 
+# rail stations
 [STR_NAME_STATION_CLASS_DFLT]
 # default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
 base = "Town stations (pavement)"
@@ -26,6 +27,22 @@ base = "Industry stations (dirt)"
 [STR_NAME_STATION_CLASS_INGR]
 base = "Industry stations (gravel)"
 
+# objects
+[STR_NAME_OBJECT_CLASS_DFLT]
+# !! CABBAGE - does DFLT work here? It's used by rail stations, but maybe that should be a remap?
+base = "Station facilities (pavement)"
+
+[STR_NAME_OBJECT_CLASS_INAS]
+base = "Station facilities (asphalt)"
+
+[STR_NAME_OBJECT_CLASS_INCO]
+base = "Station facilities (cobble)"
+
+[STR_NAME_OBJECT_CLASS_INDI]
+base = "Station facilities (dirt)"
+
+[STR_NAME_OBJECT_CLASS_INGR]
+base = "Station facilities (gravel)"
 
 # station names, keep alphabetised by ID
 

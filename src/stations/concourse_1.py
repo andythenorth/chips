@@ -31,5 +31,14 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "concourse_1_spritelayout_1",
+            ),
+        ],
+    )
 
     return facility_type

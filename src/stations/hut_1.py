@@ -53,5 +53,23 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "hut_1_spritelayout_1",
+            ),
+        ],
+    )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "hut_1_spritelayout_2",
+            ),
+        ],
+    )
 
     return facility_type

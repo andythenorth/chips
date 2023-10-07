@@ -1,96 +1,79 @@
-<tal:spritelayouts repeat="spritelayout facility_type.object_spritelayouts">
-    spritelayout ${spritelayout.id} {
-        <!--! non_track tile terrain - not strictly necessary to draw the terrain tile as we'll 100% overlay it, but eh it seems more 'correct' to me -->
-        ground {
-            sprite: GROUNDSPRITE_NORMAL;
+<tal:orientation repeat="orientation ['ne_sw', 'nw_se']">
+    <tal:spritelayouts repeat="spritelayout facility_type.object_spritelayouts">
+        spritelayout ${spritelayout.id}_${orientation} {
+            <!--! non_track tile terrain - not strictly necessary to draw the terrain tile as we'll 100% overlay it, but eh it seems more 'correct' to me -->
+            ground {
+                sprite: GROUNDSPRITE_NORMAL;
+            }
+            <!--!
+                we index to the ground type appropriate to the station
+            -->
+            childsprite {
+                sprite: ${spritelayout.get_nml_declaration_for_ground_sprite_whole_tile()};
+                always_draw: 1;
+            }
+            <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
+                <!--! ground overlay (snow aware) -->
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--! no offsets or extents for these childsprites -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:ground_overlay_sprites>
+
+            <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
+                <!--! non_track tile uses the same 'rear' sprites as track tile rear platform, but with a whole-tile bounding box -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
+                    xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
+                    zextent: 64; <!--! set high to accomodate tall buildings -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:rear_structure_sprites>
+
+            <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
+                <!--! primary structure (snow aware) for non_track tile -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
+                    xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
+                    zextent: 64; <!--! set high to accomodate tall buildings -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:main_structure_sprites>
         }
-        <!--!
-            we index to the ground type appropriate to the station
-        -->
-        childsprite {
-            sprite: ${spritelayout.get_nml_declaration_for_ground_sprite_whole_tile()};
-            always_draw: 1;
-        }
-        <tal:drop replace="nothing">
-        <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
-            <!--! ground overlay (snow aware) -->
-            childsprite {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                <!--! no offsets or extents for these childsprites -->
-            }
-            childsprite {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                <!--! no offsets or extents for these childsprites -->
-            }
-        </tal:ground_overlay_sprites>
-
-        <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
-            <!--! non_track tile uses the same 'rear' sprites as track tile rear platform, but with a whole-tile bounding box -->
-            building {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
-                yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
-                zextent: 64; <!--! set high to accomodate tall buildings -->
-            }
-            childsprite {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                <!--! no offsets or extents for these childsprites -->
-            }
-        </tal:rear_structure_sprites>
-
-        <tal:visible_cargo_sprites condition="facility_type.visible_cargo">
-            <!--! non_track tile cargo - one sprite, whole tile -->
-            building {
-                sprite: DEFAULT(${0 if orientation == 'ne_sw' else 3});
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                <!--!always_draw: ${sprite.always_draw};-->
-                <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                // CABBAGE_99
-                xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
-                yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
-                zextent: 16;
-                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
-            }
-            <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
-        </tal:visible_cargo_sprites>
-
-        <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
-            <!--! primary structure (snow aware) for non_track tile -->
-            building {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
-                xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
-                yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
-                zextent: 64; <!--! set high to accomodate tall buildings -->
-            }
-            childsprite {
-                sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
-                recolour_mode: RECOLOUR_REMAP;
-                palette: PALETTE_USE_DEFAULT;
-                always_draw: ${sprite.always_draw};
-                hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                <!--! no offsets or extents for these childsprites -->
-            }
-        </tal:main_structure_sprites>
-        </tal:drop>
-    }
-</tal:spritelayouts>
+    </tal:spritelayouts>
+</tal:orientation>

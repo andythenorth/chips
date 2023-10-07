@@ -336,10 +336,6 @@ class Station(object):
         )
 
     @property
-    def classname_string_id(self):
-        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
-
-    @property
     def name_string_id(self):
         return "STR_NAME_STATION_" + self.facility_type.id.upper()
 
@@ -406,6 +402,10 @@ class RailStationBase(Station):
             case False:
                 return 0
 
+    @property
+    def classname_string_id(self):
+        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
+
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
@@ -445,6 +445,10 @@ class RailStationNonTrackTile(RailStationBase):
 class RoadStopBase(Station):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def classname_string_id(self):
+        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
 
 
 class RoadStopBay(RoadStopBase):
@@ -508,6 +512,10 @@ class StationObject(Station):
     def custom_sprite_index_structs(self):
         ground_subtypes = ["whole_tile"]
         return self.get_custom_sprite_index_structs(ground_subtypes)
+
+    @property
+    def classname_string_id(self):
+        return "STR_NAME_OBJECT_CLASS_" + self.station_class["class_id"]
 
 
 class StationLayout(list):

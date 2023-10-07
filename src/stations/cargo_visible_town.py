@@ -37,5 +37,14 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "cargo_visible_town_spritelayout_1",
+            ),
+        ],
+    )
 
     return facility_type

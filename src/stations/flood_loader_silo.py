@@ -49,5 +49,14 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "flood_loader_silo_spritelayout_1",
+            ),
+        ],
+    )
 
     return facility_type

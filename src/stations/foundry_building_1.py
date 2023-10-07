@@ -109,5 +109,23 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "foundry_building_1_spritelayout_1_non_track",
+            ),
+        ],
+    )
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "foundry_building_1_spritelayout_2_non_track",
+            ),
+        ],
+    )
 
     return facility_type
