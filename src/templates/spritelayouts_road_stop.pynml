@@ -1,3 +1,312 @@
+<tal:orientation repeat="orientation ['ne_sw', 'nw_se']">
+    <tal:bay_spritelayouts repeat="spritelayout facility_type.road_spritelayouts['bay']">
+        <tal:drop_cabbage replace="nothing">
+        spritelayout ${spritelayout.id}_bay_${orientation} {
+            ground {
+                sprite: GROUNDSPRITE_RAIL_${'X' if orientation == 'ne_sw' else 'Y'};
+            }
+            <!--!
+                we index to the ground type appropriate to the station
+                platform sprites are *only split in 2 for historical reasons*, not sure it's necessary, but eh, 2 sprites for those
+                both platforms are in the same spriteset, index into rear or front part as needed
+            -->
+            childsprite {
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_road_platform_' + orientation]}));
+                always_draw: 1;
+            }
+            childsprite {
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_road_platform_' + orientation]}));
+                always_draw: 1;
+            }
+            <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
+                <!--! ground overlay (snow aware) - whole tile, no platform split needed as they are children of ground sprite -->
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--! no offsets or extents for these childsprites -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:ground_overlay_sprites>
+
+            <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
+                <!--! structure (snow aware) for the rear platform on bay tile -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use SPR_RAIL_PLATFORM_BUILDING_X values
+                        - no bbox offsets needed
+                    -->
+                    xextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
+                    zextent: 15;
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:rear_structure_sprites>
+
+            <tal:rear_visible_cargo_sprites condition="facility_type.visible_cargo" replace="nothing">
+                <!--! cargo for the rear platform on bay tile -->
+                building {
+                    sprite: DEFAULT(${1 if orientation == 'ne_sw' else 4});
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    <!--!always_draw: ${sprite.always_draw};-->
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use SPR_RAIL_PLATFORM_BUILDING_X values
+                        - no bbox offsets needed
+                    -->
+                    xextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
+                    zextent: 15;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
+                }
+                <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+            </tal:rear_visible_cargo_sprites>
+
+            <tal:buffer_stop_sprites_ne_and_nw>
+                 <!--! buffer stop on ne or nw edge (no snow for buffer stops) -->
+                building {
+                    sprite: spriteset_buffer_stop(${orientation[0:2]});
+                    xextent: ${1 if orientation == 'ne_sw' else 16};
+                    yextent: ${16 if orientation == 'ne_sw' else 1};
+                    zextent: 5;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}));
+                }
+            </tal:buffer_stop_sprites_ne_and_nw>
+
+            <tal:front_visible_cargo_sprites condition="facility_type.visible_cargo" replace="nothing">
+                <!--! cargo for the front platform on bay tile -->
+                building {
+                    sprite: DEFAULT(${2 if orientation == 'ne_sw' else 5});
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    <!--!always_draw: ${sprite.always_draw};-->
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use SPR_RAIL_PLATFORM_BUILDING_X values
+                    -->
+                    xoffset: ${global_constants.road_stop_bounding_boxes["front_platform_" + orientation]["x_offset"]};
+                    yoffset: ${global_constants.road_stop_bounding_boxes["front_platform_" + orientation]["y_offset"]};
+                    xextent: ${global_constants.road_stop_bounding_boxes["front_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.road_stop_bounding_boxes["front_platform_" + orientation]["y_extent"]};
+                    zextent: 15;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
+                }
+                <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+            </tal:front_visible_cargo_sprites>
+
+            <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
+                <!--! primary structure (snow aware) for bay tile - drawn in front of / above road and vehicle sprites on tile -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L61
+                        - these use full tile as the main structure may extend over entire tile - as per SPR_RAIL_ROOF_STRUCTURE_X_TILE_A
+                        - no bbox offsets needed
+                    -->
+                    xextent: 16;
+                    yextent: 16;
+                    zextent: 64; <!--! set high to accomodate tall buildings -->
+                }
+
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:main_structure_sprites>
+
+            <tal:buffer_stop_sprites_se_and_sw>
+                 <!--! buffer stop on se or sw edge (no snow for buffer stops) -->
+                building {
+                    sprite: spriteset_buffer_stop(${orientation[-2:]});
+                    xoffset: ${16 if orientation == 'ne_sw' else 0};
+                    yoffset: ${0 if orientation == 'ne_sw' else 16};
+                    xextent: ${1 if orientation == 'ne_sw' else 16};
+                    yextent: ${16 if orientation == 'ne_sw' else 1};
+                    zextent: 5;
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}));
+                }
+            </tal:buffer_stop_sprites_se_and_sw>
+        }
+        </tal:drop_cabbage>
+    </tal:bay_spritelayouts>
+
+    <tal:drive_through_spritelayouts repeat="spritelayout facility_type.road_spritelayouts['drive_through']">
+        spritelayout ${spritelayout.id}_drive_through_${orientation} {
+            <!--! drive_through tile terrain - not strictly necessary to draw the terrain tile as we'll 100% overlay it, but eh it seems more 'correct' to me -->
+            ground {
+                sprite: GROUNDSPRITE_ROAD_${'X' if orientation == 'ne_sw' else 'Y'};
+            }
+            <!--!
+                we index to the ground type appropriate to the station
+                platform sprites are *only split in 2 for historical reasons*, not sure it's necessary, but eh, 2 sprites for those
+                both platforms are in the same spriteset, index into rear or front part as needed
+            -->
+            childsprite {
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_road_platform_' + orientation]}));
+                always_draw: 1;
+            }
+            childsprite {
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_road_platform_' + orientation]}));
+                always_draw: 1;
+            }
+            <tal:drop replace="nothing">
+                <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
+                    <!--! ground overlay (snow aware) -->
+                    childsprite {
+                        sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                        recolour_mode: RECOLOUR_REMAP;
+                        palette: PALETTE_USE_DEFAULT;
+                        always_draw: ${sprite.always_draw};
+                        <!--! no offsets or extents for these childsprites -->
+                    }
+                    childsprite {
+                        sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                        recolour_mode: RECOLOUR_REMAP;
+                        palette: PALETTE_USE_DEFAULT;
+                        always_draw: ${sprite.always_draw};
+                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                        <!--! no offsets or extents for these childsprites -->
+                    }
+                </tal:ground_overlay_sprites>
+            </tal:drop>
+            <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
+                // CABBAGE 900
+                <!--! drive_through tile uses the same 'rear' sprites as bay tile rear platform, but with a whole-tile bounding box -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L738
+                        - these use SPR_TRUCK_STOP_DT_Y_W values
+                        - no bbox offsets needed
+                    -->
+                    xextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.road_stop_bounding_boxes["rear_platform_" + orientation]["y_extent"]};
+                    zextent: 64; <!--! set high to accomodate tall buildings -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:rear_structure_sprites>
+
+            <tal:middle_structure_sprites repeat="sprite spritelayout.middle_structure_sprites[orientation]">
+                // CABBAGE 900
+                <!--! drive_through tile uses the same 'rear' sprites as bay tile rear platform, but with a whole-tile bounding box -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--!
+                        extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
+                        https://github.com/OpenTTD/OpenTTD/blob/master/src/table/station_land.h#L738
+                        - these use SPR_TRUCK_STOP_DT_Y_W values
+                        - no bbox offsets needed
+                    -->
+                    xoffset: ${global_constants.road_stop_bounding_boxes["middle_divider_" + orientation]["x_offset"]};
+                    yoffset: ${global_constants.road_stop_bounding_boxes["middle_divider_" + orientation]["y_offset"]};
+                    xextent: ${global_constants.road_stop_bounding_boxes["middle_divider_" + orientation]["x_extent"]};
+                    yextent: ${global_constants.road_stop_bounding_boxes["middle_divider_" + orientation]["y_extent"]};
+                    zextent: 16; <!--! set high to accomodate tall buildings -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:middle_structure_sprites>
+
+            <tal:drop replace="nothing">
+                <tal:visible_cargo_sprites condition="facility_type.visible_cargo" replace="nothing">
+                    <!--! drive_through tile cargo - one sprite, whole tile -->
+                    building {
+                        sprite: DEFAULT(${0 if orientation == 'ne_sw' else 3});
+                        recolour_mode: RECOLOUR_REMAP;
+                        palette: PALETTE_USE_DEFAULT;
+                        <!--!always_draw: ${sprite.always_draw};-->
+                        <!--! extents bounding boxes are just full tile for drive_through tiles (also no bbox offsets needed) -->
+                        xextent: ${global_constants.road_stop_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
+                        yextent: ${global_constants.road_stop_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
+                        zextent: 64;
+                        hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_cargo}));
+                    }
+                    <!--! no snow for cargo sprites at current time, TMWFTLB to draw it -->
+                </tal:visible_cargo_sprites>
+            </tal:drop>
+
+            <tal:main_structure_sprites repeat="sprite spritelayout.main_structure_sprites[orientation]">
+                <!--! primary structure (snow aware) for drive_through tile -->
+                building {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    <!--!
+                        - these use full tile as the main structure may extend over entire tile - as per SPR_RAIL_ROOF_STRUCTURE_X_TILE_A
+                        - no bbox offsets needed
+                    -->
+                    xextent: 16;
+                    yextent: 16;
+                    zextent: 64; <!--! set high to accomodate tall buildings -->
+                }
+                childsprite {
+                    sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
+                    recolour_mode: RECOLOUR_REMAP;
+                    palette: PALETTE_USE_DEFAULT;
+                    always_draw: ${sprite.always_draw};
+                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
+                    <!--! no offsets or extents for these childsprites -->
+                }
+            </tal:main_structure_sprites>
+        }
+
+    </tal:drive_through_spritelayouts>
+</tal:orientation>
+
+<tal:drop replace="nothing">
 spritelayout cow_pen_X_road_stop(a) {
 	ground {
 	    sprite: 1333;
@@ -61,4 +370,4 @@ spritelayout cow_pen_Y_road_stop(a) {
 	}
 	-->
 }
-
+</tal:drop>

@@ -13,18 +13,18 @@ graphics_path = "generated/graphics/"
 max_game_date = 5000000
 
 graphics_temp_storage = dict(
-    var_sprite_rear_platform_ne_sw=0,  # ground-type-specific sprite for track tiles
-    var_sprite_rear_platform_nw_se=1,  # ground-type-specific sprite for track tiles
-    var_sprite_front_platform_ne_sw=2,  # ground-type-specific sprite for track tiles
-    var_sprite_front_platform_nw_se=3,  # ground-type-specific sprite for track tiles
+    var_sprite_rear_rail_platform_ne_sw=0,  # ground-type-specific sprite for track tiles
+    var_sprite_rear_rail_platform_nw_se=1,  # ground-type-specific sprite for track tiles
+    var_sprite_front_rail_platform_ne_sw=2,  # ground-type-specific sprite for track tiles
+    var_sprite_front_rail_platform_nw_se=3,  # ground-type-specific sprite for track tiles
     var_sprite_whole_tile=4,  # ground-type-specific sprite for non_track tiles
     var_hide_buffer_stop_ne_and_nw=5,  # hide a buffer stop on a ne or ne edge (as appropriate to station orientation)
     var_hide_buffer_stop_se_and_sw=6,  # hide a buffer stop on a se or sw edge (as appropriate to station orientation)
     var_hide_cargo=7,  # hide cargo sprites
-    # unused=8,  #
-    # unused=9,  #
-    # unused=10,  #
-    # unused=11,  #
+    var_sprite_rear_road_platform_ne_sw=8,  # ground-type-specific sprite for drive-through road tiles
+    var_sprite_rear_road_platform_nw_se=9,  # ground-type-specific sprite for drive-through road tiles
+    var_sprite_front_road_platform_ne_sw=10,  # ground-type-specific sprite for drive-through road tiles
+    var_sprite_front_road_platform_nw_se=11,  # ground-type-specific sprite for drive-through road tiles
     # unused=12,  #
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
@@ -91,6 +91,48 @@ rail_station_bounding_boxes = {
         "x_offset": 11,
         "y_offset": 0,
         "x_extent": 5,
+        "y_extent": 16,
+    },
+}
+
+
+road_stop_bounding_boxes = {
+    "whole_tile_ne_sw": {"x_offset": 0, "y_offset": 0, "x_extent": 16, "y_extent": 16},
+    "rear_platform_ne_sw": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "x_extent": 16,
+        "y_extent": 3,
+    },
+    "middle_divider_ne_sw": {
+        "x_offset": 0,
+        "y_offset": 8,
+        "x_extent": 16,
+        "y_extent": 0,
+    },
+    "front_platform_ne_sw": {
+        "x_offset": 0,
+        "y_offset": 13,
+        "x_extent": 16,
+        "y_extent": 3,
+    },
+    "whole_tile_nw_se": {"x_offset": 0, "y_offset": 0, "x_extent": 16, "y_extent": 16},
+    "rear_platform_nw_se": {
+        "x_offset": 0,
+        "y_offset": 0,
+        "x_extent": 3,
+        "y_extent": 16,
+    },
+    "middle_divider_nw_se": {
+        "x_offset": 8,
+        "y_offset": 0,
+        "x_extent": 0,
+        "y_extent": 16,
+    },
+    "front_platform_nw_se": {
+        "x_offset": 13,
+        "y_offset": 0,
+        "x_extent": 3,
         "y_extent": 16,
     },
 }

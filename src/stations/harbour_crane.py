@@ -148,4 +148,14 @@ def main(numeric_id):
         ],
     )
 
+    facility_type.add_station_object(
+        layout=[
+            (
+                0,
+                0,
+                "harbour_crane_spritelayout_crane_rails_track",
+            ),
+        ],
+    )
+
     return facility_type

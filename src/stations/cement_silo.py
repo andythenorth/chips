@@ -8,19 +8,19 @@ def main(numeric_id):
     )
 
     facility_type.add_sprite(
-        id="cement_silo_upper",
+        id="cement_silo_upper_rail",
         x_y_loc=(10, 10),
         dimensions=(64, 145),
         offsets=(-31, -114),
     )
     facility_type.add_sprite(
-        id="sprite_silo_base_rail_station_front",
+        id="sprite_silo_base_rail_front",
         x_y_loc=(10, 170),
         dimensions=(64, 65),
         offsets=(-31, -34),
     )
     facility_type.add_sprite(
-        id="sprite_silo_base_rail_station_rear",
+        id="sprite_silo_base_rail_rear",
         x_y_loc=(10, 250),
         dimensions=(64, 65),
         offsets=(-31, -34),
@@ -31,18 +31,49 @@ def main(numeric_id):
         dimensions=(64, 145),
         offsets=(-31, -114),
     )
+    facility_type.add_sprite(
+        id="cement_silo_upper_road",
+        x_y_loc=(290, 10),
+        dimensions=(64, 145),
+        offsets=(-31, -114),
+    )
+    facility_type.add_sprite(
+        id="sprite_silo_base_road_front",
+        x_y_loc=(290, 170),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
+    )
+    facility_type.add_sprite(
+        id="sprite_silo_base_road_middle",
+        x_y_loc=(290, 330),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
+    )
+    facility_type.add_sprite(
+        id="sprite_silo_base_road_rear",
+        x_y_loc=(290, 250),
+        dimensions=(64, 65),
+        offsets=(-31, -34),
+    )
 
     facility_type.add_spritelayout(
         id="cement_silo_spritelayout_1",
         ground_overlay_sprites=[],
-        rear_structure_sprites=["sprite_silo_base_rail_station_rear"],
-        main_structure_sprites=["sprite_silo_base_rail_station_front", "cement_silo_upper"],
+        rear_structure_sprites=["sprite_silo_base_rail_rear"],
+        main_structure_sprites=["sprite_silo_base_rail_front", "cement_silo_upper_rail"],
     )
     facility_type.add_spritelayout(
         id="cement_silo_spritelayout_2",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
         main_structure_sprites=["sprite_silo_pre_composed"],
+    )
+    facility_type.add_spritelayout(
+        id="cement_silo_spritelayout_3",
+        ground_overlay_sprites=[],
+        rear_structure_sprites=["sprite_silo_base_road_rear"],
+        middle_structure_sprites=["sprite_silo_base_road_middle"],
+        main_structure_sprites=["sprite_silo_base_road_front", "cement_silo_upper_road"],
     )
 
     facility_type.add_rail_station(
@@ -64,6 +95,17 @@ def main(numeric_id):
                 0,
                 0,
                 "cement_silo_spritelayout_2",
+            ),
+        ],
+    )
+
+    facility_type.add_road_stop(
+        type="drive_through_tile",
+        layout=[
+            (
+                0,
+                0,
+                "cement_silo_spritelayout_3",
             ),
         ],
     )

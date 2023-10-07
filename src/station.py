@@ -116,11 +116,10 @@ class FacilityType(object):
                 )
             )
 
-    def add_grf_object(self, type, **kwargs):
-        layout = StationLayout(kwargs["layout"])
+    def add_station_object(self, **kwargs):
         for station_class in self.station_classes:
             self.objects.append(
-                GRFObject(
+                StationObject(
                     station_class=station_class,
                     facility_type=self,
                     **kwargs,
@@ -133,6 +132,8 @@ class FacilityType(object):
         orientation,
         snow_overlay=False,
     ):
+        # !! CABBAGE THIS SHOULD NOT BE NEEDED IN CURRENT FORM - UNUSED?
+        # BUT WE MIGHT HAVE A CASE FOR (1) BASE SET SPRITES (2) USING THIS FOR SNOW HANDLING?
         # note the annoying edge case where 'empty' should not have a snow overlay
         if (
             snow_overlay == True
@@ -215,6 +216,35 @@ class FacilityType(object):
             ]
         return result
 
+    @property
+    def road_spritelayouts(self):
+        # only return spritelayouts actually used for this feature type, there may be other spritelayouts for other feature types not needed here
+        result = {
+            "bay": [],
+            "drive_through": [],
+        }
+        for road_stop in self.road_stops:
+            for spritelayout_id in road_stop.layout.spritelayout_ids:
+                # check we don't repeat spritelayout ids, won't be valid
+                if spritelayout_id not in result[road_stop.bay_or_drive_through]:
+                    result[road_stop.bay_or_drive_through].append(spritelayout_id)
+        for bay_or_drive_through, spritelayout_ids in result.items():
+            result[bay_or_drive_through] = [
+                self.get_spritelayout_by_id(spritelayout_id)
+                for spritelayout_id in spritelayout_ids
+            ]
+        return result
+
+    @property
+    def object_spritelayouts(self):
+        result = []
+        for station_object in self.objects:
+            for spritelayout_id in station_object.layout.spritelayout_ids:
+                spritelayout = self.get_spritelayout_by_id(spritelayout_id)
+                if spritelayout not in result:
+                    result.append(spritelayout)
+        return result
+
     def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
             terrain_suffix = "_snow"
@@ -226,8 +256,8 @@ class FacilityType(object):
     def render_nml(self, templates):
         station_feature_template_mapping = [
             (self.rail_stations, "rail_stations.pynml"),
-            #            (self.road_stops, "road_stops.pynml"),
-            #            (self.rail_stations, "objects.pynml"),
+            (self.road_stops, "road_stops.pynml"),
+            (self.objects, "objects.pynml"),
         ]
         result = ""
         for stations, template_name in station_feature_template_mapping:
@@ -328,6 +358,25 @@ class Station(object):
     def ground_type(self):
         return self.station_class["default_ground_type"]
 
+    def get_custom_sprite_index_structs(self, ground_subtypes):
+        # index into the global ground_sprites spriteset, with a label included for convenience of debugging
+        result = []
+        for ground_subtype in ground_subtypes:
+            sprite_id = self.ground_type + "_" + ground_subtype
+            # returns a 3 tuple of index in spriteset, storage to use in graphics chain, and label for convenience of debugging
+            result.append(
+                (
+                    chips.sprite_manager["spriteset_ground"].get_index_for_sprite_by_id(
+                        sprite_id
+                    ),
+                    global_constants.graphics_temp_storage[
+                        "var_sprite_" + ground_subtype
+                    ],
+                    sprite_id,
+                )
+            )
+        return result
+
 
 class RailStationBase(Station):
     def __init__(self, **kwargs):
@@ -357,23 +406,6 @@ class RailStationBase(Station):
             case False:
                 return 0
 
-    def get_custom_sprite_index_structs(self, ground_subtypes):
-        # index into the global ground_sprites spriteset, with a label included for convenience of debugging
-        result = []
-        for ground_subtype in ground_subtypes:
-            sprite_id = self.ground_type + "_" + ground_subtype
-            # returns a 3 tuple of index in spriteset, storage to use in graphics chain, and label for convenience of debugging
-            result.append(
-                (
-                    chips.sprite_manager[
-                        "spriteset_ground"
-                    ].get_index_for_sprite_by_id(sprite_id),
-                    global_constants.graphics_temp_storage["var_sprite_" + ground_subtype],
-                    sprite_id,
-                )
-            )
-        return result
-
 
 class RailStationTrackTile(RailStationBase):
     def __init__(self, **kwargs):
@@ -387,10 +419,10 @@ class RailStationTrackTile(RailStationBase):
     @property
     def custom_sprite_index_structs(self):
         ground_subtypes = [
-            "rear_platform_ne_sw",
-            "rear_platform_nw_se",
-            "front_platform_ne_sw",
-            "front_platform_nw_se",
+            "rear_rail_platform_ne_sw",
+            "rear_rail_platform_nw_se",
+            "front_rail_platform_ne_sw",
+            "front_rail_platform_nw_se",
         ]
         return self.get_custom_sprite_index_structs(ground_subtypes)
 
@@ -418,18 +450,64 @@ class RoadStopBase(Station):
 class RoadStopBay(RoadStopBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.bay_or_drive_through = "bay"
 
 
 class RoadStopDriveThrough(RoadStopBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.bay_or_drive_through = "drive_through"
+
+    @property
+    def custom_sprite_index_structs(self):
+        ground_subtypes = [
+            "rear_road_platform_ne_sw",
+            "rear_road_platform_nw_se",
+            "front_road_platform_ne_sw",
+            "front_road_platform_nw_se",
+        ]
+        return self.get_custom_sprite_index_structs(ground_subtypes)
 
 
-class GRFObject(Station):
-    """Stubby class to hold objects - GRFObject to avoid conflating with built-in python classname"""
+class StationObject(Station):
+    """Stubby class to hold objects - StationObject to avoid conflating with built-in python classname"""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # note spacing numeric part of id to add a leading 0 if needed, otherwise python lexical sort returns 'foo_1, foo_10, foo_2' etc
+        # !!!! self.id = f"{industry.id}_object_{add_to_object_num:02}"
+        # we allocate up a range of up to 100 object numeric IDs per industry, using the facility numeric ID
+        # this will keep object IDs relatively stable across releases unless the facility numeric ID changes
+        """
+        if add_to_object_num > 99:
+            raise BaseException("Industry " + industry.id + " defines an object with numeric ID " + str(add_to_object_num) + " which exceeds the limit of 99")
+        self.numeric_id =  (industry.numeric_id * 100) + add_to_object_num
+        """
+        self.views = []
+        self.add_view(kwargs["layout"])
+
+    def add_view(self, spritelayout):
+        self.views.append(spritelayout)
+        self.validate()
+
+    def validate(self):
+        # !!!! ported from FIRS - may need updated !!!
+        # must be 1, 2, or 4 views https://newgrf-specs.tt-wiki.net/wiki/NML:Objects#Location_check_results
+        if len(self.views) == 3:
+            raise BaseException(
+                self.id, "has 3 views defined, which is not permitted by spec"
+            )
+        # validation for case of too many views - shouldn't happen but eh
+        if len(self.views) > 4:
+            utils.echo_message(self.views)
+            raise BaseException(
+                self.id, "has too many views defined"
+            )  # yair could do better?
+
+    @property
+    def custom_sprite_index_structs(self):
+        ground_subtypes = ["whole_tile"]
+        return self.get_custom_sprite_index_structs(ground_subtypes)
 
 
 class StationLayout(list):
@@ -487,12 +565,16 @@ class SpriteLayout(object):
         ground_overlay_sprites,
         rear_structure_sprites,
         main_structure_sprites,
+        middle_structure_sprites=[],
         terrain_aware_ground=False,
     ):
         self.id = id
         self.facility_type = facility_type
         self._ground_overlay_sprites = ground_overlay_sprites
         self._rear_structure_sprites = rear_structure_sprites
+        self._middle_structure_sprites = (
+            middle_structure_sprites  # optional as only for roadstops
+        )
         self._main_structure_sprites = main_structure_sprites
 
     def get_sprites_by_orientation(self, sprite_id_list):
@@ -517,6 +599,10 @@ class SpriteLayout(object):
         return self.get_sprites_by_orientation(self._rear_structure_sprites)
 
     @property
+    def middle_structure_sprites(self):
+        return self.get_sprites_by_orientation(self._middle_structure_sprites)
+
+    @property
     def main_structure_sprites(self):
         return self.get_sprites_by_orientation(self._main_structure_sprites)
 
@@ -526,4 +612,8 @@ class SpriteLayout(object):
             # hard-coded to pavement sprite from base set
             return 1420
         else:
-            return "spriteset_ground(LOAD_TEMP(" + str(global_constants.graphics_temp_storage["var_sprite_whole_tile"]) + "))"
+            return (
+                "spriteset_ground(LOAD_TEMP("
+                + str(global_constants.graphics_temp_storage["var_sprite_whole_tile"])
+                + "))"
+            )

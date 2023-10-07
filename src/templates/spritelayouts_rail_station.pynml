@@ -10,11 +10,11 @@
                 both platforms are in the same spriteset, index into rear or front part as needed
             -->
             childsprite {
-                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_platform_' + orientation]}));
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_rear_rail_platform_' + orientation]}));
                 always_draw: 1;
             }
             childsprite {
-                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_platform_' + orientation]}));
+                sprite: spriteset_ground(LOAD_TEMP(${graphics_temp_storage['var_sprite_front_rail_platform_' + orientation]}));
                 always_draw: 1;
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">

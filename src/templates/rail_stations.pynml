@@ -1,3 +1,4 @@
+<!--! CABBAGE spritesets_legacy -->
 <tal:include metal:use-macro="load: spritesets_legacy.pynml" />
 
 <tal:include metal:use-macro="load: spritelayouts_rail_station.pynml" />
@@ -37,17 +38,17 @@
             class:                  "${station.station_class.class_id}";
     		classname:              string(${station.classname_string_id});
             name:                   string(${station.name_string_id});
-            draw_pylon_tiles: ${station.draw_pylon_tiles};
-            hide_wire_tiles: ${station.hide_wire_tiles};
-            non_traversable_tiles: ${station.non_traversable_tiles};
+            draw_pylon_tiles:       ${station.draw_pylon_tiles};
+            hide_wire_tiles:        ${station.hide_wire_tiles};
+            non_traversable_tiles:  ${station.non_traversable_tiles};
         }
         graphics {
-            sprite_layouts: ${station.spritelayouts_as_nml_array};
-            prepare_layout: switch_${station.id}_prepare_layout();
+            sprite_layouts:          ${station.spritelayouts_as_nml_array};
+            prepare_layout:          switch_${station.id}_prepare_layout();
             purchase_prepare_layout: switch_${station.id}_purchase_prepare_layout();
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
-                    ${cargo_label}: ${cargo_manager.get_spriteset_id_by_cargo_label(cargo_label)};
+                    ${cargo_label}:  ${cargo_manager.get_spriteset_id_by_cargo_label(cargo_label)};
                 </tal:cargos>
             </tal:visible_cargo>
             <!--! default result for DEFAULT() - we want empty cargo sprites in that case -->

@@ -1,18 +1,31 @@
-<!--!<tal:include metal:use-macro="load: spritesets.pynml" />-->
-
 <tal:include metal:use-macro="load: spritelayouts_road_stop.pynml" />
 
-item(FEAT_ROADSTOPS, cow_pen) {
-	property {
-		/* The class allows to sort stations into categories. */
-		class:                  "${station.station_class.class_id}";
-		/* If no other NewGRF provides this class before us, we have to name it */
-		classname:              string(${station.classname_string_id});
-		/* Name of this particular station */
-		name:                   string(STR_NAME_STATION);
-		draw_mode:              bitmask(RST_DRAW_FLAG_BAY_ROAD, RST_DRAW_FLAG_DRIVE_THROUGH_ROAD_OVERLAY);
-	}
-	graphics {
-	    default: cow_pen_X_road_stop(10);
-	}
-}
+<tal:stations repeat="station stations">
+
+    switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_check_view, view) {
+        RST_VIEW_DRIVE_THROUGH_X: return cement_silo_spritelayout_3_drive_through_ne_sw;
+        RST_VIEW_DRIVE_THROUGH_Y: return cement_silo_spritelayout_3_drive_through_nw_se;
+    }
+    switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_graphics, [
+        <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
+            // ${custom_sprite_index_struct[2]}
+            STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
+        </tal:custom_sprite_indexes>
+        STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
+    ]) {
+        return switch_${station.id}_check_view;
+    }
+
+    item(FEAT_ROADSTOPS, ${station.id}, ${station.numeric_id}) {
+        property {
+            class:                  "${station.station_class.class_id}";
+    		classname:              string(${station.classname_string_id});
+            name:                   string(${station.name_string_id});
+            general_flags:          bitmask(RST_GENERAL_FLAG_DRIVE_THROUGH_ONLY);
+        }
+        graphics {
+            default: switch_${station.id}_graphics;
+        }
+    }
+</tal:stations>
+
