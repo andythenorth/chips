@@ -3,9 +3,5 @@
         <tal:sprites repeat="sprite spriteset">
             ${sprite.id}: [${sprite.x_loc}, ${sprite.y_loc}, ${sprite.width}, ${sprite.height}, ${sprite.x_offset}, ${sprite.y_offset}, ANIM | NOCROP, "${sprite.graphics_file_path}"]
         </tal:sprites>
-        <tal:null_sprites repeat="null_sprite sprite_manager.cabbage_spriteset_extender(spriteset)">
-            <!--!  spritesets must all be same length for nml spritelayout, so extend all spritesets in the grf same length to overcome this limitation -->
-            []
-        </tal:null_sprites>
     }
 </tal:spritesets>
