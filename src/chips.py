@@ -25,14 +25,14 @@ from stations import cement_silo
 from stations import concourse_1
 from stations import dispatchers_office
 from stations import flood_loader_silo
-from stations import foundry_building_1
+from stations import foundry_buildings
 from stations import harbour_crane
 from stations import hotel
-from stations import hut_1
-from stations import mine_building_1
+from stations import huts
+from stations import mine_buildings
 from stations import parcels_office
 from stations import tipple
-from stations import warehouse_1
+from stations import warehouse_town
 
 
 class FacilityTypeManager(list):
@@ -85,14 +85,14 @@ def main():
     facility_type_manager.add_facility_type(parcels_office)
     facility_type_manager.add_facility_type(hotel)
     facility_type_manager.add_facility_type(dispatchers_office)
-    facility_type_manager.add_facility_type(warehouse_1)
+    facility_type_manager.add_facility_type(warehouse_town)
     facility_type_manager.add_facility_type(boiler_house_office)
     facility_type_manager.add_facility_type(harbour_crane)
-    facility_type_manager.add_facility_type(hut_1)
+    facility_type_manager.add_facility_type(huts)
     facility_type_manager.add_facility_type(tipple)
     facility_type_manager.add_facility_type(flood_loader_silo)
-    facility_type_manager.add_facility_type(mine_building_1)
-    facility_type_manager.add_facility_type(foundry_building_1)
+    facility_type_manager.add_facility_type(mine_buildings)
+    facility_type_manager.add_facility_type(foundry_buildings)
     facility_type_manager.add_facility_type(cement_silo)
 
     id_report()

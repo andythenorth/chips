@@ -90,7 +90,7 @@ base = "Dispatcher's office"
 [STR_NAME_STATION_FLOOD_LOADER_SILO]
 base = "Flood loader silo"
 
-[STR_NAME_STATION_FOUNDRY_BUILDING_1]
+[STR_NAME_STATION_FOUNDRY_BUILDINGS]
 base= "Foundry building"
 
 [STR_NAME_STATION_HARBOUR_CRANE]
@@ -99,13 +99,10 @@ base = "Harbour crane"
 [STR_NAME_STATION_HOTEL]
 base = "Hotel"
 
-[STR_NAME_STATION_HUT_1]
-base = "Wooden hut"
+[STR_NAME_STATION_HUTS]
+base = "Hut"
 
-[STR_NAME_STATION_HUT_2]
-base = "Small huts"
-
-[STR_NAME_STATION_MINE_BUILDING_1]
+[STR_NAME_STATION_MINE_BUILDINGS]
 base = "Mine building"
 
 [STR_NAME_STATION_PARCELS_OFFICE]
@@ -117,7 +114,7 @@ base = "CABBAGE"
 [STR_NAME_STATION_TIPPLE]
 base = "Tipple"
 
-[STR_NAME_STATION_WAREHOUSE_1]
+[STR_NAME_STATION_WAREHOUSE_TOWN]
 base = "Warehouse"
 
 

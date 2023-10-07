@@ -3,7 +3,7 @@ from station import FacilityTypeIndustry
 
 def main(numeric_id):
     facility_type = FacilityTypeIndustry(
-        id="foundry_building_1",
+        id="foundry_buildings",
         numeric_id=numeric_id,
     )
 
@@ -45,25 +45,25 @@ def main(numeric_id):
     )
 
     facility_type.add_spritelayout(
-        id="foundry_building_1_spritelayout_1_track",
+        id="foundry_buildings_spritelayout_1_track",
         ground_overlay_sprites=["ground_overlay_platforms"],
         rear_structure_sprites=["sprite_rear_legs_large"],
         main_structure_sprites=["sprite_building_large"],
     )
     facility_type.add_spritelayout(
-        id="foundry_building_1_spritelayout_1_non_track",
+        id="foundry_buildings_spritelayout_1_non_track",
         ground_overlay_sprites=["ground_overlay_whole_tile"],
         rear_structure_sprites=["sprite_rear_legs_large"],
         main_structure_sprites=["sprite_building_large"],
     )
     facility_type.add_spritelayout(
-        id="foundry_building_1_spritelayout_2_track",
+        id="foundry_buildings_spritelayout_2_track",
         ground_overlay_sprites=["ground_overlay_platforms"],
         rear_structure_sprites=["sprite_rear_legs_small"],
         main_structure_sprites=["sprite_building_small"],
     )
     facility_type.add_spritelayout(
-        id="foundry_building_1_spritelayout_2_non_track",
+        id="foundry_buildings_spritelayout_2_non_track",
         ground_overlay_sprites=["ground_overlay_whole_tile"],
         rear_structure_sprites=["sprite_rear_legs_small"],
         main_structure_sprites=["sprite_building_small"],
@@ -75,7 +75,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_1_track",
+                "foundry_buildings_spritelayout_1_track",
             ),
         ],
     )
@@ -85,7 +85,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_1_non_track",
+                "foundry_buildings_spritelayout_1_non_track",
             ),
         ],
     )
@@ -95,7 +95,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_2_track",
+                "foundry_buildings_spritelayout_2_track",
             ),
         ],
     )
@@ -105,7 +105,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_2_non_track",
+                "foundry_buildings_spritelayout_2_non_track",
             ),
         ],
     )
@@ -114,7 +114,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_1_non_track",
+                "foundry_buildings_spritelayout_1_non_track",
             ),
         ],
     )
@@ -124,7 +124,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_1_non_track",
+                "foundry_buildings_spritelayout_1_non_track",
             ),
         ],
     )
@@ -134,7 +134,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_2_non_track",
+                "foundry_buildings_spritelayout_2_non_track",
             ),
         ],
     )
@@ -143,7 +143,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "foundry_building_1_spritelayout_2_non_track",
+                "foundry_buildings_spritelayout_2_non_track",
             ),
         ],
     )

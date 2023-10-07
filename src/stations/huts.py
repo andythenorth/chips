@@ -3,34 +3,34 @@ from station import FacilityTypeIndustry
 
 def main(numeric_id):
     facility_type = FacilityTypeIndustry(
-        id="mine_building_1",
+        id="huts",
         numeric_id=numeric_id,
     )
 
     facility_type.add_sprite(
-        id="building_large",
+        id="hut_small_wooden",
         x_y_loc=(10, 10),
         dimensions=(64, 65),
         offsets=(-31, -34),
     )
     facility_type.add_sprite(
-        id="building_small",
+        id="huts_grey",
         x_y_loc=(150, 10),
         dimensions=(64, 65),
         offsets=(-31, -34),
     )
 
     facility_type.add_spritelayout(
-        id="mine_building_1_spritelayout_1",
+        id="huts_spritelayout_small_wooden",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
-        main_structure_sprites=["building_small"],
+        main_structure_sprites=["hut_small_wooden"],
     )
     facility_type.add_spritelayout(
-        id="mine_building_1_spritelayout_2",
+        id="huts_spritelayout_huts_grey",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
-        main_structure_sprites=["building_large"],
+        main_structure_sprites=["huts_grey"],
     )
 
     facility_type.add_rail_station(
@@ -39,7 +39,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "mine_building_1_spritelayout_1",
+                "huts_spritelayout_small_wooden",
             ),
         ],
     )
@@ -49,7 +49,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "mine_building_1_spritelayout_2",
+                "huts_spritelayout_huts_grey",
             ),
         ],
     )
@@ -58,7 +58,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "mine_building_1_spritelayout_1",
+                "huts_spritelayout_small_wooden",
             ),
         ],
     )
@@ -67,7 +67,7 @@ def main(numeric_id):
             (
                 0,
                 0,
-                "mine_building_1_spritelayout_2",
+                "huts_spritelayout_huts_grey",
             ),
         ],
     )
