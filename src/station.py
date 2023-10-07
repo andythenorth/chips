@@ -450,6 +450,16 @@ class RoadStopBase(Station):
     def classname_string_id(self):
         return "STR_NAME_ROAD_STOP_CLASS_" + self.station_class["class_id"]
 
+    @property
+    def availability_type(self):
+        # !! CABBAGE - may need over-riding to allow selection of bus / lorry stop for Town type Facilities
+        if self.facility_type.metaclass == "town":
+            return "RST_AVAILABILITY_TYPE_PASSENGER"
+        elif self.facility_type.metaclass == "industry":
+            return "RST_AVAILABILITY_TYPE_FREIGHT"
+        else:
+            raise BaseException("availability_type encountered unknown facility_type.metaclass for road stop " + self.id)
+
 
 class RoadStopBay(RoadStopBase):
     def __init__(self, **kwargs):

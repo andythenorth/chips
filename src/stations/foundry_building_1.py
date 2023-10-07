@@ -118,6 +118,26 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_road_stop(
+        type="drive_through_tile",
+        layout=[
+            (
+                0,
+                0,
+                "foundry_building_1_spritelayout_1_non_track",
+            ),
+        ],
+    )
+    facility_type.add_road_stop(
+        type="drive_through_tile",
+        layout=[
+            (
+                0,
+                0,
+                "foundry_building_1_spritelayout_2_non_track",
+            ),
+        ],
+    )
     facility_type.add_station_object(
         layout=[
             (

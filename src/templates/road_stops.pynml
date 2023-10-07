@@ -3,8 +3,9 @@
 <tal:stations repeat="station stations">
 
     switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_check_view, view) {
-        RST_VIEW_DRIVE_THROUGH_X: return cement_silo_spritelayout_3_drive_through_ne_sw;
-        RST_VIEW_DRIVE_THROUGH_Y: return cement_silo_spritelayout_3_drive_through_nw_se;
+        <!--! CABBAGE - this assumes drive_through currently -->
+        RST_VIEW_DRIVE_THROUGH_X: return ${station.layout[0][2]}_drive_through_ne_sw;
+        RST_VIEW_DRIVE_THROUGH_Y: return ${station.layout[0][2]}_drive_through_nw_se;
     }
     switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_graphics, [
         <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
@@ -22,6 +23,7 @@
     		classname:              string(${station.classname_string_id});
             name:                   string(${station.name_string_id});
             general_flags:          bitmask(RST_GENERAL_FLAG_DRIVE_THROUGH_ONLY);
+            availability_type:      ${station.availability_type};
         }
         graphics {
             default: switch_${station.id}_graphics;

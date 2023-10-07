@@ -49,6 +49,16 @@ def main(numeric_id):
             ),
         ],
     )
+    facility_type.add_road_stop(
+        type="drive_through_tile",
+        layout=[
+            (
+                0,
+                0,
+                "flood_loader_silo_spritelayout_1",
+            ),
+        ],
+    )
     facility_type.add_station_object(
         layout=[
             (
