@@ -2,10 +2,9 @@ from station import FacilityTypeVisibleCargo
 
 # !!! UNFINISHED - duplicated rom cargo_industry
 
-def main(numeric_id):
+def main():
     facility_type = FacilityTypeVisibleCargo(
         id="cargo_visible_town",
-        numeric_id=numeric_id,
         # FacilityTypeVisibleCargo can take arbitrary metaclass
         metaclass="town",
     )

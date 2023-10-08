@@ -43,13 +43,12 @@ class FacilityTypeManager(list):
     """
 
     def __init__(self):
-        # this will auto-increment as we add facility_types
-        self.numeric_id_base = 0
+        # nothing
+        pass
 
     def add_facility_type(self, facility_type_module):
-        facility_type = facility_type_module.main(self.numeric_id_base)
+        facility_type = facility_type_module.main()
         self.append(facility_type)
-        self.numeric_id_base += 100 # we go up in increments of 100 to leave plenty of room for station subtypes (not short of IDs)
 
 def id_report():
     # this is rudimentary for now, copy the one from Road Hog (id_report.py) if something better is wanted

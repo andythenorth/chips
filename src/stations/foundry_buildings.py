@@ -1,10 +1,9 @@
 from station import FacilityTypeIndustry
 
 
-def main(numeric_id):
+def main():
     facility_type = FacilityTypeIndustry(
         id="foundry_buildings",
-        numeric_id=numeric_id,
     )
 
     facility_type.add_sprite(

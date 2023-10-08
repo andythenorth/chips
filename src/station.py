@@ -17,7 +17,7 @@ class FacilityType(object):
 
     def __init__(self, **kwargs):
         self.id = kwargs["id"]
-        self.numeric_id = kwargs["numeric_id"]
+        self.numeric_id = global_constants.facility_type_numeric_ids[self.id]
         self.spritesets = []
         self.spritelayouts = []
         self.rail_stations = []

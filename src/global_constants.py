@@ -1,3 +1,30 @@
+# numeric IDs are significant for purchase list order of stations
+# we could control the order by auto-assignment of IDs, but this breaks savegames when facility types (or station tiles) are added or removed
+# so the best-efforts solution is a manual list, with widely spaced assignments, so that new types can be inserted in the gaps later
+# this is faff, but will work, as experience with other grfs has proven (although splitting purchase order from ID is better)
+# occasionally a savegame-breaking reset of IDs might be needed
+# RANGE SPACING: 1000 by default, then insert any new facility types on 100 spacing
+# each facility type isn't expected to consume more than 100 IDs (there might already be a validation check for this?)
+facility_type_numeric_ids = dict(
+    cargo_visible_industry = 0,
+    cargo_visible_town = 1000,
+    concourse_1 = 2000,
+    booking_office_small = 3000,
+    booking_office = 4000,
+    parcels_office = 5000,
+    hotel = 6000,
+    dispatchers_office = 7000,
+    warehouse_town = 8000,
+    boiler_house_office = 9000,
+    harbour_crane = 10000,
+    huts = 11000,
+    tipple = 12000,
+    flood_loader_silo = 13000,
+    mine_buildings = 14000,
+    foundry_buildings = 15000,
+    cement_silo = 16000,
+)
+
 grfid = "CHPR"
 
 metadata = {
