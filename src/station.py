@@ -33,7 +33,8 @@ class FacilityType(object):
                 chips.sprite_manager.add_spriteset(
                     spriteset_id=self.spriteset_id + orientation_suffix
                 )
-        self.palette_remaps = kwargs.get("palette_remaps", ["PALETTE_USE_DEFAULT"])
+        # optionally add tiles with extra palette remaps, these will be in a dedicated station class
+        self.extra_palette_remaps = kwargs.get("extra_palette_remaps", [])
 
 
     def get_station_numeric_id_offset(self, station):
@@ -64,9 +65,11 @@ class FacilityType(object):
     @property
     def station_classes(self):
         result = []
-        for counter, palette in enumerate(["PALETTE_USE_DEFAULT", "PALETTE_CC_GREY", "PALETTE_CC_PINK", "PALETTE_CC_PALE_GREEN", "PALETTE_CC_BROWN"]):
-            for metaclass in global_constants.station_classes_by_metaclass[self.metaclass]:
-                result.append({"class_id": metaclass["class_id"][0] + metaclass["class_id"][2:4] + str(counter), "default_ground_type": metaclass["default_ground_type"], "palette": palette})
+        # extend rather than assign to avoid modifying the list in global_constants for all consumers
+        result.extend(global_constants.station_classes_by_metaclass[self.metaclass])
+        # CABBAGE - HORRIFIC JFDI TO INSERT AN EXTRA CLASS, DON'T SHIP THIS
+        if self.extra_palette_remaps != []:
+            result.append({"class_id": "SPEC", "default_ground_type": "gravel"})
         return result
 
     def add_sprite(self, **kwargs):
@@ -98,14 +101,26 @@ class FacilityType(object):
                 new_station_type = RailStationTrackTile
             case "non_track_tile":
                 new_station_type = RailStationNonTrackTile
-        for station_class in self.station_classes:
-            self.rail_stations.append(
-                new_station_type(
-                    station_class=station_class,
-                    facility_type=self,
-                    **kwargs,
+        # CABBAGE - HORRIFIC JFDI TO INSERT AN EXTRA CLASS AND PALETTE, DON'T SHIP THIS
+        for counter, station_class in enumerate(self.station_classes):
+            if counter == 3:
+                for palette in self.extra_palette_remaps:
+                    self.rail_stations.append(
+                        new_station_type(
+                            station_class=station_class,
+                            palette=palette,
+                            facility_type=self,
+                            **kwargs,
+                        )
+                    )
+            else:
+                self.rail_stations.append(
+                    new_station_type(
+                        station_class=station_class,
+                        facility_type=self,
+                        **kwargs,
+                    )
                 )
-            )
 
     def add_road_stop(self, type, **kwargs):
         match type:
@@ -321,6 +336,7 @@ class Station(object):
         self.station_class = kwargs["station_class"]
         self.facility_type = kwargs["facility_type"]
         self.layout = StationLayout(kwargs["layout"])
+        self.palette = kwargs.get("palette", "PALETTE_USE_DEFAULT")
 
     @property
     def id(self):
@@ -363,10 +379,13 @@ class Station(object):
         return self.station_class["default_ground_type"]
 
     def get_classname_string_id(self, station_type_class_name_string):
-        metaclass_substr = self.facility_type.metaclass.upper()
-        palette_substr = "STR_" + self.station_class["palette"].upper()
+        # CABBAGE - HORRIFIC JFDI TO INSERT AN EXTRA CLASS, DON'T SHIP THIS
+        if self.station_class["class_id"] == "SPEC":
+            metaclass_substr = "SPEC"
+        else:
+            metaclass_substr = self.facility_type.metaclass.upper()
         ground_substr = "STR_NAME_GROUND_TYPE_" + self.station_class["default_ground_type"].upper()
-        return station_type_class_name_string + metaclass_substr + ", string(" + palette_substr + "), string(" + ground_substr + ")"
+        return station_type_class_name_string + metaclass_substr + ", string(" + ground_substr + ")"
 
     def get_custom_sprite_index_structs(self, ground_subtypes):
         # index into the global ground_sprites spriteset, with a label included for convenience of debugging
@@ -387,9 +406,6 @@ class Station(object):
             )
         return result
 
-    @property
-    def palette(self):
-        return self.station_class["palette"]
 
 class RailStationBase(Station):
     def __init__(self, **kwargs):

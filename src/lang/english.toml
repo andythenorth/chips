@@ -45,24 +45,33 @@ base = "(pavement)"
 
 # rail stations
 [STR_NAME_STATION_CLASS_TOWN]
-base = "Town stations (pavement)"
+base = "Stations (pavement)"
 
 [STR_NAME_STATION_CLASS_INDUSTRY]
-base = "{STRING} industry stations {STRING}"
+base = "Stations {STRING}"
+
+[STR_NAME_STATION_CLASS_SPEC]
+base = "CABBAGE {STRING}"
 
 # road stops
 [STR_NAME_ROAD_STOP_CLASS_TOWN]
-base = "Town road stops (pavement)"
+base = "Road stops (pavement)"
 
 [STR_NAME_ROAD_STOP_CLASS_INDUSTRY]
-base = "{STRING} road stops {STRING}"
+base = "Road stops {STRING}"
+
+[STR_NAME_ROAD_STOP_CLASS_SPEC]
+base = "CABBAGE {STRING}"
 
 # objects
 [STR_NAME_OBJECT_CLASS_TOWN]
-base = "Town station facilities (pavement)"
+base = "Station facilities (pavement)"
 
 [STR_NAME_OBJECT_CLASS_INDUSTRY]
-base = "{STRING} industry station facilities {STRING}"
+base = "Station facilities {STRING}"
+
+[STR_NAME_OBJECT_CLASS_SPEC]
+base = "CABBAGE {STRING}"
 
 # station names, keep alphabetised by ID
 

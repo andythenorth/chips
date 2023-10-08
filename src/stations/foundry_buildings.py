@@ -4,7 +4,7 @@ from station import FacilityTypeIndustry
 def main():
     facility_type = FacilityTypeIndustry(
         id="foundry_buildings",
-        palette_remaps=["PALETTE_USE_DEFAULT", "PALETTE_CC_GREY", "PALETTE_CC_PINK", "PALETTE_CC_PALE_GREEN", "PALETTE_CC_BROWN"],
+        extra_palette_remaps=["PALETTE_CC_GREY", "PALETTE_CC_PINK", "PALETTE_CC_PALE_GREEN", "PALETTE_CC_BROWN"],
     )
 
     facility_type.add_sprite(
