@@ -36,7 +36,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
@@ -46,7 +46,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->
@@ -58,7 +58,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--! extents bounding boxes are just full tile for non_track tiles (also no bbox offsets needed) -->
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
@@ -68,7 +68,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->

@@ -33,8 +33,8 @@ class FacilityType(object):
                 chips.sprite_manager.add_spriteset(
                     spriteset_id=self.spriteset_id + orientation_suffix
                 )
-        # over-ride palette in subclasses as needed
-        self._palette = "PALETTE_USE_DEFAULT"
+        self.palette_remaps = kwargs.get("palette_remaps", ["PALETTE_USE_DEFAULT"])
+
 
     def get_station_numeric_id_offset(self, station):
         result = None
@@ -63,7 +63,11 @@ class FacilityType(object):
 
     @property
     def station_classes(self):
-        return global_constants.station_classes_by_metaclass[self.metaclass]
+        result = []
+        for counter, palette in enumerate(["PALETTE_USE_DEFAULT", "PALETTE_CC_GREY", "PALETTE_CC_PINK", "PALETTE_CC_PALE_GREEN", "PALETTE_CC_BROWN"]):
+            for metaclass in global_constants.station_classes_by_metaclass[self.metaclass]:
+                result.append({"class_id": metaclass["class_id"][0] + metaclass["class_id"][2:4] + str(counter), "default_ground_type": metaclass["default_ground_type"], "palette": palette})
+        return result
 
     def add_sprite(self, **kwargs):
         # auto extend for both needed orientations
@@ -249,10 +253,6 @@ class FacilityType(object):
                     result.append(spritelayout)
         return result
 
-    @property
-    def palette(self):
-        return self._palette
-
     def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
             terrain_suffix = "_snow"
@@ -291,8 +291,6 @@ class FacilityTypeIndustry(FacilityType):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.metaclass = "industry"
-        # CABBAGE force all buildings to grey, this is a temporary measure to reduce clash with nearby industry, there might be a better way
-        self._palette = "PALETTE_CC_GREY"
 
 
 class FacilityTypeTown(FacilityType):
@@ -364,6 +362,12 @@ class Station(object):
     def ground_type(self):
         return self.station_class["default_ground_type"]
 
+    def get_classname_string_id(self, station_type_class_name_string):
+        metaclass_substr = self.facility_type.metaclass.upper()
+        palette_substr = "STR_" + self.station_class["palette"].upper()
+        ground_substr = "STR_NAME_GROUND_TYPE_" + self.station_class["default_ground_type"].upper()
+        return station_type_class_name_string + metaclass_substr + ", string(" + palette_substr + "), string(" + ground_substr + ")"
+
     def get_custom_sprite_index_structs(self, ground_subtypes):
         # index into the global ground_sprites spriteset, with a label included for convenience of debugging
         result = []
@@ -383,6 +387,9 @@ class Station(object):
             )
         return result
 
+    @property
+    def palette(self):
+        return self.station_class["palette"]
 
 class RailStationBase(Station):
     def __init__(self, **kwargs):
@@ -414,7 +421,7 @@ class RailStationBase(Station):
 
     @property
     def classname_string_id(self):
-        return "STR_NAME_STATION_CLASS_" + self.station_class["class_id"]
+        return self.get_classname_string_id("STR_NAME_STATION_CLASS_")
 
 
 class RailStationTrackTile(RailStationBase):
@@ -458,7 +465,7 @@ class RoadStopBase(Station):
 
     @property
     def classname_string_id(self):
-        return "STR_NAME_ROAD_STOP_CLASS_" + self.station_class["class_id"]
+        return self.get_classname_string_id("STR_NAME_ROAD_STOP_CLASS_")
 
     @property
     def availability_type(self):
@@ -533,9 +540,10 @@ class StationObject(Station):
         ground_subtypes = ["whole_tile"]
         return self.get_custom_sprite_index_structs(ground_subtypes)
 
+
     @property
     def classname_string_id(self):
-        return "STR_NAME_OBJECT_CLASS_" + self.station_class["class_id"]
+        return self.get_classname_string_id("STR_NAME_OBJECT_CLASS_")
 
 
 class StationLayout(list):

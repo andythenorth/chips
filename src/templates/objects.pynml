@@ -29,6 +29,7 @@
             STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
         </tal:custom_sprite_indexes>
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
+        STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
     ]) {
         return ${station.id}_switch_graphics_view;
     }

@@ -19,6 +19,7 @@
         STORE_TEMP(0, ${graphics_temp_storage.var_hide_cargo}),
         STORE_TEMP(hasbit(rail_continuation, 1), ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
         STORE_TEMP(hasbit(rail_continuation, 0), ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
+        STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
         ]) {
         return;
     }
@@ -33,6 +34,7 @@
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_cargo}),
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
+        STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
         ]) {
         return;
     }

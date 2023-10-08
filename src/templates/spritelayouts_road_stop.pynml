@@ -42,7 +42,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--!
                         extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
@@ -57,7 +57,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->
@@ -123,7 +123,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--!
                         extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
@@ -139,7 +139,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->
@@ -207,7 +207,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--!
                         extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
@@ -222,7 +222,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->
@@ -235,7 +235,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--!
                         extents (bounding boxes should match default stations, for simplicity of sprite sorting etc
@@ -252,7 +252,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->
@@ -282,7 +282,7 @@
                 building {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     <!--!
                         - these use full tile as the main structure may extend over entire tile - as per SPR_RAIL_ROOF_STRUCTURE_X_TILE_A
@@ -295,7 +295,7 @@
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
-                    palette: ${facility_type.palette};
+                    palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
                     <!--! no offsets or extents for these childsprites -->

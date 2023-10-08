@@ -5,61 +5,64 @@ plural = "0"
 [STR_GRF_DESCRIPTION]
 base = "CABBAGE"
 
+[STR_CABBAGE]
+base = "CABBAGE"
+
 ["# {ORANGE}FIRS Industry Replacement Set{}{BLACK}Brought to you by andythenorth, FooBar, planetmaker, Terkhen and Yexo, with help from many others. {SILVER}See readme for more information, including how to use CHIPS. {BLACK}License"]
 base = "GPL v2."
 
-# station classes
+# company colours
+[STR_PALETTE_USE_DEFAULT]
+base = "Company colour"
+
+[STR_PALETTE_CC_GREY]
+base = "Grey"
+
+[STR_PALETTE_CC_PINK]
+base = "Pink"
+
+[STR_PALETTE_CC_PALE_GREEN]
+base = "Green"
+
+[STR_PALETTE_CC_BROWN]
+base = "Brown"
+
+# ground
+[STR_NAME_GROUND_TYPE_ASPHALT]
+base = "(asphalt)"
+
+[STR_NAME_GROUND_TYPE_COBBLE]
+base = "(cobble)"
+
+[STR_NAME_GROUND_TYPE_DIRT]
+base = "(dirt)"
+
+[STR_NAME_GROUND_TYPE_GRAVEL]
+base = "(gravel)"
+
+[STR_NAME_GROUND_TYPE_PAVEMENT]
+base = "(pavement)"
 
 # rail stations
-[STR_NAME_STATION_CLASS_DFLT]
-# default town stations go into the DFLT class, alongside the base game stations, and we also change the name string for that class
+[STR_NAME_STATION_CLASS_TOWN]
 base = "Town stations (pavement)"
 
-[STR_NAME_STATION_CLASS_INAS]
-base = "Industry stations (asphalt)"
-
-[STR_NAME_STATION_CLASS_INCO]
-base = "Industry stations (cobble)"
-
-[STR_NAME_STATION_CLASS_INDI]
-base = "Industry stations (dirt)"
-
-[STR_NAME_STATION_CLASS_INGR]
-base = "Industry stations (gravel)"
+[STR_NAME_STATION_CLASS_INDUSTRY]
+base = "{STRING} industry stations {STRING}"
 
 # road stops
-[STR_NAME_ROAD_STOP_CLASS_DFLT]
-# !! CABBAGE - does DFLT work here? It's used by rail stations, but maybe that should be a remap?
-base = "Road stops (pavement)"
+[STR_NAME_ROAD_STOP_CLASS_TOWN]
+base = "Town road stops (pavement)"
 
-[STR_NAME_ROAD_STOP_CLASS_INAS]
-base = "Road stops (asphalt)"
-
-[STR_NAME_ROAD_STOP_CLASS_INCO]
-base = "Road stops (cobble)"
-
-[STR_NAME_ROAD_STOP_CLASS_INDI]
-base = "Road stops (dirt)"
-
-[STR_NAME_ROAD_STOP_CLASS_INGR]
-base = "Road stops (gravel)"
+[STR_NAME_ROAD_STOP_CLASS_INDUSTRY]
+base = "{STRING} road stops {STRING}"
 
 # objects
-[STR_NAME_OBJECT_CLASS_DFLT]
-# !! CABBAGE - does DFLT work here? It's used by rail stations, but maybe that should be a remap?
-base = "Station facilities (pavement)"
+[STR_NAME_OBJECT_CLASS_TOWN]
+base = "Town station facilities (pavement)"
 
-[STR_NAME_OBJECT_CLASS_INAS]
-base = "Station facilities (asphalt)"
-
-[STR_NAME_OBJECT_CLASS_INCO]
-base = "Station facilities (cobble)"
-
-[STR_NAME_OBJECT_CLASS_INDI]
-base = "Station facilities (dirt)"
-
-[STR_NAME_OBJECT_CLASS_INGR]
-base = "Station facilities (gravel)"
+[STR_NAME_OBJECT_CLASS_INDUSTRY]
+base = "{STRING} industry station facilities {STRING}"
 
 # station names, keep alphabetised by ID
 
