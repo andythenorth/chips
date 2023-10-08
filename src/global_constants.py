@@ -23,6 +23,7 @@ facility_type_numeric_ids = dict(
     mine_buildings=14000,
     foundry_buildings=15000,
     cement_silo=16000,
+    steel_handling=17000,
 )
 
 grfid = "CHPR"

@@ -31,6 +31,7 @@ from stations import hotel
 from stations import huts
 from stations import mine_buildings
 from stations import parcels_office
+from stations import steel_handling
 from stations import tipple
 from stations import warehouse_town
 
@@ -93,5 +94,6 @@ def main():
     facility_type_manager.add_facility_type(mine_buildings)
     facility_type_manager.add_facility_type(foundry_buildings)
     facility_type_manager.add_facility_type(cement_silo)
+    facility_type_manager.add_facility_type(steel_handling)
 
     id_report()

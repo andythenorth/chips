@@ -139,6 +139,9 @@ base = "Parcels office"
 [STR_NAME_STATION_TEST]
 base = "CABBAGE"
 
+[STR_NAME_STATION_STEEL_HANDLING]
+base = "Steel handling"
+
 [STR_NAME_STATION_TIPPLE]
 base = "Tipple"
 
