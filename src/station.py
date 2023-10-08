@@ -247,6 +247,10 @@ class FacilityType(object):
                     result.append(spritelayout)
         return result
 
+    @property
+    def palette(self):
+        return "PALETTE_CC_GREY" # "PALETTE_USE_DEFAULT"
+
     def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
             terrain_suffix = "_snow"
