@@ -3,13 +3,13 @@ from station import FacilityTypeVisibleCargo
 
 def main():
     facility_type = FacilityTypeVisibleCargo(
-        id="cargo_visible_industry",
+        id="cargo_visible_freight",
         # FacilityTypeVisibleCargo can take arbitrary metaclass
-        metaclass="industry",
+        metaclass="freight",
     )
 
     facility_type.add_spritelayout(
-        id="cargo_visible_industry_spritelayout_1",
+        id="cargo_visible_freight_spritelayout_1",
         ground_overlay_sprites=[],
         rear_structure_sprites=[],
         main_structure_sprites=[],
@@ -21,7 +21,7 @@ def main():
             (
                 0,
                 0,
-                "cargo_visible_industry_spritelayout_1",
+                "cargo_visible_freight_spritelayout_1",
             ),
         ],
     )
@@ -31,7 +31,7 @@ def main():
             (
                 0,
                 0,
-                "cargo_visible_industry_spritelayout_1",
+                "cargo_visible_freight_spritelayout_1",
             ),
         ],
     )
@@ -40,7 +40,7 @@ def main():
             (
                 0,
                 0,
-                "cargo_visible_industry_spritelayout_1",
+                "cargo_visible_freight_spritelayout_1",
             ),
         ],
     )

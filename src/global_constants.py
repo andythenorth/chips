@@ -6,23 +6,23 @@
 # RANGE SPACING: 1000 by default, then insert any new facility types on 100 spacing
 # each facility type isn't expected to consume more than 100 IDs (there might already be a validation check for this?)
 facility_type_numeric_ids = dict(
-    cargo_visible_industry = 0,
-    cargo_visible_town = 1000,
-    concourse_1 = 2000,
-    booking_office_small = 3000,
-    booking_office = 4000,
-    parcels_office = 5000,
-    hotel = 6000,
-    dispatchers_office = 7000,
-    warehouse_town = 8000,
-    boiler_house_office = 9000,
-    harbour_crane = 10000,
-    huts = 11000,
-    tipple = 12000,
-    flood_loader_silo = 13000,
-    mine_buildings = 14000,
-    foundry_buildings = 15000,
-    cement_silo = 16000,
+    cargo_visible_freight=0,
+    cargo_visible_town=1000,
+    concourse_1=2000,
+    booking_office_small=3000,
+    booking_office=4000,
+    parcels_office=5000,
+    hotel=6000,
+    dispatchers_office=7000,
+    warehouse_town=8000,
+    boiler_house_office=9000,
+    harbour_crane=10000,
+    huts=11000,
+    tipple=12000,
+    flood_loader_silo=13000,
+    mine_buildings=14000,
+    foundry_buildings=15000,
+    cement_silo=16000,
 )
 
 grfid = "CHPR"
@@ -68,20 +68,77 @@ station_classes_by_metaclass = {
         {
             "class_id": "DFLT",
             "default_ground_type": "pavement",
+            "palette": "PALETTE_USE_DEFAULT",
+        },
+    ],
+    "freight": [
+        {
+            "class_id": "FRAS",
+            "default_ground_type": "asphalt",
+            "palette": "PALETTE_USE_DEFAULT",
+        },
+        {
+            "class_id": "FRGR",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_USE_DEFAULT",
+        },
+        {
+            "class_id": "FRDI",
+            "default_ground_type": "dirt",
+            "palette": "PALETTE_USE_DEFAULT",
         },
     ],
     "industry": [
+        # based on the supported colours in FIRS, this could be unified via polar fox but eh, might get version drift anyway
         {
-            "class_id": "INAS",
-            "default_ground_type": "asphalt",
-        },
-        {
-            "class_id": "INGR",
+            "class_id": "INB0",
             "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_DARK_BLUE",
         },
         {
-            "class_id": "INDI",
-            "default_ground_type": "dirt",
+            "class_id": "INB1",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_PALE_GREEN",
+        },
+        {
+            "class_id": "INB2",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_PINK",
+        },
+        {
+            "class_id": "INB3",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_YELLOW",
+        },
+        {
+            "class_id": "INB4",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_LIGHT_BLUE",
+        },
+        {
+            "class_id": "INB5",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_MAUVE",
+        },
+        {
+            "class_id": "INB6",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_PURPLE",
+        },
+        {
+            "class_id": "INB7",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_BROWN",
+        },
+        {
+            "class_id": "INB8",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_CC_GREY",
+        },
+        {
+            "class_id": "INB_",
+            "default_ground_type": "gravel",
+            "palette": "PALETTE_USE_DEFAULT",
         },
     ],
 }

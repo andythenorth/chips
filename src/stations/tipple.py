@@ -1,8 +1,8 @@
-from station import FacilityTypeIndustry
+from station import FacilityTypeFreight
 
 
 def main():
-    facility_type = FacilityTypeIndustry(
+    facility_type = FacilityTypeFreight(
         id="tipple",
     )
 
