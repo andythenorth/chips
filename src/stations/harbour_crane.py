@@ -120,6 +120,11 @@ def main():
                 0,
                 "harbour_crane_spritelayout_1_track",
             ),
+            (
+                1,
+                0,
+                "harbour_crane_spritelayout_crane_rails_track",
+            ),
         ],
     )
     facility_type.add_rail_station(
@@ -131,6 +136,11 @@ def main():
                 0,
                 0,
                 "harbour_crane_spritelayout_2_track",
+            ),
+            (
+                0,
+                1,
+                "harbour_crane_spritelayout_crane_rails_track",
             ),
         ],
     )

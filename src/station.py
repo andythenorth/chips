@@ -345,8 +345,8 @@ class Station(object):
     def spritelayouts_as_nml_array(self):
         result = []
         # extend per orientation, with ne-sw as even numbered, and nw-se as odd numbered, which OpenTTD will then pick up appropriate to each orientation
-        for orientation_suffix in ["_ne_sw", "_nw_se"]:
-            for spritelayout_id in self.layout.spritelayout_ids:
+        for spritelayout_id in self.layout.spritelayout_ids:
+            for orientation_suffix in ["_ne_sw", "_nw_se"]:
                 result.append(
                     spritelayout_id + "_" + self.track_non_track + orientation_suffix
                 )

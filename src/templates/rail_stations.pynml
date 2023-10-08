@@ -5,7 +5,11 @@
 
 <tal:stations repeat="station stations">
 
-    switch(FEAT_STATIONS, SELF, switch_${station.id}_prepare_layout, [
+    switch(FEAT_STATIONS, SELF, ${station.id}_switch_select_sprite_layout, ${len(station.layout)} * (platform_position_from_start(PLATFORM_SAME_SECTION) % 2)) {
+        return;
+    }
+
+    switch(FEAT_STATIONS, SELF, ${station.id}_switch_prepare_layout, [
         <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
             // ${custom_sprite_index_struct[2]}
             STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
@@ -19,7 +23,7 @@
         return;
     }
     <!--! !! CABBAGE there could be prepare_layout_common or so, which both of these chain to ?? -->
-    switch(FEAT_STATIONS, SELF, switch_${station.id}_purchase_prepare_layout, [
+    switch(FEAT_STATIONS, SELF, ${station.id}_switch_purchase_prepare_layout, [
         <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
             // ${custom_sprite_index_struct[2]}
             STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
@@ -44,8 +48,9 @@
         }
         graphics {
             sprite_layouts:          ${station.spritelayouts_as_nml_array};
-            prepare_layout:          switch_${station.id}_prepare_layout();
-            purchase_prepare_layout: switch_${station.id}_purchase_prepare_layout();
+            select_sprite_layout:    ${station.id}_switch_select_sprite_layout;
+            prepare_layout:          ${station.id}_switch_prepare_layout();
+            purchase_prepare_layout: ${station.id}_switch_purchase_prepare_layout();
             <tal:visible_cargo condition="facility_type.visible_cargo">
                 <tal:cargos repeat="cargo_label cargo_manager.cargo_labels">
                     ${cargo_label}:  ${cargo_manager.get_spriteset_id_by_cargo_label(cargo_label)};
