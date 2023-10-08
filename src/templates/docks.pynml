@@ -1,0 +1,10 @@
+// Dock is sprite replacement only, as of September 2023
+
+replace docks(2727, "src/graphics/docks.png") {
+ 		[ 10, 10, 64, 33, -39, -12, ANIM]
+ 		[ 80, 10, 64, 40, -23, -12, ANIM]
+ 		[150, 10, 64, 40, -39, -12, ANIM]
+ 		[220, 10, 64, 33, -23, -12, ANIM]
+ 		[290, 10, 64, 60, -39, -32, ANIM]
+ 		[360, 10, 64, 60, -23, -27, ANIM]
+ }

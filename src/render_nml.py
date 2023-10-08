@@ -69,8 +69,7 @@ def main():
         "header",
         "cargotable",
         "spritesets",
-        "dock",
-        # "road_stop",
+        "docks",
     ]
     for header_item in header_items:
         grf_nml.write(render_header_nml(header_item))
