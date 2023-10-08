@@ -80,10 +80,6 @@ station_classes_by_metaclass = {
             "default_ground_type": "gravel",
         },
         {
-            "class_id": "INCO",
-            "default_ground_type": "cobble",
-        },
-        {
             "class_id": "INDI",
             "default_ground_type": "dirt",
         },
