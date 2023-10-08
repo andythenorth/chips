@@ -33,6 +33,8 @@ class FacilityType(object):
                 chips.sprite_manager.add_spriteset(
                     spriteset_id=self.spriteset_id + orientation_suffix
                 )
+        # over-ride palette in subclasses as needed
+        self._palette = "PALETTE_USE_DEFAULT"
 
     def get_station_numeric_id_offset(self, station):
         result = None
@@ -249,7 +251,7 @@ class FacilityType(object):
 
     @property
     def palette(self):
-        return "PALETTE_CC_GREY" # "PALETTE_USE_DEFAULT"
+        return self._palette
 
     def get_graphics_file_path(self, terrain=None):
         if terrain == "snow" and self.provides_snow:
@@ -289,6 +291,8 @@ class FacilityTypeIndustry(FacilityType):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.metaclass = "industry"
+        # CABBAGE force all buildings to grey, this is a temporary measure to reduce clash with nearby industry, there might be a better way
+        self._palette = "PALETTE_CC_GREY"
 
 
 class FacilityTypeTown(FacilityType):
