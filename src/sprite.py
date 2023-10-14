@@ -62,6 +62,16 @@ class CargoSprite(Sprite):
         """
 
 
+class FoundationSprite(Sprite):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.width = 64
+        self.height = 31
+        self.x_offset = -31
+        self.y_offset = 0
+        self.graphics_file_path = "src/graphics/foundations.png"
+
+
 class GroundSprite(Sprite):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

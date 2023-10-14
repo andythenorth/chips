@@ -271,7 +271,7 @@ class FacilityType(object):
                     stations=stations,
                     # get_perm_num=self.get_perm_num, # !!
                     global_constants=global_constants,
-                    graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure # !!
+                    graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure
                     # registered_industries=registered_industries, # !!
                     utils=utils,
                     sprite_manager=chips.sprite_manager,

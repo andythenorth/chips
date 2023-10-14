@@ -1,16 +1,72 @@
 <tal:orientation repeat="orientation ['ne_sw', 'nw_se']">
     <tal:spritelayouts repeat="spritelayout facility_type.object_spritelayouts">
         spritelayout ${spritelayout.id}_${orientation} {
-            <!--! non_track tile terrain - not strictly necessary to draw the terrain tile as we'll 100% overlay it, but eh it seems more 'correct' to me -->
-            ground {
-                sprite: GROUNDSPRITE_NORMAL;
-            }
-            <!--!
-                we index to the ground type appropriate to the station
+
+            <!--! no 'ground' sprite
+                  - we'll always overlay our own ground type appropriate to the station
+                  - we might be building on a coast, where ground sprite is omitted
             -->
-            childsprite {
+
+            <!--! custom foundations
+                  - 2 'flat' angles
+                  - 4 slopes
+            -->
+            building {
+                sprite: spriteset_foundations(0);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_nw_se});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            building {
+                sprite: spriteset_foundations(1);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_ne_sw});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            building {
+                sprite: spriteset_foundations(2);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_slope_nw_se});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            building {
+                sprite: spriteset_foundations(3);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_slope_ne_sw});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            building {
+                sprite: spriteset_foundations(4);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_slope_se_nw});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            building {
+                sprite: spriteset_foundations(5);
+                always_draw: 1;
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_slope_sw_ne});
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+            }
+            <!--! whole tile ground, as determined by the station -->
+            building {
                 sprite: ${spritelayout.get_nml_declaration_for_ground_sprite_whole_tile()};
                 always_draw: 1;
+                xoffset: 0;
+                yoffset: 0;
+                zextent: 0;
+                zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
                 <!--! ground overlay (snow aware) -->
@@ -19,15 +75,17 @@
                     recolour_mode: RECOLOUR_REMAP;
                     palette: PALETTE_USE_DEFAULT;
                     always_draw: ${sprite.always_draw};
-                    <!--! no offsets or extents for these childsprites -->
+                    xoffset: 32;
+                    yoffset: 0;
                 }
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
                     recolour_mode: RECOLOUR_REMAP;
                     palette: PALETTE_USE_DEFAULT;
                     always_draw: ${sprite.always_draw};
-                    hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                    <!--! no offsets or extents for these childsprites -->
+                    hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow});
+                    xoffset: 32;
+                    yoffset: 0;
                 }
             </tal:ground_overlay_sprites>
 
@@ -42,6 +100,7 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
+                    zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
                 }
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
@@ -49,7 +108,6 @@
                     palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                    <!--! no offsets or extents for these childsprites -->
                 }
             </tal:rear_structure_sprites>
 
@@ -64,6 +122,7 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
+                    zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
                 }
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
@@ -71,7 +130,6 @@
                     palette: LOAD_TEMP(${graphics_temp_storage.var_palette_building_recolour});
                     always_draw: ${sprite.always_draw};
                     hide_sprite: (LOAD_TEMP(${graphics_temp_storage.var_hide_building_snow}));
-                    <!--! no offsets or extents for these childsprites -->
                 }
             </tal:main_structure_sprites>
         }

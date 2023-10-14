@@ -42,9 +42,9 @@ max_game_date = 5000000
 
 graphics_temp_storage = dict(
     var_sprite_rear_rail_platform_ne_sw=0,  # ground-type-specific sprite for track tiles
-    var_sprite_rear_rail_platform_nw_se=1,  # ground-type-specific sprite for track tiles
-    var_sprite_front_rail_platform_ne_sw=2,  # ground-type-specific sprite for track tiles
-    var_sprite_front_rail_platform_nw_se=3,  # ground-type-specific sprite for track tiles
+    var_sprite_rear_rail_platform_nw_se=1,  # ^
+    var_sprite_front_rail_platform_ne_sw=2,  # ^
+    var_sprite_front_rail_platform_nw_se=3,  # ^
     var_sprite_whole_tile=4,  # ground-type-specific sprite for non_track tiles
     var_hide_buffer_stop_ne_and_nw=5,  # hide a buffer stop on a ne or ne edge (as appropriate to station orientation)
     var_hide_buffer_stop_se_and_sw=6,  # hide a buffer stop on a se or sw edge (as appropriate to station orientation)
@@ -56,11 +56,14 @@ graphics_temp_storage = dict(
     var_palette_building_recolour=12,  # palette for building recolouring
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
-    # unused=15,  #
-    # unused=16,  #
-    # unused=17,  #
-    # unused=18,  #
-    var_hide_building_snow=19,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
+    var_z_offset=15,  # for offsetting sprites on slopes, coasts etc
+    var_hide_foundation_nw_se=16, # hide foundations in spritelayout, must be set to 1 (true) or 0 (false)
+    var_hide_foundation_ne_sw=17, # ^
+    var_hide_foundation_slope_nw_se=18, # ^
+    var_hide_foundation_slope_ne_sw=19, # ^
+    var_hide_foundation_slope_se_nw=20, # ^
+    var_hide_foundation_slope_sw_ne=21, # ^
+    var_hide_building_snow=22,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
 )
 
 station_classes_by_metaclass = {

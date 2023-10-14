@@ -40,7 +40,6 @@ ground_sprites = {
     "pavement_front_road_platform_nw_se": (290, 330),
 }
 
-
 def get_sprites():
     # returns a simple list sprites
     result = []

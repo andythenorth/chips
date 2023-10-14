@@ -46,11 +46,8 @@ base = "yellow"
 [STR_NAME_GROUND_TYPE_ASPHALT]
 base = "asphalt"
 
-[STR_NAME_GROUND_TYPE_COBBLE]
-base = "cobble"
-
 [STR_NAME_GROUND_TYPE_DIRT]
-base = "dirt"
+base = "bare dirt"
 
 [STR_NAME_GROUND_TYPE_GRAVEL]
 base = "gravel"

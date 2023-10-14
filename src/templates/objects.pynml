@@ -30,6 +30,7 @@
         </tal:custom_sprite_indexes>
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
         STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
+        switch_initialise_foundations_objects(),
     ]) {
         return ${station.id}_switch_graphics_view;
     }
@@ -46,7 +47,7 @@
             introduction_date:      date(1, 1, 1);
             end_of_life_date:       date(${global_constants.max_game_date}, 1, 1);
             /* Anything can overbuild the object, removing returns the money, we don't want foundations and we want to allow bridges */
-            object_flags:           bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ANIMATED);
+            object_flags:           bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ANIMATED, OBJ_FLAG_NO_FOUNDATIONS);
             height:                 6;
             num_views:              2; <!--! ne_sw and nw_se orientations -->
             <!--!

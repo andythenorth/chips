@@ -35,6 +35,7 @@ def render_header_nml(header_item):
             global_constants=global_constants,
             utils=utils,
             graphics_path=global_constants.graphics_path,
+            graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure
             git_info=git_info,
             sprite_manager=chips.sprite_manager
         )
@@ -69,6 +70,7 @@ def main():
         "header",
         "cargotable",
         "spritesets",
+        "foundations",
         "docks",
     ]
     for header_item in header_items:

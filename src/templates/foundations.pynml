@@ -1,0 +1,58 @@
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_zoffset, tile_slope) {
+    SLOPE_FLAT: return 0;
+    return 8;
+}
+
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_nw_se, tile_slope) {
+    SLOPE_N: return 0;
+    SLOPE_E: return 0;
+    SLOPE_NE: return 0;
+    return 1;
+}
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_ne_sw, tile_slope) {
+    SLOPE_N: return 0;
+    SLOPE_W: return 0;
+    SLOPE_NW: return 0;
+    return 1;
+}
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_nw_se, tile_slope) {
+    SLOPE_W: return 0;
+    SLOPE_NW: return 0;
+    SLOPE_ENW: return 0;
+    SLOPE_EW: return 0;
+    return 1;
+}
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_ne_sw, tile_slope) {
+    SLOPE_E: return 0;
+    SLOPE_NE: return 0;
+    SLOPE_ENW: return 0;
+    SLOPE_EW: return 0;
+    return 1;
+}
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_se_nw, tile_slope) {
+    SLOPE_S: return 0;
+    SLOPE_SE: return 0;
+    SLOPE_SEN: return 0;
+    SLOPE_NS: return 0;
+    return 1;
+}
+<!--! not done -->
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_sw_ne, tile_slope) {
+    SLOPE_S: return 0;
+    SLOPE_SW: return 0;
+    SLOPE_NWS: return 0;
+    SLOPE_NS: return 0;
+    return 1;
+}
+
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects, [
+        STORE_TEMP(switch_initialise_foundations_objects_slope_zoffset(), ${graphics_temp_storage.var_z_offset}),
+        STORE_TEMP(switch_initialise_foundations_objects_nw_se(), ${graphics_temp_storage.var_hide_foundation_nw_se}),
+        STORE_TEMP(switch_initialise_foundations_objects_ne_sw(), ${graphics_temp_storage.var_hide_foundation_ne_sw}),
+        STORE_TEMP(switch_initialise_foundations_objects_slope_nw_se(), ${graphics_temp_storage.var_hide_foundation_slope_nw_se}),
+        STORE_TEMP(switch_initialise_foundations_objects_slope_ne_sw(), ${graphics_temp_storage.var_hide_foundation_slope_ne_sw}),
+        STORE_TEMP(switch_initialise_foundations_objects_slope_se_nw(), ${graphics_temp_storage.var_hide_foundation_slope_se_nw}),
+        STORE_TEMP(switch_initialise_foundations_objects_slope_sw_ne(), ${graphics_temp_storage.var_hide_foundation_slope_sw_ne}),
+    ]) {
+    return;
+}
