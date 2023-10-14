@@ -57,13 +57,17 @@ graphics_temp_storage = dict(
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
     var_z_offset=15,  # for offsetting sprites on slopes, coasts etc
-    var_hide_foundation_nw_se=16, # hide foundations in spritelayout, must be set to 1 (true) or 0 (false)
-    var_hide_foundation_ne_sw=17, # ^
-    var_hide_foundation_slope_nw_se=18, # ^
-    var_hide_foundation_slope_ne_sw=19, # ^
-    var_hide_foundation_slope_se_nw=20, # ^
-    var_hide_foundation_slope_sw_ne=21, # ^
-    var_hide_building_snow=22,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
+    var_hide_foundation_water_and_coast_nw_se=16, # hide foundations in spritelayout, must be set to 1 (true) or 0 (false)
+    var_hide_foundation_water_and_coast_ne_sw=17, # ^
+    var_hide_foundation_water_and_coast_slope_nw_se=18, # ^
+    var_hide_foundation_water_and_coast_slope_ne_sw=19, # ^
+    var_hide_foundation_water_and_coast_slope_se_nw=20, # ^
+    var_hide_foundation_water_and_coast_slope_sw_ne=21, # ^
+    var_hide_foundation_land_nw_se=22, # ^
+    var_hide_foundation_land_ne_sw=23, # ^
+    var_foundation_sprite_nw_se=24, # sprite number for foundations on nw_se tile face
+    var_foundation_sprite_ne_sw=25, # sprite number for foundations on ne_sw tile face
+    var_hide_building_snow=26,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
 )
 
 station_classes_by_metaclass = {

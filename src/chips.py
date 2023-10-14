@@ -74,8 +74,8 @@ def main():
 
     sprite_manager.add_spriteset("spriteset_ground")
     sprite_manager.add_sprites_from_list(ground.get_sprites())
-    sprite_manager.add_spriteset("spriteset_foundations")
-    sprite_manager.add_sprites_from_list(foundations.get_sprites())
+    sprite_manager.add_spriteset("spriteset_foundations_water_and_coast")
+    sprite_manager.add_sprites_from_list(foundations.get_water_and_coast_sprites())
 
     # order added is also the order rail station tiles will appear in construction menu
     # IDs are automatically constructed
