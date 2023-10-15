@@ -2,12 +2,12 @@ from sprite import FoundationSprite
 
 # labels and x y offsets
 foundation_water_and_coast_sprites = {
-    "nw_se": (10, 10),
-    "ne_sw": (80, 10),
-    "slope_nw_se": (150, 10),
-    "slope_ne_sw": (220, 10),
-    "slope_se_nw": (290, 10),
-    "slope_sw_ne": (360, 10),
+    "sw_face_flat": (10, 10),
+    "se_face_flat": (80, 10),
+    "sw_face_corner_raised_w": (150, 10),
+    "se_face_corner_raised_e": (220, 10),
+    "sw_face_corner_raised_s": (290, 10),
+    "se_face_corner_raised_s": (360, 10),
 }
 
 def get_water_and_coast_sprites():

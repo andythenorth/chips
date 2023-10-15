@@ -12,49 +12,49 @@
                   - 4 slopes
             -->
             building {
-                sprite: spriteset_foundations_water_and_coast(0);
+                sprite: spriteset_foundations_water_and_coast(sw_face_flat);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_nw_se});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_sw_face_flat});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
             }
             building {
-                sprite: spriteset_foundations_water_and_coast(1);
+                sprite: spriteset_foundations_water_and_coast(se_face_flat);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_ne_sw});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_se_face_flat});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
             }
             building {
-                sprite: spriteset_foundations_water_and_coast(2);
+                sprite: spriteset_foundations_water_and_coast(sw_face_corner_raised_w);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_slope_nw_se});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_sw_face_corner_raised_w});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
             }
             building {
-                sprite: spriteset_foundations_water_and_coast(3);
+                sprite: spriteset_foundations_water_and_coast(se_face_corner_raised_e);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_slope_ne_sw});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_se_face_corner_raised_e});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
             }
             building {
-                sprite: spriteset_foundations_water_and_coast(4);
+                sprite: spriteset_foundations_water_and_coast(sw_face_corner_raised_s);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_slope_se_nw});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_sw_face_corner_raised_s});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
             }
             building {
-                sprite: spriteset_foundations_water_and_coast(5);
+                sprite: spriteset_foundations_water_and_coast(se_face_corner_raised_s);
                 always_draw: 1;
-                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_slope_sw_ne});
+                hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_custom_foundation_sw_face_corner_raised_s});
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
