@@ -1,10 +1,6 @@
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_slope_zoffset_slope_check, tile_slope) {
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_slope_zoffset, tile_slope) {
     SLOPE_FLAT: return 0;
     return 8;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_slope_zoffset, nearby_tile_water_class(0, 0)) {
-    WATER_CLASS_SEA: return 8;
-    switch_initialise_foundations_slope_zoffset_slope_check;
 }
 
 <!--! can't check for water directly on the object tile, as it's not reliable on coasts, so offset to appropriate nearby tiles and check for water class
