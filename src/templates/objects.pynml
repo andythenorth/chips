@@ -30,7 +30,7 @@
         </tal:custom_sprite_indexes>
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
         STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
-        switch_initialise_foundations_objects(context_is_purchase),
+        switch_initialise_foundations_FEAT_OBJECTS(context_is_purchase),
     ]) {
         return ${station.id}_switch_graphics_view;
     }

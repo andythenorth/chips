@@ -7,13 +7,14 @@
         RST_VIEW_DRIVE_THROUGH_X: return ${station.layout[0][2]}_drive_through_ne_sw;
         RST_VIEW_DRIVE_THROUGH_Y: return ${station.layout[0][2]}_drive_through_nw_se;
     }
-    switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_graphics, [
+    switch(FEAT_ROADSTOPS, SELF, switch_${station.id}_graphics, context_is_purchase, [
         <tal:custom_sprite_indexes repeat="custom_sprite_index_struct station.custom_sprite_index_structs">
             // ${custom_sprite_index_struct[2]}
             STORE_TEMP(${custom_sprite_index_struct[0]}, ${custom_sprite_index_struct[1]}),
         </tal:custom_sprite_indexes>
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_building_snow}),
         STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
+        switch_initialise_foundations_FEAT_ROADSTOPS(context_is_purchase),
     ]) {
         return switch_${station.id}_check_view;
     }
@@ -27,7 +28,8 @@
             availability_type:      ${station.availability_type};
         }
         graphics {
-            default: switch_${station.id}_graphics;
+            default: switch_${station.id}_graphics(0); <!--! parameter is context_is_purchase, bool -->
+            purchase: switch_${station.id}_graphics(1);
         }
     }
 </tal:stations>

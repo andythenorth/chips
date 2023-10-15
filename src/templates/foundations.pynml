@@ -1,85 +1,90 @@
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_slope_zoffset, tile_slope) {
-    SLOPE_FLAT: return 0;
-    return 8;
-}
-
-<!--! can't check for water directly on the object tile, as it's not reliable on coasts, so offset to appropriate nearby tiles and check for water class
-      this has to be slope-specific to avoid annoying corner cases -->
-<tal:water_checks repeat="tile_offset_mapping foundations.tile_offset_mapping_for_nml_water_check()">
-    switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_check_water_${tile_offset_mapping["slope_name"]},
-    [
-        <tal:tile_offsets repeat="tile_offset tile_offset_mapping['offsets']">
-            nearby_tile_water_class(${tile_offset[0]}, ${tile_offset[1]})
-            | <!--! bitwise OR seems to be needed here -->
-        </tal:tile_offsets>
-            0 <!--! 0 to OR with the last | inserted by the repeat -->
-    ]) {
-        WATER_CLASS_SEA: return 1; <!--! we only actually want sea, trying to make this work reliably with canal and river has too many corner cases -->
-        return 0; <!--! not water -->
+<tal:feature_type repeat="feature_type ['FEAT_OBJECTS', 'FEAT_ROADSTOPS']">
+    <!--! !!!!!!!! CABBAGE as of October 2023 nearby_tile_slope(0,0) is used rather than tile_slope
+         as the implementation of slopes was missing from road stop var 0x42, which tile_slope depends on
+    -->
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_slope_zoffset, nearby_tile_slope(0,0)) {
+        SLOPE_FLAT: return 0;
+        return 8;
     }
-</tal:water_checks>
-<!--! check nearby tiles for water, this has to be slope-specific to avoid annoying corner cases -->
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_nearby_tile_is_water, tile_slope) {
-    <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check()">
-        ${slope_mapping["slope_name"]}: switch_initialise_foundations_check_water_${slope_mapping["slope_name"]}();
-    </tal:foundation_slope_mapping>
-    return 0; <!--! default case is 'not water' -->
-}
 
-<!--! store the spriteset indexes for custom foundations to use next to water, these are multiplied by a bool for 'tile is next to water', with index 0 being a blank sprite -->
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_store_custom_spriteset_numbers, sw_face, se_face, [
-        STORE_TEMP(
-            sw_face * LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
-            ${graphics_temp_storage.var_custom_foundation_sw_face}
-        ),
-        STORE_TEMP(
-            se_face * LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
-            ${graphics_temp_storage.var_custom_foundation_se_face}
-        ),
-    ]) {
-    return;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_custom_foundation_spriteset_numbers, tile_slope) {
-    <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check()">
-        ${slope_mapping["slope_name"]}: switch_initialise_foundations_store_custom_spriteset_numbers(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
-    </tal:foundation_slope_mapping>
-    return;
-}
+    <!--! can't check for water directly on the object tile, as it's not reliable on coasts, so offset to appropriate nearby tiles and check for water class
+          this has to be slope-specific to avoid annoying corner cases -->
+    <tal:water_checks repeat="tile_offset_mapping foundations.tile_offset_mapping_for_nml_water_check()">
+        switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_check_water_${tile_offset_mapping["slope_name"]},
+        [
+            <tal:tile_offsets repeat="tile_offset tile_offset_mapping['offsets']">
+                nearby_tile_water_class(${tile_offset[0]}, ${tile_offset[1]})
+                | <!--! bitwise OR seems to be needed here -->
+            </tal:tile_offsets>
+                0 <!--! 0 to OR with the last | inserted by the repeat -->
+        ]) {
+            WATER_CLASS_SEA: return 1; <!--! we only actually want sea, trying to make this work reliably with canal and river has too many corner cases -->
+            return 0; <!--! not water -->
+        }
+    </tal:water_checks>
+    <!--! check nearby tiles for water, this has to be slope-specific to avoid annoying corner cases -->
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_nearby_tile_is_water, nearby_tile_slope(0,0)) {
+        <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check()">
+            ${slope_mapping["slope_name"]}: ${feature_type}_switch_initialise_foundations_check_water_${slope_mapping["slope_name"]}();
+        </tal:foundation_slope_mapping>
+        return 0; <!--! default case is 'not water' -->
+    }
 
-<!--! store the sprite numbers for base set foundations to use next to water, these are multiplied by a bool for 'tile is next to water', with index 0 being a blank sprite -->
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_store_base_set_foundation_sprite_numbers, base_set_sprite, [
-        STORE_TEMP(
-            base_set_sprite * !(LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby})),
-            ${graphics_temp_storage.var_base_set_foundation}
-        ),
-    ]) {
-    return;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_base_set_foundation_sprite_numbers, tile_slope) {
-    <tal:foundation_slope_mapping repeat="slope_mapping foundations.base_set_foundation_mapping_for_nml_slope_check()">
-        ${slope_mapping["slope_name"]}: switch_initialise_foundations_store_base_set_foundation_sprite_numbers(${slope_mapping["base_set_sprite"]});
-    </tal:foundation_slope_mapping>
-    return;
-}
+    <!--! store the spriteset indexes for custom foundations to use next to water, these are multiplied by a bool for 'tile is next to water', with index 0 being a blank sprite -->
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_store_custom_spriteset_numbers, sw_face, se_face, [
+            STORE_TEMP(
+                sw_face * LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
+                ${graphics_temp_storage.var_custom_foundation_sw_face}
+            ),
+            STORE_TEMP(
+                se_face * LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
+                ${graphics_temp_storage.var_custom_foundation_se_face}
+            ),
+        ]) {
+        return;
+    }
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_custom_foundation_spriteset_numbers, nearby_tile_slope(0,0)) {
+        <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check()">
+            ${slope_mapping["slope_name"]}: ${feature_type}_switch_initialise_foundations_store_custom_spriteset_numbers(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
+        </tal:foundation_slope_mapping>
+        return;
+    }
 
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_graphics, [
-        STORE_TEMP(switch_initialise_foundations_slope_zoffset(), ${graphics_temp_storage.var_z_offset}),
-        STORE_TEMP(switch_initialise_foundations_nearby_tile_is_water(), ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
-        switch_initialise_custom_foundation_spriteset_numbers(),
-        switch_initialise_base_set_foundation_sprite_numbers(),
-    ]) {
-    return;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_purchase, [
-        STORE_TEMP(0, ${graphics_temp_storage.var_z_offset}),
-        STORE_TEMP(0, ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
-        switch_initialise_foundations_store_custom_spriteset_numbers(0, 0),
-        switch_initialise_foundations_store_base_set_foundation_sprite_numbers(${global_constants.SPRITE_EMPTY}),
-    ]) {
-    return;
-}
+    <!--! store the sprite numbers for base set foundations to use next to water, these are multiplied by a bool for 'tile is next to water', with index 0 being a blank sprite -->
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_store_base_set_foundation_sprite_numbers, base_set_sprite, [
+            STORE_TEMP(
+                base_set_sprite * !(LOAD_TEMP(${graphics_temp_storage.var_foundations_tile_has_water_nearby})),
+                ${graphics_temp_storage.var_base_set_foundation}
+            ),
+        ]) {
+        return;
+    }
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_base_set_foundation_sprite_numbers, nearby_tile_slope(0,0)) {
+        <tal:foundation_slope_mapping repeat="slope_mapping foundations.base_set_foundation_mapping_for_nml_slope_check()">
+            ${slope_mapping["slope_name"]}: ${feature_type}_switch_initialise_foundations_store_base_set_foundation_sprite_numbers(${slope_mapping["base_set_sprite"]});
+        </tal:foundation_slope_mapping>
+        return;
+    }
 
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects, context_is_purchase, context_is_purchase) {
-    1: switch_initialise_foundations_objects_purchase;
-    switch_initialise_foundations_objects_graphics;
-}
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_graphics, [
+            STORE_TEMP(${feature_type}_switch_initialise_foundations_slope_zoffset(), ${graphics_temp_storage.var_z_offset}),
+            STORE_TEMP(${feature_type}_switch_initialise_foundations_nearby_tile_is_water(), ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
+            ${feature_type}_switch_initialise_custom_foundation_spriteset_numbers(),
+            ${feature_type}_switch_initialise_base_set_foundation_sprite_numbers(),
+        ]) {
+        return;
+    }
+    switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_purchase, [
+            STORE_TEMP(0, ${graphics_temp_storage.var_z_offset}),
+            STORE_TEMP(0, ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
+            ${feature_type}_switch_initialise_foundations_store_custom_spriteset_numbers(0, 0),
+            ${feature_type}_switch_initialise_foundations_store_base_set_foundation_sprite_numbers(${global_constants.SPRITE_EMPTY}),
+        ]) {
+        return;
+    }
+
+    switch(${feature_type}, SELF, switch_initialise_foundations_${feature_type}, context_is_purchase, context_is_purchase) {
+        1: ${feature_type}_switch_initialise_foundations_purchase;
+        ${feature_type}_switch_initialise_foundations_graphics;
+    }
+</tal:feature_type>
