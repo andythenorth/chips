@@ -7,7 +7,6 @@ switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_zoffset, 
     return 8;
 }
 
-
 switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_store_spriteset_numbers, sw_face, se_face, [
         STORE_TEMP(sw_face, ${graphics_temp_storage.var_custom_foundation_sw_face}),
         STORE_TEMP(se_face, ${graphics_temp_storage.var_custom_foundation_se_face}),
@@ -16,14 +15,25 @@ switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_store_spriteset
     WATER_CLASS_NONE: return 1;
     return 0;
 }
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundations_water_check_sw, nearby_tile_water_class(1, 0)) {
-    <!--! if it's not water always hide custom foundations -->
-    WATER_CLASS_NONE: return 1;
-    return 0;
-}
+
+<!--! can't check for water directly on the object tile, as it's not reliable on coasts, so offset to appropriate nearby tiles and check for water class -->
+<tal:water_checks repeat="tile_offset_mapping foundations.tile_offset_mapping_for_nml_water_check()">
+    switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_check_water_${tile_offset_mapping["slope_name"]}, sw_face, se_face,
+    [
+        <tal:tile_offsets repeat="tile_offset tile_offset_mapping['offsets']">
+            nearby_tile_water_class(${tile_offset[0]}, ${tile_offset[1]})
+            ||
+        </tal:tile_offsets>
+            0 <!--! 0 to OR with the last || inserted by the repeat -->
+    ]) {
+        WATER_CLASS_NONE: return switch_initialise_foundations_objects_store_spriteset_numbers(0, 0); <!--! empty foundations -->
+        return switch_initialise_foundations_objects_store_spriteset_numbers(sw_face, se_face);
+    }
+</tal:water_checks>
+
 switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_check_slope, tile_slope) {
     <tal:foundation_slope_mapping repeat="slope_mapping foundations.slope_mapping_for_nml_slope_check()">
-        ${slope_mapping["slope_name"]}: switch_initialise_foundations_objects_store_spriteset_numbers(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
+        ${slope_mapping["slope_name"]}: switch_initialise_foundations_objects_check_water_${slope_mapping["slope_name"]}(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
     </tal:foundation_slope_mapping>
     return;
 }
