@@ -12,59 +12,58 @@ foundation_water_and_coast_sprites = {
 }
 
 # see also https://newgrf-specs.tt-wiki.net/wiki/NML:List_of_tile_slopes
-# CABBAGE: water checks need determining appropriate to slope
 slope_mapping = {
     "SLOPE_FLAT": {
         "foundations": ["sw_face_flat", "se_face_flat"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 0)],
     },
     "SLOPE_W": {
         "foundations": ["sw_face_corner_raised_w", "se_face_flat"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 1), (-1, 0)],
     },
     "SLOPE_S": {
         "foundations": ["sw_face_corner_raised_s", "se_face_corner_raised_s"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, -1), (-1, 0)],
     },
     "SLOPE_E": {
         "foundations": ["sw_face_flat", "se_face_corner_raised_e"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, -1), (1, 0)],
     },
     "SLOPE_N": {
         "foundations": ["sw_face_flat", "se_face_flat"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 1), (1, 0)],
     },
     "SLOPE_NW": {
         "foundations": ["sw_face_corner_raised_w", "se_face_flat"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 1)],
     },
     "SLOPE_SW": {
         "foundations": ["no_foundation", "se_face_corner_raised_s"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, -1)],
     },
     "SLOPE_SE": {
         "foundations": ["sw_face_corner_raised_s", "no_foundation"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(-1, 0)],
     },
     "SLOPE_NE": {
         "foundations": ["sw_face_flat", "se_face_corner_raised_e"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(1, 0)],
     },
     "SLOPE_NWS": {
         "foundations": ["no_foundation", "se_face_corner_raised_s"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 1)],
     },
     "SLOPE_WSE": {
         "foundations": ["no_foundation", "no_foundation"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [],
     },
     "SLOPE_SEN": {
         "foundations": ["sw_face_corner_raised_s", "no_foundation"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(1, 0)],
     },
     "SLOPE_ENW": {
         "foundations": ["sw_face_corner_raised_w", "se_face_corner_raised_e"],
-        "water_checks": [(0, 1), (0, -1), (1, 0), (-1, 0)],
+        "water_checks": [(0, 1), (1, 0), (1, 1)],
     },
 }
 

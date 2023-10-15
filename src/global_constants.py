@@ -62,6 +62,7 @@ graphics_temp_storage = dict(
     var_base_set_foundation_sw_face=18, # sprite number for foundations from base set
     var_base_set_foundation_se_face=19, # ^
     var_hide_building_snow=20,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
+    CABBAGE=21, # CABBAGE
 )
 
 station_classes_by_metaclass = {
