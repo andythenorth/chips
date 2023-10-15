@@ -7,22 +7,11 @@ switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_slope_zoffset, 
     return 8;
 }
 
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundations_water_check_flat, nearby_tile_water_class(0, 0)) {
-    <!--! if it's not water always hide custom foundations -->
-    WATER_CLASS_NONE: return 1;
-    return 0;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundations_water_check_ne, nearby_tile_water_class(-1, 0)) {
-    <!--! if it's not water always hide custom foundations -->
-    WATER_CLASS_NONE: return 1;
-    return 0;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundations_water_check_nw, nearby_tile_water_class(0, -1)) {
-    <!--! if it's not water always hide custom foundations -->
-    WATER_CLASS_NONE: return 1;
-    return 0;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundations_water_check_se, nearby_tile_water_class(0, 1)) {
+
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_store_spriteset_numbers, sw_face, se_face, [
+        STORE_TEMP(sw_face, ${graphics_temp_storage.var_custom_foundation_sw_face}),
+        STORE_TEMP(se_face, ${graphics_temp_storage.var_custom_foundation_se_face}),
+    ]) {
     <!--! if it's not water always hide custom foundations -->
     WATER_CLASS_NONE: return 1;
     return 0;
@@ -32,37 +21,16 @@ switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_hide_foundation
     WATER_CLASS_NONE: return 1;
     return 0;
 }
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_sw_face_flat, tile_slope) {
-    return 1;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_se_face_flat, tile_slope) {
-    return 1;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_sw_face_corner_raised_w, hasbit(tile_slope, CORNER_W)) {
-    1: return 0;
-    return 1;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_se_face_corner_raised_e, hasbit(tile_slope, CORNER_E)) {
-    1: return 0;
-    return 1;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_sw_face_corner_raised_s, hasbit(tile_slope, CORNER_S)) {
-    1: return 0;
-    return 1;
-}
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_se_face_corner_raised_s, hasbit(tile_slope, CORNER_S)) {
-    1: return 0;
-    return 1;
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_check_slope, tile_slope) {
+    <tal:foundation_slope_mapping repeat="slope_mapping foundations.slope_mapping_for_nml_slope_check()">
+        ${slope_mapping["slope_name"]}: switch_initialise_foundations_objects_store_spriteset_numbers(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
+    </tal:foundation_slope_mapping>
+    return;
 }
 
 switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects, [
         STORE_TEMP(switch_initialise_foundations_objects_slope_zoffset(), ${graphics_temp_storage.var_z_offset}),
-        STORE_TEMP(switch_initialise_foundations_objects_sw_face_flat(), ${graphics_temp_storage.var_hide_custom_foundation_sw_face_flat}),
-        STORE_TEMP(switch_initialise_foundations_objects_se_face_flat(), ${graphics_temp_storage.var_hide_custom_foundation_se_face_flat}),
-        STORE_TEMP(switch_initialise_foundations_objects_sw_face_corner_raised_w(), ${graphics_temp_storage.var_hide_custom_foundation_sw_face_corner_raised_w}),
-        STORE_TEMP(switch_initialise_foundations_objects_se_face_corner_raised_e(), ${graphics_temp_storage.var_hide_custom_foundation_se_face_corner_raised_e}),
-        STORE_TEMP(switch_initialise_foundations_objects_sw_face_corner_raised_s(), ${graphics_temp_storage.var_hide_custom_foundation_sw_face_corner_raised_s}),
-        STORE_TEMP(switch_initialise_foundations_objects_se_face_corner_raised_s(), ${graphics_temp_storage.var_hide_custom_foundation_se_face_corner_raised_s}),
+        switch_initialise_foundations_objects_check_slope(),
     ]) {
     return;
 }

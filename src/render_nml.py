@@ -11,6 +11,7 @@ from time import time
 import chips
 import utils
 import global_constants
+import foundations
 from polar_fox import git_info
 
 # chameleon used in most template cases
@@ -37,7 +38,8 @@ def render_header_nml(header_item):
             graphics_path=global_constants.graphics_path,
             graphics_temp_storage=global_constants.graphics_temp_storage,  # convenience measure
             git_info=git_info,
-            sprite_manager=chips.sprite_manager
+            sprite_manager=chips.sprite_manager,
+            foundations=foundations,
         )
     )
 

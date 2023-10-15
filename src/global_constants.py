@@ -57,17 +57,11 @@ graphics_temp_storage = dict(
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
     var_z_offset=15,  # for offsetting sprites on slopes, coasts etc
-    var_hide_custom_foundation_sw_face_flat=16, # hide foundations in spritelayout, must be set to 1 (true) or 0 (false)
-    var_hide_custom_foundation_se_face_flat=17, # ^
-    var_hide_custom_foundation_sw_face_corner_raised_w=18, # ^
-    var_hide_custom_foundation_se_face_corner_raised_e=19, # ^
-    var_hide_custom_foundation_sw_face_corner_raised_s=20, # ^
-    var_hide_custom_foundation_se_face_corner_raised_s=21, # ^
-    var_hide_foundation_land_nw_se=22, # ^
-    var_hide_foundation_land_ne_sw=23, # ^
-    var_foundation_sprite_nw_se=24, # sprite number for foundations on nw_se tile face
-    var_foundation_sprite_ne_sw=25, # sprite number for foundations on ne_sw tile face
-    var_hide_building_snow=26,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
+    var_custom_foundation_sw_face=16, # custom foundation sprite
+    var_custom_foundation_se_face=17, # ^
+    var_base_set_foundation_sw_face=18, # sprite number for foundations from base set
+    var_base_set_foundation_se_face=19, # ^
+    var_hide_building_snow=20,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
 )
 
 station_classes_by_metaclass = {
