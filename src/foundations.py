@@ -1,3 +1,4 @@
+import global_constants
 from sprite import FoundationSprite
 
 # labels and x y offsets
@@ -16,7 +17,7 @@ slope_mapping = {
     "SLOPE_FLAT": {
         "foundations": ["sw_face_flat", "se_face_flat"],
         "water_checks": [(0, 0)],
-        "base_set_sprite": 4078, # SPR_EMPTY in OpenTTD sprites.h empty (transparent blue) sprite
+        "base_set_sprite": global_constants.SPRITE_EMPTY,
     },
     "SLOPE_W": {
         "foundations": ["sw_face_corner_raised_w", "se_face_flat"],

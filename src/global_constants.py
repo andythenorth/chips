@@ -40,6 +40,9 @@ graphics_path = "generated/graphics/"
 # OpenTTD's max date
 max_game_date = 5000000
 
+# SPR_EMPTY in OpenTTD sprites.h empty (transparent blue) sprite
+SPRITE_EMPTY = 4078
+
 graphics_temp_storage = dict(
     var_sprite_rear_rail_platform_ne_sw=0,  # ground-type-specific sprite for track tiles
     var_sprite_rear_rail_platform_nw_se=1,  # ^

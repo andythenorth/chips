@@ -62,11 +62,24 @@ switch(FEAT_OBJECTS, SELF, switch_initialise_base_set_foundation_sprite_numbers,
     return;
 }
 
-switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects, [
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_graphics, [
         STORE_TEMP(switch_initialise_foundations_slope_zoffset(), ${graphics_temp_storage.var_z_offset}),
         STORE_TEMP(switch_initialise_foundations_nearby_tile_is_water(), ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
         switch_initialise_custom_foundation_spriteset_numbers(),
         switch_initialise_base_set_foundation_sprite_numbers(),
     ]) {
     return;
+}
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects_purchase, [
+        STORE_TEMP(0, ${graphics_temp_storage.var_z_offset}),
+        STORE_TEMP(0, ${graphics_temp_storage.var_foundations_tile_has_water_nearby}),
+        switch_initialise_foundations_store_custom_spriteset_numbers(0, 0),
+        switch_initialise_foundations_store_base_set_foundation_sprite_numbers(${global_constants.SPRITE_EMPTY}),
+    ]) {
+    return;
+}
+
+switch(FEAT_OBJECTS, SELF, switch_initialise_foundations_objects, context_is_purchase, context_is_purchase) {
+    1: switch_initialise_foundations_objects_purchase;
+    switch_initialise_foundations_objects_graphics;
 }
