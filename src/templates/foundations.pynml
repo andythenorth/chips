@@ -4,18 +4,23 @@
     -->
 
     <!--! can't check for water directly on the object tile, as it's not reliable on coasts, so offset to appropriate nearby tiles and check for water class
-          this has to be slope-specific to avoid annoying corner cases -->
+          this has to be slope-specific to avoid annoying corner cases
+          we also check tile height as we only want water at height level 0
+    -->
     <tal:water_checks repeat="tile_offset_mapping foundations.tile_offset_mapping_for_nml_water_check()">
         switch(${feature_type}, SELF, ${feature_type}_switch_initialise_foundations_check_water_${tile_offset_mapping["slope_name"]},
         [
             <tal:tile_offsets repeat="tile_offset tile_offset_mapping['offsets']">
-                nearby_tile_water_class(${tile_offset[0]}, ${tile_offset[1]})
+                (
+                    (nearby_tile_water_class(${tile_offset[0]}, ${tile_offset[1]}) != WATER_CLASS_NONE)
+                    &&
+                    (nearby_tile_height(${tile_offset[0]}, ${tile_offset[1]}) == 0)
+                )
                 | <!--! bitwise OR seems to be needed here -->
             </tal:tile_offsets>
-                0 <!--! 0 to OR with the last | inserted by the repeat -->
+            0 <!--! 0 to OR with the last | inserted by the repeat -->
         ]) {
-            WATER_CLASS_SEA: return 1; <!--! we only actually want sea, trying to make this work reliably with canal and river has too many corner cases -->
-            return 0; <!--! not water -->
+            return;
         }
     </tal:water_checks>
     <!--! check nearby tiles for water, this has to be slope-specific to avoid annoying corner cases -->
