@@ -51,7 +51,7 @@
                     we don't want foundations
                     don't add build on water here, it's too complicated to make foundations work with rivers and canals
             -->
-            object_flags:           bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ANIMATED, OBJ_FLAG_NO_FOUNDATIONS);
+            object_flags:           bitmask(OBJ_FLAG_ANYTHING_REMOVE, OBJ_FLAG_ANIMATED);
             height:                 6;
             num_views:              2; <!--! ne_sw and nw_se orientations -->
             <!--!

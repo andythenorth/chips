@@ -59,12 +59,10 @@ graphics_temp_storage = dict(
     var_palette_building_recolour=12,  # palette for building recolouring
     var_terrain_is_snow=13,  # must be set to 1 (true) or 0 (false)
     var_random_bits=14,  # some random bits to use as required
-    var_z_offset=15,  # for offsetting sprites on slopes, coasts etc
-    var_custom_foundation_sw_face=16, # custom foundation sprite
-    var_custom_foundation_se_face=17, # ^
-    var_base_set_foundation=18, # sprite number for foundations from base set
-    var_hide_building_snow=19,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
-    var_foundations_tile_has_water_nearby=20, # holds a bool for whether this tile has water nearby (might actually be only checking WATER_CLASS_SEA, not all water)
+    var_custom_foundation_sw_face=15, # custom foundation sprite
+    var_custom_foundation_se_face=16, # ^
+    var_hide_building_snow=17,  # hide a snow building in spritelayout, must be set to 1 (true) or 0 (false)
+    var_foundations_tile_has_water_nearby=18, # holds a bool for whether this tile has water nearby (might actually be only checking WATER_CLASS_SEA, not all water)
 )
 
 station_classes_by_metaclass = {

@@ -6,31 +6,6 @@
                   - we'll always overlay our own ground type appropriate to the station
                   - we might be building on a coast, where ground sprite is omitted
             -->
-
-            <!--! custom foundations, *only* used on coasts, matching FIRS docks etc, split to 2 faces -->
-            building {
-                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_sw_face}));
-                always_draw: 1;
-                xoffset: 0;
-                yoffset: 0;
-                zextent: 0;
-            }
-            building {
-                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_se_face}));
-                always_draw: 1;
-                xoffset: 0;
-                yoffset: 0;
-                zextent: 0;
-            }
-            <!--! default base set foundations if custom sprites are not used (these are precomposited and don't need 2 separate faces -->
-            building {
-                sprite: LOAD_TEMP(${graphics_temp_storage.var_base_set_foundation});
-                always_draw: 1;
-                <!--!hide_sprite: LOAD_TEMP(${graphics_temp_storage.var_hide_foundation_water_and_coast_nw_se});-->
-                xoffset: 0;
-                yoffset: 0;
-                zextent: 0;
-            }
             <!--! whole tile ground, as determined by the station -->
             building {
                 sprite: ${spritelayout.get_nml_declaration_for_ground_sprite_whole_tile()};
@@ -38,7 +13,6 @@
                 xoffset: 0;
                 yoffset: 0;
                 zextent: 0;
-                zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
             }
             <tal:ground_overlay_sprites repeat="sprite spritelayout.ground_overlay_sprites[orientation]">
                 <!--! ground overlay (snow aware) -->
@@ -61,6 +35,24 @@
                 }
             </tal:ground_overlay_sprites>
 
+            <!--! custom foundations, overlay on top of base set foundations, *only* used on coasts, matching FIRS docks etc, split to 2 faces -->
+            building {
+                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_sw_face}));
+                always_draw: 1;
+                xoffset: 0;
+                yoffset: 0;
+                zoffset: -8;
+                zextent: 8;
+            }
+            building {
+                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_se_face}));
+                always_draw: 1;
+                xoffset: 0;
+                yoffset: 0;
+                zoffset: -8;
+                zextent: 8;
+            }
+
             <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
                 <!--! non_track tile uses the same 'rear' sprites as track tile rear platform, but with a whole-tile bounding box -->
                 building {
@@ -72,7 +64,6 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
-                    zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
                 }
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
@@ -94,7 +85,6 @@
                     xextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["x_extent"]};
                     yextent: ${global_constants.rail_station_bounding_boxes["whole_tile_" + orientation]["y_extent"]};
                     zextent: 64; <!--! set high to accomodate tall buildings -->
-                    zoffset: LOAD_TEMP(${graphics_temp_storage.var_z_offset});
                 }
                 childsprite {
                     sprite: ${sprite.get_nml_declaration_for_sprite_in_spritelayout(orientation, snow=True)};
