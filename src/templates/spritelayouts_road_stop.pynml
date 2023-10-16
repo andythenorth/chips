@@ -55,7 +55,6 @@
                 zextent: 8;
             }
 
-
             <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
                 <!--! structure (snow aware) for the rear platform on bay tile -->
                 building {

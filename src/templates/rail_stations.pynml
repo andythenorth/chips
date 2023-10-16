@@ -20,6 +20,7 @@
         STORE_TEMP(hasbit(rail_continuation, 1), ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
         STORE_TEMP(hasbit(rail_continuation, 0), ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
         STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
+        switch_initialise_foundations_FEAT_STATIONS(0), <!--! parameter is 'context_is_purchase' -->
         ]) {
         return;
     }
@@ -35,6 +36,7 @@
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_ne_and_nw}),
         STORE_TEMP(1, ${graphics_temp_storage.var_hide_buffer_stop_se_and_sw}),
         STORE_TEMP(${station.palette}, ${graphics_temp_storage.var_palette_building_recolour}),
+        switch_initialise_foundations_FEAT_STATIONS(1), <!--! parameter is 'context_is_purchase' -->
         ]) {
         return;
     }

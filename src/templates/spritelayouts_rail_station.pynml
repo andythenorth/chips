@@ -36,6 +36,24 @@
                 }
             </tal:ground_overlay_sprites>
 
+            <!--! custom foundations, overlay on top of base set foundations, *only* used on coasts, matching FIRS docks etc, split to 2 faces -->
+            building {
+                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_sw_face}));
+                always_draw: 1;
+                xoffset: 0;
+                yoffset: 0;
+                zoffset: -8;
+                zextent: 8;
+            }
+            building {
+                sprite: spriteset_foundations_water_and_coast(LOAD_TEMP(${graphics_temp_storage.var_custom_foundation_se_face}));
+                always_draw: 1;
+                xoffset: 0;
+                yoffset: 0;
+                zoffset: -8;
+                zextent: 8;
+            }
+
             <tal:rear_structure_sprites repeat="sprite spritelayout.rear_structure_sprites[orientation]">
                 <!--! structure (snow aware) for the rear platform on track tile -->
                 building {

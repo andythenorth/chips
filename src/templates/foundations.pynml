@@ -1,4 +1,4 @@
-<tal:feature_type repeat="feature_type ['FEAT_OBJECTS', 'FEAT_ROADSTOPS']">
+<tal:feature_type repeat="feature_type ['FEAT_OBJECTS', 'FEAT_ROADSTOPS', 'FEAT_STATIONS']">
     <!--! !!!!!!!! CABBAGE as of October 2023 nearby_tile_slope(0,0) is used rather than tile_slope
          as the implementation of slopes was missing from road stop var 0x42, which tile_slope depends on
     -->
