@@ -68,7 +68,7 @@ class FoundationSprite(Sprite):
         self.width = 64
         self.height = 31
         self.x_offset = -31
-        self.y_offset = 0
+        self.y_offset = 1
         self.graphics_file_path = "src/graphics/foundations.png"
 
 
