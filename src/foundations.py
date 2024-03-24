@@ -76,18 +76,32 @@ slope_mapping = {
     },
 }
 
+# rail stations transpose their slope result if they are YX orientation, so have to special case that
+rail_station_slope_transpositions = {
+    # not all slopes need transposed as rail stations can only be built on a limited subset of slopes, so only include those
+    "SLOPE_NE": "SLOPE_NW",
+    "SLOPE_NW": "SLOPE_NE",
+    "SLOPE_SE": "SLOPE_SW",
+    "SLOPE_SW": "SLOPE_SE",
+    "SLOPE_SEN": "SLOPE_NWS",
+    "SLOPE_NWS": "SLOPE_SEN",
+}
 
-def custom_foundation_mapping_for_nml_slope_check():
+def custom_foundation_mapping_for_nml_slope_check(transpose_for_rail_station=False):
     result = []
     for slope_name, slope_data in slope_mapping.items():
+        foundations = slope_data["foundations"]
+        if transpose_for_rail_station:
+            if slope_name in rail_station_slope_transpositions.keys():
+                foundations = slope_mapping[rail_station_slope_transpositions[slope_name]]["foundations"]
         result.append(
             {
                 "slope_name": slope_name,
                 "sw_face": list(foundation_water_and_coast_sprites.keys()).index(
-                    slope_data["foundations"][0]
+                    foundations[0]
                 ),
                 "se_face": list(foundation_water_and_coast_sprites.keys()).index(
-                    slope_data["foundations"][1]
+                    foundations[1]
                 ),
             }
         )

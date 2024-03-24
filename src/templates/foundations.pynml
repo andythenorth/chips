@@ -62,25 +62,9 @@
         }
         switch(FEAT_STATIONS, SELF, FEAT_STATIONS_switch_initialise_custom_foundation_spriteset_numbersYX, nearby_tile_slope(0,0)) {
             <!--! rail stations transpose the results of nearby_tile_slope depending on their XY / YX orientation, so we have to handle that specifically -->
-            <!--!
-            <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check()">
+            <tal:foundation_slope_mapping repeat="slope_mapping foundations.custom_foundation_mapping_for_nml_slope_check(transpose_for_rail_station=True)">
                 ${slope_mapping["slope_name"]}: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(${slope_mapping["sw_face"]}, ${slope_mapping["se_face"]});
-            </tal:foundation_slope_mapping>-->
-                SLOPE_FLAT: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(1, 2);
-                SLOPE_W: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(1, 4);
-                SLOPE_S: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(1, 2);
-                SLOPE_E: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(3, 2);
-                SLOPE_N: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(5, 6);
-                SLOPE_NW: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(1, 4);
-                SLOPE_SW: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(5, 0);
-                SLOPE_SE: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(0, 6);
-                SLOPE_NE: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(3, 2);
-                SLOPE_EW: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(3, 4);
-                SLOPE_NS: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(5, 6);
-                SLOPE_NWS: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(5, 0);
-                SLOPE_WSE: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(0, 0);
-                SLOPE_SEN: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(0, 6);
-                SLOPE_ENW: FEAT_STATIONS_switch_initialise_foundations_store_custom_spriteset_numbers(3, 4);
+            </tal:foundation_slope_mapping>
             return;
         }
         switch(FEAT_STATIONS, SELF, FEAT_STATIONS_switch_initialise_custom_foundation_spriteset_numbers, tile_type&1) {
