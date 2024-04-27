@@ -87,6 +87,7 @@ def main():
             ),
         ],
     )
+    """
     facility_type.add_rail_station(
         type="non_track_tile",
         layout=[
@@ -97,7 +98,7 @@ def main():
             ),
         ],
     )
-
+    """
     facility_type.add_road_stop(
         type="drive_through_tile",
         layout=[

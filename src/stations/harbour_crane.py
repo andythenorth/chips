@@ -79,7 +79,7 @@ def main():
         rear_structure_sprites=[],
         main_structure_sprites=[],
     )
-
+    """
     facility_type.add_rail_station(
         type="non_track_tile",
         layout=[
@@ -120,6 +120,7 @@ def main():
             ),
         ],
     )
+    """
     facility_type.add_rail_station(
         type="track_tile",
         hide_pylon_tiles=True,
@@ -154,6 +155,7 @@ def main():
             ),
         ],
     )
+    """
     facility_type.add_rail_station(
         type="track_tile",
         hide_pylon_tiles=True,
@@ -166,7 +168,7 @@ def main():
             ),
         ],
     )
-
+    """
     facility_type.add_station_object(
         layout=[
             (
