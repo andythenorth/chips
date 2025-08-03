@@ -221,32 +221,5 @@ def main():
             ),
         ],
     )
-    facility_type.add_station_object(
-        layout=[
-            (
-                0,
-                0,
-                "foundry_buildings_spritelayout_1_whole_tile",
-            ),
-        ],
-    )
-    facility_type.add_station_object(
-        layout=[
-            (
-                0,
-                0,
-                "foundry_buildings_spritelayout_2_whole_tile",
-            ),
-        ],
-    )
-    facility_type.add_station_object(
-        layout=[
-            (
-                0,
-                0,
-                "foundry_buildings_spritelayout_3_whole_tile",
-            ),
-        ],
-    )
 
     return facility_type
